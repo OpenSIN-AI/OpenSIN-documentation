@@ -1,48 +1,75 @@
-# Integration: Slack
+# Slack Integration
 
-## Duration: 20 minutes
-## Difficulty: Beginner
+Connect OpenSIN agents to Slack for team automation.
 
-## Prerequisites
-- Slack Bot Token
-- OpenSIN installed
+## Overview
 
-## Step 1: Create Slack Agent
+The Slack integration enables agents to:
+- Respond to messages in channels
+- Create and manage workflows
+- Send notifications and alerts
+- Handle slash commands
+- Post formatted messages with blocks
 
-```javascript
-import { SlackAgent } from '@opensin/integrations/slack';
+## Setup
 
-const agent = new SlackAgent({
-  token: process.env.SLACK_BOT_TOKEN,
-  name: 'my-slack-bot',
-  model: 'openrouter/qwen/qwen3.6-plus:free'
-});
+### 1. Create Slack App
 
-agent.on('message', async (msg) => {
-  console.log('Received:', msg.text);
-  await agent.respond(`You said: ${msg.text}`);
-});
+1. Go to [api.slack.com/apps](https://api.slack.com/apps)
+2. Create new app with Bot Token Scopes:
+   - `chat:write`
+   - `channels:read`
+   - `im:read`
+3. Install app to workspace
 
-await agent.start();
-```
-
-## Step 2: Run Agent
+### 2. Configure OpenSIN
 
 ```bash
-SLACK_BOT_TOKEN=your_token node index.js
+opensin integration create slack \
+  --bot-token xoxb-YOUR_TOKEN \
+  --signing-secret YOUR_SECRET
 ```
 
-## Step 3: Test Bot
+## Agent Configuration
 
-Send a message to your bot on Slack.
+```python
+from opensin import Agent
+from opensin.integrations import Slack
 
-## Expected Output
+slack = Slack(bot_token="xoxb-...", signing_secret="...")
 
+assistant = Agent(
+    name="slack-assistant",
+    model="gpt-4",
+    system_prompt="You are a helpful Slack assistant.",
+    tools=["slack_post_message", "slack_get_channel", "slack_react"]
+)
 ```
-Received: Hello!
-Responded: You said: Hello!
+
+## Common Workflows
+
+### Channel Monitoring
+
+```python
+@slack.on("message")
+async def handle_message(event):
+    if event.channel == "#support":
+        response = await assistant.send(event.text)
+        await slack.post_message(event.channel, response.content)
+```
+
+### Alert Notifications
+
+```python
+# Send alerts to channel
+await slack.post_message(
+    channel="#alerts",
+    text="🚨 Production issue detected",
+    blocks=[alert_block]
+)
 ```
 
 ## Next Steps
-- [Signal Integration](signal.md)
-- [Matrix Integration](matrix.md)
+
+- [Webhooks & Events](/guide/webhooks-events)
+- [Team Orchestration](/guide/team-orchestration)
