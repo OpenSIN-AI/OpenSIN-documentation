@@ -1,36 +1,34 @@
-# HF Spaces Deployment Guide
+# Hugging Face Spaces Deployment
 
-## Quick Deploy
+> **Status:** ⏸️ Planned | **Type:** Cloud Deployment
+
+## Overview
+
+HF Spaces provide free GPU-enabled hosting for OpenSIN agent interfaces.
+
+## Creating a Space
+
 ```bash
-python3 ~/.config/opencode/skills/create-hf-space-vm/scripts/create_hf_space.py \
-  --slug sin-my-agent \
-  --namespace easeeeclip \
-  --hardware cpu-basic
+curl -X POST "https://huggingface.co/api/repos/create"   -H "Authorization: Bearer $HF_TOKEN"   -H "Content-Type: application/json"   -d '{"name": "sin-solver", "type": "space", "organization": "delqhi", "sdk": "docker"}'
 ```
 
-## Available HF Accounts
-| Account | Token Source | Status |
-|---------|-------------|--------|
-| easeeeclip | sin-passwordmanager (HF_API_9) | ✅ Available |
-| OpenJerro | sin-passwordmanager (HF_TOKEN_1) | ❌ Rate Limited |
-| mazingaimaze | sin-passwordmanager (HF_TOKEN_2) | ❌ Rate Limited |
-| funviral | sin-passwordmanager (HF_TOKEN_3) | ❌ Rate Limited |
-| lolitaexibabe | sin-passwordmanager (HF_TOKEN_4) | ❌ Rate Limited |
-| Mulimul | sin-passwordmanager (HF_TOKEN_5) | ❌ Rate Limited |
-| appimepp | sin-passwordmanager (HF_TOKEN_6) | ❌ Rate Limited |
-| account7 | sin-passwordmanager (HF_TOKEN_7) | ❌ Rate Limited |
-| delqhi | sin-passwordmanager (HUGGINGFACE_TOKEN) | ❌ Auth Error |
+## Dockerfile
+
+```dockerfile
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+```
 
 ## Rate Limits
-- **20 space creations per day per account**
-- Resets every 24 hours
-- Use different accounts to bypass limit
 
-## Hardware Options
-| Hardware | Cost | Use Case |
-|----------|------|----------|
-| cpu-basic | FREE | All A2A agents |
-| cpu-upgrade | $21.60/mo | Heavy workloads |
-| gpu-t4-small | Paid | ML inference |
+- 20 spaces per day creation limit
+- Free tier: CPU only, 16GB RAM
+- Paid tier: GPU available
 
-**Rule:** ALWAYS use cpu-basic for A2A agents ($0/month)
+---
+
+*Last updated: 2026-04-04 by SIN-Zeus*

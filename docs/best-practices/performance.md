@@ -1,48 +1,28 @@
-# Best Practices: Performance
+# Performance Best Practices
+
+> **Status:** ✅ Active | **Type:** Quality
 
 ## Overview
 
-Performance best practices for OpenSIN agents.
+Performance optimization guidelines for OpenSIN-AI.
 
-## 1. Use Appropriate Models
+## Guidelines
 
-Choose models based on task complexity:
-- Simple tasks: Use smaller, faster models
-- Complex tasks: Use larger, more capable models
+- Use connection pooling for databases
+- Cache frequently accessed data
+- Batch API requests
+- Monitor response times
+- Profile before optimizing
 
-## 2. Implement Caching
+## Targets
 
-```javascript
-const cache = new Map();
+| Metric | Target |
+|--------|--------|
+| API Response Time | < 200ms |
+| n8n Workflow Execution | < 30s |
+| Page Load Time | < 2s |
+| Memory Usage | < 1GB per service |
 
-async function getCachedResponse(key) {
-  if (cache.has(key)) {
-    return cache.get(key);
-  }
+---
 
-  const response = await generateResponse();
-  cache.set(key, response);
-  return response;
-}
-```
-
-## 3. Optimize Prompts
-
-Keep prompts concise and focused.
-
-## 4. Monitor Performance
-
-```javascript
-agent.on('response', (response) => {
-  console.log(`Response time: ${response.time}ms`);
-  console.log(`Tokens used: ${response.tokens}`);
-});
-```
-
-## 5. Use Connection Pooling
-
-For database and API connections, use connection pooling.
-
-## Next Steps
-- [Testing](/best-practices/testing)
-- [Agent Design](/best-practices/agent-design)
+*Last updated: 2026-04-04 by SIN-Zeus*
