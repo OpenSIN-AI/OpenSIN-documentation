@@ -1,21 +1,21 @@
 # Sin Twitter Agent — Configuration Reference
 
-> **Agent:** sin-twitter-agent | **Status:** ✅ Active
+> **Agent:** sin-twitter-agent | **Team:** Twitter | **Status:** ✅ Active
 
-## Configuration File
+## Agent Card
 
-```yaml
-agent:
-  name: sin-twitter-agent
-  model: openrouter/qwen/qwen3.6-plus:free
-  fallback: openrouter/nvidia/nemotron-3-super-free
-  maxSteps: 999999
-  reasoning: high
-  capabilities:
-    - automation
-    - monitoring
-    - reporting
-    - self-healing
+```json
+{
+  "name": "sin-twitter-agent",
+  "version": "1.0.0",
+  "description": "Autonomous A2A agent for sin twitter agent",
+  "team": "twitter",
+  "model": "openrouter/qwen/qwen3.6-plus:free",
+  "fallback": "openrouter/nvidia/nemotron-3-super-free",
+  "capabilities": ["automation", "monitoring", "reporting", "self-healing"],
+  "maxSteps": 999999,
+  "reasoning": "high"
+}
 ```
 
 ## Environment Variables
@@ -25,14 +25,17 @@ agent:
 | `SIN_TWITTER_AGENT_API_KEY` | No | — | API key for external services |
 | `SIN_TWITTER_AGENT_ENDPOINT` | No | — | Custom endpoint URL |
 | `SIN_TWITTER_AGENT_TIMEOUT` | No | 30 | Request timeout in seconds |
+| `SIN_TWITTER_AGENT_RETRIES` | No | 3 | Number of retries on failure |
+| `SIN_TWITTER_AGENT_LOG_LEVEL` | No | info | Logging level |
 
 ## MCP Dependencies
 
 | MCP | Required | Purpose |
 |-----|----------|---------|
-| sin-telegrambot | Yes | Notifications |
+| sin-telegrambot | Yes | Notifications and alerts |
 | n8n-workflow-builder | Yes | Workflow management |
 | webauto-nodriver | No | Browser automation |
+| serena | No | Code intelligence |
 
 ## Performance Tuning
 
@@ -41,6 +44,16 @@ agent:
 | maxSteps | 999999 | Maximum execution steps |
 | reasoning | high | Reasoning depth |
 | context | 1000000 | Context window size |
+| timeout | 300 | Request timeout |
+
+## Monitoring
+
+| Metric | Threshold | Alert |
+|--------|-----------|-------|
+| Response Time | < 30s | Telegram alert |
+| Error Rate | < 1% | GitHub issue |
+| Uptime | > 99.9% | Ops escalation |
+| Task Success | > 95% | Team notification |
 
 ---
 
