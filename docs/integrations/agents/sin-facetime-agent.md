@@ -50,19 +50,19 @@ The agent integrates with n8n through the following workflows:
 ## Supabase Integration
 
 The agent stores data in the following Supabase tables:
-- `agent_registry` — Agent registration and status
-- `work_items` — Task queue
-- `incidents` — Incident tracking
-- `agent_metrics` — Performance metrics
+- agent_registry — Agent registration and status
+- work_items — Task queue
+- incidents — Incident tracking
+- agent_metrics — Performance metrics
 
 ## Monitoring
 
 | Metric | Threshold | Alert |
 |--------|-----------|-------|
-| Response Time | < 30s | Telegram alert |
-| Error Rate | < 1% | GitHub issue |
-| Uptime | > 99.9% | Ops escalation |
-| Task Success | > 95% | Team notification |
+| Response Time | Less than 30s | Telegram alert |
+| Error Rate | Less than 1 percent | GitHub issue |
+| Uptime | Greater than 99.9 percent | Ops escalation |
+| Task Success | Greater than 95 percent | Team notification |
 
 ## Troubleshooting
 
@@ -75,9 +75,9 @@ The agent stores data in the following Supabase tables:
 
 ## Related Documents
 
-- [Agent Playbooks](../../agents/playbooks/sin-facetime-agent/)
-- [Agent Configuration](../../agents/fleet/configs/sin-facetime-agent.md)
-- [Agent Troubleshooting](../../agents/fleet/troubleshooting/sin-facetime-agent.md)
+- Agent Playbooks
+- Agent Configuration
+- Agent Troubleshooting
 
 ---
 
