@@ -1,0 +1,43 @@
+# Browser Crashtest Lab — API Reference
+
+> **Skill:** browser-crashtest-lab | **Type:** OpenCode Skill
+
+## Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/skills/browser-crashtest-lab/status` | GET | Check skill status |
+| `/skills/browser-crashtest-lab/execute` | POST | Execute skill |
+| `/skills/browser-crashtest-lab/config` | GET | Get configuration |
+
+## Request Format
+
+```json
+{
+  "skill": "browser-crashtest-lab",
+  "action": "execute",
+  "params": {}
+}
+```
+
+## Response Format
+
+```json
+{
+  "status": "success",
+  "result": {},
+  "timestamp": "2026-04-04T10:00:00Z"
+}
+```
+
+## Error Codes
+
+| Code | Description |
+|------|-------------|
+| 400 | Invalid parameters |
+| 404 | Skill not found |
+| 500 | Internal server error |
+
+---
+
+*Last updated: 2026-04-04 by SIN-Zeus*
