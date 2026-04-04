@@ -140,10 +140,10 @@ Procedure (if approved)
 4) Emit a Telemetry Digest (max 5 facts) and map any clue to 1-3 candidate entry points.
 
 Telemetry Digest format
-- time_window: <start..end>
+- time_window: `<start..end>`
 - top_signals: ["error strings", "tool timeouts"]
-- likely_surface: <paths/modules>
-- next_experiment: <one discriminating experiment>
+- likely_surface: `<paths/modules>`
+- next_experiment: `<one discriminating experiment>`
 
 Phase 0 - Snapshot + Repro (must pass)
 1) Capture baseline facts:
@@ -156,12 +156,12 @@ Phase 0 - Snapshot + Repro (must pass)
 
 Phase 0 gate (artifact)
 Produce a 6-line Repro Card before continuing:
-- env: <versions>
+- env: `<versions>`
 - command: `<exact repro command>`
-- input: <fixture/request payload/URL>
-- expected: <one sentence>
-- actual: <one sentence>
-- primary signal: <error string / failing assertion / status code>
+- input: `<fixture/request payload/URL>`
+- expected: `<one sentence>`
+- actual: `<one sentence>`
+- primary signal: `<error string / failing assertion / status code>`
 If you cannot fill all 6 lines, stop and request the missing line(s).
 
 Phase 0.5 - Fast triage (2-5 minutes)
