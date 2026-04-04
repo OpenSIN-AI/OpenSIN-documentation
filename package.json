@@ -1,19 +1,14 @@
 {
   "name": "opensin-docs",
   "version": "1.0.0",
-  "description": "Official OpenSIN documentation site (docs.opensin.ai)",
+  "description": "OpenSIN documentation site",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview",
-    "docs:deploy": "vitepress build && gh-pages -d .vitepress/dist"
+    "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "vitepress": "^1.5.0",
-    "gh-pages": "^6.1.0"
-  },
-  "keywords": ["opensin", "ai", "agents", "documentation"],
-  "author": "OpenSIN-AI",
-  "license": "Apache-2.0"
+    "vitepress": "^1.5.0"
+  }
 }
