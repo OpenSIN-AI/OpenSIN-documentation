@@ -1,5 +1,9 @@
 # Example: Telegram Bot
 
+## Overview
+
+Complete Telegram bot integration example.
+
 ## Code
 
 ```javascript
@@ -12,12 +16,30 @@ const agent = new TelegramAgent({
 });
 
 agent.on('message', async (msg) => {
+  console.log('Received:', msg.text);
   await agent.respond(`You said: ${msg.text}`);
 });
 
 await agent.start();
 ```
 
+## Running the Example
+
+```bash
+TELEGRAM_BOT_TOKEN=your_token node telegram-bot.js
+```
+
+## Testing
+
+Send a message to your bot on Telegram.
+
+## Expected Output
+
+```
+Received: Hello!
+Responded: You said: Hello!
+```
+
 ## Next Steps
-- [Discord Bot](discord-bot.md)
-- [WhatsApp](../integrations/whatsapp.md)
+- [Discord Bot Example](discord-bot.md)
+- [WhatsApp Integration](../integrations/whatsapp.md)
