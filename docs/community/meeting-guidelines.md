@@ -1,10 +1,10 @@
-# Code Of Conduct
+# Meeting Guidelines
 
 > **Version:** 1.0 | **Date:** 2026-04-04 | **Owner:** Community Team | **Status:** ✅ Active
 
 ## Purpose
 
-This document provides guidelines for code of conduct within the OpenSIN-AI community.
+This document provides guidelines for meeting guidelines within the OpenSIN-AI community.
 
 ## Scope
 
