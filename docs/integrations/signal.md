@@ -1,49 +1,23 @@
-# Integration: Signal
+# Signal Integration
 
-## Duration: 25 minutes
-## Difficulty: Intermediate
+> **Status:** ✅ Active | **Type:** Messaging
 
-## Prerequisites
-- Signal CLI installed
-- OpenSIN installed
+## Overview
 
-## Step 1: Create Signal Agent
+Signal integration for OpenSIN-AI notifications and commands.
 
-```javascript
-import { SignalAgent } from '@opensin/integrations/signal';
+## Setup
 
-const agent = new SignalAgent({
-  signalCliPath: '/usr/bin/signal-cli',
-  phoneNumber: '+1234567890',
-  name: 'my-signal-bot',
-  model: 'openrouter/qwen/qwen3.6-plus:free'
-});
+1. Create app/bot
+2. Configure webhooks
+3. Test connection
 
-agent.on('message', async (msg) => {
-  console.log('Received:', msg.text);
-  await agent.respond(`You said: ${msg.text}`);
-});
+## Features
 
-await agent.start();
-```
+- Notifications
+- Commands
+- Status updates
 
-## Step 2: Run Agent
+---
 
-```bash
-node signal-bot.js
-```
-
-## Step 3: Test Bot
-
-Send a message to your Signal number.
-
-## Expected Output
-
-```
-Received: Hello!
-Responded: You said: Hello!
-```
-
-## Next Steps
-- [Matrix Integration](matrix.md)
-- [IRC Integration](irc.md)
+*Last updated: 2026-04-04 by SIN-Zeus*

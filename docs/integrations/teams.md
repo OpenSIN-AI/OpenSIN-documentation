@@ -1,10 +1,10 @@
-# Matrix Integration
+# Microsoft Teams Integration
 
 > **Status:** ✅ Active | **Type:** Messaging
 
 ## Overview
 
-Matrix integration for OpenSIN-AI notifications and commands.
+Microsoft Teams integration for OpenSIN-AI notifications and commands.
 
 ## Setup
 

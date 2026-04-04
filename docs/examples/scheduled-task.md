@@ -1,10 +1,10 @@
-# Telegram Bot Example
+# Scheduled Task Example
 
 > **Category:** Example | **Difficulty:** Intermediate
 
 ## Overview
 
-Example implementation of telegram bot.
+Example implementation of scheduled task.
 
 ## Code
 

@@ -1,10 +1,10 @@
-# Telegram Bot Example
+# Multi Agent Workflow Example
 
 > **Category:** Example | **Difficulty:** Intermediate
 
 ## Overview
 
-Example implementation of telegram bot.
+Example implementation of multi agent workflow.
 
 ## Code
 

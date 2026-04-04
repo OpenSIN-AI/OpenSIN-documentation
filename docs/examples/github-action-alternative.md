@@ -1,10 +1,10 @@
-# Telegram Bot Example
+# Github Action Alternative Example
 
 > **Category:** Example | **Difficulty:** Intermediate
 
 ## Overview
 
-Example implementation of telegram bot.
+Example implementation of github action alternative.
 
 ## Code
 

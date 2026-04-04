@@ -1,48 +1,23 @@
-# Integration: Discord
+# Discord Integration
 
-## Duration: 20 minutes
-## Difficulty: Beginner
+> **Status:** ✅ Active | **Type:** Messaging
 
-## Prerequisites
-- Discord Bot Token
-- OpenSIN installed
+## Overview
 
-## Step 1: Create Discord Agent
+Discord integration for OpenSIN-AI notifications and commands.
 
-```javascript
-import { DiscordAgent } from '@opensin/integrations/discord';
+## Setup
 
-const agent = new DiscordAgent({
-  token: process.env.DISCORD_BOT_TOKEN,
-  name: 'my-discord-bot',
-  model: 'openrouter/qwen/qwen3.6-plus:free'
-});
+1. Create app/bot
+2. Configure webhooks
+3. Test connection
 
-agent.on('message', async (msg) => {
-  console.log('Received:', msg.content);
-  await agent.respond(`You said: ${msg.content}`);
-});
+## Features
 
-await agent.start();
-```
+- Notifications
+- Commands
+- Status updates
 
-## Step 2: Run Agent
+---
 
-```bash
-DISCORD_BOT_TOKEN=your_token node index.js
-```
-
-## Step 3: Test Bot
-
-Send a message to your bot on Discord.
-
-## Expected Output
-
-```
-Received: Hello!
-Responded: You said: Hello!
-```
-
-## Next Steps
-- [Telegram Integration](telegram.md)
-- [Slack Integration](slack.md)
+*Last updated: 2026-04-04 by SIN-Zeus*

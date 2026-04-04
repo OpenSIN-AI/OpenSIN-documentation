@@ -1,51 +1,23 @@
-# Integration: WhatsApp
+# WhatsApp Integration
 
-## Duration: 25 minutes
-## Difficulty: Intermediate
+> **Status:** ✅ Active | **Type:** Messaging
 
-## Prerequisites
-- WhatsApp Business API credentials
-- OpenSIN installed
+## Overview
 
-## Step 1: Create WhatsApp Agent
+WhatsApp integration for OpenSIN-AI notifications and commands.
 
-```javascript
-import { WhatsAppAgent } from '@opensin/integrations/whatsapp';
+## Setup
 
-const agent = new WhatsAppAgent({
-  phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
-  accessToken: process.env.WHATSAPP_ACCESS_TOKEN,
-  name: 'my-whatsapp-bot',
-  model: 'openrouter/qwen/qwen3.6-plus:free'
-});
+1. Create app/bot
+2. Configure webhooks
+3. Test connection
 
-agent.on('message', async (msg) => {
-  console.log('Received:', msg.text);
-  await agent.respond(`You said: ${msg.text}`);
-});
+## Features
 
-await agent.start();
-```
+- Notifications
+- Commands
+- Status updates
 
-## Step 2: Run Agent
+---
 
-```bash
-WHATSAPP_PHONE_NUMBER_ID=your_id \
-WHATSAPP_ACCESS_TOKEN=your_token \
-node index.js
-```
-
-## Step 3: Test Bot
-
-Send a message to your WhatsApp number.
-
-## Expected Output
-
-```
-Received: Hello!
-Responded: You said: Hello!
-```
-
-## Next Steps
-- [Slack Integration](slack.md)
-- [Signal Integration](signal.md)
+*Last updated: 2026-04-04 by SIN-Zeus*

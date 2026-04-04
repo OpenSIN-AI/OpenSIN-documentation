@@ -1,10 +1,10 @@
-# Telegram Bot Example
+# Custom Mcp Server Example
 
 > **Category:** Example | **Difficulty:** Intermediate
 
 ## Overview
 
-Example implementation of telegram bot.
+Example implementation of custom mcp server.
 
 ## Code
 

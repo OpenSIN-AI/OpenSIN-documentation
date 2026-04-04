@@ -1,10 +1,10 @@
-# Telegram Bot Example
+# Webhook Handler Example
 
 > **Category:** Example | **Difficulty:** Intermediate
 
 ## Overview
 
-Example implementation of telegram bot.
+Example implementation of webhook handler.
 
 ## Code
 
