@@ -1,10 +1,6 @@
 # title
 
-> **Status:** ✅ Configured | **Model:** —
-
-## Overview
-
-Title generation for sessions and documents.
+> **Status:** ✅ Active | **Model:** —
 
 ## Configuration
 
@@ -15,15 +11,23 @@ Title generation for sessions and documents.
 | **Reasoning** | — |
 | **Max Steps** | — |
 
+## Raw Config
+
+```json
+{
+  "options": {
+    "reasoningEffort": "low"
+  },
+  "steps": 999999,
+  "fallback": "openrouter/nvidia/nemotron-3-super-free"
+}
+```
+
 ## Usage
 
 ```bash
 opencode run --agent "title" "your task here"
 ```
-
-## When to Use
-
-<!-- TODO: Add specific use cases -->
 
 ---
 

@@ -1,10 +1,6 @@
 # general
 
-> **Status:** ✅ Configured | **Model:** openrouter/qwen/qwen3.6-plus:free
-
-## Overview
-
-General-purpose agent for everyday coding tasks.
+> **Status:** ✅ Active | **Model:** openrouter/qwen/qwen3.6-plus:free
 
 ## Configuration
 
@@ -15,15 +11,24 @@ General-purpose agent for everyday coding tasks.
 | **Reasoning** | — |
 | **Max Steps** | — |
 
+## Raw Config
+
+```json
+{
+  "model": "openrouter/qwen/qwen3.6-plus:free",
+  "options": {
+    "reasoningEffort": "medium"
+  },
+  "steps": 999999,
+  "fallback": "openrouter/nvidia/nemotron-3-super-free"
+}
+```
+
 ## Usage
 
 ```bash
 opencode run --agent "general" "your task here"
 ```
-
-## When to Use
-
-<!-- TODO: Add specific use cases -->
 
 ---
 

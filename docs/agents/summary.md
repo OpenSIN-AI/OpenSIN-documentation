@@ -1,10 +1,6 @@
 # summary
 
-> **Status:** ✅ Configured | **Model:** —
-
-## Overview
-
-Text summarization and content condensation.
+> **Status:** ✅ Active | **Model:** —
 
 ## Configuration
 
@@ -15,15 +11,23 @@ Text summarization and content condensation.
 | **Reasoning** | — |
 | **Max Steps** | — |
 
+## Raw Config
+
+```json
+{
+  "options": {
+    "reasoningEffort": "low"
+  },
+  "steps": 999999,
+  "fallback": "openrouter/nvidia/nemotron-3-super-free"
+}
+```
+
 ## Usage
 
 ```bash
 opencode run --agent "summary" "your task here"
 ```
-
-## When to Use
-
-<!-- TODO: Add specific use cases -->
 
 ---
 

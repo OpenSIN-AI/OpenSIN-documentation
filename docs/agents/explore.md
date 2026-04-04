@@ -1,10 +1,6 @@
 # explore
 
-> **Status:** ✅ Configured | **Model:** openrouter/qwen/qwen3.6-plus:free
-
-## Overview
-
-Codebase exploration and dependency analysis.
+> **Status:** ✅ Active | **Model:** openrouter/qwen/qwen3.6-plus:free
 
 ## Configuration
 
@@ -15,15 +11,24 @@ Codebase exploration and dependency analysis.
 | **Reasoning** | — |
 | **Max Steps** | — |
 
+## Raw Config
+
+```json
+{
+  "model": "openrouter/qwen/qwen3.6-plus:free",
+  "options": {
+    "reasoningEffort": "low"
+  },
+  "steps": 999999,
+  "fallback": "openrouter/nvidia/nemotron-3-super-free"
+}
+```
+
 ## Usage
 
 ```bash
 opencode run --agent "explore" "your task here"
 ```
-
-## When to Use
-
-<!-- TODO: Add specific use cases -->
 
 ---
 

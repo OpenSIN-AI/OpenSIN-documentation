@@ -1,10 +1,6 @@
 # build
 
-> **Status:** ✅ Configured | **Model:** openrouter/qwen/qwen3.6-plus:free
-
-## Overview
-
-Code building, compilation, and package management.
+> **Status:** ✅ Active | **Model:** openrouter/qwen/qwen3.6-plus:free
 
 ## Configuration
 
@@ -15,15 +11,24 @@ Code building, compilation, and package management.
 | **Reasoning** | — |
 | **Max Steps** | — |
 
+## Raw Config
+
+```json
+{
+  "model": "openrouter/qwen/qwen3.6-plus:free",
+  "options": {
+    "reasoningEffort": "high"
+  },
+  "steps": 999999,
+  "fallback": "openrouter/nvidia/nemotron-3-super-free"
+}
+```
+
 ## Usage
 
 ```bash
 opencode run --agent "build" "your task here"
 ```
-
-## When to Use
-
-<!-- TODO: Add specific use cases -->
 
 ---
 

@@ -1,10 +1,6 @@
 # multimodal-looker
 
-> **Status:** ✅ Configured | **Model:** google/antigravity-gemini-3.1-pro
-
-## Overview
-
-Multimodal analysis for images, PDFs, and visual content.
+> **Status:** ✅ Active | **Model:** google/antigravity-gemini-3.1-pro
 
 ## Configuration
 
@@ -15,15 +11,25 @@ Multimodal analysis for images, PDFs, and visual content.
 | **Reasoning** | — |
 | **Max Steps** | — |
 
+## Raw Config
+
+```json
+{
+  "model": "google/antigravity-gemini-3.1-pro",
+  "options": {
+    "reasoningEffort": "low"
+  },
+  "steps": 999999,
+  "description": "Zero-Shot Object Detection & Vision Understanding via NVIDIA NIM",
+  "fallback": "openrouter/nvidia/nemotron-3-super-free"
+}
+```
+
 ## Usage
 
 ```bash
 opencode run --agent "multimodal-looker" "your task here"
 ```
-
-## When to Use
-
-<!-- TODO: Add specific use cases -->
 
 ---
 

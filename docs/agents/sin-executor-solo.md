@@ -1,10 +1,6 @@
 # sin-executor-solo
 
-> **Status:** ✅ Configured | **Model:** openrouter/qwen/qwen3.6-plus:free
-
-## Overview
-
-Solo execution agent for independent task completion.
+> **Status:** ✅ Active | **Model:** openrouter/qwen/qwen3.6-plus:free
 
 ## Configuration
 
@@ -15,15 +11,27 @@ Solo execution agent for independent task completion.
 | **Reasoning** | — |
 | **Max Steps** | — |
 
+## Raw Config
+
+```json
+{
+  "mode": "primary",
+  "model": "openrouter/qwen/qwen3.6-plus:free",
+  "options": {
+    "reasoningEffort": "medium"
+  },
+  "description": "Single-agent coding executor for deterministic task processing without swarm orchestration.",
+  "prompt": "You are a direct single-agent coding executor. Work alone in the provided directory. Do not create or join swarms. Do not delegate. Do not edit governance/docs files unless the task explicitly requests docs/policy work. Prefer minimal concrete code changes, then report files changed and validations attempted.",
+  "steps": 999999,
+  "fallback": "openrouter/nvidia/nemotron-3-super-free"
+}
+```
+
 ## Usage
 
 ```bash
 opencode run --agent "sin-executor-solo" "your task here"
 ```
-
-## When to Use
-
-<!-- TODO: Add specific use cases -->
 
 ---
 

@@ -1,10 +1,6 @@
 # compaction
 
-> **Status:** ✅ Configured | **Model:** —
-
-## Overview
-
-Context compaction and conversation summarization.
+> **Status:** ✅ Active | **Model:** —
 
 ## Configuration
 
@@ -15,15 +11,23 @@ Context compaction and conversation summarization.
 | **Reasoning** | — |
 | **Max Steps** | — |
 
+## Raw Config
+
+```json
+{
+  "options": {
+    "reasoningEffort": "low"
+  },
+  "steps": 999999,
+  "fallback": "openrouter/nvidia/nemotron-3-super-free"
+}
+```
+
 ## Usage
 
 ```bash
 opencode run --agent "compaction" "your task here"
 ```
-
-## When to Use
-
-<!-- TODO: Add specific use cases -->
 
 ---
 

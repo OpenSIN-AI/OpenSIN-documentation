@@ -1,10 +1,6 @@
 # Momus (Plan Critic)
 
-> **Status:** ✅ Configured | **Model:** openrouter/qwen/qwen3.6-plus:free
-
-## Overview
-
-Critical reviewer that identifies flaws and risks in plans.
+> **Status:** ✅ Active | **Model:** openrouter/qwen/qwen3.6-plus:free
 
 ## Configuration
 
@@ -15,15 +11,24 @@ Critical reviewer that identifies flaws and risks in plans.
 | **Reasoning** | — |
 | **Max Steps** | — |
 
+## Raw Config
+
+```json
+{
+  "model": "openrouter/qwen/qwen3.6-plus:free",
+  "options": {
+    "reasoningEffort": "high"
+  },
+  "steps": 999999,
+  "fallback": "openrouter/nvidia/nemotron-3-super-free"
+}
+```
+
 ## Usage
 
 ```bash
 opencode run --agent "Momus (Plan Critic)" "your task here"
 ```
-
-## When to Use
-
-<!-- TODO: Add specific use cases -->
 
 ---
 
