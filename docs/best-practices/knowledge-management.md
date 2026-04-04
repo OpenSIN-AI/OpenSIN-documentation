@@ -1,10 +1,10 @@
-# File Organization — Best Practices
+# Knowledge Management — Best Practices
 
 > **Category:** Best Practices | **Version:** 1.0 | **Status:** Active
 
 ## Overview
 
-This document outlines best practices for file organization in the OpenSIN-AI ecosystem.
+This document outlines best practices for knowledge management in the OpenSIN-AI ecosystem.
 
 ## Principles
 
