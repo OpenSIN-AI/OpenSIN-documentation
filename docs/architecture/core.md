@@ -2,40 +2,54 @@
 
 ## Overview
 
-OpenSIN is built with a modular, scalable architecture.
+Detailed architecture of OpenSIN core components.
 
-## Components
+## Component Diagram
 
 ```
-┌─────────────────────────────────────────────┐
-│              Core Components                │
-│  ┌──────┐ ┌──────┐ ┌──────┐ ┌───────────┐  │
-│  │Agent │ │Team  │ │A2A   │ │MCP        │  │
-│  │Mgr   │ │Mgr   │ │Router│ │Mgr        │  │
-│  └──┬───┘ └──┬───┘ └──┬───┘ └─────┬─────┘  │
-└─────┼────────┼────────┼───────────┼─────────┘
-      └────────┴───┬────┴───────────┘
-                   │
-          ┌────────▼────────┐
-          │   Event Bus     │
-          └─────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                     Core Components                         │
+│                                                             │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌─────────────┐ │
+│  │ Agent    │  │ Team     │  │ A2A      │  │ MCP         │ │
+│  │ Manager  │  │ Manager  │  │ Router   │  │ Manager     │ │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └──────┬──────┘ │
+└───────┼─────────────┼─────────────┼────────────────┼────────┘
+        │             │             │                │
+        └─────────────┴──────┬──────┴────────────────┘
+                             │
+                    ┌────────▼────────┐
+                    │   Event Bus     │
+                    └─────────────────┘
 ```
 
 ## Agent Manager
 
-Creates, destroys, and monitors agents.
+Responsible for:
+- Creating and destroying agents
+- Managing agent lifecycle
+- Monitoring agent health
 
 ## Team Manager
 
-Creates teams and assigns tasks.
+Responsible for:
+- Creating and managing teams
+- Assigning tasks to teams
+- Monitoring team performance
 
 ## A2A Router
 
-Routes messages between agents.
+Responsible for:
+- Routing messages between agents
+- Ensuring message delivery
+- Handling message errors
 
 ## MCP Manager
 
-Manages MCP servers and tools.
+Responsible for:
+- Managing MCP servers
+- Loading and unloading tools
+- Monitoring tool health
 
 ## Next Steps
 - [A2A Protocol](/architecture/a2a)

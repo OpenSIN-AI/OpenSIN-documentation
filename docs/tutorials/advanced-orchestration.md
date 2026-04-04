@@ -7,6 +7,11 @@
 - Custom orchestration strategies
 - Dynamic task assignment
 - Error handling and recovery
+- Performance optimization
+
+## Prerequisites
+- Complete [Multi-Agent Collaboration](multi-agent.md)
+- TypeScript knowledge
 
 ## Step 1: Custom Orchestrator
 
@@ -15,7 +20,10 @@ import { Orchestrator, Task, Agent } from '@opensin/core';
 
 export class CustomOrchestrator extends Orchestrator {
   async assignTask(task: Task, agents: Agent[]): Promise<Agent> {
-    return agents.find(a => a.capabilities.includes(task.requiredCapability)) || agents[0];
+    const bestAgent = agents.find(agent =>
+      agent.capabilities.includes(task.requiredCapability)
+    );
+    return bestAgent || agents[0];
   }
 
   async handleFailure(task: Task, error: Error): Promise<void> {
@@ -28,10 +36,28 @@ export class CustomOrchestrator extends Orchestrator {
 ## Step 2: Dynamic Task Assignment
 
 ```typescript
-const orchestrator = new CustomOrchestrator({ strategy: 'dynamic', maxRetries: 3 });
-const team = new Team({ name: 'dynamic-team', agents: [agent1, agent2, agent3], orchestrator });
+const orchestrator = new CustomOrchestrator({
+  strategy: 'dynamic',
+  maxRetries: 3,
+  timeout: 300000
+});
+
+const team = new Team({
+  name: 'dynamic-team',
+  agents: [agent1, agent2, agent3],
+  orchestrator
+});
+```
+
+## Step 3: Error Handling
+
+```typescript
+team.on('task-error', async (task, error) => {
+  console.error(`Task ${task.name} failed:`, error);
+  await this.retryTask(task);
+});
 ```
 
 ## Next Steps
-- [Best Practices: Agent Design](../best-practices/agent-design.md)
+- [Best Practices](../best-practices/agent-design.md)
 - [Security](../architecture/security.md)

@@ -1,18 +1,60 @@
 # Migration Guide
 
-## v0.x to v1.0
+## Migrating from v0.x to v1.0
 
-### Agent API
+### Breaking Changes
 
-**Before:** `new Agent('name', ['cap'])`
-**After:** `new Agent({ name: 'name', capabilities: ['cap'] })`
+- Agent API has changed
+- Team API has changed
+- A2A protocol has changed
 
-### Team API
+### Agent API Changes
 
-**Before:** `new Team('name', [agents])`
-**After:** `new Team({ name: 'name', agents: [agents] })`
+**Before:**
+```javascript
+const agent = new Agent('my-agent', ['greet']);
+```
 
-### A2A Protocol
+**After:**
+```javascript
+const agent = new Agent({
+  name: 'my-agent',
+  capabilities: ['greet']
+});
+```
 
-**Before:** `agent.sendTo('name', 'msg')`
-**After:** `agent.sendTo(agent, { type: 'text', content: 'msg' })`
+### Team API Changes
+
+**Before:**
+```javascript
+const team = new Team('my-team', [agent1, agent2]);
+```
+
+**After:**
+```javascript
+const team = new Team({
+  name: 'my-team',
+  agents: [agent1, agent2]
+});
+```
+
+### A2A Protocol Changes
+
+**Before:**
+```javascript
+agent.sendTo('agent-b', 'Hello!');
+```
+
+**After:**
+```javascript
+agent.sendTo(agentB, {
+  type: 'text',
+  content: 'Hello!'
+});
+```
+
+## Need Help?
+
+- [Documentation](/guide/getting-started)
+- [GitHub Issues](https://github.com/OpenSIN-AI/OpenSIN/issues)
+- [Discord](https://discord.gg/opensin)

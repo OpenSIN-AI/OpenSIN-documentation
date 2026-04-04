@@ -1,20 +1,20 @@
-# Integration: Slack
+# Integration: Telegram
 
 ## Duration: 20 minutes
 ## Difficulty: Beginner
 
 ## Prerequisites
-- Slack Bot Token
+- Telegram Bot Token (from @BotFather)
 - OpenSIN installed
 
-## Step 1: Create Slack Agent
+## Step 1: Create Telegram Agent
 
 ```javascript
-import { SlackAgent } from '@opensin/integrations/slack';
+import { TelegramAgent } from '@opensin/integrations/telegram';
 
-const agent = new SlackAgent({
-  token: process.env.SLACK_BOT_TOKEN,
-  name: 'my-slack-bot',
+const agent = new TelegramAgent({
+  token: process.env.TELEGRAM_BOT_TOKEN,
+  name: 'my-telegram-bot',
   model: 'openrouter/qwen/qwen3.6-plus:free'
 });
 
@@ -29,12 +29,12 @@ await agent.start();
 ## Step 2: Run Agent
 
 ```bash
-SLACK_BOT_TOKEN=your_token node index.js
+TELEGRAM_BOT_TOKEN=your_token node index.js
 ```
 
 ## Step 3: Test Bot
 
-Send a message to your bot on Slack.
+Send a message to your bot on Telegram.
 
 ## Expected Output
 
@@ -44,5 +44,5 @@ Responded: You said: Hello!
 ```
 
 ## Next Steps
-- [Signal Integration](signal.md)
-- [Matrix Integration](matrix.md)
+- [Discord Integration](discord.md)
+- [WhatsApp Integration](whatsapp.md)

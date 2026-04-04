@@ -1,10 +1,13 @@
-# Example: Discord Bot
+# Integration: Discord
 
-## Overview
+## Duration: 20 minutes
+## Difficulty: Beginner
 
-Discord bot integration example.
+## Prerequisites
+- Discord Bot Token
+- OpenSIN installed
 
-## Code
+## Step 1: Create Discord Agent
 
 ```javascript
 import { DiscordAgent } from '@opensin/integrations/discord';
@@ -23,13 +26,13 @@ agent.on('message', async (msg) => {
 await agent.start();
 ```
 
-## Running the Example
+## Step 2: Run Agent
 
 ```bash
-DISCORD_BOT_TOKEN=your_token node discord-bot.js
+DISCORD_BOT_TOKEN=your_token node index.js
 ```
 
-## Testing
+## Step 3: Test Bot
 
 Send a message to your bot on Discord.
 
@@ -41,5 +44,5 @@ Responded: You said: Hello!
 ```
 
 ## Next Steps
-- [Telegram Bot Example](telegram-bot.md)
-- [Slack Example](../integrations/slack.md)
+- [Telegram Integration](telegram.md)
+- [Slack Integration](slack.md)

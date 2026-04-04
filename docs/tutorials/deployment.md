@@ -3,6 +3,17 @@
 ## Duration: 45 minutes
 ## Difficulty: Advanced
 
+## What You'll Learn
+- How to deploy OpenSIN with Docker
+- How to configure environment variables
+- How to set up monitoring
+- How to scale OpenSIN
+
+## Prerequisites
+- Docker and Docker Compose
+- Server with at least 4GB RAM
+- Domain name (optional)
+
 ## Step 1: Clone Repository
 
 ```bash
@@ -11,6 +22,8 @@ cd OpenSIN
 ```
 
 ## Step 2: Configure Environment
+
+Create `.env` file:
 
 ```env
 NODE_ENV=production
@@ -26,10 +39,16 @@ DISCORD_BOT_TOKEN=your_token
 docker-compose up -d
 ```
 
-## Step 4: Verify
+## Step 4: Verify Deployment
 
 ```bash
 curl http://localhost:3000/health
+```
+
+## Step 5: Set Up Monitoring
+
+```bash
+docker-compose -f docker-compose.monitoring.yml up -d
 ```
 
 ## Scaling
@@ -39,5 +58,5 @@ docker-compose up -d --scale opensin-core=3
 ```
 
 ## Next Steps
-- [Monitoring](../guide/monitoring.md)
-- [Scaling](../guide/scaling.md)
+- [Best Practices: Security](../best-practices/security.md)
+- [Best Practices: Performance](../best-practices/performance.md)

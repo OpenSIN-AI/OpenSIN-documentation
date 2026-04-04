@@ -3,6 +3,17 @@
 ## Duration: 30 minutes
 ## Difficulty: Intermediate
 
+## What You'll Learn
+- How to create a Telegram bot
+- How to integrate with OpenSIN
+- How to handle Telegram messages
+- How to deploy the bot
+
+## Prerequisites
+- Telegram account
+- Node.js 18+
+- OpenSIN installed
+
 ## Step 1: Create Telegram Bot
 
 1. Open Telegram and search for `@BotFather`
@@ -28,7 +39,9 @@ const agent = new TelegramAgent({
 });
 
 agent.on('message', async (msg) => {
-  await agent.respond(await processMessage(msg.text));
+  console.log('Received:', msg.text);
+  const response = await processMessage(msg.text);
+  await agent.respond(response);
 });
 
 await agent.start();
@@ -40,6 +53,17 @@ await agent.start();
 TELEGRAM_BOT_TOKEN=your_token node bot.js
 ```
 
+## Step 5: Test Bot
+
+Send a message to your bot on Telegram.
+
+## Expected Output
+
+```
+Received: Hello!
+Responded: Hello! How can I help you?
+```
+
 ## Next Steps
-- [Discord Bot](discord-bot.md)
-- [WhatsApp Integration](../integrations/whatsapp.md)
+- [Tutorial: Discord Bot](discord-bot.md)
+- [Integration: WhatsApp](../integrations/whatsapp.md)

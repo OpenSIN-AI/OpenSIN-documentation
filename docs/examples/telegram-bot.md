@@ -2,7 +2,7 @@
 
 ## Overview
 
-Complete Telegram bot integration example.
+Telegram bot integration example.
 
 ## Code
 
@@ -42,4 +42,4 @@ Responded: You said: Hello!
 
 ## Next Steps
 - [Discord Bot Example](discord-bot.md)
-- [WhatsApp Integration](../integrations/whatsapp.md)
+- [WhatsApp Example](../integrations/whatsapp.md)

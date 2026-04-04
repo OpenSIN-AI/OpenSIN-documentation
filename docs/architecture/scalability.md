@@ -1,6 +1,12 @@
 # Scalability Architecture
 
+## Overview
+
+How OpenSIN scales to handle large workloads.
+
 ## Horizontal Scaling
+
+OpenSIN supports horizontal scaling by running multiple instances behind a load balancer.
 
 ```bash
 docker-compose up -d --scale opensin-core=3
@@ -8,25 +14,25 @@ docker-compose up -d --scale opensin-core=3
 
 ## Load Balancing
 
-Configure nginx or HAProxy to distribute traffic.
+Configure a load balancer to distribute traffic across instances.
 
 ## Database Scaling
 
-- Read replicas for read-heavy workloads
-- Sharding for write-heavy workloads
-- Connection pooling
+- Use read replicas for read-heavy workloads
+- Use sharding for write-heavy workloads
+- Use connection pooling for efficient database connections
 
 ## Caching
 
-- Redis for frequently accessed data
-- CDN for static assets
-- In-memory caching for sessions
+- Use Redis for caching frequently accessed data
+- Use CDN for static assets
+- Use in-memory caching for session data
 
 ## Monitoring
 
-- Prometheus for metrics
-- Grafana for visualization
-- Alertmanager for alerting
+- Use Prometheus for metrics collection
+- Use Grafana for visualization
+- Use Alertmanager for alerting
 
 ## Next Steps
 - [Deployment](/guide/deployment)

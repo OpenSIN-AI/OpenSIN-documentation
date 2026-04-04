@@ -2,7 +2,11 @@
 
 ## Overview
 
-The Agent-to-Agent (A2A) protocol enables direct agent communication.
+The Agent-to-Agent (A2A) protocol specification.
+
+## Protocol Version
+
+Current version: 1.0.0
 
 ## Message Format
 
@@ -11,8 +15,8 @@ The Agent-to-Agent (A2A) protocol enables direct agent communication.
   "version": "1.0.0",
   "type": "request|response|notification|error",
   "id": "unique-message-id",
-  "from": "sender",
-  "to": "recipient",
+  "from": "sender-agent",
+  "to": "recipient-agent",
   "timestamp": "2026-04-04T04:00:00Z",
   "data": {}
 }
@@ -28,7 +32,20 @@ The Agent-to-Agent (A2A) protocol enables direct agent communication.
 
 ## Authentication
 
-All requests require API key in `Authorization` header.
+All requests must include an API key in the `Authorization` header.
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+## Error Codes
+
+| Code | Description |
+|------|-------------|
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 404 | Not Found |
+| 500 | Internal Server Error |
 
 ## Next Steps
 - [Security](/architecture/security)

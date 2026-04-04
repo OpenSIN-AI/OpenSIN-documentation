@@ -1,5 +1,20 @@
 # Changelog
 
+All notable changes to OpenSIN will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [Unreleased]
+
+### Added
+- Comprehensive documentation
+- Integration tests
+- Examples and tutorials
+- Community guidelines
+- Onboarding guide
+- Troubleshooting guide
+- FAQ
+
 ## [1.0.0] - 2026-04-04
 
 ### Added
