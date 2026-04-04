@@ -1,7 +1,6 @@
 {
   "name": "opensin-docs",
   "version": "1.0.0",
-  "description": "OpenSIN documentation site",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev",
