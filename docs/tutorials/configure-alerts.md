@@ -1,40 +1,83 @@
 # Configure Alerts
 
-> **Category:** Tutorials | **Status:** ✅ Active
+> **Difficulty:** Beginner | **Time:** 30 minutes | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for configure alerts in OpenSIN-AI.
+This tutorial walks you through configure alerts in the OpenSIN-AI ecosystem.
 
-## Concepts
+## Prerequisites
 
-Key concepts and principles.
+- OpenCode CLI installed
+- Access to OpenSIN-AI organization
+- Basic understanding of the concept
+- 30 minutes of focused time
 
-## Configuration
+## What You'll Learn
 
-How to configure this feature.
+- How to configure alerts
+- Best practices and patterns
+- Common pitfalls to avoid
+- Next steps for advanced usage
 
-## Implementation
+## Step 1: Setup
 
-Step-by-step implementation guide.
+```bash
+# Install required tools
+npm install -g @opensin/cli
+# or
+pip install opensin-cli
+```
 
-## Best Practices
+## Step 2: Configuration
 
-Recommended approaches and patterns.
+```bash
+# Initialize the project
+opensin init configure-alerts
+cd configure-alerts
+```
 
-## Examples
+## Step 3: Implementation
 
-Working examples and use cases.
+```bash
+# Create the resource
+opensin create configure
+```
+
+## Step 4: Testing
+
+```bash
+# Test the implementation
+opensin test
+```
+
+## Step 5: Deployment
+
+```bash
+# Deploy to production
+opensin deploy --env production
+```
+
+## Verification
+
+```bash
+# Verify the deployment
+opensin status
+```
+
+## Next Steps
+
+- Read the [advanced guide](../guide/advanced-configure-alerts.md)
+- Check [best practices](../best-practices/configure-alerts.md)
+- Join the [community](../community/) for support
 
 ## Troubleshooting
 
-Common issues and their solutions.
-
-## Related Documentation
-
-- [OpenSIN Documentation](../../)
-- [Best Practices](../best-practices/)
-- [Architecture](../architecture/)
+| Issue | Resolution |
+|-------|------------|
+| Command not found | Verify CLI is installed |
+| Permission denied | Check credentials |
+| Timeout | Increase timeout setting |
 
 ---
 

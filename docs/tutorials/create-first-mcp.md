@@ -1,40 +1,83 @@
 # Create First Mcp
 
-> **Category:** Tutorials | **Status:** ✅ Active
+> **Difficulty:** Beginner | **Time:** 30 minutes | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for create first mcp in OpenSIN-AI.
+This tutorial walks you through create first mcp in the OpenSIN-AI ecosystem.
 
-## Concepts
+## Prerequisites
 
-Key concepts and principles.
+- OpenCode CLI installed
+- Access to OpenSIN-AI organization
+- Basic understanding of the concept
+- 30 minutes of focused time
 
-## Configuration
+## What You'll Learn
 
-How to configure this feature.
+- How to create first mcp
+- Best practices and patterns
+- Common pitfalls to avoid
+- Next steps for advanced usage
 
-## Implementation
+## Step 1: Setup
 
-Step-by-step implementation guide.
+```bash
+# Install required tools
+npm install -g @opensin/cli
+# or
+pip install opensin-cli
+```
 
-## Best Practices
+## Step 2: Configuration
 
-Recommended approaches and patterns.
+```bash
+# Initialize the project
+opensin init create-first-mcp
+cd create-first-mcp
+```
 
-## Examples
+## Step 3: Implementation
 
-Working examples and use cases.
+```bash
+# Create the resource
+opensin create create
+```
+
+## Step 4: Testing
+
+```bash
+# Test the implementation
+opensin test
+```
+
+## Step 5: Deployment
+
+```bash
+# Deploy to production
+opensin deploy --env production
+```
+
+## Verification
+
+```bash
+# Verify the deployment
+opensin status
+```
+
+## Next Steps
+
+- Read the [advanced guide](../guide/advanced-create-first-mcp.md)
+- Check [best practices](../best-practices/create-first-mcp.md)
+- Join the [community](../community/) for support
 
 ## Troubleshooting
 
-Common issues and their solutions.
-
-## Related Documentation
-
-- [OpenSIN Documentation](../../)
-- [Best Practices](../best-practices/)
-- [Architecture](../architecture/)
+| Issue | Resolution |
+|-------|------------|
+| Command not found | Verify CLI is installed |
+| Permission denied | Check credentials |
+| Timeout | Increase timeout setting |
 
 ---
 

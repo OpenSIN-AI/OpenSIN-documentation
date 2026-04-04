@@ -1,40 +1,83 @@
 # Debug Issues
 
-> **Category:** Tutorials | **Status:** ✅ Active
+> **Difficulty:** Beginner | **Time:** 30 minutes | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for debug issues in OpenSIN-AI.
+This tutorial walks you through debug issues in the OpenSIN-AI ecosystem.
 
-## Concepts
+## Prerequisites
 
-Key concepts and principles.
+- OpenCode CLI installed
+- Access to OpenSIN-AI organization
+- Basic understanding of the concept
+- 30 minutes of focused time
 
-## Configuration
+## What You'll Learn
 
-How to configure this feature.
+- How to debug issues
+- Best practices and patterns
+- Common pitfalls to avoid
+- Next steps for advanced usage
 
-## Implementation
+## Step 1: Setup
 
-Step-by-step implementation guide.
+```bash
+# Install required tools
+npm install -g @opensin/cli
+# or
+pip install opensin-cli
+```
 
-## Best Practices
+## Step 2: Configuration
 
-Recommended approaches and patterns.
+```bash
+# Initialize the project
+opensin init debug-issues
+cd debug-issues
+```
 
-## Examples
+## Step 3: Implementation
 
-Working examples and use cases.
+```bash
+# Create the resource
+opensin create debug
+```
+
+## Step 4: Testing
+
+```bash
+# Test the implementation
+opensin test
+```
+
+## Step 5: Deployment
+
+```bash
+# Deploy to production
+opensin deploy --env production
+```
+
+## Verification
+
+```bash
+# Verify the deployment
+opensin status
+```
+
+## Next Steps
+
+- Read the [advanced guide](../guide/advanced-debug-issues.md)
+- Check [best practices](../best-practices/debug-issues.md)
+- Join the [community](../community/) for support
 
 ## Troubleshooting
 
-Common issues and their solutions.
-
-## Related Documentation
-
-- [OpenSIN Documentation](../../)
-- [Best Practices](../best-practices/)
-- [Architecture](../architecture/)
+| Issue | Resolution |
+|-------|------------|
+| Command not found | Verify CLI is installed |
+| Permission denied | Check credentials |
+| Timeout | Increase timeout setting |
 
 ---
 
