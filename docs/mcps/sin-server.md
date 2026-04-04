@@ -4,7 +4,7 @@
 
 ## Overview
 
-Server management and monitoring.
+Server management.
 
 ## Configuration
 
@@ -19,13 +19,13 @@ Server management and monitoring.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+See MCP server documentation
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

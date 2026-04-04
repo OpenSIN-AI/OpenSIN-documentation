@@ -4,7 +4,7 @@
 
 ## Overview
 
-Code intelligence, refactoring, and ast-based code analysis.
+20+ tools — Code intelligence, find_symbol, find_references, replace_symbol, rename, search, AST operations.
 
 ## Configuration
 
@@ -25,13 +25,13 @@ Code intelligence, refactoring, and ast-based code analysis.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+Code intelligence, find_symbol, find_references, replace_symbol, rename, search, AST operations
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

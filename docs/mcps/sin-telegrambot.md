@@ -4,7 +4,7 @@
 
 ## Overview
 
-Telegram bot management and messaging.
+9 tools — register, list, send, send_document, status, updates, set_webhook, set_commands, bootstrap.
 
 ## Configuration
 
@@ -19,13 +19,13 @@ Telegram bot management and messaging.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+register, list, send, send_document, status, updates, set_webhook, set_commands, bootstrap
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

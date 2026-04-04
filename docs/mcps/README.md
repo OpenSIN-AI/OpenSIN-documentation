@@ -8,35 +8,35 @@ MCPs (Model Context Protocol Servers) sind Erweiterungen die OpenCode Agenten Zu
 
 ## MCP Registry
 
-| # | MCP | Purpose |
-|---|-----|---------|
-| 1 | [canva](./canva.md) | Canva design integration for automated design generation |
-| 2 | [chrome-devtools](./chrome-devtools.md) | Chrome DevTools Protocol integration for browser automation |
-| 3 | [context7](./context7.md) | Context management and optimization for LLM interactions |
-| 4 | [linear](./linear.md) | Linear issue tracking integration for project management |
-| 5 | [n8n-workflow-builder](./n8n-workflow-builder.md) | n8n workflow creation and management |
-| 6 | [serena](./serena.md) | Code intelligence, refactoring, and AST-based code analysis |
-| 7 | [simone-mcp](./simone-mcp.md) | Simone integration for AI assistant capabilities |
-| 8 | [sin-authenticator](./sin-authenticator.md) | Authentication management and token handling |
-| 9 | [sin-cloudflare](./sin-cloudflare.md) | Cloudflare DNS, Workers, and R2 storage management |
-| 10 | [sin-document-forge](./sin-document-forge.md) | Word document generation and formatting |
-| 11 | [sin-github-issues](./sin-github-issues.md) | GitHub issue management and automation |
-| 12 | [sin-google-apps](./sin-google-apps.md) | Google Workspace integration (Docs, Sheets, Drive) |
-| 13 | [sin-google-docs](./sin-google-docs.md) | Google Docs API integration with enterprise features |
-| 14 | [sin-oraclecloud-mcp](./sin-oraclecloud-mcp.md) | Oracle Cloud Infrastructure management |
-| 15 | [sin-paragraph](./sin-paragraph.md) | Text generation and paragraph formatting |
-| 16 | [sin-passwordmanager](./sin-passwordmanager.md) | Password management and secure credential storage |
-| 17 | [sin-research](./sin-research.md) | Research tools and web scraping capabilities |
-| 18 | [sin-server](./sin-server.md) | Server management and monitoring |
-| 19 | [sin-summary](./sin-summary.md) | Text summarization and content condensation |
-| 20 | [sin-team-worker](./sin-team-worker.md) | Team worker tools for distributed task execution |
-| 21 | [sin-telegrambot](./sin-telegrambot.md) | Telegram bot management and messaging |
-| 22 | [sin-terminal](./sin-terminal.md) | Terminal orchestration and multi-session management |
-| 23 | [sin-tiktok](./sin-tiktok.md) | TikTok integration for content management |
-| 24 | [sin-tiktok-shop](./sin-tiktok-shop.md) | TikTok Shop integration for e-commerce |
-| 25 | [singularity](./singularity.md) | AI model routing and provider management |
-| 26 | [tavily](./tavily.md) | Web search and content retrieval |
-| 27 | [webauto-nodriver](./webauto-nodriver.md) | Browser automation via nodriver with stealth capabilities |
+| # | MCP | Tools | Purpose |
+|---|-----|-------|---------|
+| 1 | [canva](./canva.md) | — | Canva design |
+| 2 | [chrome-devtools](./chrome-devtools.md) | — | Chrome DevTools |
+| 3 | [context7](./context7.md) | — | Context management |
+| 4 | [linear](./linear.md) | — | Linear issue tracking |
+| 5 | [n8n-workflow-builder](./n8n-workflow-builder.md) | 7 tools | list, create, get, update, delete, activate, deactivate workflows |
+| 6 | [serena](./serena.md) | 20+ tools | Code intelligence, find_symbol, find_references, replace_symbol, rename, search, AST operations |
+| 7 | [simone-mcp](./simone-mcp.md) | — | Simone AI assistant |
+| 8 | [sin-authenticator](./sin-authenticator.md) | — | 2FA/OTP management |
+| 9 | [sin-cloudflare](./sin-cloudflare.md) | — | Cloudflare DNS/Workers/R2 |
+| 10 | [sin-document-forge](./sin-document-forge.md) | 1 tool | DOCX generation |
+| 11 | [sin-github-issues](./sin-github-issues.md) | — | GitHub issue management |
+| 12 | [sin-google-apps](./sin-google-apps.md) | 10+ tools | Google Workspace integration |
+| 13 | [sin-google-docs](./sin-google-docs.md) | 10+ tools | read, write, replace, append, tabs, images, patent tabs, sharing |
+| 14 | [sin-oraclecloud-mcp](./sin-oraclecloud-mcp.md) | — | OCI management |
+| 15 | [sin-paragraph](./sin-paragraph.md) | — | Text generation |
+| 16 | [sin-passwordmanager](./sin-passwordmanager.md) | — | Password management |
+| 17 | [sin-research](./sin-research.md) | — | Web research tools |
+| 18 | [sin-server](./sin-server.md) | — | Server management |
+| 19 | [sin-summary](./sin-summary.md) | — | Text summarization |
+| 20 | [sin-team-worker](./sin-team-worker.md) | — | Distributed task execution |
+| 21 | [sin-telegrambot](./sin-telegrambot.md) | 9 tools | register, list, send, send_document, status, updates, set_webhook, set_commands, bootstrap |
+| 22 | [sin-terminal](./sin-terminal.md) | 4 tools | orchestrator start/status/delegate/stop |
+| 23 | [sin-tiktok](./sin-tiktok.md) | — | TikTok content |
+| 24 | [sin-tiktok-shop](./sin-tiktok-shop.md) | — | TikTok Shop e-commerce |
+| 25 | [singularity](./singularity.md) | — | AI model routing |
+| 26 | [tavily](./tavily.md) | — | Web search |
+| 27 | [webauto-nodriver](./webauto-nodriver.md) | 87+ tools | Browser automation, screen capture, keyboard/mouse control, WhatsApp, Apple Notes/Calendar, iPhone, macOS admin, shortcuts |
 
 ## Configuration
 

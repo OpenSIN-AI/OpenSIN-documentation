@@ -4,7 +4,7 @@
 
 ## Overview
 
-Word document generation and formatting.
+1 tool — DOCX generation.
 
 ## Configuration
 
@@ -19,13 +19,13 @@ Word document generation and formatting.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+DOCX generation
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

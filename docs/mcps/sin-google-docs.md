@@ -4,7 +4,7 @@
 
 ## Overview
 
-Google docs api integration with enterprise features.
+10+ tools — read, write, replace, append, tabs, images, patent tabs, sharing.
 
 ## Configuration
 
@@ -19,13 +19,13 @@ Google docs api integration with enterprise features.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+read, write, replace, append, tabs, images, patent tabs, sharing
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

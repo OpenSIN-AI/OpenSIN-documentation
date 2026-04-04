@@ -4,7 +4,7 @@
 
 ## Overview
 
-N8n workflow creation and management.
+7 tools — list, create, get, update, delete, activate, deactivate workflows.
 
 ## Configuration
 
@@ -25,13 +25,13 @@ N8n workflow creation and management.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+list, create, get, update, delete, activate, deactivate workflows
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

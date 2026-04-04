@@ -4,7 +4,7 @@
 
 ## Overview
 
-Browser automation via nodriver with stealth capabilities.
+87+ tools — Browser automation, screen capture, keyboard/mouse control, WhatsApp, Apple Notes/Calendar, iPhone, macOS admin, shortcuts.
 
 ## Configuration
 
@@ -29,13 +29,13 @@ Browser automation via nodriver with stealth capabilities.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+Browser automation, screen capture, keyboard/mouse control, WhatsApp, Apple Notes/Calendar, iPhone, macOS admin, shortcuts
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## Overview
 
-Simone integration for ai assistant capabilities.
+Simone AI assistant.
 
 ## Configuration
 
@@ -20,13 +20,13 @@ Simone integration for ai assistant capabilities.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+See MCP server documentation
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

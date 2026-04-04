@@ -4,7 +4,7 @@
 
 ## Overview
 
-Web search and content retrieval.
+Web search.
 
 ## Configuration
 
@@ -23,13 +23,13 @@ Web search and content retrieval.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+See MCP server documentation
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## Overview
 
-Cloudflare dns, workers, and r2 storage management.
+Cloudflare DNS/Workers/R2.
 
 ## Configuration
 
@@ -19,13 +19,13 @@ Cloudflare dns, workers, and r2 storage management.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+See MCP server documentation
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

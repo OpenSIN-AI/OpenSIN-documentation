@@ -4,7 +4,7 @@
 
 ## Overview
 
-Google workspace integration (docs, sheets, drive).
+10+ tools — Google Workspace integration.
 
 ## Configuration
 
@@ -23,13 +23,13 @@ Google workspace integration (docs, sheets, drive).
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+Google Workspace integration
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## Overview
 
-Terminal orchestration and multi-session management.
+4 tools — orchestrator start/status/delegate/stop.
 
 ## Configuration
 
@@ -19,13 +19,13 @@ Terminal orchestration and multi-session management.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+orchestrator start/status/delegate/stop
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## Overview
 
-Tiktok shop integration for e-commerce.
+TikTok Shop e-commerce.
 
 ## Configuration
 
@@ -19,13 +19,13 @@ Tiktok shop integration for e-commerce.
 }
 ```
 
-## Tools
+## Available Tools
 
-<!-- TODO: Document available tools -->
+See MCP server documentation
 
 ## Usage
 
-<!-- TODO: Add usage examples -->
+This MCP is automatically loaded when OpenCode starts. Agents can invoke its tools directly.
 
 ---
 
