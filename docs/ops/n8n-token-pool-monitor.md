@@ -12,7 +12,7 @@ Token Pool überwachen und bei Bedarf nachfüllen.
 |---------|-------|
 | **Name** | Token Pool Monitor |
 | **Nodes** | 5 |
-| **Node Types** | n8n-nodes-base.telegram, n8n-nodes-base.httpRequest, n8n-nodes-base.if, n8n-nodes-base.set, n8n-nodes-base.scheduleTrigger |
+| **Node Types** | n8n-nodes-base.set, n8n-nodes-base.telegram, n8n-nodes-base.if, n8n-nodes-base.httpRequest, n8n-nodes-base.scheduleTrigger |
 | **Active** | ✅ Yes |
 
 ## Nodes

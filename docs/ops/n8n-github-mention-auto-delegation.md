@@ -12,7 +12,7 @@ Auto-Delegation bei GitHub @opnsin-code Mentions.
 |---------|-------|
 | **Name** | GitHub @opnsin-code Mention → Auto-Delegate |
 | **Nodes** | 6 |
-| **Node Types** | n8n-nodes-base.github, n8n-nodes-base.githubTrigger, n8n-nodes-base.code |
+| **Node Types** | n8n-nodes-base.github, n8n-nodes-base.code, n8n-nodes-base.githubTrigger |
 | **Active** | ✅ Yes |
 
 ## Nodes

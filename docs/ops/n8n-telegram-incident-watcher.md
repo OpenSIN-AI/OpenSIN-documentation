@@ -12,7 +12,7 @@ Incident-Weiterleitung von Telegram an Hermes Dispatcher.
 |---------|-------|
 | **Name** | SIN-Fleet Incident Watcher (Telegram -> Hermes) |
 | **Nodes** | 3 |
-| **Node Types** | n8n-nodes-base.github, n8n-nodes-base.webhook, n8n-nodes-base.supabase |
+| **Node Types** | n8n-nodes-base.webhook, n8n-nodes-base.github, n8n-nodes-base.supabase |
 | **Active** | ✅ Yes |
 
 ## Nodes

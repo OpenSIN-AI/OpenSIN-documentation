@@ -12,7 +12,7 @@ Automatisches Self-Healing der A2A Flotte bei Fehlern und Incidents.
 |---------|-------|
 | **Name** | Global Fleet Self-Healing Protocol |
 | **Nodes** | 4 |
-| **Node Types** | n8n-nodes-base.webhook, n8n-nodes-base.supabase, n8n-nodes-base.httpRequest |
+| **Node Types** | n8n-nodes-base.webhook, n8n-nodes-base.httpRequest, n8n-nodes-base.supabase |
 | **Active** | ✅ Yes |
 
 ## Nodes
