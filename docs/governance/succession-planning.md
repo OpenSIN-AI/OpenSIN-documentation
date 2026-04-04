@@ -1,10 +1,10 @@
-# Jira
+# Succession Planning
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Governance | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for succession planning in OpenSIN-AI.
 
 ## Concepts
 

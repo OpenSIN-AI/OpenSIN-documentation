@@ -1,10 +1,10 @@
-# Jira
+# Audit Logging
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Platform | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for audit logging in OpenSIN-AI.
 
 ## Concepts
 

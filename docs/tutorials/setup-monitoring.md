@@ -1,10 +1,10 @@
-# Jira
+# Setup Monitoring
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Tutorials | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for setup monitoring in OpenSIN-AI.
 
 ## Concepts
 

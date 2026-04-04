@@ -1,10 +1,10 @@
-# Jira
+# Pagination
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Api | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for pagination in OpenSIN-AI.
 
 ## Concepts
 

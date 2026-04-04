@@ -1,10 +1,10 @@
-# Jira
+# Escalation Path
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Governance | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for escalation path in OpenSIN-AI.
 
 ## Concepts
 

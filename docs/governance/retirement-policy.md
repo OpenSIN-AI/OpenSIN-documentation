@@ -1,10 +1,10 @@
-# Jira
+# Retirement Policy
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Governance | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for retirement policy in OpenSIN-AI.
 
 ## Concepts
 

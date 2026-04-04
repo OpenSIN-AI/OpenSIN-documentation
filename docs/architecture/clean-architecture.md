@@ -1,10 +1,10 @@
-# Jira
+# Clean Architecture
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Architecture | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for clean architecture in OpenSIN-AI.
 
 ## Concepts
 

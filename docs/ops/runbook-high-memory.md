@@ -1,10 +1,10 @@
-# Jira
+# Runbook High Memory
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Ops | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for runbook high memory in OpenSIN-AI.
 
 ## Concepts
 

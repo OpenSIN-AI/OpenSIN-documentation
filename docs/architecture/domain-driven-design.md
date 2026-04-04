@@ -1,10 +1,10 @@
-# Jira
+# Domain Driven Design
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Architecture | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for domain driven design in OpenSIN-AI.
 
 ## Concepts
 

@@ -1,10 +1,10 @@
-# Jira
+# Mentorship Program
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Community | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for mentorship program in OpenSIN-AI.
 
 ## Concepts
 

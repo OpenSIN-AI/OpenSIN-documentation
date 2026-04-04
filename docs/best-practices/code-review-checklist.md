@@ -1,10 +1,10 @@
-# Jira
+# Code Review Checklist
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Best-Practices | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for code review checklist in OpenSIN-AI.
 
 ## Concepts
 

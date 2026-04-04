@@ -1,10 +1,10 @@
-# Jira
+# Runbook Cascade Failure
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Ops | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for runbook cascade failure in OpenSIN-AI.
 
 ## Concepts
 

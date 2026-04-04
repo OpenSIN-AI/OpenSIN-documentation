@@ -1,10 +1,10 @@
-# Jira
+# Travis Ci
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for travis ci in OpenSIN-AI.
 
 ## Concepts
 

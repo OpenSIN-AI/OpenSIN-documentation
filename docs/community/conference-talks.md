@@ -1,10 +1,10 @@
-# Jira
+# Conference Talks
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Community | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for conference talks in OpenSIN-AI.
 
 ## Concepts
 

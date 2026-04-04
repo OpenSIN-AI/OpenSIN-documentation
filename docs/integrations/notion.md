@@ -1,10 +1,10 @@
-# Jira
+# Notion
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for notion in OpenSIN-AI.
 
 ## Concepts
 

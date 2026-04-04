@@ -1,10 +1,10 @@
-# Jira
+# Layered Architecture
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Architecture | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for layered architecture in OpenSIN-AI.
 
 ## Concepts
 

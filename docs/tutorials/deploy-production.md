@@ -1,10 +1,10 @@
-# Jira
+# Deploy Production
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Tutorials | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for deploy production in OpenSIN-AI.
 
 ## Concepts
 

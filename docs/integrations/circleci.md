@@ -1,10 +1,10 @@
-# Jira
+# Circleci
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for circleci in OpenSIN-AI.
 
 ## Concepts
 

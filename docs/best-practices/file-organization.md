@@ -1,10 +1,10 @@
-# Jira
+# File Organization
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Best-Practices | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for file organization in OpenSIN-AI.
 
 ## Concepts
 

@@ -1,10 +1,10 @@
-# Jira
+# Permission System
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Platform | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for permission system in OpenSIN-AI.
 
 ## Concepts
 

@@ -1,10 +1,10 @@
-# Jira
+# User Management
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Platform | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for user management in OpenSIN-AI.
 
 ## Concepts
 

@@ -1,10 +1,10 @@
-# Jira
+# Figma
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for figma in OpenSIN-AI.
 
 ## Concepts
 

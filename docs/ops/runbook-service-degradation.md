@@ -1,10 +1,10 @@
-# Jira
+# Runbook Service Degradation
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Ops | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for runbook service degradation in OpenSIN-AI.
 
 ## Concepts
 

@@ -1,10 +1,10 @@
-# Jira
+# Runbook Data Corruption
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Ops | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for runbook data corruption in OpenSIN-AI.
 
 ## Concepts
 

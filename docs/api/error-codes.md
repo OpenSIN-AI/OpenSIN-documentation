@@ -1,10 +1,10 @@
-# Jira
+# Error Codes
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Api | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for error codes in OpenSIN-AI.
 
 ## Concepts
 

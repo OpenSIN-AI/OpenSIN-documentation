@@ -1,10 +1,10 @@
-# Jira
+# Browser Extension
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Examples | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for browser extension in OpenSIN-AI.
 
 ## Concepts
 

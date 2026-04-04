@@ -1,10 +1,10 @@
-# Jira
+# Hackathons
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Community | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for hackathons in OpenSIN-AI.
 
 ## Concepts
 

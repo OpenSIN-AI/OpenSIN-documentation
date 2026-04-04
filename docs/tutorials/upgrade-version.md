@@ -1,10 +1,10 @@
-# Jira
+# Upgrade Version
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Tutorials | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for upgrade version in OpenSIN-AI.
 
 ## Concepts
 

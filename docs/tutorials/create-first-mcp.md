@@ -1,10 +1,10 @@
-# Jira
+# Create First Mcp
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Tutorials | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for create first mcp in OpenSIN-AI.
 
 ## Concepts
 

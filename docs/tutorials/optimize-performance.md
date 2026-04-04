@@ -1,10 +1,10 @@
-# Jira
+# Optimize Performance
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Tutorials | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for optimize performance in OpenSIN-AI.
 
 ## Concepts
 

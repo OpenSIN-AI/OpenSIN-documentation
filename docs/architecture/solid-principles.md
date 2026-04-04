@@ -1,10 +1,10 @@
-# Jira
+# Solid Principles
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Architecture | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for solid principles in OpenSIN-AI.
 
 ## Concepts
 

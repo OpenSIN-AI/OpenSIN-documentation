@@ -1,10 +1,10 @@
-# Jira
+# Github Actions Alt
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for github actions alt in OpenSIN-AI.
 
 ## Concepts
 

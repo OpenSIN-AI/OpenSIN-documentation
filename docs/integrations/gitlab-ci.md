@@ -1,10 +1,10 @@
-# Jira
+# Gitlab Ci
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for gitlab ci in OpenSIN-AI.
 
 ## Concepts
 

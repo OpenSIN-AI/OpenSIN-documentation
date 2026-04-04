@@ -1,10 +1,10 @@
-# Jira
+# Export Functionality
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Platform | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for export functionality in OpenSIN-AI.
 
 ## Concepts
 

@@ -1,10 +1,10 @@
-# Jira
+# Confluence
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for confluence in OpenSIN-AI.
 
 ## Concepts
 

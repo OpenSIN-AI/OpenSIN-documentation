@@ -1,10 +1,10 @@
-# Jira
+# Full Stack App
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Examples | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for full stack app in OpenSIN-AI.
 
 ## Concepts
 

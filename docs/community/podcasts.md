@@ -1,10 +1,10 @@
-# Jira
+# Podcasts
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Community | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for podcasts in OpenSIN-AI.
 
 ## Concepts
 

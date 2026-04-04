@@ -1,10 +1,10 @@
-# Jira
+# Cli Tool
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Examples | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for cli tool in OpenSIN-AI.
 
 ## Concepts
 

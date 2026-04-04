@@ -1,10 +1,10 @@
-# Jira
+# Decision Making
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Governance | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for decision making in OpenSIN-AI.
 
 ## Concepts
 

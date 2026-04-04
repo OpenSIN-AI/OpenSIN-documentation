@@ -1,10 +1,10 @@
-# Jira
+# Azure Devops
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for azure devops in OpenSIN-AI.
 
 ## Concepts
 

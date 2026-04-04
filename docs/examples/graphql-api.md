@@ -1,10 +1,10 @@
-# Jira
+# Graphql Api
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Examples | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for graphql api in OpenSIN-AI.
 
 ## Concepts
 

@@ -1,10 +1,10 @@
-# Jira
+# Pr Descriptions
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Best-Practices | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for pr descriptions in OpenSIN-AI.
 
 ## Concepts
 

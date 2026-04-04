@@ -1,10 +1,10 @@
-# Jira
+# Role Management
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Platform | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for role management in OpenSIN-AI.
 
 ## Concepts
 

@@ -1,10 +1,10 @@
-# Jira
+# Bounty Program
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Community | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for bounty program in OpenSIN-AI.
 
 ## Concepts
 

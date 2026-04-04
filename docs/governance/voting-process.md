@@ -1,10 +1,10 @@
-# Jira
+# Voting Process
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Governance | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for voting process in OpenSIN-AI.
 
 ## Concepts
 

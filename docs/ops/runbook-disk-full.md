@@ -1,10 +1,10 @@
-# Jira
+# Runbook Disk Full
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Ops | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for runbook disk full in OpenSIN-AI.
 
 ## Concepts
 

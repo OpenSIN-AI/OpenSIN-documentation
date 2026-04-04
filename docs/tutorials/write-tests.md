@@ -1,10 +1,10 @@
-# Jira
+# Write Tests
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Tutorials | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for write tests in OpenSIN-AI.
 
 ## Concepts
 

@@ -1,10 +1,10 @@
-# Jira
+# Iot Integration
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Examples | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for iot integration in OpenSIN-AI.
 
 ## Concepts
 

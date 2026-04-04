@@ -1,10 +1,10 @@
-# Jira
+# Conflict Resolution
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Governance | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for conflict resolution in OpenSIN-AI.
 
 ## Concepts
 

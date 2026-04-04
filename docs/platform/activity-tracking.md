@@ -1,10 +1,10 @@
-# Jira
+# Activity Tracking
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Platform | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for jira in OpenSIN-AI.
+Comprehensive documentation for activity tracking in OpenSIN-AI.
 
 ## Concepts
 
