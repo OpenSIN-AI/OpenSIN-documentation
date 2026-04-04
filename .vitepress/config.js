@@ -63,6 +63,16 @@ export default defineConfig({
           ],
         },
         {
+          text: 'Advanced',
+          items: [
+            { text: 'Advanced Agent Patterns', link: '/guide/advanced-agent-patterns' },
+            { text: 'Security Hardening', link: '/guide/security-hardening' },
+            { text: 'Performance Optimization', link: '/guide/performance-optimization' },
+            { text: 'Developer Onboarding', link: '/guide/developer-onboarding' },
+            { text: 'Troubleshooting & FAQ', link: '/guide/troubleshooting-faq' },
+          ],
+        },
+        {
           text: 'Reference',
           items: [
             { text: 'Master Reference', link: '/guide/master-reference' },
@@ -159,6 +169,7 @@ export default defineConfig({
             { text: 'Telegram Bot', link: '/examples/telegram-bot' },
             { text: 'Discord Bot', link: '/examples/discord-bot' },
             { text: 'Custom Agents', link: '/examples/custom-agents' },
+            { text: 'Real-World Use Cases', link: '/examples/use-cases' },
           ],
         },
       ],
