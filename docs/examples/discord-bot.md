@@ -1,9 +1,5 @@
 # Example: Discord Bot
 
-## Overview
-
-Complete Discord bot integration example.
-
 ## Code
 
 ```javascript
@@ -16,30 +12,12 @@ const agent = new DiscordAgent({
 });
 
 agent.on('message', async (msg) => {
-  console.log('Received:', msg.content);
   await agent.respond(`You said: ${msg.content}`);
 });
 
 await agent.start();
 ```
 
-## Running the Example
-
-```bash
-DISCORD_BOT_TOKEN=your_token node discord-bot.js
-```
-
-## Testing
-
-Send a message to your bot on Discord.
-
-## Expected Output
-
-```
-Received: Hello!
-Responded: You said: Hello!
-```
-
 ## Next Steps
-- [Telegram Bot Example](telegram-bot.md)
-- [Slack Integration](../integrations/slack.md)
+- [Telegram Bot](telegram-bot.md)
+- [Slack](../integrations/slack.md)

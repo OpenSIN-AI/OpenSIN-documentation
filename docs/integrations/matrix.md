@@ -17,5 +17,4 @@ await agent.start();
 ```
 
 ## Next Steps
-- [IRC](irc.md)
 - [Best Practices](../best-practices/agent-design.md)

@@ -31,31 +31,13 @@ const orchestrator = new Orchestrator({
 
 Assign a task to the team.
 
-```javascript
-await orchestrator.assign({
-  task: 'Write a blog post',
-  workflow: [
-    { agent: 'researcher', task: 'Research' },
-    { agent: 'writer', task: 'Write' }
-  ]
-});
-```
-
 ### `cancel(taskId: string)`
 
 Cancel a task.
 
-```javascript
-await orchestrator.cancel('task-id');
-```
-
 ### `status(taskId: string)`
 
 Get task status.
-
-```javascript
-const status = await orchestrator.status('task-id');
-```
 
 ## Events
 
