@@ -1,14 +1,14 @@
-# Session Management
+# Dashboard Creation
 
 > **Category:** Advanced Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive guide for session management in OpenSIN-AI.
+Comprehensive guide for dashboard creation in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for session management.
+Key concepts and principles for dashboard creation.
 
 ## Configuration
 

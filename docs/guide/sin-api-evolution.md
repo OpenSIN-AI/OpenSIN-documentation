@@ -1,14 +1,14 @@
-# Session Management
+# Api Evolution
 
 > **Category:** Advanced Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive guide for session management in OpenSIN-AI.
+Comprehensive guide for api evolution in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for session management.
+Key concepts and principles for api evolution.
 
 ## Configuration
 

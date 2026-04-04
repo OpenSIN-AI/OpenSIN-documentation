@@ -1,14 +1,14 @@
-# Session Management
+# Rate Limit Management
 
 > **Category:** Advanced Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive guide for session management in OpenSIN-AI.
+Comprehensive guide for rate limit management in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for session management.
+Key concepts and principles for rate limit management.
 
 ## Configuration
 

@@ -1,14 +1,14 @@
-# Session Management
+# Xss Prevention
 
 > **Category:** Advanced Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive guide for session management in OpenSIN-AI.
+Comprehensive guide for xss prevention in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for session management.
+Key concepts and principles for xss prevention.
 
 ## Configuration
 

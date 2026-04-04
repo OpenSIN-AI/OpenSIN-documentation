@@ -1,14 +1,14 @@
-# Session Management
+# Message Queues
 
 > **Category:** Advanced Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive guide for session management in OpenSIN-AI.
+Comprehensive guide for message queues in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for session management.
+Key concepts and principles for message queues.
 
 ## Configuration
 

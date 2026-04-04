@@ -1,14 +1,14 @@
-# Session Management
+# Metrics Collection
 
 > **Category:** Advanced Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive guide for session management in OpenSIN-AI.
+Comprehensive guide for metrics collection in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for session management.
+Key concepts and principles for metrics collection.
 
 ## Configuration
 

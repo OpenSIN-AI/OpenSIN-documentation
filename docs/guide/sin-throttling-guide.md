@@ -1,14 +1,14 @@
-# Session Management
+# Throttling Guide
 
 > **Category:** Advanced Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive guide for session management in OpenSIN-AI.
+Comprehensive guide for throttling guide in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for session management.
+Key concepts and principles for throttling guide.
 
 ## Configuration
 

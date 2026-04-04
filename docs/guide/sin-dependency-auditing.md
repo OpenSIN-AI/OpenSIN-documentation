@@ -1,14 +1,14 @@
-# Session Management
+# Dependency Auditing
 
 > **Category:** Advanced Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive guide for session management in OpenSIN-AI.
+Comprehensive guide for dependency auditing in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for session management.
+Key concepts and principles for dependency auditing.
 
 ## Configuration
 

@@ -1,14 +1,14 @@
-# Session Management
+# Container Orchestration
 
 > **Category:** Advanced Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive guide for session management in OpenSIN-AI.
+Comprehensive guide for container orchestration in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for session management.
+Key concepts and principles for container orchestration.
 
 ## Configuration
 
