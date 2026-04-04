@@ -2,9 +2,12 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'OpenSIN Docs',
-  description: 'Official documentation for OpenSIN AI agent system',
+  description: 'Official documentation for OpenSIN',
   base: '/',
+  lang: 'en-US',
+  lastUpdated: true,
   cleanUrls: true,
+  srcExclude: ['**/skills/**'],
   ignoreDeadLinks: true,
   themeConfig: {
     nav: [
@@ -28,7 +31,10 @@ export default defineConfig({
         { text: 'Monitoring', link: '/guide/monitoring' },
         { text: 'Scaling', link: '/guide/scaling' },
         { text: 'Troubleshooting', link: '/guide/troubleshooting' },
+        { text: 'Migration', link: '/guide/migration' },
         { text: 'Changelog', link: '/guide/changelog' },
+        { text: 'Developer Onboarding', link: '/guide/developer-onboarding' },
+        { text: 'Advanced Agent Patterns', link: '/guide/advanced-agent-patterns' },
       ],
       '/api/': [
         { text: 'Overview', link: '/api/overview' },
@@ -95,7 +101,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the Apache 2.0 License.',
-      copyright: 'Copyright 2026 OpenSIN-AI',
+      copyright: 'Copyright © 2026 OpenSIN-AI',
     },
   },
 })
