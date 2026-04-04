@@ -1,10 +1,10 @@
-# OpenSIN-CLI
+# A2A-SIN-Team-Google-Apps
 
 > **Organization:** OpenSIN-AI | **Status:** ✅ Active
 
 ## Overview
 
-Core repository for OpenSIN-CLI within the OpenSIN-AI ecosystem.
+Core repository for A2A-SIN-Team-Google-Apps within the OpenSIN-AI ecosystem.
 
 ## Tech Stack
 
@@ -16,7 +16,7 @@ Core repository for OpenSIN-CLI within the OpenSIN-AI ecosystem.
 ## Structure
 
 ```
-OpenSIN-CLI/
+A2A-SIN-Team-Google-Apps/
 ├── src/                 # Source code
 ├── tests/               # Test suites
 ├── docs/                # Documentation
@@ -28,8 +28,8 @@ OpenSIN-CLI/
 ## Getting Started
 
 ```bash
-git clone git@github.com:OpenSIN-AI/OpenSIN-CLI.git
-cd OpenSIN-CLI
+git clone git@github.com:OpenSIN-AI/A2A-SIN-Team-Google-Apps.git
+cd A2A-SIN-Team-Google-Apps
 npm install  # or pip install -r requirements.txt
 npm run dev
 ```

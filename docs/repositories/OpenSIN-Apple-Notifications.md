@@ -1,10 +1,10 @@
-# OpenSIN-CLI
+# OpenSIN-Apple-Notifications
 
 > **Organization:** OpenSIN-AI | **Status:** ✅ Active
 
 ## Overview
 
-Core repository for OpenSIN-CLI within the OpenSIN-AI ecosystem.
+Core repository for OpenSIN-Apple-Notifications within the OpenSIN-AI ecosystem.
 
 ## Tech Stack
 
@@ -16,7 +16,7 @@ Core repository for OpenSIN-CLI within the OpenSIN-AI ecosystem.
 ## Structure
 
 ```
-OpenSIN-CLI/
+OpenSIN-Apple-Notifications/
 ├── src/                 # Source code
 ├── tests/               # Test suites
 ├── docs/                # Documentation
@@ -28,8 +28,8 @@ OpenSIN-CLI/
 ## Getting Started
 
 ```bash
-git clone git@github.com:OpenSIN-AI/OpenSIN-CLI.git
-cd OpenSIN-CLI
+git clone git@github.com:OpenSIN-AI/OpenSIN-Apple-Notifications.git
+cd OpenSIN-Apple-Notifications
 npm install  # or pip install -r requirements.txt
 npm run dev
 ```

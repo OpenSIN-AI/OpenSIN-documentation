@@ -8,10 +8,10 @@ Core repository for OpenSIN-Ledger within the OpenSIN-AI ecosystem.
 
 ## Tech Stack
 
-- **Language:** TypeScript / Python
-- **Framework:** Node.js / FastAPI
+- **Language:** TypeScript / Python / JavaScript
+- **Framework:** Node.js / FastAPI / Express
 - **Database:** PostgreSQL (Supabase)
-- **Deployment:** Docker / HF Spaces
+- **Deployment:** Docker / HF Spaces / Cloudflare Workers
 
 ## Structure
 
@@ -21,6 +21,7 @@ OpenSIN-Ledger/
 ├── tests/               # Test suites
 ├── docs/                # Documentation
 ├── scripts/             # Utility scripts
+├── .opencode/           # OpenCode configuration
 └── package.json         # Dependencies
 ```
 
@@ -29,13 +30,18 @@ OpenSIN-Ledger/
 ```bash
 git clone git@github.com:OpenSIN-AI/OpenSIN-Ledger.git
 cd OpenSIN-Ledger
-npm install
+npm install  # or pip install -r requirements.txt
 npm run dev
 ```
 
 ## Contributing
 
 Please read our [Contribution Guidelines](../community/contributor-onboarding.md).
+
+## Related Repositories
+
+- [OpenSIN-backend](./OpenSIN-backend.md)
+- [OpenSIN-documentation](./OpenSIN-documentation.md)
 
 ---
 

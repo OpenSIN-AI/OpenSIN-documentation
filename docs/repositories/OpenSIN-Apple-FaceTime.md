@@ -1,10 +1,10 @@
-# OpenSIN-CLI
+# OpenSIN-Apple-FaceTime
 
 > **Organization:** OpenSIN-AI | **Status:** ✅ Active
 
 ## Overview
 
-Core repository for OpenSIN-CLI within the OpenSIN-AI ecosystem.
+Core repository for OpenSIN-Apple-FaceTime within the OpenSIN-AI ecosystem.
 
 ## Tech Stack
 
@@ -16,7 +16,7 @@ Core repository for OpenSIN-CLI within the OpenSIN-AI ecosystem.
 ## Structure
 
 ```
-OpenSIN-CLI/
+OpenSIN-Apple-FaceTime/
 ├── src/                 # Source code
 ├── tests/               # Test suites
 ├── docs/                # Documentation
@@ -28,8 +28,8 @@ OpenSIN-CLI/
 ## Getting Started
 
 ```bash
-git clone git@github.com:OpenSIN-AI/OpenSIN-CLI.git
-cd OpenSIN-CLI
+git clone git@github.com:OpenSIN-AI/OpenSIN-Apple-FaceTime.git
+cd OpenSIN-Apple-FaceTime
 npm install  # or pip install -r requirements.txt
 npm run dev
 ```
