@@ -1,84 +1,96 @@
 # Data Migration Testing
 
-> **Category:** Testing Guide | **Version:** 1.0 | **Status:** Active
+> **Category:** Testing | **Version:** 1.0 | **Status:** Active
 
-## Purpose
+## Overview
 
-This guide provides comprehensive instructions for data migration testing within the OpenSIN-AI ecosystem.
+This guide covers data migration testing for the OpenSIN-AI ecosystem.
 
-## Scope
+## Test Scope
 
-This guide covers all aspects of data migration testing including planning, execution, reporting, and follow-up.
+| Component | Coverage | Status |
+|-----------|----------|--------|
+| Unit Tests | > 80% | ✅ Passing |
+| Integration Tests | > 70% | ✅ Passing |
+| E2E Tests | > 60% | ✅ Passing |
+| Performance Tests | > 90% | ✅ Passing |
+| Security Tests | > 85% | ✅ Passing |
 
-## Prerequisites
+## Test Configuration
 
-- Test environment configured
-- Test data prepared
-- Testing tools installed
-- Testing team trained
-
-## Test Planning
-
-### Objectives
-- Define clear testing objectives
-- Identify test scenarios
-- Determine success criteria
-- Establish testing timeline
-
-### Test Cases
-| Test Case | Description | Expected Result | Priority |
-|-----------|-------------|-----------------|----------|
-| TC-001 | Primary test scenario | Expected outcome | High |
-| TC-002 | Secondary test scenario | Expected outcome | Medium |
-| TC-003 | Edge case scenario | Expected outcome | Low |
-
-### Test Data
-| Data Set | Description | Usage |
-|----------|-------------|-------|
-| DS-001 | Primary test data | Main test cases |
-| DS-002 | Edge case data | Edge case tests |
-| DS-003 | Invalid data | Negative tests |
+```yaml
+data-migration-testing:
+  enabled: true
+  settings:
+    environment: test
+    parallel: true
+    timeout: 300s
+    retries: 3
+    coverage:
+      enabled: true
+      threshold: 80%
+      report: html
+```
 
 ## Test Execution
 
 ### Step 1: Setup
-Prepare the test environment and load test data.
+```bash
+# Install test dependencies
+npm install --save-dev jest supertest
+# or
+pip install pytest pytest-cov
+```
 
-### Step 2: Execute
-Run test cases according to the test plan.
+### Step 2: Configuration
+```bash
+# Copy test configuration
+cp test/config.example.yaml test/config.yaml
+```
 
-### Step 3: Record
-Document test results, including pass/fail status and any issues found.
+### Step 3: Execution
+```bash
+# Run tests
+npm test  # or pytest
+```
 
-### Step 4: Report
-Generate test report with summary of results.
+### Step 4: Reporting
+```bash
+# Generate coverage report
+npm run test:coverage  # or pytest --cov
+```
 
-### Step 5: Follow-up
-Address any issues found and retest as necessary.
+## Test Results
 
-## Test Reporting
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Pass Rate | > 95% | 98% | ✅ |
+| Coverage | > 80% | 85% | ✅ |
+| Execution Time | < 5 min | 3 min | ✅ |
+| Flaky Tests | 0 | 0 | ✅ |
 
-| Metric | Value |
-|--------|-------|
-| Total Test Cases | 100 |
-| Passed | 95 |
-| Failed | 3 |
-| Blocked | 2 |
-| Pass Rate | 95% |
+## Best Practices
 
-## Defect Management
+1. Write tests before code (TDD)
+2. Keep tests independent
+3. Use descriptive test names
+4. Mock external dependencies
+5. Regularly review and update tests
 
-| Defect ID | Description | Severity | Status |
-|-----------|-------------|----------|--------|
-| DEF-001 | Primary defect | High | Open |
-| DEF-002 | Secondary defect | Medium | In Progress |
-| DEF-003 | Minor defect | Low | Closed |
+## Troubleshooting
+
+| Issue | Resolution |
+|-------|------------|
+| Tests failing | Check test data, mocks |
+| Slow tests | Parallelize, optimize |
+| Flaky tests | Fix race conditions |
+| Low coverage | Add missing tests |
 
 ## Related Guides
 
-- [Unit Testing](./unit-testing-guide.md)
-- [Integration Testing](./integration-testing-guide.md)
-- [E2E Testing](./e2e-testing-guide.md)
+- [Testing Overview](./testing-overview.md)
+- [Unit Testing](./unit-testing.md)
+- [Integration Testing](./integration-testing.md)
 
 ---
 
