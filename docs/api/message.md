@@ -48,6 +48,18 @@ agent.on('message', async (msg) => {
 | `response` | Response message |
 | `error` | Error message |
 
+## Error Handling
+
+```javascript
+agent.on('error', async (error) => {
+  console.error('Message error:', error);
+  await agent.respond({
+    type: 'error',
+    content: error.message
+  });
+});
+```
+
 ## Next Steps
 - [Events API](/api/events)
 - [A2A API](/api/a2a)
