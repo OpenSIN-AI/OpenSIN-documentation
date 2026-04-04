@@ -1,72 +1,64 @@
-# Best Practices: Security
+# 🔒 Security Guide
 
-## Overview
+> **Stand:** 2026-04-04
 
-Security best practices for OpenSIN agents.
+## Authentication
 
-## 1. Never Hardcode Credentials
+### OpenCode Auth
 
-```javascript
-// ❌ Bad
-const agent = new Agent({
-  apiKey: 'sk-1234567890'
-});
+| Method | Status | Notes |
+|--------|--------|-------|
+| **OpenRouter API Key** | ✅ Configured | Free models (qwen3.6-plus:free) |
+| **Antigravity OAuth** | ✅ Configured | Claude, Gemini via OAuth |
+| **Google Service Account** | ✅ Configured | Google Docs/Drive access |
 
-// ✅ Good
-const agent = new Agent({
-  apiKey: process.env.OPENAI_API_KEY
-});
-```
+### n8n Auth
 
-## 2. Validate All Inputs
+| Method | Status | Notes |
+|--------|--------|-------|
+| **JWT API Key** | ✅ Active | Created via REST API |
+| **Owner Account** | ✅ Active | zukunftsorientierte.energie@gmail.com |
 
-```javascript
-agent.on('message', async (msg) => {
-  // Validate input
-  if (!msg.text || typeof msg.text !== 'string') {
-    await agent.respond('Invalid input');
-    return;
-  }
+### Supabase Auth
 
-  // Process message
-  const response = await processMessage(msg.text);
-  await agent.respond(response);
-});
-```
+| Method | Status | Notes |
+|--------|--------|-------|
+| **Service Role Key** | ✅ Active | Full database access |
+| **Anon Key** | ✅ Active | Public API access |
 
-## 3. Implement Rate Limiting
+## Token Management
 
-```javascript
-const agent = new Agent({
-  name: 'my-agent',
-  rateLimit: {
-    messagesPerMinute: 60,
-    tokensPerMinute: 10000
-  }
-});
-```
+### Token Pool
 
-## 4. Log All Actions
+| Provider | Count | Status |
+|----------|-------|--------|
+| **Antigravity** | 12 | ✅ Active |
+| **OpenAI** | 6 | ✅ Active |
 
-```javascript
-const agent = new Agent({
-  name: 'my-agent',
-  logging: {
-    level: 'info',
-    destination: 'file',
-    path: './logs/agent.log'
-  }
-});
-```
+### Token Rotation
 
-## 5. Use HTTPS
+- Automatic rotation via `opencode-antigravity-auth` plugin
+- Manual rotation: `sin-rotator`
+- Fallback: `nemotron-3-super-free`
 
-Always use HTTPS for API communications.
+## Secrets Management
 
-## 6. Regular Security Audits
+| Secret | Location | Access |
+|--------|----------|--------|
+| **OpenRouter API Key** | opencode.json | Local only |
+| **n8n API Key** | n8n.env | Local + OCI VM |
+| **HF Token** | ~/.huggingface/token | Local only |
+| **GitHub Token** | gh CLI config | Local only |
+| **Google SA Key** | auth/google/ | Local only |
 
-Regularly audit your agents for security vulnerabilities.
+## Security Best Practices
 
-## Next Steps
-- [Performance](/best-practices/performance)
-- [Testing](/best-practices/testing)
+1. **Never commit secrets** to git repositories
+2. **Use environment variables** for API keys
+3. **Rotate tokens regularly** via sin-rotator
+4. **Use separate auth per machine** — never sync auth files
+5. **Enable 2FA** on all accounts where possible
+
+---
+
+*Last updated: 2026-04-04 by SIN-Zeus*
