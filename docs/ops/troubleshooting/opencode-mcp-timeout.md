@@ -1,48 +1,74 @@
-# Troubleshooting: Opencode Mcp Timeout
+# Opencode Mcp Timeout — Troubleshooting Guide
 
-> **Component:** Opencode | **Severity:** High | **Status:** ✅ Active
+> **Category:** Troubleshooting | **Severity:** High | **Version:** 1.0 | **Status:** Active
 
-## Problem Description
+## Symptoms
 
-Opencode Mcp Timeout is occurring in the OpenSIN-AI ecosystem.
+- Opencode Mcp Timeout errors in logs
+- Service degradation or outage
+- Alert notifications triggered
+- User reports of issues
 
-## Common Causes
+## Impact
 
-1. **Configuration Issue:** Invalid or missing configuration
-2. **Resource Exhaustion:** CPU, memory, or disk full
-3. **Network Issue:** Connectivity problems or DNS failures
+| Aspect | Impact Level | Description |
+|--------|-------------|-------------|
+| Availability | High | Service may be partially or fully unavailable |
+| Performance | High | Response times may be significantly degraded |
+| Data | Medium | Potential data inconsistency or loss |
+| Users | High | Users may be unable to perform operations |
+
+## Root Causes
+
+1. **Configuration Issue:** Invalid or missing configuration settings
+2. **Resource Exhaustion:** CPU, memory, disk, or network limits reached
+3. **Network Issue:** Connectivity problems, DNS failures, or firewall blocks
 4. **Authentication Issue:** Expired or invalid credentials
-5. **Version Mismatch:** Incompatible versions between components
+5. **Dependency Issue:** Downstream service failure or version mismatch
 
 ## Diagnostic Steps
 
 ### Step 1: Verify the Issue
 ```bash
+# Check service status
 systemctl status opencode
 docker ps | grep opencode
-```
 
-### Step 2: Check Logs
-```bash
+# Check recent logs
 journalctl -u opencode -n 100 --no-pager
 docker logs opencode --tail 100
 ```
 
+### Step 2: Check Resources
+```bash
+# Check CPU and memory
+top -bn1 | head -20
+free -h
+
+# Check disk space
+df -h
+
+# Check network
+ping -c 3 opencode.local
+```
+
 ### Step 3: Check Configuration
 ```bash
+# Verify configuration
 cat /etc/opencode/config.yaml
 docker exec opencode cat /app/config.json
 ```
 
-### Step 4: Check Resources
+### Step 4: Check Dependencies
 ```bash
-top -bn1 | grep opencode
-docker stats opencode --no-stream
+# Check dependent services
+systemctl status dependent-service
+curl -s http://localhost:port/health
 ```
 
-## Solutions
+## Resolution
 
-### Solution 1: Restart Component
+### Solution 1: Restart Service
 ```bash
 systemctl restart opencode
 # or
@@ -57,33 +83,51 @@ docker exec opencode rm -rf /tmp/*
 
 ### Solution 3: Update Configuration
 ```bash
+# Edit configuration
 nano /etc/opencode/config.yaml
+# Restart to apply changes
 systemctl restart opencode
 ```
 
-### Solution 4: Reinstall Component
+### Solution 4: Scale Resources
 ```bash
-apt remove opencode
-apt install opencode
-systemctl enable opencode
-systemctl start opencode
+# Increase resource limits
+docker update --memory=4g opencode
+docker update --cpus=2 opencode
 ```
 
-## Verification
-
+### Solution 5: Rollback
 ```bash
-systemctl is-active opencode
-curl -s http://localhost:5678/health
+# Rollback to previous version
+docker stop opencode
+docker rm opencode
+docker run -d --name opencode previous-image
 ```
 
 ## Prevention
 
-| Measure | Frequency |
-|---------|-----------|
-| Monitor component health | Continuous |
-| Review logs | Daily |
-| Update configuration | As needed |
-| Test recovery | Monthly |
+| Measure | Frequency | Owner |
+|---------|-----------|-------|
+| Monitor resource usage | Continuous | Ops Team |
+| Review logs | Daily | Ops Team |
+| Update dependencies | Weekly | Dev Team |
+| Test recovery | Monthly | Ops Team |
+| Review configuration | Quarterly | Architecture Team |
+
+## Escalation Path
+
+| Level | Contact | Response Time |
+|-------|---------|---------------|
+| L1 | On-call Engineer | 5 minutes |
+| L2 | Team Lead | 15 minutes |
+| L3 | SIN-Zeus | 30 minutes |
+| L4 | Management | 1 hour |
+
+## Related Guides
+
+- [Troubleshooting Overview](./troubleshooting-overview.md)
+- [Incident Response](../incident-response/incident-response-overview.md)
+- [Monitoring](../../guide/monitoring/monitoring-overview.md)
 
 ---
 
