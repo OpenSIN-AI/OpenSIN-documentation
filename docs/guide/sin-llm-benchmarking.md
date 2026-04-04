@@ -1,14 +1,14 @@
-# Agent Collaboration
+# Llm Benchmarking
 
 > **Category:** Guide | **Status:** Active | **Version:** 1.0
 
 ## Overview
 
-Comprehensive guide for agent collaboration in the OpenSIN-AI ecosystem.
+Comprehensive guide for llm benchmarking in the OpenSIN-AI ecosystem.
 
 ## Concepts
 
-Key concepts and principles for agent collaboration.
+Key concepts and principles for llm benchmarking.
 
 ## Configuration
 

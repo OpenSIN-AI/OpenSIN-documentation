@@ -1,14 +1,14 @@
-# Agent Collaboration
+# Agent Training
 
 > **Category:** Guide | **Status:** Active | **Version:** 1.0
 
 ## Overview
 
-Comprehensive guide for agent collaboration in the OpenSIN-AI ecosystem.
+Comprehensive guide for agent training in the OpenSIN-AI ecosystem.
 
 ## Concepts
 
-Key concepts and principles for agent collaboration.
+Key concepts and principles for agent training.
 
 ## Configuration
 
