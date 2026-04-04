@@ -1,14 +1,14 @@
-# Stripe
+# Event Sourcing Adv
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for event sourcing adv in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for event sourcing adv.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "sin-event-sourcing-adv": {
     "enabled": true,
     "options": {}
   }

@@ -1,14 +1,14 @@
-# Stripe
+# Version Negotiation
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Api | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for version negotiation in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for version negotiation.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "version-negotiation": {
     "enabled": true,
     "options": {}
   }

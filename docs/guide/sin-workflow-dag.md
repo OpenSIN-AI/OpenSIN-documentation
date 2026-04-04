@@ -1,14 +1,14 @@
-# Stripe
+# Workflow Dag
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for workflow dag in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for workflow dag.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "sin-workflow-dag": {
     "enabled": true,
     "options": {}
   }

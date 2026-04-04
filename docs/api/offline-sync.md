@@ -1,14 +1,14 @@
-# Stripe
+# Offline Sync
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Api | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for offline sync in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for offline sync.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "offline-sync": {
     "enabled": true,
     "options": {}
   }

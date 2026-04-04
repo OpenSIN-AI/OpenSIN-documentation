@@ -1,14 +1,14 @@
-# Stripe
+# Slack Webhooks
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for slack webhooks in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for slack webhooks.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "slack-webhooks": {
     "enabled": true,
     "options": {}
   }

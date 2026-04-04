@@ -1,14 +1,14 @@
-# Stripe
+# Model Comparison
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for model comparison in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for model comparison.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "sin-model-comparison": {
     "enabled": true,
     "options": {}
   }

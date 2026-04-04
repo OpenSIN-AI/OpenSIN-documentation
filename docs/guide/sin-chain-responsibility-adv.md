@@ -1,14 +1,14 @@
-# Stripe
+# Chain Responsibility Adv
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for chain responsibility adv in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for chain responsibility adv.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "sin-chain-responsibility-adv": {
     "enabled": true,
     "options": {}
   }

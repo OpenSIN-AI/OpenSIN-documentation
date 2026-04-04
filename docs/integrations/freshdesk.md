@@ -1,14 +1,14 @@
-# Stripe
+# Freshdesk
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for freshdesk in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for freshdesk.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "freshdesk": {
     "enabled": true,
     "options": {}
   }

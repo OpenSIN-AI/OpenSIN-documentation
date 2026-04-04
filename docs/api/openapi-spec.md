@@ -1,14 +1,14 @@
-# Stripe
+# Openapi Spec
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Api | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for openapi spec in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for openapi spec.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "openapi-spec": {
     "enabled": true,
     "options": {}
   }

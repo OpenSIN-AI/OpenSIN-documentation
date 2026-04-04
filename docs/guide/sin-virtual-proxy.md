@@ -1,14 +1,14 @@
-# Stripe
+# Virtual Proxy
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Guide | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for virtual proxy in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for virtual proxy.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "sin-virtual-proxy": {
     "enabled": true,
     "options": {}
   }

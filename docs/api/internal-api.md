@@ -1,14 +1,14 @@
-# Stripe
+# Internal Api
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Api | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for internal api in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for internal api.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "internal-api": {
     "enabled": true,
     "options": {}
   }

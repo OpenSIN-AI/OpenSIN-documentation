@@ -1,14 +1,14 @@
-# Stripe
+# Mongodb
 
 > **Category:** Integrations | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for mongodb in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for mongodb.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "mongodb": {
     "enabled": true,
     "options": {}
   }

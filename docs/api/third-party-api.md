@@ -1,14 +1,14 @@
-# Stripe
+# Third Party Api
 
-> **Category:** Integrations | **Status:** ✅ Active
+> **Category:** Api | **Status:** ✅ Active
 
 ## Overview
 
-Comprehensive documentation for stripe in OpenSIN-AI.
+Comprehensive documentation for third party api in OpenSIN-AI.
 
 ## Concepts
 
-Key concepts and principles for stripe.
+Key concepts and principles for third party api.
 
 ## Configuration
 
@@ -16,7 +16,7 @@ How to configure this feature in OpenSIN-AI.
 
 ```json
 {
-  "stripe": {
+  "third-party-api": {
     "enabled": true,
     "options": {}
   }
