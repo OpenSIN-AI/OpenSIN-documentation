@@ -7,34 +7,33 @@ description: Build your first OpenSIN agent in 5 minutes
 
 Build your first OpenSIN agent in 5 minutes.
 
-## Step 1: Create an Agent
+## Step 1: Start the CLI
 
 ```bash
-opensin agent create researcher \
-  --model gpt-4 \
-  --system-prompt "You are an expert researcher. Research topics thoroughly." \
-  --tools web_search,summarizer
+cd OpenSIN-Code
+npm start
 ```
 
-## Step 2: Test Your Agent
+## Step 2: Send Your First Query
 
-```bash
-opensin agent test researcher --prompt "What are the latest AI trends in 2026?"
+The OpenSIN-Code CLI provides an interactive REPL. Simply type your query and the agent loop will execute:
+
+```
+> Research the latest AI trends in 2026
 ```
 
-## Step 3: Create a Team
+The agent will:
+1. Analyze your query
+2. Use available tools (web search, file read/write, bash)
+3. Iterate until the task is complete
+4. Return a structured response
 
-```bash
-opensin team create research-team \
-  --agents researcher,writer,reviewer \
-  --strategy sequential
+## Step 3: Use Agent Delegation
+
+For complex tasks, delegate to background agents:
+
 ```
-
-## Step 4: Execute a Team Task
-
-```bash
-opensin team exec research-team \
-  --task "Research AI trends and write a comprehensive report"
+> Create a research agent to analyze AI trends and write a report
 ```
 
 ## What's Next?

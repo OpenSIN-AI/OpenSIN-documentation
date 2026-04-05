@@ -15,8 +15,8 @@ Monitor OpenSIN agents in production.
 ## Health Checks
 
 ```bash
-opensin health
-opensin health agents
+npm run health  # Run health checks
+npm run health  # Run health checks agents
 ```
 
 ## Next Steps

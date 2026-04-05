@@ -4,9 +4,9 @@ Common issues and their solutions.
 
 ## Agent Not Responding
 
-1. Check agent status: `opensin agent status <name>`
+1. Check agent status: `Check the OpenSIN-Code CLI output and logs`
 2. Verify API connectivity
-3. Check logs: `opensin agent logs <name>`
+3. Check logs: `Review logs in the terminal output`
 
 ## High Error Rate
 

@@ -1,28 +1,24 @@
 ---
 title: Installation
-description: Install OpenSIN on your system
+description: Install OpenSIN-Code on your system
 ---
 
 # Installation
 
 ## Prerequisites
 
-- Python 3.11 or higher
-- pip (Python package manager)
+- Node.js 18 or higher
+- npm or pnpm (Node package manager)
 - Git (for version control)
-
-## Install via pip
-
-```bash
-pip install opensin-cli
-```
+- opencode CLI (for LLM provider configuration)
 
 ## Install from Source
 
 ```bash
-git clone https://github.com/OpenSIN-AI/OpenSIN.git
-cd OpenSIN
-pip install -e .
+git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
+cd OpenSIN-Code
+npm install
+npm run build
 ```
 
 ## Configure Environment
@@ -30,20 +26,25 @@ pip install -e .
 Create a `.env` file in your project directory:
 
 ```bash
-# LLM Provider API Keys
-OPENAI_API_KEY=sk-...
-ANTHROPIC_API_KEY=sk-ant-...
+# LLM Provider API Keys (configured via opencode CLI)
+# Run: opencode auth login
+# OpenSIN-Code uses opencode for all LLM calls automatically
 
 # OpenSIN Configuration
-OPENSIN_BASE_URL=https://api.opensin.ai
 OPENSIN_LOG_LEVEL=INFO
 ```
 
 ## Verify Installation
 
 ```bash
-opensin --version
-opensin health
+# Check the build
+npm run build
+
+# Run tests
+npm test
+
+# Start the CLI
+npm start
 ```
 
 ## Next Steps

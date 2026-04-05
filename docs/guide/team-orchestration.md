@@ -5,7 +5,7 @@ OpenSIN teams enable multiple agents to work together on complex tasks.
 ## Creating a Team
 
 ```bash
-opensin team create research-team --agents researcher,writer,reviewer --strategy sequential
+# Use background_agents plugin for parallel task delegation
 ```
 
 ## Team Strategies
@@ -21,7 +21,7 @@ opensin team create research-team --agents researcher,writer,reviewer --strategy
 ## Executing a Team Task
 
 ```bash
-opensin team exec research-team --task "Research AI trends and write a report"
+# Delegate via the REPL interface
 ```
 
 ## Next Steps

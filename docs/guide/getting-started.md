@@ -13,35 +13,44 @@ OpenSIN is an open-source platform for building, deploying, and managing AI agen
 
 ## Key Features
 
-- **QueryEngine** — Async generator with ReAct loop
+- **OpenSIN-Code CLI** — Autonomous coding agent for the terminal
 - **Hook System** — 20+ events, 5 execution modes
-- **Tool System** — 8+ built-in tools
-- **Permission System** — 6 modes with safety checks
-- **Subagent System** — Fork pattern with cache-identical prefixes
+- **Tool System** — 6+ built-in CLI tools (Bash, Read, Write, Edit, Grep, Glob)
+- **Agent Memory** — Letta-style persistent memory system
+- **Background Agents** — Async task delegation
 - **MCP Client** — 5 transports
 - **Sandbox** — Full isolation
 - **Memory System** — File-based with SIN.md
 
 ## Prerequisites
 
-- Python 3.11+
-- pip (Python package manager)
-- An API key from an LLM provider (OpenAI, Anthropic, etc.)
+- Node.js 18+
+- npm or pnpm
+- An API key from an LLM provider (configured via opencode CLI)
 
 ## Installation
 
 ```bash
-pip install opensin-cli
+# Clone the repository
+git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
+cd OpenSIN-Code
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
 ```
 
 ## Quick Start
 
 ```bash
-# Create your first agent
-opensin agent create researcher --model gpt-4
+# Start the OpenSIN-Code CLI
+npm start
 
-# Test your agent
-opensin agent test researcher --prompt "What is AI?"
+# Or run directly
+cd packages/opensin-sdk
+npm run cli
 ```
 
 ## Next Steps

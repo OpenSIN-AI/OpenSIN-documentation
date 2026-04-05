@@ -5,7 +5,7 @@ OpenSIN agents are autonomous AI entities that can process inputs, make decision
 ## Creating an Agent
 
 ```bash
-opensin agent create researcher --model gpt-4
+npm start  # then type your query in the REPL
 ```
 
 ## Agent Configuration
@@ -20,7 +20,7 @@ opensin agent create researcher --model gpt-4
 ## Testing an Agent
 
 ```bash
-opensin agent test researcher --prompt "What is AI?"
+# The agent loop runs automatically
 ```
 
 ## Next Steps
