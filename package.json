@@ -8,7 +8,9 @@
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview",
     "build": "vitepress build",
-    "deploy": "wrangler pages deploy .vitepress/dist --project-name opensin-docs"
+    "deploy": "wrangler pages deploy .vitepress/dist --project-name opensin-docs",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
     "vitepress": "^1.5.0",
