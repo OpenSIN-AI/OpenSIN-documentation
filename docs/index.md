@@ -50,17 +50,17 @@ opensin agent test researcher --prompt "What is AI?"
 
 ## Why OpenSIN?
 
-| Feature | OpenSIN | ChatGPT | Claude | OpenClaw |
-|---------|---------|---------|--------|----------|
-| Multi-Agent System | ✅ Native | ❌ Single | ❌ Single | ⚠️ Limited |
-| A2A Communication | ✅ Built-in | ❌ None | ❌ None | ❌ None |
-| Self-Hostable | ✅ Yes | ❌ Cloud | ❌ Cloud | ✅ Yes |
-| Open Source | ✅ Apache 2.0 | ❌ Proprietary | ❌ Proprietary | ✅ Partial |
-| Model-Agnostic | ✅ 1000+ | ❌ GPT only | ❌ Claude only | ✅ Multiple |
-| Web Automation | ✅ Stealth | ❌ None | ❌ None | ✅ Basic |
-| Omni-Channel | ✅ 6+ | ❌ Web only | ❌ Web only | ❌ Limited |
-| Enterprise Security | ✅ Full | ✅ Basic | ✅ Basic | ❌ None |
-| Cost | ✅ Free | 💰 $20/mo | 💰 $20/mo | ✅ Free |
+| Feature | OpenSIN | Hermes-Agent | OpenClaw | ChatGPT | Claude |
+|---------|---------|-------------|----------|---------|--------|
+| Multi-Agent System | ✅ Native | ⚠️ Dispatcher | ⚠️ Limited | ❌ Single | ❌ Single |
+| A2A Communication | ✅ Built-in | ⚠️ Basic | ❌ None | ❌ None | ❌ None |
+| Self-Hostable | ✅ Yes | ✅ Yes | ✅ Yes | ❌ Cloud | ❌ Cloud |
+| Open Source | ✅ Apache 2.0 | ✅ Partial | ✅ Partial | ❌ Proprietary | ❌ Proprietary |
+| Model-Agnostic | ✅ 1000+ | ⚠️ Limited | ✅ Multiple | ❌ GPT only | ❌ Claude only |
+| Web Automation | ✅ Stealth | ❌ None | ✅ Basic | ❌ None | ❌ None |
+| Omni-Channel | ✅ 6+ | ⚠️ Telegram | ⚠️ Telegram | ❌ Web only | ❌ Web only |
+| Enterprise Security | ✅ Full | ⚠️ Basic | ❌ None | ✅ Basic | ✅ Basic |
+| Cost | ✅ Free | ✅ Free | ✅ Free | 💰 $20/mo | 💰 $20/mo |
 
 ## Ecosystem
 
