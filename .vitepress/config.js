@@ -30,6 +30,8 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'API', link: '/api/overview' },
       { text: 'Tutorials', link: '/tutorials/agent-basics' },
+      { text: 'Plugins', link: '/plugins/registry' },
+      { text: 'Plugins', link: '/plugins/registry' },
       { text: 'Integrations', link: '/integrations/telegram' },
       { text: 'Architecture', link: '/architecture/overview' },
       { text: 'Community', link: 'https://discord.gg/opensin' },
@@ -61,6 +63,14 @@ export default defineConfig({
             { text: 'Scaling', link: '/guide/scaling' },
             { text: 'Troubleshooting', link: '/guide/troubleshooting' },
             { text: 'Changelog', link: '/guide/changelog' },
+          ],
+        },
+      ],
+      '/plugins/': [
+        {
+          text: 'Plugins',
+          items: [
+            { text: 'Plugin Registry', link: '/plugins/registry' },
           ],
         },
       ],
