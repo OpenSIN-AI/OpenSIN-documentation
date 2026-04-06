@@ -29,10 +29,10 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'API', link: '/api/overview' },
+      { text: 'SDK', link: '/sdk/overview' },
       { text: 'Tutorials', link: '/tutorials/agent-basics' },
       { text: 'Plugins', link: '/plugins/registry' },
-      { text: 'Plugins', link: '/plugins/registry' },
-      { text: 'Integrations', link: '/integrations/telegram' },
+      { text: 'Bridge', link: '/bridges/opensin-bridge-overview' },
       { text: 'Architecture', link: '/architecture/overview' },
       { text: 'Community', link: 'https://discord.gg/opensin' },
     ],
@@ -66,6 +66,24 @@ export default defineConfig({
           ],
         },
       ],
+      '/sdk/': [
+        {
+          text: 'SDK Reference',
+          items: [
+            { text: 'Overview', link: '/sdk/overview' },
+            { text: 'Agent Loop', link: '/sdk/agent-loop' },
+            { text: 'Tool System', link: '/sdk/tool-system' },
+            { text: 'Model Routing', link: '/sdk/model-routing' },
+            { text: 'Memory Manager', link: '/sdk/memory' },
+            { text: 'Context Management', link: '/sdk/context-management' },
+            { text: 'Safety & Permissions', link: '/sdk/safety' },
+            { text: 'Session Persistence', link: '/sdk/sessions' },
+            { text: 'Hooks & Lifecycle', link: '/sdk/hooks' },
+            { text: 'Parallel Execution', link: '/sdk/parallel-execution' },
+            { text: 'Usage & Pricing', link: '/sdk/usage-pricing' },
+          ],
+        },
+      ],
       '/plugins/': [
         {
           text: 'Plugins',
@@ -79,6 +97,30 @@ export default defineConfig({
           text: 'API Reference',
           items: [
             { text: 'Overview', link: '/api/overview' },
+            { text: 'Agent API', link: '/api/agent' },
+            { text: 'A2A API', link: '/api/a2a' },
+            { text: 'Team API', link: '/api/team' },
+          ],
+        },
+      ],
+      '/tutorials/': [
+        {
+          text: 'Tutorials',
+          items: [
+            { text: 'Agent Basics', link: '/tutorials/agent-basics' },
+            { text: 'Custom Agents', link: '/tutorials/custom-agents' },
+            { text: 'Multi-Agent Systems', link: '/tutorials/multi-agent' },
+            { text: 'Advanced Orchestration', link: '/tutorials/advanced-orchestration' },
+          ],
+        },
+      ],
+      '/examples/': [
+        {
+          text: 'Examples',
+          items: [
+            { text: 'Hello World', link: '/examples/hello-world' },
+            { text: 'Multi-Agent', link: '/examples/multi-agent' },
+            { text: 'Telegram Bot', link: '/examples/telegram-bot' },
           ],
         },
       ],
@@ -87,6 +129,28 @@ export default defineConfig({
           text: 'Architecture',
           items: [
             { text: 'Overview', link: '/architecture/overview' },
+            { text: 'Core Architecture', link: '/architecture/core' },
+            { text: 'A2A Protocol', link: '/architecture/a2a' },
+            { text: 'Security', link: '/architecture/security' },
+          ],
+        },
+      ],
+      '/bridges/': [
+        {
+          text: 'OpenSIN Bridge',
+          items: [
+            { text: 'Overview', link: '/bridges/opensin-bridge-overview' },
+            { text: 'Chrome Extension', link: '/bridges/chrome-extension' },
+          ],
+        },
+      ],
+      '/best-practices/': [
+        {
+          text: 'Best Practices',
+          items: [
+            { text: 'Agent Design', link: '/best-practices/agent-design' },
+            { text: 'Performance', link: '/best-practices/performance' },
+            { text: 'Security', link: '/best-practices/security' },
           ],
         },
       ],
