@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'OpenSIN Docs',
-  description: 'Official documentation for OpenSIN — the world\'s most comprehensive AI agent system',
+  description: 'Official documentation for OpenSIN — the world\'s most comprehensive autonomous AI agent ecosystem',
   base: '/',
   lang: 'en-US',
   lastUpdated: true,
@@ -13,11 +13,11 @@ export default defineConfig({
   },
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'theme-color', content: '#5f67ee' }],
+    ['meta', { name: 'theme-color', content: '#10b981' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'en' }],
-    ['meta', { property: 'og:title', content: 'OpenSIN Documentation' }],
-    ['meta', { property: 'og:description', content: 'Official documentation for OpenSIN AI agent system' }],
+    ['meta', { property: 'og:title', content: 'OpenSIN Documentation — AI Agent Ecosystem' }],
+    ['meta', { property: 'og:description', content: 'Official documentation for OpenSIN — 100+ autonomous AI agents, 18 specialized teams, A2A protocol' }],
     ['meta', { property: 'og:site_name', content: 'OpenSIN Docs' }],
     ['meta', { property: 'og:image', content: 'https://docs.opensin.ai/og-image.png' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
@@ -31,9 +31,9 @@ export default defineConfig({
       { text: 'API', link: '/api/overview' },
       { text: 'SDK', link: '/sdk/overview' },
       { text: 'Tutorials', link: '/tutorials/agent-basics' },
-      { text: 'Plugins', link: '/plugins/registry' },
       { text: 'Bridge', link: '/bridges/opensin-bridge-overview' },
       { text: 'Architecture', link: '/architecture/overview' },
+      { text: 'opensin.ai', link: 'https://opensin.ai' },
       { text: 'Community', link: 'https://discord.gg/opensin' },
     ],
     sidebar: {
