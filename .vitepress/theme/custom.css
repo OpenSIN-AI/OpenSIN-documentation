@@ -2,25 +2,25 @@
   --vp-c-brand-1: #10b981;
   --vp-c-brand-2: #059669;
   --vp-c-brand-3: #047857;
-  --vp-c-brand-soft: rgba(16, 185, 129, 0.16);
-  --vp-c-brand-light: rgba(16, 185, 129, 0.32);
-  --vp-c-brand-lighter: rgba(16, 185, 129, 0.24);
+  --vp-c-brand-soft: rgba(16, 185, 129, 0.12);
+  --vp-c-brand-light: rgba(16, 185, 129, 0.24);
+  --vp-c-brand-lighter: rgba(16, 185, 129, 0.16);
   --vp-c-brand-dark: #047857;
   --vp-c-brand-darker: #065f46;
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
-  --vp-home-hero-image-background-image: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.1) 100%);
-  --vp-home-hero-image-filter: blur(72px);
-  --vp-c-bg: #09090b;
-  --vp-c-bg-alt: #030304;
-  --vp-c-bg-elv: #18181b;
-  --vp-c-bg-soft: #111114;
+  --vp-home-hero-name-background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --vp-home-hero-image-background-image: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, transparent 100%);
+  --vp-home-hero-image-filter: blur(96px);
+  --vp-c-bg: #000000;
+  --vp-c-bg-alt: #000000;
+  --vp-c-bg-elv: #0a0a0a;
+  --vp-c-bg-soft: #0a0a0a;
   --vp-c-text-1: #fafafa;
   --vp-c-text-2: #a1a1aa;
   --vp-c-text-3: #71717a;
-  --vp-c-border: #27272a;
-  --vp-c-divider: #1f1f23;
-  --vp-c-gutter: #18181b;
+  --vp-c-border: #ffffff0d;
+  --vp-c-divider: #ffffff0d;
+  --vp-c-gutter: #000000;
 }
 
 .dark {
@@ -30,33 +30,38 @@
 }
 
 .VPHomeHero .image-bg {
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 .VPFeature {
-  background: rgba(24, 24, 27, 0.6);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 16px;
-  transition: border-color 0.25s, box-shadow 0.25s;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: border-color 0.2s;
 }
 
 .VPFeature:hover {
-  border-color: var(--vp-c-brand-soft);
-  box-shadow: 0 0 30px rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
 .VPButton.brand {
   background-color: var(--vp-c-brand-1);
-  color: #09090b;
-  font-weight: 600;
+  color: #000000;
+  font-weight: 500;
+  border-radius: 8px;
 }
 
 .VPButton.brand:hover {
   background-color: var(--vp-c-brand-2);
 }
 
+.VPButton.alt {
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
 .VPSidebarItem.level-0 > .item > .text {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .VPDoc .content-container {
@@ -64,14 +69,92 @@
 }
 
 .VPNav {
-  border-bottom: 1px solid var(--vp-c-divider);
-  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
 }
 
 .VPNavBar {
-  background: rgba(9, 9, 11, 0.8) !important;
+  background: rgba(0, 0, 0, 0.6) !important;
 }
 
 .VPFooter {
-  border-top: 1px solid var(--vp-c-divider);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.VPHero .name {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.VPHero .text {
+  font-weight: 400;
+  color: #71717a;
+}
+
+.dark {
+  --vp-c-brand-1: #34d399;
+  --vp-c-brand-2: #10b981;
+  --vp-c-brand-3: #059669;
+}
+
+.VPHomeHero .image-bg {
+  opacity: 0.4;
+}
+
+.VPFeature {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: border-color 0.2s;
+}
+
+.VPFeature:hover {
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.VPButton.brand {
+  background-color: var(--vp-c-brand-1);
+  color: #000000;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.VPButton.brand:hover {
+  background-color: var(--vp-c-brand-2);
+}
+
+.VPButton.alt {
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-weight: 500;
+}
+
+.VPDoc .content-container {
+  max-width: 800px;
+}
+
+.VPNav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+}
+
+.VPNavBar {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+.VPFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.VPHero .name {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.VPHero .text {
+  font-weight: 400;
+  color: #71717a;
 }
