@@ -1,43 +1,80 @@
----
-title: Quick Start
-description: Build your first OpenSIN agent in 5 minutes
----
-
 # Quick Start
 
-Build your first OpenSIN agent in 5 minutes.
+Get OpenCode running in under 5 minutes.
 
-## Step 1: Start the CLI
+## Prerequisites
+
+- Node.js 20+ (`brew install node`)
+- Git configured with GitHub access
+
+## Installation
 
 ```bash
-cd OpenSIN-Code
-npm start
+# Install OpenCode CLI
+curl -fsSL https://opencode.ai/install | bash
+
+# Verify installation
+opencode --version
 ```
 
-## Step 2: Send Your First Query
+## First Session
 
-The OpenSIN-Code CLI provides an interactive REPL. Simply type your query and the agent loop will execute:
+```bash
+# Start OpenCode in your project
+cd ~/my-project
+opencode
 
-```
-> Research the latest AI trends in 2026
-```
-
-The agent will:
-1. Analyze your query
-2. Use available tools (web search, file read/write, bash)
-3. Iterate until the task is complete
-4. Return a structured response
-
-## Step 3: Use Agent Delegation
-
-For complex tasks, delegate to background agents:
-
-```
-> Create a research agent to analyze AI trends and write a report
+# Or run with a direct message
+opencode run "Create a REST API with Express"
 ```
 
-## What's Next?
+## Using Agents
 
-- [Agent Basics](/guide/agent-basics) — Learn agent fundamentals
-- [Team Orchestration](/guide/team-orchestration) — Coordinate multiple agents
-- [A2A Protocol](/guide/a2a-protocol) — Agent-to-Agent communication
+```bash
+# List available agents
+opencode agent list
+
+# Create a new agent
+opencode agent create researcher --model openai/gpt-5.4
+
+# Run with a specific agent
+opencode run --agent researcher "Research the latest AI trends"
+```
+
+## Using Plugins
+
+```bash
+# Install a plugin
+opencode plugin oh-my-opencode
+
+# Verify plugins
+opencode plugin list
+```
+
+## Using MCPs
+
+```bash
+# Configure MCP servers
+opencode mcp add filesystem --command npx -y @modelcontextprotocol/server-filesystem /path/to/dir
+
+# List MCPs
+opencode mcp list
+```
+
+## Essential Commands
+
+| Command | Description |
+|---------|-------------|
+| `/help` | Show available commands |
+| `/agents` | List and switch agents |
+| `/models` | List and switch models |
+| `/tools` | Show available tools |
+| `/export` | Export session data |
+| `/compact` | Compact conversation context |
+
+## Next Steps
+
+- [Installation Guide](./installation.md) — Detailed setup instructions
+- [Agent Basics](./agent-basics.md) — Learn to use agents effectively
+- [MCP Integration](./mcp-integration.md) — Connect external tools
+- [Plugin System](./plugin-system.md) — Build custom plugins
