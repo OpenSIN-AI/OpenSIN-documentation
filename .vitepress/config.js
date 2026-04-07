@@ -28,6 +28,8 @@ export default defineConfig({
           { text: 'Scaling', link: '/docs/guide/scaling' },
           { text: 'Troubleshooting', link: '/docs/guide/troubleshooting' },
           { text: 'Changelog', link: '/docs/guide/changelog' },
+          { text: 'OpenSIN Code', link: '/docs/guide/opensin-code' },
+          { text: 'Rust Engine', link: '/docs/guide/opensin-code-rust-engine' },
         ],
       },
       {
