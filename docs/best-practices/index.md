@@ -26,6 +26,7 @@ Production-tested guidelines for building, deploying, and operating OpenSIN agen
 | [Error Handling](/best-practices/error-handling) | Error classification, retry patterns, recovery |
 | [Monitoring & Observability](/best-practices/monitoring-observability) | Metrics, health checks, alerting, dashboards |
 | [Code Quality](/best-practices/code-quality) | Code style, architecture, review standards |
+| [**CI/CD mit n8n + sin-github-action**](/best-practices/ci-cd-n8n) | **🚨 PFLICHT**: Zero-Billing CI via n8n OCI Runner — NIEMALS normale GitHub Actions! |
 
 ## Quick Reference
 
