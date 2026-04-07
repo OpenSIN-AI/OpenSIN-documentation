@@ -33,6 +33,8 @@ export default defineConfig({
       { text: 'Tutorials', link: '/tutorials/agent-basics' },
       { text: 'Bridge', link: '/bridges/opensin-bridge-overview' },
       { text: 'Architecture', link: '/architecture/overview' },
+      { text: 'Vercel Deployment', link: '/guide/vercel-deployment' },
+
       { text: 'opensin.ai', link: 'https://opensin.ai' },
       { text: 'Community', link: 'https://discord.gg/opensin' },
     ],
