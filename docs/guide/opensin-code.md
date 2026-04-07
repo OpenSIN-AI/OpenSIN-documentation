@@ -178,13 +178,21 @@ npm run typecheck
 
 Die gesamte Codebasis wurde von sin-claude nach OpenSIN-AI migriert:
 
-- **2.394 Dateien** migriert
-- **637.024 Zeilen** Code
+- **352 Dateien** migriert (3 neue Repos)
+- **129.798 Zeilen** Code
 - **100% OpenSIN-Branding** — keine externen Referenzen
 - **14 Plugins** vollständig portiert
-- **Rust Engine** als performantes Backend
-- **12 GitHub Actions** Workflows
-- **8 Automation Scripts**
+- **Rust Engine** als performantes Backend (34.601 Zeilen)
+- **Python Platform** als metadata-driven Workspace (2.386 Zeilen)
+- **Plugin Ecosystem** mit GitHub Automation (87.247 Zeilen)
+
+### Neue Projekte (April 2026)
+
+| Projekt | Repo | Dateien | Zeilen | Status |
+|---------|------|---------|--------|--------|
+| **OpenSIN-AI CLI** | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 70 | 34.601 | ✅ Rust |
+| **OpenSIN-AI Code** | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 100 | 2.386 | ✅ Python |
+| **OpenSIN-AI Platform** | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 182 | 87.247 | ✅ Plugins |
 
 ---
 
