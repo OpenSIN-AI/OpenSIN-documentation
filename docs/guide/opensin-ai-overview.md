@@ -4,6 +4,12 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 
 > **175 Repositories | 17 Teams | 92 Worker | 7 MCP Server | 19 Plugins/Skills | 6 Domains**
 
+## OpenSIN-AI Agent Roadmap
+
+- Feature spec: [OpenSIN-overview/docs/opensin-ai-agent-feature-spec.md](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/opensin-ai-agent-feature-spec.md)
+- Comparison guide: [OpenSIN-AI Agent Features](opensin-ai-agent-features.md)
+- Verified runtime layer now spans heartbeat, cron, failover, approval hooks, and a unified orchestrator.
+
 ---
 
 ## 🚀 Die OpenSIN-AI Familie

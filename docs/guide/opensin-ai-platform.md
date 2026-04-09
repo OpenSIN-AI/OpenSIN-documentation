@@ -6,6 +6,12 @@ OpenSIN-AI Platform ist das Plugin- und Automatisierungs-Ökosystem der OpenSIN-
 >
 > **Umfang:** 182 Dateien | 87.247 Zeilen | 14 Plugins
 
+## OpenSIN-AI Agent Roadmap
+
+- Feature spec: [OpenSIN-overview/docs/opensin-ai-agent-feature-spec.md](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/opensin-ai-agent-feature-spec.md)
+- Comparison guide: [OpenSIN-AI Agent Features](opensin-ai-agent-features.md)
+- This repo documents the automation and plugin surfaces that support the OpenSIN-AI Agent stack.
+
 ---
 
 ## Plugin Ecosystem

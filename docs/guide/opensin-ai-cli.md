@@ -6,6 +6,12 @@ OpenSIN-AI CLI ist der hochperformante, speicher-sichere AI Coding Assistant der
 >
 > **Umfang:** 70 Dateien | 34.601 Zeilen Rust-Code | 9 Crates
 
+## OpenSIN-AI Agent Roadmap
+
+- Feature spec: [OpenSIN-overview/docs/opensin-ai-agent-feature-spec.md](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/opensin-ai-agent-feature-spec.md)
+- Comparison guide: [OpenSIN-AI Agent Features](opensin-ai-agent-features.md)
+- Verified runtime: heartbeat, cron, failover, approval hooks, and orchestrator-aware CLI routing
+
 ---
 
 ## Architektur

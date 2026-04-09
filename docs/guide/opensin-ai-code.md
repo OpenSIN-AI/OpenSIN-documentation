@@ -6,6 +6,12 @@ OpenSIN-AI Code ist die Python-basierte Agent Development Platform der OpenSIN-A
 >
 > **Umfang:** 100 Dateien | 2.386 Zeilen Python-Code | 26 Subsystem-Pakete
 
+## OpenSIN-AI Agent Roadmap
+
+- Feature spec: [OpenSIN-overview/docs/opensin-ai-agent-feature-spec.md](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/opensin-ai-agent-feature-spec.md)
+- Comparison guide: [OpenSIN-AI Agent Features](opensin-ai-agent-features.md)
+- This repo maps the Python agent development surface to the same OpenSIN-AI Agent roadmap.
+
 ---
 
 ## Architektur
