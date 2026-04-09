@@ -101,7 +101,7 @@ export const myAgent = defineAgent({
 |--------|-------------|---------|
 | `oh-my-opencode` | Multi-agent orchestration framework | `npm i -g oh-my-opencode` |
 | `opencode-antigravity-auth` | OAuth token rotation for Claude/Gemini | `npm i -g opencode-antigravity-auth` |
-| `opencode-qwencode-auth` | Qwen authentication | `npm i -g opencode-qwencode-auth` |
+| `opencode-qwen-proxy` | OpenCode-Qwen-Proxy (Qwen OAuth with throttling) | `npm i -g github:RunMintOn/OpenCode-Qwen-Proxy` |
 | `opencode-openrouter-auth` | OpenRouter auth with local proxy | Local source in upgraded-opencode-stack |
 
 ## Best Practices

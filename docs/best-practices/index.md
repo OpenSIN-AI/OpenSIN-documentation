@@ -48,3 +48,4 @@ Production-tested guidelines for building, deploying, and operating OpenSIN agen
 - [ ] Tests included
 - [ ] Documentation updated
 - [ ] Security review completed
+- [Software 3.0: Neural-Bus](/docs/best-practices/software-3.0-neural-bus)
