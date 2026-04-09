@@ -33,6 +33,7 @@ export default defineConfig({
           { text: 'OpenSIN-AI Code (Python)', link: '/docs/guide/opensin-ai-code' },
           { text: 'Rust Engine', link: '/docs/guide/opensin-code-rust-engine' },
           { text: 'OpenSIN-AI Platform', link: '/docs/guide/opensin-ai-platform' },
+          { text: 'Agent Features vs Competitors', link: '/docs/guide/opensin-ai-agent-features' },
         ],
       },
       {
