@@ -1,167 +1,118 @@
 ---
-title: "Performance Best Practices"
+title: Ultimate Performance & Efficiency Doctrine
+description: Mandatory rules for speed, cost control, parallelism, model routing, and avoiding waste across the OpenSIN fleet.
 ---
 
-# Performance Best Practices
+# Ultimate Performance & Efficiency Doctrine
 
-Optimize your OpenSIN agents and workflows for speed, cost, and resource efficiency.
+> **RULE:** Performance is not “make it fast somehow.” It is the deliberate removal of wasted latency, wasted tokens, wasted retries, wasted agent work, and wasted human attention.
 
-## Model Routing
+---
 
-Use the SmartModelRouter to automatically select the cheapest model capable of handling each task:
+## 1. What Performance Means in OpenSIN
 
-```typescript
-import { SmartModelRouter } from '@opensin/sdk'
+Performance includes:
+- runtime speed
+- UI responsiveness
+- workflow throughput
+- model/token efficiency
+- retry discipline
+- parallelism quality
+- cost efficiency
 
-const router = new SmartModelRouter({
-  models: {
-    trivial: 'gpt-4o-mini',
-    simple: 'gpt-4o-mini',
-    moderate: 'gpt-4o',
-    complex: 'claude-sonnet-4-6',
-    expert: 'claude-opus-4-6',
-  },
-})
+A fast system that burns 10x the cost is not performant. A cheap system that times out constantly is not performant either.
 
-// Automatically classifies task complexity and routes
-const model = router.selectModel(prompt)
-// "fix typo in README" → gpt-4o-mini (cheap)
-// "refactor auth system" → claude-opus-4-6 (expert)
-```
+---
 
-This alone can reduce LLM costs by **60-80%** for typical workloads.
+## 2. Optimize the Right Bottleneck
 
-## Context Window Management
+Before optimizing, identify whether the problem is:
+- compute-bound
+- network-bound
+- queue-bound
+- browser-bound
+- model-bound
+- coordination-bound
 
-Large context windows are expensive. Use the ContextCompressor to keep token usage minimal:
+### Why
+Optimizing the wrong layer is fake progress.
 
-```typescript
-import { ContextCompressor } from '@opensin/sdk'
+---
 
-const compressor = new ContextCompressor({
-  maxTokens: 8000,
-  strategy: 'sliding-window', // or 'summarize', 'relevance'
-})
+## 3. Model Routing Efficiency
 
-// Compress conversation history before sending to LLM
-const compressed = compressor.compress(messages)
-```
+Use the cheapest model that can reliably solve the class of task.
+Escalate only when the task complexity proves it necessary.
 
-### Strategies
+### Why
+Bad model routing is one of the fastest ways for an autonomous fleet to bankrupt itself.
 
-| Strategy | Best For | Token Savings |
-|----------|----------|---------------|
-| `sliding-window` | Long conversations | 40-60% |
-| `summarize` | Research tasks | 50-70% |
-| `relevance` | Code editing | 60-80% |
+---
 
-## Parallel Tool Execution
+## 4. Parallelism Discipline
 
-Run independent tool calls concurrently instead of sequentially:
+Parallelize independent work, not dependent work.
+Good parallelism improves throughput.
+Bad parallelism creates contention, merge debt, and duplicate effort.
 
-```typescript
-import { ParallelToolExecutor } from '@opensin/sdk'
+---
 
-const executor = new ParallelToolExecutor({
-  maxWorkers: 8,
-  timeout: 30_000,
-})
+## 5. Frontend Performance
 
-// These run in parallel (3x faster than sequential)
-const results = await executor.execute([
-  { tool: 'read', args: { path: 'src/auth.ts' } },
-  { tool: 'read', args: { path: 'src/db.ts' } },
-  { tool: 'grep', args: { pattern: 'TODO', path: 'src/' } },
-])
-```
+For web surfaces, performance means:
+- fast first render
+- stable layout
+- minimal unnecessary JS
+- shared styling without duplication
+- avoiding bloated utility output
 
-The executor uses path-scoped concurrency control to prevent conflicting writes to the same file.
+### Why
+The user experiences the interface, not your theoretical component elegance.
 
-## Caching
+---
 
-### Session Caching
+## 6. Workflow Performance
 
-Persist session state to avoid re-reading files on every turn:
+For n8n / automation:
+- avoid redundant executions
+- keep payloads minimal
+- validate only what matters
+- isolate expensive nodes
+- avoid retry storms
 
-```typescript
-import { SessionManager } from '@opensin/sdk'
+---
 
-const session = new SessionManager({
-  persistence: 'file',    // or 'memory', 'supabase'
-  cacheReads: true,        // cache file reads within session
-  ttl: 3600,               // 1 hour cache TTL
-})
-```
+## 7. Cost Is a Performance Metric
 
-### MCP Connection Pooling
+Track:
+- token burn
+- retries
+- duplicate jobs
+- oversized contexts
+- unnecessary agent spawning
 
-Reuse MCP connections instead of spawning new processes:
+If cost spikes without proportional value, performance is degrading.
 
-```typescript
-const mcp = new MCPClient({
-  poolSize: 4,             // maintain 4 warm connections
-  reuseConnections: true,
-  idleTimeout: 60_000,
-})
-```
+---
 
-## Cost Tracking
+## 8. Anti-Patterns
 
-Monitor spend in real-time with the UsagePricing module:
+Reject:
+- premature micro-optimization without identifying bottleneck
+- giant contexts for trivial tasks
+- spawning many agents where one would do
+- over-refreshing browser/state checks
+- repeated builds/checks with unchanged surfaces
 
-```typescript
-import { UsagePricing } from '@opensin/sdk'
+---
 
-const pricing = new UsagePricing()
+## 9. Final Rule
 
-// Record each LLM call
-pricing.record({
-  model: 'claude-sonnet-4-6',
-  inputTokens: 2500,
-  outputTokens: 800,
-})
+**The best-performing system is the one that reaches the correct result with the least waste.**
+Speed without discipline is just expensive noise.
 
-// Get session summary
-const summary = pricing.getSummary()
-// { totalCost: 0.0234, totalTokens: 3300, calls: 1 }
-```
+---
 
-## Agent Loop Optimization
-
-### Reduce Round-Trips
-
-- Batch independent tool calls in a single turn
-- Use `glob` + `read` together instead of multiple `grep` calls
-- Prefer `edit` over `write` for partial file changes
-
-### Early Exit
-
-Configure the agent loop to stop early when the task is clearly complete:
-
-```typescript
-const agent = new AgentLoop({
-  maxTurns: 20,
-  earlyExit: true,         // stop when no more tool calls
-  idleTimeout: 10_000,     // stop after 10s of no activity
-})
-```
-
-## Infrastructure Sizing
-
-| Component | Recommended | Notes |
-|-----------|-------------|-------|
-| n8n (OCI VM) | 2 OCPU, 12GB RAM | Handles 50+ concurrent workflows |
-| Supabase (OCI VM) | 200GB storage | Connection pooling enabled |
-| HF Spaces | Free tier | Use keep-alive pings |
-| MCP servers | 256MB per process | Pool and reuse connections |
-
-## Benchmarks
-
-Typical performance for an OpenSIN agent on a standard workload (read 10 files, edit 3, run tests):
-
-| Metric | Without Optimization | With Optimization |
-|--------|---------------------|-------------------|
-| Total time | 45s | 18s |
-| LLM calls | 12 | 6 |
-| Tokens used | 85,000 | 32,000 |
-| Estimated cost | $0.42 | $0.11 |
+*Last updated:* 2026-04-10  
+*Status:* **ACTIVE & MANDATORY**  
+*Maintainer:* sin-zeus
