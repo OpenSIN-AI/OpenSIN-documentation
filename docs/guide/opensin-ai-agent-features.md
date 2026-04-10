@@ -130,4 +130,57 @@ Unlike Claude Code (Claude only) or Gemini Agent (Gemini only):
 
 ---
 
+## Sprint 2: Subagent Spawning & Remote Control (IN PROGRESS)
+
+**Start:** 2026-04-10 | **Target:** Week 3-4 | **Parent Issue:** #36
+
+### Sub-Tasks
+
+| # | Sub-Task | Issue | Branch | Status |
+|---|---------|-------|--------|--------|
+| S2.1 | Remote Control API (Fastify HTTP+WebSocket) | [#1080](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1080) | `feat/sprint-2.1-remote-control-api` | 🟡 In Progress |
+| S2.2 | Agent CLI Slash Commands | [#1081](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1081) | `feat/sprint-2.2-agent-cli-commands` | 🟡 In Progress |
+| S2.3 | Channel Remote Control (TG/Discord/WA) | [#1082](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1082) | `feat/sprint-2.3-channel-remote-control` | 🟡 In Progress |
+| S2.4 | Progress Streaming (SSE + WebSocket) | [#1083](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1083) | `feat/sprint-2.4-progress-streaming` | 🟡 In Progress |
+
+### Existing Code Surfaces (No Reimplementation)
+
+- **BackgroundAgentManager** (`background_agents/manager.ts`, 880 lines): spawn, kill, listAgents, getAgent, readAgentResult, dispose
+- **BackgroundAgentRecord + types** (`background_agents/types.ts`): Full type system with status, progress, artifact
+- **AgentOrchestrator** (`coordinator/`): TaskScheduler, WorkDispatcher, CoordinatorMonitor
+- **runAgent** (`core/tools/AgentTool/runAgent.ts`): Full agent runner with MCP, context, model routing
+- **forkSubagent** (`core/tools/AgentTool/forkSubagent.ts`): Fork path with context inheritance
+- **SinApiClient** (`api/providers/sin_provider.ts`): Auth patterns (API key + Bearer)
+
+### Architecture
+
+```
+External Callers (n8n, A2A, Telegram, Discord, WhatsApp)
+    │
+    ▼
+Channel Adapters (S2.3) ← /spawn, /agents, /status, /kill, /result
+    │
+    ▼
+Remote Control API (S2.1) ← REST + SSE + WebSocket on port 3100
+    │
+    ▼
+BackgroundAgentManager (EXISTING) ← Core delegation engine
+    │
+    ▼
+Progress Streaming (S2.4) ← Event bus + SSE/WS transport
+```
+
+### SEO Pipeline (Deployed)
+
+- **n8n Workflow:** `tuacbz9e1clDyUEo` on `92.5.60.87:5678`
+- **Blog Repo:** `Delqhi/opensin-blog-content`
+- **Pipeline:** Merged PR → Fetch Commits → LLM Draft (Gemini 3.1 Pro) → Humanize (Gemini 3 Flash) → Commit to Blog Repo
+
+### Infrastructure
+
+- **sin-sync:** ✅ Completed (Mac → OCI VM, 3947 files)
+- **GitLab LogCenter:** ⏳ Blocked (needs `GITLAB_LOGCENTER_TOKEN`)
+
+---
+
 *See also: [OpenSIN-AI Agent Feature Spec](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/opensin-ai-agent-feature-spec.md)*
