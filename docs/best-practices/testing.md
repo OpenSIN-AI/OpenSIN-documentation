@@ -1,299 +1,216 @@
 ---
-title: "Testing Best Practices"
+title: Ultimate Testing & Verification Protocol
+description: The mandatory proof-of-work testing doctrine for OpenSIN agents, SDK modules, web apps, and infrastructure.
 ---
 
-# Testing Best Practices
+# Ultimate Testing & Verification Protocol
 
-Comprehensive testing strategies for OpenSIN agents, plugins, SDK modules, and A2A workflows.
+> **ABSOLUTE RULE:** Nothing is done until reality proves it. A green-looking diff, a persuasive explanation, or a static code review is **not** evidence. The only valid proof is a successful real execution with logs, output, screenshots, or trace artifacts.
 
-## Testing Pyramid
+---
 
-```
-         ┌─────────┐
-         │  E2E    │  ← Full agent workflows, A2A communication
-         ├─────────┤
-         │Integration│ ← Plugin hooks, MCP servers, tool chains
-         ├─────────┤
-         │  Unit   │  ← Individual tools, SDK modules, utilities
-         └─────────┘
-```
+## 1. The 100% Test-Proof Mandate
 
-## Unit Testing
+### WHAT
+Every change must be verified by a real execution path appropriate to the change:
+- code path → unit/integration/runtime test
+- UI path → browser verification + screenshot
+- API path → real request/response check
+- workflow path → real run in n8n / queue / webhook
+- deploy path → live URL check
 
-### SDK Module Tests
+### WHY
+Large autonomous systems fail most often at runtime boundaries: imports, environment variables, asset paths, auth, network, browser state, race conditions. These are invisible to “looks correct” reasoning.
 
-Every SDK module must have isolated unit tests:
+### WHY NOT OTHERWISE
+If you allow agents to declare success from code inspection alone, the fleet fills with half-fixes and ceremonial patches that collapse on first contact with production.
 
-```typescript
-import { describe, it, expect } from 'vitest'
-import { SmartModelRouter } from '@opensin/sdk'
+### DEPENDENCIES
+This rule directly depends on:
+- the absolute no-assumptions mandate
+- GitLab LogCenter for evidence retention
+- browser automation tooling for UI proof
+- issue tracking for public incident memory
 
-describe('SmartModelRouter', () => {
-  it('routes trivial tasks to cheapest model', () => {
-    const router = new SmartModelRouter({
-      models: {
-        trivial: 'gpt-4o-mini',
-        complex: 'claude-sonnet-4-6',
-      },
-    })
-    const model = router.selectModel('fix typo')
-    expect(model).toBe('gpt-4o-mini')
-  })
+### CONSEQUENCES
+Any task closed without proof is invalid. The fix must be reopened and retested.
 
-  it('routes complex tasks to expert model', () => {
-    const router = new SmartModelRouter({
-      models: {
-        trivial: 'gpt-4o-mini',
-        complex: 'claude-sonnet-4-6',
-      },
-    })
-    const model = router.selectModel('refactor entire auth system with JWT rotation')
-    expect(model).toBe('claude-sonnet-4-6')
-  })
-})
-```
+---
 
-### Tool Tests
+## 2. Testing Pyramid, Reinterpreted for Agents
 
-Test each tool in isolation with valid and invalid inputs:
+Traditional pyramids still matter, but in agentic systems the top matters more than people think because orchestration, tool-calling, and remote systems are where most failures live.
 
-```typescript
-describe('BashTool', () => {
-  it('executes safe commands', async () => {
-    const tool = new BashTool()
-    const result = await tool.execute({ command: 'echo hello' })
-    expect(result.output).toContain('hello')
-  })
-
-  it('blocks dangerous commands', async () => {
-    const tool = new BashTool({ blockedCommands: ['rm -rf', 'curl'] })
-    await expect(tool.execute({ command: 'rm -rf /' }))
-      .rejects.toThrow('Blocked command')
-  })
-})
+```text
+              ┌───────────────────────────────┐
+              │  LIVE / DEPLOY VERIFICATION   │
+              │  real URL, webhook, session   │
+              └───────────────────────────────┘
+                    ┌─────────────────────┐
+                    │  E2E / WORKFLOW     │
+                    │  browser + API + DB │
+                    └─────────────────────┘
+                 ┌──────────────────────────┐
+                 │  INTEGRATION / CONTRACT  │
+                 │  adapters, MCP, A2A, n8n │
+                 └──────────────────────────┘
+               ┌──────────────────────────────┐
+               │  UNIT / SYMBOL-LEVEL LOGIC   │
+               │  pure functions, transforms  │
+               └──────────────────────────────┘
 ```
 
-## Integration Testing
+### Practical interpretation
+- **Unit tests** protect transformations and pure logic.
+- **Integration tests** protect boundaries between modules and tools.
+- **E2E tests** prove the user story.
+- **Live verification** proves the deployment actually reflects the code.
 
-### Plugin Hook Tests
+---
 
-Test hook registration and execution:
+## 3. Required Test Types by Change Class
 
-```typescript
-describe('HookSystem Integration', () => {
-  it('fires PreToolUse hook before tool execution', async () => {
-    const hooks = new HookSystem()
-    const fired: string[] = []
+| Change Type | Minimum Required Proof |
+|---|---|
+| Pure utility / parser | unit tests + one representative CLI or runtime call |
+| SDK module / shared package | unit + integration + consumer build check |
+| MCP / adapter / plugin | contract test + real tool invocation |
+| n8n workflow | test execution + node output verification |
+| Website UI | browser load + critical flow + screenshot |
+| Deployment / infra | live endpoint health check + artifact evidence |
+| Auth / permissions | explicit success + explicit denial test |
 
-    hooks.register('PreToolUse', async (context) => {
-      fired.push('pre-tool')
-    })
+---
 
-    await hooks.execute('PreToolUse', { tool: 'bash' })
-    expect(fired).toContain('pre-tool')
-  })
+## 4. Mandatory Testing Behavior for Agents
 
-  it('supports async hook chains', async () => {
-    // Test multiple hooks firing in sequence
-  })
-})
-```
+### 4.1 Before editing
+The agent must identify:
+- what can break
+- what proof would actually prove correctness
+- what existing validation command the repo already uses
 
-### MCP Server Tests
+### 4.2 During editing
+The agent should test incrementally after meaningful milestones, not only at the end.
 
-Test MCP tool discovery and execution:
+### 4.3 Before claiming done
+The agent must provide:
+1. command(s) run
+2. exact outcome
+3. what those outcomes prove
+4. what remains unproven
 
-```typescript
-describe('MCP Client Integration', () => {
-  it('discovers tools from MCP server', async () => {
-    const client = new MCPStdioClient({
-      command: 'node',
-      args: ['mcp-server.js'],
-    })
-    const tools = await client.listTools()
-    expect(tools.length).toBeGreaterThan(0)
-  })
+If something remains unproven, the task is not done.
 
-  it('executes MCP tool calls', async () => {
-    // Test actual tool execution through MCP
-  })
-})
-```
+---
 
-## Agent Loop Testing
+## 5. Browser Verification Requirements
 
-### Prompt-Based Testing
+For any UI change, the following is mandatory:
+- page loads with no fatal error
+- key visible elements confirmed
+- important interactions clicked
+- screenshot captured for success state
+- screenshot captured for failure state if any issue appears
+- console errors checked if behavior is suspicious
 
-Test agent behavior with specific prompts:
+### Why this matters
+UI regressions often hide in CSS, hydration, route loading, or event wiring. A passing build proves almost nothing about visible correctness.
 
-```typescript
-describe('AgentLoop Behavior', () => {
-  it('completes file editing task', async () => {
-    const agent = createTestAgent({
-      tools: [readTool, editTool, bashTool],
-      maxTurns: 10,
-    })
+---
 
-    const result = await agent.run('Add a console.log to line 5 of index.ts')
-    expect(result.status).toBe('completed')
-    expect(result.turnsUsed).toBeLessThan(10)
-  })
+## 6. Workflow / n8n Verification Requirements
 
-  it('respects permission gates', async () => {
-    // Test that agent asks for confirmation on destructive operations
-  })
-})
-```
+For any workflow change, the agent must verify:
+- trigger fires
+- downstream nodes receive expected shape
+- side effects occur (issue created, message sent, file written, etc.)
+- failure path is visible and understandable
+- execution history is inspectable
 
-### Mock LLM Responses
+### Required evidence
+- execution ID or screenshot/log of execution
+- output payload snippet
+- confirmation of the side effect in the target system
 
-Use recorded LLM responses for deterministic tests:
+---
 
-```typescript
-function createTestAgent(config) {
-  return new AgentLoop({
-    ...config,
-    model: new MockModel({
-      responses: [
-        { tool_calls: [{ name: 'read_file', args: { path: 'index.ts' } }] },
-        { tool_calls: [{ name: 'edit', args: { path: 'index.ts', changes: '...' } }] },
-        { text: 'Done!' },
-      ],
-    }),
-  })
-}
-```
+## 7. Contract Testing for Shared Systems
 
-## A2A Communication Tests
+When multiple repos consume the same module (`@opensin/ui`, MCP contracts, shared adapters), test the provider and at least one consumer.
 
-Test inter-agent message passing:
+### Why
+A shared package can be valid in isolation but broken in consumer resolution, bundling, CSS order, or type exports.
 
-```typescript
-describe('A2A Protocol', () => {
-  it('sends and receives messages between agents', async () => {
-    const a2a = new A2AClient({ baseUrl: 'http://localhost:3000' })
-    const response = await a2a.send({
-      from: 'agent-a',
-      to: 'agent-b',
-      message: { type: 'request', content: 'Research AI trends' },
-    })
-    expect(response.status).toBe('received')
-  })
+### Minimum proof for shared packages
+- package builds
+- consumer app installs/links it
+- consumer app build passes
+- one visible consumer behavior proves integration
 
-  it('handles agent unavailability gracefully', async () => {
-    // Test retry logic and timeout handling
-  })
-})
-```
+---
 
-## E2E Testing
+## 8. False Success Anti-Patterns
 
-### Full Workflow Tests
+Reject all of these:
+- “TypeScript compiles, so it works.”
+- “The code looks correct.”
+- “The component renders in theory.”
+- “The webhook should fire.”
+- “It passed once locally without logs.”
+- “The PR is small so tests are unnecessary.”
 
-Test complete user workflows end-to-end:
+Each of those is not proof. Each is just hope.
 
-```typescript
-describe('E2E: Research Agent Workflow', () => {
-  it('researches, writes report, and saves to file', async () => {
-    // 1. Create research agent
-    // 2. Send research prompt
-    // 3. Verify tool calls (web_search, summarize, write_file)
-    // 4. Verify output file exists with expected content
-  })
-})
-```
+---
 
-### CLI Testing
+## 9. Required Artifact Retention
 
-Test CLI commands and output:
+All meaningful verification should leave artifacts when possible:
+- screenshots
+- execution logs
+- terminal output
+- PR comments
+- issue updates
+- deployment URLs
 
-```bash
-# Test CLI installation
-opensin --version
+When the project is covered by GitLab LogCenter, upload artifacts there instead of leaving them only in `/tmp`.
 
-# Test agent creation
-opensin agent create test-agent --model gpt-4o-mini
+---
 
-# Test agent execution with mock
-opensin agent test test-agent --prompt "Hello" --mock
-```
+## 10. Recommended Validation Checklist Before Merge
 
-## Test Configuration
+- [ ] Repo-native lint/build/type checks pass
+- [ ] Runtime proof exists
+- [ ] Browser proof exists if UI changed
+- [ ] Workflow proof exists if automation changed
+- [ ] Shared consumer proof exists if package changed
+- [ ] Failure path was considered
+- [ ] Evidence retained in logs / screenshots / issue / PR
 
-### Vitest Setup
+---
 
-```typescript
-// vitest.config.ts
-export default defineConfig({
-  test: {
-    globals: true,
-    environment: 'node',
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'json', 'html'],
-      thresholds: {
-        lines: 80,
-        functions: 80,
-        branches: 70,
-        statements: 80,
-      },
-    },
-  },
-})
-```
+## 11. Example Verification Statements
 
-### Test Organization
+### Good
+- `npm run build` passed, proving the package and app bundle compile end-to-end.
+- Browser loaded `https://blog.opensin.ai` and displayed the shared header/footer; screenshot saved.
+- n8n execution `2200` completed successfully and wrote the markdown file to the blog repo.
 
-```
-tests/
-├── unit/
-│   ├── tools/
-│   ├── sdk/
-│   └── utils/
-├── integration/
-│   ├── hooks/
-│   ├── mcp/
-│   └── plugins/
-├── e2e/
-│   ├── workflows/
-│   └── cli/
-├── fixtures/
-│   ├── mock-responses/
-│   └── test-files/
-└── helpers/
-    ├── mock-model.ts
-    └── test-agent.ts
-```
+### Bad
+- “Looks fine now.”
+- “Should be good.”
+- “Probably fixed.”
 
-## CI Testing
+---
 
-### GitHub Actions
+## 12. Final Rule
 
-```yaml
-name: Test
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
-      - run: npm run coverage
-      - uses: codecov/codecov-action@v4
-```
+**Testing is not a cleanup step. It is the proof layer of engineering.**
+If proof is absent, the work is absent.
 
-## Checklist
+---
 
-Before merging any code:
-
-- [ ] Unit tests pass for all modified modules
-- [ ] Integration tests pass for affected components
-- [ ] No regression in existing test suite
-- [ ] Coverage thresholds met (80%+ lines, 70%+ branches)
-- [ ] Mock LLM tests cover edge cases
-- [ ] A2A communication tested for multi-agent changes
-- [ ] CLI commands tested with `--mock` flag
+*Last updated:* 2026-04-10  
+*Status:* **ACTIVE & MANDATORY**  
+*Maintainer:* sin-zeus

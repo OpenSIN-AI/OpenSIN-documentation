@@ -1,200 +1,206 @@
 ---
-title: "Monitoring & Observability Best Practices"
+title: Ultimate Monitoring & Observability Doctrine
+description: Mandatory visibility standards for agents, workflows, infrastructure, costs, and incidents across the OpenSIN fleet.
 ---
 
-# Monitoring & Observability Best Practices
+# Ultimate Monitoring & Observability Doctrine
 
-Guidelines for monitoring OpenSIN agents, tracking performance, and maintaining operational visibility.
+> **RULE:** If the fleet cannot see it, the fleet cannot trust it. Monitoring is not decoration. It is the nervous system of autonomous engineering.
 
-## Key Metrics
+---
 
-### Agent Metrics
+## 1. Core Principle
 
-| Metric | Description | Alert Threshold |
-|--------|-------------|-----------------|
-| Request Rate | Requests per second | > 100 req/s |
-| Error Rate | Percentage of failed requests | > 5% |
-| Latency (p50) | Median response time | > 5s |
-| Latency (p99) | 99th percentile response time | > 30s |
-| Token Usage | Input + output tokens per session | > 100K/session |
-| Cost | API costs per hour | > $10/hour |
-| Active Sessions | Concurrent agent sessions | > 50 |
-| Turn Count | Average turns per task | > 20 |
+Every significant system must answer these questions at all times:
+- Is it alive?
+- Is it healthy?
+- Is it producing value?
+- Is it failing silently?
+- Is it costing too much?
+- Can we explain what happened after the fact?
 
-### Infrastructure Metrics
+If a subsystem cannot answer these, it is not production-ready.
 
-| Component | Metric | Threshold |
-|-----------|--------|-----------|
-| n8n (OCI VM) | CPU usage | > 80% |
-| n8n (OCI VM) | Memory usage | > 90% |
-| Supabase | Connection pool usage | > 80% |
-| Supabase | Storage usage | > 80% of 200GB |
-| HF Spaces | Uptime | < 99% |
-| MCP Servers | Response time | > 5s |
+---
 
-## Health Checks
+## 2. Observability Layers
 
-### Agent Health
+### 2.1 Agent layer
+Track:
+- active sessions
+- error rate
+- response latency
+- model/tool availability
+- background task state
+- completion vs timeout vs cancellation
 
-```typescript
-interface AgentHealth {
-  status: 'healthy' | 'degraded' | 'unhealthy'
-  lastActivity: Date
-  activeSessions: number
-  errorRate: number
-  avgResponseTime: number
-  modelAvailability: boolean
-}
+### 2.2 Workflow layer
+Track:
+- trigger frequency
+- execution success/failure
+- queue backlogs
+- node-level bottlenecks
+- side effect confirmation
 
-async function checkAgentHealth(agentId: string): Promise<AgentHealth> {
-  const metrics = await metricsService.getAgentMetrics(agentId)
-  const modelStatus = await checkModelAvailability()
+### 2.3 Infrastructure layer
+Track:
+- CPU / memory / disk
+- network health
+- storage exhaustion risk
+- process uptime
+- HF Space sleep/restart behavior
 
-  return {
-    status: determineHealthStatus(metrics, modelStatus),
-    lastActivity: metrics.lastActivity,
-    activeSessions: metrics.activeSessions,
-    errorRate: metrics.errorRate,
-    avgResponseTime: metrics.avgResponseTime,
-    modelAvailability: modelStatus.available,
-  }
-}
-```
+### 2.4 Economic layer
+Track:
+- token usage
+- hourly cost
+- cost spikes per workflow / agent / model
+- expensive retry loops
 
-### Infrastructure Health
+---
 
-```bash
-# Run health checks
-npm run health
+## 3. Mandatory Health Checks
 
-# Check specific components
-npm run health:agents
-npm run health:infrastructure
-npm run health:mcp
-npm run health:a2a
-```
+Every production-capable component needs a health signal:
+- websites → reachable URL / status check
+- APIs → health endpoint or equivalent request
+- workflows → last successful execution timestamp
+- agents → last heartbeat / last activity
+- MCP tools → list-tools / smoke-call success
 
-## Logging
+### Why
+A component that is “probably fine” is already a liability.
 
-### Log Levels
+---
 
-| Level | Use Case |
-|-------|----------|
-| `ERROR` | Failures requiring immediate attention |
-| `WARN` | Recoverable issues, degraded performance |
-| `INFO` | Significant events (session start, delegation) |
-| `DEBUG` | Detailed execution flow |
-| `TRACE` | Every tool call, every LLM response |
+## 4. Logging Rules
 
-### Structured Logging
+### 4.1 Structured logs only where possible
+Prefer machine-readable logs with fields for:
+- timestamp
+- component
+- severity
+- session/task/issue IDs
+- action
+- result
+- error class
 
-```typescript
-import { createLogger } from '@opensin/sdk'
+### 4.2 Redaction is mandatory
+Never log raw secrets, tokens, passwords, or credentials. Log references, not secrets.
 
-const logger = createLogger({
-  level: 'INFO',
-  format: 'json',
-  destination: 'logcenter',
-  redaction: ['apiKey', 'token', 'password'],
-})
+### 4.3 Log what matters
+Log:
+- starts
+- finishes
+- retries
+- failures
+- unusual paths
+- external side effects
+Do **not** drown the system in meaningless noise.
 
-logger.info('Session started', {
-  sessionId: 'ses_abc123',
-  agentId: 'researcher',
-  model: 'claude-sonnet-4-6',
-})
+---
 
-logger.error('Tool execution failed', {
-  tool: 'bash',
-  error: 'Command timeout',
-  sessionId: 'ses_abc123',
-})
-```
+## 5. Alerting Rules
 
-## Alerting
+Alert only on things that require action.
 
-### Alert Rules
+### Critical alerts
+- system down
+- auth broken
+- workflow repeatedly failing
+- data loss risk
+- billing/cost anomaly
+- stuck queue / stuck retry loop
 
-```typescript
-const alertRules = [
-  {
-    name: 'high_error_rate',
-    condition: (metrics) => metrics.errorRate > 0.05,
-    severity: 'critical',
-    channels: ['telegram', 'email'],
-    message: 'Agent error rate exceeds 5%',
-  },
-  {
-    name: 'model_unavailable',
-    condition: (metrics) => !metrics.modelAvailability,
-    severity: 'high',
-    channels: ['telegram'],
-    message: 'Primary model is unavailable',
-  },
-  {
-    name: 'cost_spike',
-    condition: (metrics) => metrics.hourlyCost > 10,
-    severity: 'warning',
-    channels: ['telegram'],
-    message: 'Hourly cost exceeds $10',
-  },
-]
-```
+### Warning alerts
+- degraded latency
+- elevated error rate
+- stale worker
+- missed execution window
 
-## Dashboards
+### Anti-pattern
+Do not send alerts for every minor fluctuation. Alert fatigue blinds operators.
 
-### Agent Fleet Dashboard
+---
 
-```
-┌─────────────────────────────────────────────────┐
-│              OpenSIN Fleet Status                │
-├─────────────────────────────────────────────────┤
-│ Total Agents: 92    Active: 45    Idle: 47      │
-│                                                 │
-│ Success Rate: 98.2%    Avg Latency: 2.1s        │
-│ Hourly Cost: $4.23    Tokens/min: 12,450        │
-│                                                 │
-│ ┌─────────┐ ┌─────────┐ ┌─────────┐            │
-│ │  Teams  │ │  MCPs   │ │  A2A    │            │
-│ │  17/17  │ │  6/7    │ │ 92/92   │            │
-│ │   ✅    │ │  ⚠️     │ │   ✅    │            │
-│ └─────────┘ └─────────┘ └─────────┘            │
-└─────────────────────────────────────────────────┘
-```
+## 6. Evidence Preservation
 
-## Cost Monitoring
+Important incidents must preserve evidence:
+- screenshots
+- logs
+- failing payloads
+- URLs
+- execution IDs
+- commit/branch/issue references
 
-```typescript
-import { UsagePricing } from '@opensin/sdk'
+Where LogCenter applies, upload there. `/tmp` is temporary, not authoritative.
 
-const pricing = new UsagePricing({
-  models: {
-    'gpt-4o-mini': { input: 0.15, output: 0.6 },
-    'gpt-4o': { input: 2.5, output: 10 },
-    'claude-sonnet-4-6': { input: 3, output: 15 },
-    'claude-opus-4-6': { input: 15, output: 75 },
-  },
-})
+---
 
-// Track per session
-pricing.trackSession('ses_abc123', {
-  model: 'claude-sonnet-4-6',
-  inputTokens: 25000,
-  outputTokens: 8000,
-})
+## 7. Dashboards Must Be Operationally Useful
 
-// Get cost report
-const report = pricing.getReport('ses_abc123')
-// { totalCost: 0.195, totalTokens: 33000, calls: 12 }
-```
+A good dashboard tells the operator what to do next.
+A bad dashboard is just colorful guilt.
 
-## Checklist
+Minimum useful dashboard sections:
+- overall fleet health
+- current incidents
+- recent failed executions
+- hot repos / open blockers
+- cost trends
+- deployment state
 
-- [ ] All key metrics collected
-- [ ] Health checks configured
-- [ ] Log levels set appropriately
-- [ ] Alert rules defined
-- [ ] Cost monitoring enabled
-- [ ] Dashboards created
-- [ ] Log redaction active
-- [ ] GitLab LogCenter integration working
+---
+
+## 8. Cost Observability
+
+The fleet must watch for:
+- runaway retries
+- bad model routing
+- needlessly expensive model selection
+- repeated failed background tasks
+- duplicate agents doing the same work
+
+### Why
+An autonomous system that does not watch cost becomes a denial-of-wallet attack against itself.
+
+---
+
+## 9. Silent Failure Prevention
+
+Every important side effect must be checked downstream.
+Examples:
+- issue supposedly created → confirm issue URL exists
+- blog supposedly published → confirm file exists and page resolves
+- deploy supposedly finished → confirm URL and assets load
+- agent supposedly completed → confirm result retrievable
+
+Do not trust intermediate success messages over final reality.
+
+---
+
+## 10. Suggested Standard Metrics
+
+| Area | Metric | Why it matters |
+|---|---|---|
+| Agents | active sessions | detects stalls and overload |
+| Agents | error rate | reveals instability |
+| Agents | avg / p95 latency | reveals slowdowns |
+| Workflows | success rate | proves automation health |
+| Workflows | execution age | detects dead pipelines |
+| Infra | memory / disk | prevents crashes |
+| Costs | hourly spend | prevents runaway economics |
+| Product | live URL health | proves end-user reality |
+
+---
+
+## 11. Final Rule
+
+**Monitoring is not for feeling informed. It is for enabling intervention.**
+If a metric cannot drive a decision, rethink why you are collecting it.
+
+---
+
+*Last updated:* 2026-04-10  
+*Status:* **ACTIVE & MANDATORY**  
+*Maintainer:* sin-zeus
