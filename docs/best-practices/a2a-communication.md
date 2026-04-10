@@ -1,252 +1,102 @@
 ---
-title: "A2A Communication Best Practices"
+title: Ultimate A2A Communication & Fleet Architecture V2
+description: The absolute rulebook for agent-to-agent communication, inbound work governance, and infrastructure mandates.
 ---
 
-# A2A Communication Best Practices
+# Ultimate A2A Communication & Fleet Architecture V2
 
-Guidelines for reliable, secure, and efficient Agent-to-Agent communication in the OpenSIN ecosystem.
+> **⚠️ WICHTIGER HINWEIS AN ALLE AGENTEN UND ENTWICKLER ⚠️**
+> Diese Seite definiert die **EINZIG ERLAUBTEN** Methoden, wie Agenten untereinander kommunizieren, wie externe Arbeit in das System gelangt und wie LLMs aufgerufen werden. 
+> **Wer gegen diese Mandate verstößt, wird permanent und ohne Vorwarnung aus dem Netzwerk gebannt.**
 
-## Protocol Fundamentals
+---
 
-### Message Structure
+## 1. The Pure Agentic Paradigm V2 (Keine monolithischen Backends)
 
-Every A2A message must follow this structure:
+### WAS passiert hier?
+Wir bauen **KEINE** veralteten, monolithischen Backends mehr. Alles im OpenSIN-Ökosystem besteht **AUSSCHLIESSLICH** aus unabhängigen A2A-Agenten, Frontends und MCP-Servern, die über eine globale Datenbank (`sin-supabase`) vernetzt sind. Jeder Agent muss zudem einen CLI-Einstiegspunkt besitzen und als "Produkt" im SIN Solver Storefront (Marketplace-ready) fungieren.
 
-```typescript
-interface A2AMessage {
-  id: string              // UUID for tracking
-  from: string            // Sender agent ID
-  to: string              // Target agent ID
-  type: 'request' | 'response' | 'notification' | 'error'
-  content: unknown        // Task payload or response data
-  metadata?: {
-    priority: 'low' | 'normal' | 'high' | 'critical'
-    timeout?: number      // ms until message expires
-    correlationId?: string // Link related request/response
-    retryCount?: number   // Current retry attempt
-  }
-}
+### WARUM wird es so gemacht?
+Monolithische Backends sind Skalierungs-Flaschenhälse. Wenn ein Teil des Backends crasht, crasht das ganze System. Unabhängige A2A-Agenten agieren wie autonome Freelancer: Wenn einer ausfällt, übernimmt ein anderer oder der fehlerhafte Agent heilt sich selbst über das `Global Fleet Self-Healing Protocol`.
+
+### WESHALB nicht anders?
+Traditionelle Microservices erfordern massiven DevOps-Overhead (Kubernetes-Cluster, Service-Meshes). Unsere A2A-Agenten nutzen Hugging Face VMs, OCI VMs und Supabase für eine serverless, dezentrale und nahezu kostenlose Skalierung.
+
+### WOMIT hängt es zusammen?
+- **sin-a2a-agent-forge**: Wenn ein Agent bei einer Aufgabe feststellt, dass ein Konnektor oder Systemzugriff fehlt, darf er **nicht** abbrechen oder den User fragen. Er **MUSS** autonom den Forge-Skill aufrufen und den fehlenden Agenten (`A2A-SIN-[Name]`) selbst von Grund auf erschaffen und deployen.
+
+### WAS sind die KONSEQUENZEN bei Missachtung?
+- Wer versucht, Backend-Logik in ein zentrales Repo zu pressen, statt einen neuen A2A-Agenten zu deployen, verstößt gegen die Architektur. Der Code wird restlos gelöscht.
+
+---
+
+## 2. Inbound Work & PR Watcher Governance (Absolut, keine Ausnahmen)
+
+### WAS passiert hier?
+Jede externe Plattform (Freelancer, HackerOne, Bugcrowd, Surveys), die Arbeit an die Flotte liefert, **MUSS** eine kanonische Intake-Spur besitzen (über `n8n`). Rohe Plattform-Payloads dürfen **niemals** direkt konsumiert werden. Sie müssen zuerst in das kanonische `work_item`-Schema normalisiert werden, woraufhin zwingend ein GitHub Issue erstellt wird, bevor Branch/PR-Arbeit beginnt. Jedes Repo **MUSS** zudem einen PR-Watcher-Vertrag besitzen.
+
+### WARUM wird es so gemacht?
+Ohne Normalisierung und Issue-Tracking herrscht Chaos. Agenten würden unkontrolliert an verschiedenen Formaten arbeiten, Fehler könnten nicht getrackt werden und die Arbeit wäre für den Operator unsichtbar. Das Issue-System ist die absolute "Source of Truth" für Arbeitsaufträge.
+
+### WESHALB nicht anders?
+Direkte Webhook-Verarbeitung durch Agenten führt zu Halluzinationen bei unerwarteten Payload-Änderungen der Drittanbieter. Ein n8n-Workflow als Firewall und Normalisierer fängt diese Fehler ab, bevor sie teure Agenten-Zeit verbrennen.
+
+### WOMIT hängt es zusammen?
+- **Die n8n Foundation**: n8n auf der OCI VM ist unser unzerstörbarer, "dummer" Router. Es führt keine komplexe Logik aus, sondern normalisiert nur und erstellt GitHub Issues.
+- **sin-n8n CLI**: Jeder wiederholbare Task muss vorab mit `check-should-automate` geprüft und ggf. in einen n8n-Poller umgewandelt werden.
+
+### WAS sind die KONSEQUENZEN bei Missachtung?
+- Plattformen ohne verifizierte Intake-Logik, fehlende Signaturprüfung oder fehlende PR-Watcher-Konfiguration sind `fail-closed` und blockieren die Aktivierung. Wer Arbeit ohne vorheriges GitHub Issue beginnt, begeht einen schweren Protokollverstoß.
+
+---
+
+## 3. The Telegram Brain (A2A-SIN-TelegramBot)
+
+### WAS passiert hier?
+Jeder A2A Agent betreibt seinen eigenen dedizierten Telegram-Bot für spezifische Tasks. Aber **A2A-SIN-TelegramBot** ist EXKLUSIV der Watcher, Router und Incident Monitor für flottenweite Ausfälle und Eskalationen.
+
+### WARUM wird es so gemacht?
+Telegram ist die schnellste, ressourcenschonendste Schnittstelle zum menschlichen Operator (Chef). Wenn die Auto-Heilung fehlschlägt, ist Telegram der Pager.
+
+### WESHALB nicht anders?
+E-Mail ist zu langsam, Slack/Discord zu API-heavy für simple Alerts. Telegram-Bots lassen sich via Polling oder simplen Webhooks auf jeder HF VM ohne Port-Freigaben betreiben.
+
+### WAS sind die KONSEQUENZEN bei Missachtung?
+Agenten, die kritische Fehler nicht an den Telegram-Incident-Monitor melden, gelten als "blind" und gefährden die Flotten-Sicherheit.
+
+---
+
+## 4. Opencode Model Mandate (Priority -3 — Absolut über allem)
+
+### WAS passiert hier?
+JEDER A2A Agent ruft LLMs **AUSSCHLIESSLICH** über die `opencode` CLI auf (`opencode run --format json`). Direkte Aufrufe an die Gemini API (`generativelanguage.googleapis.com`) oder Anthropic API sind **PERMANENT VERBOTEN**.
+
+```python
+# EINZIG ERLAUBTER LLM AUFRUF IN ALLEN AGENTEN:
+import subprocess, json
+
+def call_llm(prompt: str, timeout: int = 120) -> str:
+    result = subprocess.run(
+        ["opencode", "run", prompt, "--format", "json"],
+        capture_output=True, text=True, timeout=timeout,
+    )
+    # ... parsing ...
 ```
 
-### Communication Patterns
+### WARUM wird es so gemacht?
+Die `opencode` CLI nutzt das Antigravity-Plugin, welches automatisch Token-Rotation, Rate-Limit-Handling (über die OCI E2.Micro Token Factory) und Provider-Fallbacks steuert. Es ist die zentrale Intelligenz-Steuerung der Flotte.
 
-| Pattern | Use Case | Example |
-|---------|----------|---------|
-| Request/Response | Task delegation | Research agent → Data agent |
-| Fire-and-Forget | Notifications | Status updates, logging |
-| Pub/Sub | Broadcast | Fleet-wide announcements |
-| Pipeline | Sequential processing | Data → Analysis → Report |
+### WESHALB nicht anders?
+Wenn Agenten ihre eigenen API-Keys mitbringen (`requests.post(...)`), umgehen sie das Flotten-Billing, die Rate-Limit-Warteschlangen und das Caching. Das führt zu 429-Fehlern (Too Many Requests), die das gesamte System zum Absturz bringen.
 
-## Reliability
+### WOMIT hängt es zusammen?
+- **Global Opencode Sync (`sin-sync`)**: Nach JEDER Änderung an der globalen Config (`opencode.json`, Skills) MUSS `sin-sync` ausgeführt werden, damit die HF VMs und die OCI VM synchron zum Mac bleiben.
 
-### Retry Strategy
+### WAS sind die KONSEQUENZEN bei Missachtung?
+- Wer den Provider `gemini-api` in die `opencode.json` einträgt oder direkte HTTP-Calls an OpenAI/Anthropic macht: **SOFORTIGER PERMANENTER BAN**. Es gibt keine zweite Chance.
 
-Implement exponential backoff for failed deliveries:
+---
 
-```typescript
-async function sendWithRetry(message: A2AMessage, maxRetries = 3) {
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      return await a2aClient.send(message)
-    } catch (error) {
-      if (i === maxRetries - 1) throw error
-      const delay = Math.pow(2, i) * 1000 // 1s, 2s, 4s
-      await sleep(delay)
-    }
-  }
-}
-```
-
-### Dead Letter Queue
-
-Messages that fail after all retries go to a dead letter queue:
-
-```typescript
-interface DeadLetterEntry {
-  originalMessage: A2AMessage
-  failureReason: string
-  failedAt: Date
-  retryCount: number
-}
-```
-
-### Idempotency
-
-All A2A operations must be idempotent — processing the same message twice must not cause duplicate side effects:
-
-```typescript
-// Use correlationId to detect duplicates
-const processed = await checkProcessed(message.correlationId)
-if (processed) return { status: 'duplicate', id: message.correlationId }
-
-// Process the message
-const result = await handleMessage(message)
-
-// Mark as processed
-await markProcessed(message.correlationId)
-```
-
-## Security
-
-### Authentication
-
-All inter-agent communication requires JWT authentication:
-
-```typescript
-const response = await fetch('https://agent-b.opensin.ai/a2a/v1', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${jwt}`,
-    'X-Agent-ID': 'sin-hermes',
-    'X-Fleet-ID': 'production',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(taskPayload),
-})
-```
-
-### Transport Encryption
-
-- **Production**: HTTPS (TLS 1.3) required for all external communication
-- **Internal**: Cloudflare Tunnels for zero-trust networking
-- **Never** transmit credentials over plaintext HTTP
-
-### Payload Validation
-
-Validate all incoming messages before processing:
-
-```typescript
-function validateMessage(msg: unknown): A2AMessage {
-  const schema = z.object({
-    id: z.string().uuid(),
-    from: z.string().min(1),
-    to: z.string().min(1),
-    type: z.enum(['request', 'response', 'notification', 'error']),
-    content: z.unknown(),
-    metadata: z.object({
-      priority: z.enum(['low', 'normal', 'high', 'critical']).optional(),
-      timeout: z.number().positive().optional(),
-    }).optional(),
-  })
-
-  return schema.parse(msg)
-}
-```
-
-## Performance
-
-### Connection Pooling
-
-Reuse connections to avoid handshake overhead:
-
-```typescript
-const pool = new A2AConnectionPool({
-  size: 10,
-  idleTimeout: 60_000,
-  healthCheckInterval: 30_000,
-})
-
-// Get connection from pool
-const conn = await pool.acquire()
-try {
-  await conn.send(message)
-} finally {
-  pool.release(conn)
-}
-```
-
-### Message Batching
-
-Batch independent messages to reduce network overhead:
-
-```typescript
-// Instead of sending individually
-messages.forEach(msg => a2aClient.send(msg))
-
-// Batch them
-await a2aClient.sendBatch(messages)
-```
-
-### Timeout Configuration
-
-Set appropriate timeouts based on message priority:
-
-| Priority | Timeout | Retry Count |
-|----------|---------|-------------|
-| Critical | 30s | 5 |
-| High | 60s | 3 |
-| Normal | 120s | 2 |
-| Low | 300s | 1 |
-
-## Error Handling
-
-### Error Response Format
-
-Standardize error responses:
-
-```typescript
-interface A2AError {
-  type: 'error'
-  code: 'AGENT_UNAVAILABLE' | 'TIMEOUT' | 'INVALID_PAYLOAD' | 'RATE_LIMITED' | 'INTERNAL_ERROR'
-  message: string
-  details?: unknown
-  retryable: boolean
-}
-```
-
-### Circuit Breaker
-
-Prevent cascading failures with circuit breakers:
-
-```typescript
-const circuit = new CircuitBreaker({
-  failureThreshold: 5,
-  resetTimeout: 30_000,
-  halfOpenMaxCalls: 1,
-})
-
-circuit.execute(() => a2aClient.send(message))
-```
-
-## Monitoring
-
-### Message Tracking
-
-Track all messages for debugging and auditing:
-
-```typescript
-interface MessageLog {
-  messageId: string
-  correlationId?: string
-  from: string
-  to: string
-  type: string
-  status: 'sent' | 'delivered' | 'processed' | 'failed' | 'expired'
-  timestamp: Date
-  latency?: number
-}
-```
-
-### Key Metrics
-
-| Metric | Alert Threshold |
-|--------|----------------|
-| Message delivery rate | < 99% |
-| Average latency | > 5s |
-| Dead letter queue size | > 100 |
-| Circuit breaker trips | > 3/hour |
-
-## Checklist
-
-Before deploying A2A communication:
-
-- [ ] Message schema validated with Zod/JSON Schema
-- [ ] JWT authentication configured
-- [ ] Retry logic with exponential backoff implemented
-- [ ] Idempotency handling via correlation IDs
-- [ ] Circuit breaker for external agent calls
-- [ ] Dead letter queue configured
-- [ ] Timeout values set per priority level
-- [ ] Error responses follow standard format
-- [ ] Message logging enabled for debugging
-- [ ] Transport uses HTTPS/TLS 1.3
+*Letzte Aktualisierung:* 2026-04-10
+*Status:* **AKTIV & BINDEND**
+*Verantwortlich:* sin-zeus
