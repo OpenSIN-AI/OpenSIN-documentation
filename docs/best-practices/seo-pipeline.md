@@ -52,9 +52,9 @@ Initially we tried the built‑in HTTP Request node. Problems encountered:
 
 | Problem | Symptom | Fix |
 |---------|---------|-----|
-| JSON body encoding | GitHub received malformed JSON | Switch to raw body expression: `={{ JSON.stringify({...}) }}` |
+| JSON body encoding | GitHub received malformed JSON | Switch to raw body expression: `&#123;&#123; JSON.stringify({...}) &#125;&#125;` |
 | Content‑Type conflicts | Node sent form‑urlencoded | Set `contentType: raw` and `sendBody: true`. |
-| Base64 handling | Needed to embed `$json.content_base64` | Expression `={{ $json.content_base64 }}` works. |
+| Base64 handling | Needed to embed `$json.content_base64` | Expression `&#123;&#123; $json.content_base64 &#125;&#125;` works. |
 | Reliability | Various edge cases | Final solution: replace HTTP node with Function node using `https` – full control. |
 
 ### Determinism Guarantee

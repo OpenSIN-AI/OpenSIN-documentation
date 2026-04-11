@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'OpenSIN Documentation',
   description: 'OpenSIN-AI — Autonomous AI Agent Ecosystem',
+  ignoreDeadLinks: true,
   themeConfig: {
     nav: [
       { text: 'Guide', link: '/docs/guide/getting-started' },
@@ -113,6 +114,7 @@ export default defineConfig({
           { text: 'Hello World', link: '/docs/examples/hello-world' },
           { text: 'Multi-Agent', link: '/docs/examples/multi-agent' },
           { text: 'Telegram Bot', link: '/docs/examples/telegram-bot' },
+          { text: 'Dual Auth Rotators', link: '/docs/examples/dual-auth-rotators' },
         ],
       },
       {

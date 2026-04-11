@@ -11,7 +11,7 @@ Common issues and their solutions.
 ## High Error Rate
 
 1. Review error patterns
-2. Check rate limits
+2. Check rate limits (For Google accounts and OpenAI pools, see [Dual Auth Rotators](/docs/examples/dual-auth-rotators))
 3. Verify input format
 
 ## High Latency
