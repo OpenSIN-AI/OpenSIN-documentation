@@ -6,7 +6,6 @@
 
 - [Website](https://opensin.ai)
 - [Dashboard](https://a2a.delqhi.com)
-- [Antigravity Rotator 2.0](docs/antigravity-rotator/UPGRADE-ROADMAP.md)
 - [Discord](https://discord.gg/opensin)
 - [GitHub](https://github.com/OpenSIN-AI)
 
@@ -32,7 +31,6 @@
 | [Examples](docs/examples/) | Code examples |
 | [Tutorials](docs/tutorials/) | Step-by-step tutorials |
 | [Bridges](docs/bridges/) | Bridge documentation |
-| [Antigravity Rotator 2.0](docs/antigravity-rotator/) | Full 12-phase architecture, features, and roadmap |
 
 ## Ecosystem
 

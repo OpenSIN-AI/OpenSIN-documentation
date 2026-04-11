@@ -11,7 +11,6 @@ export default defineConfig({
       { text: 'Plugins', link: '/docs/plugins/registry' },
       { text: 'Fleet', link: '/docs/fleet/overview' },
       { text: 'Tutorials', link: '/docs/tutorials/first-agent' },
-      { text: 'Rotator 2.0', link: '/docs/antigravity-rotator/UPGRADE-ROADMAP' },
     ],
     sidebar: [
       {
@@ -116,26 +115,6 @@ export default defineConfig({
           { text: 'Multi-Agent', link: '/docs/examples/multi-agent' },
           { text: 'Telegram Bot', link: '/docs/examples/telegram-bot' },
           { text: 'Dual Auth Rotators', link: '/docs/examples/dual-auth-rotators' },
-        ],
-      },
-      {
-        text: 'Antigravity Rotator 2.0',
-        items: [
-          { text: 'Architecture', link: '/docs/antigravity-rotator/ARCHITECTURE' },
-          { text: 'Setup', link: '/docs/antigravity-rotator/SETUP' },
-          { text: 'Roadmap', link: '/docs/antigravity-rotator/UPGRADE-ROADMAP' },
-          { text: 'Phase 1', link: '/docs/antigravity-rotator/PHASE1_FEATURES' },
-          { text: 'Phase 2', link: '/docs/antigravity-rotator/PHASE2_FEATURES' },
-          { text: 'Phase 3', link: '/docs/antigravity-rotator/PHASE3_FEATURES' },
-          { text: 'Phase 4', link: '/docs/antigravity-rotator/PHASE4_FEATURES' },
-          { text: 'Phase 5', link: '/docs/antigravity-rotator/PHASE5_FEATURES' },
-          { text: 'Phase 6', link: '/docs/antigravity-rotator/PHASE6_FEATURES' },
-          { text: 'Phase 7', link: '/docs/antigravity-rotator/PHASE7_FEATURES' },
-          { text: 'Phase 8', link: '/docs/antigravity-rotator/PHASE8_FEATURES' },
-          { text: 'Phase 9', link: '/docs/antigravity-rotator/PHASE9_FEATURES' },
-          { text: 'Phase 10', link: '/docs/antigravity-rotator/PHASE10_FEATURES' },
-          { text: 'Phase 11-12', link: '/docs/antigravity-rotator/PHASE11-12_FEATURES' },
-          { text: 'Marketing SEO', link: '/docs/antigravity-rotator/marketing/AUTO_SEO_STRATEGY' },
         ],
       },
       {
