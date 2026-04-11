@@ -1,171 +1,140 @@
 ---
-title: "Team Orchestration Best Practices"
+title: Ultimate Team Orchestration Doctrine
+description: Mandatory patterns for delegation, sequencing, retries, specialist routing, and non-idle fleet behavior.
 ---
 
-# Team Orchestration Best Practices
+# Ultimate Team Orchestration Doctrine
 
-Patterns for coordinating multiple agents to work together effectively on complex tasks.
+> **RULE:** Never let the fleet idle when meaningful work exists, and never let multiple agents collide blindly on the same task without structure.
 
-## Team Structure
+---
 
-### Naming Convention
+## 1. What Team Orchestration Actually Means
 
-All teams follow the `[Type]-SIN-[Name]` schema:
+Team orchestration is not “start many agents and hope.”
+It means:
+- deciding which work can run in parallel
+- deciding which work must wait on dependencies
+- routing tasks to the correct specialist
+- capturing progress in issues/trackers
+- preventing duplicate/conflicting implementation
+- escalating blockers instead of stalling silently
 
-- `Team-SIN-*` — Orchestrators, Hubs, Managers
-- `A2A-SIN-*` — Worker Agents
+---
 
-### Team Composition
+## 2. Canonical Routing Logic
 
-```
-Team-SIN-Infrastructure
-├── Manager (delegation, lexicon RAG, retry)
-├── A2A-SIN-Storage (worker)
-├── A2A-SIN-Supabase (worker)
-├── A2A-SIN-N8N (worker)
-├── A2A-SIN-CI-CD (worker)
-└── ...
-```
+### Use the right specialist
+- **Explore** → local codebase/context analysis
+- **Librarian** → best practices, docs, external guidance
+- **Oracle** → architecture, implementation, hard debugging, conventional deep work
+- **Frontend specialist** → all UI/UX/styling/design work
 
-## Delegation Strategies
+### Why
+Misrouted tasks waste time, burn tokens, and produce low-quality output.
 
-### Parallel Delegation
+---
 
-```typescript
-// Independent tasks — run simultaneously
-const results = await Promise.allSettled([
-  delegate({
-    to: 'A2A-SIN-Research',
-    task: 'Research market trends',
-    timeout: 300_000,
-  }),
-  delegate({
-    to: 'A2A-SIN-Code-AI',
-    task: 'Analyze code architecture',
-    timeout: 300_000,
-  }),
-  delegate({
-    to: 'A2A-SIN-Summary',
-    task: 'Prepare executive summary',
-    timeout: 120_000,
-  }),
-])
-```
+## 3. Parallel vs Sequential Work
 
-### Sequential Delegation
+### Parallel work is correct when:
+- tasks do not mutate the same surface
+- tasks only gather information
+- tasks are independent implementation tracks
 
-```typescript
-// Dependent tasks — output feeds next input
-const research = await delegate({
-  to: 'A2A-SIN-Research',
-  task: 'Gather requirements',
-})
+### Sequential work is required when:
+- one task defines contracts another task consumes
+- shared files would conflict
+- architectural decisions must settle first
+- irreversible actions depend on previous validation
 
-const design = await delegate({
-  to: 'A2A-SIN-Code-AI',
-  task: 'Design architecture',
-  context: research.result,
-})
+### Anti-pattern
+Running dependent tasks in parallel because it “feels faster” usually creates merge debt and rework.
 
-const implementation = await delegate({
-  to: 'A2A-SIN-Code-DevOps',
-  task: 'Implement and deploy',
-  context: design.result,
-})
-```
+---
 
-## Team Strategies
+## 4. Dependency Discipline
 
-| Strategy | Description | Use Case |
-|----------|-------------|----------|
-| `parallel` | Agents work simultaneously | Independent tasks |
-| `sequential` | Agents work one after another | Pipeline workflows |
-| `consensus` | Agents vote on outcomes | Decision making |
-| `leader` | One agent coordinates others | Complex coordination |
-| `pipeline` | Output feeds next input | Data processing |
+Every substantial task should know:
+- what it depends on
+- what depends on it
+- what proof unlocks the next stage
 
-## Retry and Recovery
+Example:
+- remote control API contract first
+- channel adapters and streaming can begin in parallel, but must track API shape
+- UI migrations can scaffold locally, but shared package contract must stabilize early
 
-### Automatic Retry
+---
 
-```typescript
-async function delegateWithRetry(
-  config: DelegationConfig,
-  maxRetries = 3
-): Promise<DelegationResult> {
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      return await delegate(config)
-    } catch (error) {
-      if (i === maxRetries - 1) {
-        await notifyOperator({
-          type: 'delegation_failure',
-          agent: config.to,
-          attempts: maxRetries,
-          error,
-        })
-        throw error
-      }
-      await sleep(Math.pow(2, i) * 2000)
-    }
-  }
-}
-```
+## 5. Non-Idle Fleet Rule
 
-### Fallback Agents
+If there are open, actionable issues without an active dispatcher, dispatch immediately.
+No unnecessary waiting for ceremony.
+No “I’ll get to it later.”
 
-```typescript
-async function delegateWithFallback(config: DelegationConfig) {
-  try {
-    return await delegate(config)
-  } catch {
-    // Fallback to general-purpose agent
-    return await delegate({
-      ...config,
-      to: 'A2A-SIN-Summary',
-      task: `${config.task} (delegated as fallback)`,
-    })
-  }
-}
-```
+### But also:
+Do not manufacture fake activity. Busy-looking chaos is not orchestration.
+Only dispatch work that has a real issue, a real branch, and real acceptance criteria.
 
-## Monitoring
+---
 
-### Team Metrics
+## 6. Retry and Recovery Rules
 
-```typescript
-interface TeamMetrics {
-  totalDelegations: number
-  successfulDelegations: number
-  failedDelegations: number
-  averageResponseTime: number
-  activeAgents: number
-  idleAgents: number
-}
+When an agent stalls or fails:
+1. identify whether it is a real blocker or a prompt/working-dir problem
+2. salvage existing progress if possible
+3. relaunch only the failed branch of work
+4. keep issue/branch mapping explicit
 
-function getTeamMetrics(team: string): TeamMetrics {
-  // Query team metrics from n8n or database
-  return metricsService.query({ team })
-}
-```
+### Why
+Blindly restarting everything destroys context and causes duplicate work.
 
-### Health Dashboard
+---
 
-```
-Team-SIN-Infrastructure
-├── Status: ✅ Healthy
-├── Active Workers: 8/15
-├── Avg Response Time: 2.3s
-├── Success Rate: 98.5%
-└── Last Activity: 2 min ago
-```
+## 7. Required Progress Reporting
 
-## Checklist
+For meaningful long-running work, agents should report:
+- current branch
+- files created or modified
+- blockers
+- next step
 
-- [ ] Team follows naming conventions
-- [ ] Delegation strategy chosen per task
-- [ ] Timeouts configured for all delegations
-- [ ] Retry logic implemented
-- [ ] Error notifications configured
-- [ ] Metrics collection enabled
-- [ ] Fallback agents defined
+Progress reports should reduce uncertainty, not add noise.
+
+---
+
+## 8. Issue-Centric Orchestration
+
+GitHub is the source of truth for intent.
+That means:
+- work starts from issues
+- branches map to issues
+- progress is explainable through issue comments / PRs
+- plans become visible artifacts, not private thoughts
+
+Without issue-centric tracking, orchestration becomes invisible and un-auditable.
+
+---
+
+## 9. Merge Conflict Prevention
+
+Prevent conflicts by:
+- isolating branches per issue
+- assigning ownership by surface
+- sequencing shared-core changes carefully
+- extracting contracts first
+- not letting multiple agents “just touch the same area quickly”
+
+---
+
+## 10. Final Rule
+
+**Orchestration quality is measured by throughput without confusion.**
+If many agents are active but nobody can say who owns what, the system is failing.
+
+---
+
+*Last updated:* 2026-04-10  
+*Status:* **ACTIVE & MANDATORY**  
+*Maintainer:* sin-zeus

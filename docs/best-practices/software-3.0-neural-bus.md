@@ -1,37 +1,113 @@
-# Software 3.0: The OpenSIN-Neural-Bus Paradigm
+---
+title: Software 3.0 & Neural-Bus Doctrine
+description: The architectural doctrine for evented, agentic, issue-centric, bus-driven OpenSIN systems.
+---
 
-**Date:** April 2026
-**Status:** Canonical Architecture
+# Software 3.0 & Neural-Bus Doctrine
 
-## The Demise of the "n8n Wall"
-
-For years, n8n visual workflows served as the brains of our automation. However, deterministic node-linking scales poorly when tasks demand probabilistic, adaptive reasoning (e.g., "Fix this bug, test it, and report"). 
-
-With the emergence of Managed Agents (like Anthropic's Claude Code), it became clear that defining every edge-case via a Node-Graph is fundamentally broken. **We must dispatch "Goals," not "Flows."**
-
-## Enter the Neural-Bus
-
-OpenSIN-AI has migrated its core orchestration layer to the **OpenSIN-Neural-Bus**.
-
-### 1. Decoupled Intelligence
-- **Old Way:** Everything in a monolithic n8n execution environment.
-- **New Way:** n8n is relegated to a "Sensor" (catching webhooks, cron jobs). The "Brain" (LLM Swarm) and the "Hands" (MCP-Runners) communicate asynchronously over an Event-Bus.
-
-### 2. Autonomous Skill Synthesis (ASS)
-Claude Code consumes tools. OpenSIN *synthesizes* them.
-If Zeus (the orchestrator) encounters a capability gap, he spawns a Hephaestus-subagent. This agent writes a complete Node.js MCP server on the fly, tests it in a Firecracker microVM, and permanently injects it into the global OpenSIN-AI registry.
-
-### 3. Ouroboros Memory System
-We utilize a multi-layered memory construct:
-1. **Working Memory:** Current task context.
-2. **Procedural Memory:** Vectorized best-practices distilled from successful agent runs.
-3. **DNA (Master Record):** Git-based ledger of all self-modifications. New agents inherit the collective intelligence of their predecessors.
-
-### 4. Sovereign Automaton (Self-Funding Flotilla)
-OpenSIN-AI agents aren't just autonomous; they are financially sovereign.
-- Integrated with ERC-8004 wallets.
-- Agents perform paid tasks (e.g., Bug Bounties, Prolific surveys via OpenSIN-Bridge).
-- Agents use their revenue to pay for their own Hugging Face / OCI instances using HTTP 402 protocols.
+> **RULE:** We are not building isolated apps anymore. We are building an evented organism: agents, workflows, repos, UI surfaces, and operators connected through explicit signals, issue state, and recoverable automation.
 
 ---
-**Verdict:** n8n is not deleted; it is a legacy backbone. The future of OpenSIN-AI is a decentralized, self-writing, self-healing, self-funding Swarm.
+
+## 1. What “Software 3.0” Means Here
+
+Software 3.0 in OpenSIN means:
+- issue-centric work, not hidden local intention
+- agentic execution, not single-process heroics
+- event-driven coordination, not brittle manual chaining
+- observable state, not invisible automation
+- modular capabilities, not monolithic dependency traps
+
+The “Neural Bus” is the idea that meaningful state changes propagate through the ecosystem like signals in a nervous system.
+
+---
+
+## 2. The Bus Is Conceptual and Concrete
+
+It is **conceptual** because it describes how all parts of the fleet should think about coordination.
+It is **concrete** because it appears in:
+- GitHub issues and PRs
+- n8n workflows
+- agent events and heartbeats
+- webhooks
+- notifications
+- dashboards and logs
+
+---
+
+## 3. Event-Centric Thinking
+
+Design systems around meaningful events:
+- issue created
+- task dispatched
+- agent started
+- agent completed
+- workflow failed
+- deployment published
+- alert raised
+- approval granted
+
+### Why
+Polling disconnected state everywhere creates lag, duplication, and confusion. Events compress coordination.
+
+---
+
+## 4. State Must Be Recoverable
+
+Any important workflow should be resumable from durable state:
+- issue state
+- repo state
+- workflow execution history
+- persisted task/session identifiers
+- logs/evidence
+
+### Why
+If a VM restarts or an agent dies, the system should resume from signal history, not human memory.
+
+---
+
+## 5. Human Operator as High-Privilege Node
+
+The operator is part of the bus, but should not be used as glue for routine work.
+Escalate only when:
+- permissions are truly required
+- destructive approval is needed
+- a real blocker survives automation
+
+### Why
+The user is the final authority, not the default transport layer.
+
+---
+
+## 6. What the Neural-Bus Rejects
+
+- hidden local-only state
+- undocumented side channels
+- one-off scripts with no tracker link
+- manual handoffs that should be evented
+- “done” messages with no durable artifact
+
+---
+
+## 7. Architecture Consequences
+
+A proper Neural-Bus system implies:
+- issue-first execution
+- branch/PR traceability
+- workflow/agent status visibility
+- durable evidence
+- explicit contracts between modules
+- bounded retries and escalation
+
+---
+
+## 8. Final Rule
+
+**Software 3.0 is software that can think in public, recover from interruption, and coordinate through evidence instead of hope.**
+If the system depends on one human remembering what happened, it is not Software 3.0.
+
+---
+
+*Last updated:* 2026-04-10  
+*Status:* **ACTIVE & MANDATORY**  
+*Maintainer:* sin-zeus

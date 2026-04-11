@@ -1,200 +1,123 @@
 ---
-title: "Security Best Practices"
+title: Ultimate Security & Trust Boundary Doctrine
+description: Mandatory rules for secrets, auth, permissions, operator trust, and fail-closed behavior.
 ---
 
-# Security Best Practices
+# Ultimate Security & Trust Boundary Doctrine
 
-Guidelines for building secure agents, managing credentials, and hardening your OpenSIN deployment.
+> **RULE:** Security in OpenSIN is not a checklist item. It is the discipline of deciding what the system is allowed to trust, what it is never allowed to expose, and how it must fail when trust is uncertain.
 
-## Principle of Least Privilege
+---
 
-Every agent and tool should operate with the minimum permissions required:
+## 1. Trust Boundaries Must Be Explicit
 
-```typescript
-const permissions = new PermissionManager({
-  mode: 'strict',
-  allowlist: [
-    '/workspace/src/**',    // only project source
-    '/workspace/tests/**',  // only project tests
-  ],
-  denylist: [
-    '**/.env',              // never read env files
-    '**/.git/config',       // never read git credentials
-    '**/node_modules/**',   // skip dependencies
-  ],
-})
-```
+Every system must know:
+- what input is trusted
+- what input is untrusted
+- what credentials it may access
+- what side effects require confirmation
+- what should fail closed instead of fail open
 
-## Credential Management
+If these boundaries are implicit, they will be violated.
 
-### Never Hardcode Secrets
+---
 
-```typescript
-// WRONG - secret in code
-const apiKey = 'sk-abc123...'
+## 2. Secret Handling Rules
 
-// RIGHT - from environment
-const apiKey = process.env.OPENAI_API_KEY
+### Never do
+- hardcode secrets
+- commit secrets
+- print secrets in logs
+- pass secrets through screenshots or issue bodies
+- leave secrets in temporary scripts or throwaway files
 
-// RIGHT - from SIN-PasswordManager
-const apiKey = await sinPasswordManager.get('openai-key')
-```
+### Always do
+- keep secrets in env vars / credential stores / approved secret surfaces
+- redact logs
+- rotate leaked tokens immediately
+- prefer least privilege
 
-### Credential Isolation
+### Why
+A leaked secret is not “just a mistake.” It is an attacker invitation.
 
-Each execution environment has its own credential scope:
+---
 
-| Environment | Credential Source | Synced? |
-|-------------|------------------|---------|
-| Mac (local) | `~/.config/opencode/auth.json` | Source of truth |
-| OCI VM | `~/.config/opencode/auth.json` | Local only |
-| HF Space | Environment variables | Local only |
+## 3. Confirmation Gates
 
-Auth files are **never synced** between machines. The `sin-sync` tool explicitly excludes:
-- `auth.json`
-- `token.json`
-- `antigravity-accounts.json`
-- `telegram_config.json`
+Actions that are destructive, security-sensitive, identity-sensitive, or billing-sensitive require explicit confirmation unless the operator has clearly delegated that authority.
 
-### Token Rotation
+Examples:
+- deleting data
+- rotating production credentials
+- changing auth rules
+- binding domains
+- making billing-affecting API changes
 
-Implement automatic token rotation for all long-lived credentials:
+### Why
+Autonomy without permission gates becomes self-sabotage.
 
-```typescript
-// Automatic rotation via LaunchDaemon
-// com.sin.opencode-rate-limit-watcher monitors usage
-// and triggers token refresh before expiration
-```
+---
 
-## Input Validation
+## 4. Fail-Closed by Default
 
-### Tool Arguments
+When validation is missing, signatures are absent, auth is unclear, or required config is incomplete, the system must refuse activation.
 
-Validate all tool arguments before execution:
+### Why
+Fail-open behavior turns uncertainty into compromise.
 
-```typescript
-function validatePath(path: string): boolean {
-  // Reject path traversal
-  if (path.includes('..')) return false
-  
-  // Reject absolute paths outside workspace
-  if (path.startsWith('/') && !path.startsWith(workspace)) return false
-  
-  // Reject known sensitive paths
-  const sensitive = ['.env', '.ssh', 'credentials']
-  if (sensitive.some(s => path.includes(s))) return false
-  
-  return true
-}
-```
+---
 
-### Command Injection Prevention
+## 5. Scope & Least Privilege
 
-The bash tool uses `execFile` (not `exec`) and passes arguments as arrays:
+Every token, credential, and integration should have only the permissions it actually needs.
 
-```typescript
-// WRONG - vulnerable to injection
-exec(`grep ${userInput} file.txt`)
+### Anti-patterns
+- one global god-token for everything
+- sharing admin credentials across unrelated agents
+- reusing powerful tokens in docs/tests/examples
 
-// RIGHT - safe argument passing
-execFile('grep', [userInput, 'file.txt'])
-```
+---
 
-## MCP Server Security
+## 6. Security Logging
 
-### Allowlisting
+Security-relevant events must be visible without exposing the secret itself:
+- auth failures
+- permission denials
+- suspicious retries
+- unexpected environment mismatch
+- token rotation events
 
-Only load trusted MCP servers:
+Log the event, not the credential.
 
-```json
-{
-  "mcpServers": {
-    "trusted-server": {
-      "command": "node",
-      "args": ["server.js"],
-      "permissions": {
-        "filesystem": ["read"],
-        "network": ["localhost:*"]
-      }
-    }
-  }
-}
-```
+---
 
-### Confirmation Gates
+## 7. Browser / UI Security Implications
 
-Require user confirmation for destructive operations:
+Browser automation often crosses powerful trust boundaries:
+- admin consoles
+- OAuth approvals
+- dashboards with billing power
 
-```typescript
-const toolConfig = {
-  'file:delete': { requireConfirmation: true },
-  'bash:execute': { requireConfirmation: true },
-  'git:push': { requireConfirmation: true },
-  'file:read': { requireConfirmation: false },
-}
-```
+Therefore profile selection, permissions, and evidence capture are part of security, not just convenience.
 
-## A2A Communication Security
+---
 
-### Mutual Authentication
+## 8. Documentation Security Rule
 
-All inter-agent communication must be authenticated:
+Docs may explain secret flow, but must not contain real secrets, token-shaped values, or copy-pasteable privileged credentials.
 
-```typescript
-// Agent A sending a task to Agent B
-const response = await fetch('https://agent-b.opensin.ai/a2a/v1', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${jwt}`,
-    'X-Agent-ID': 'sin-hermes',
-    'X-Fleet-ID': 'production',
-  },
-  body: JSON.stringify(taskPayload),
-})
-```
+### Why
+A markdown file in Git is forever unless cleaned aggressively.
 
-### Transport Encryption
+---
 
-- Production: HTTPS (TLS 1.3) required
-- Internal: Cloudflare Tunnels for zero-trust networking
-- Never transmit credentials over plaintext HTTP
+## 9. Final Rule
 
-## Logging Security
+**Security is the discipline of protecting trust, not the performance of looking careful.**
+If the system cannot explain why it trusts an action, it should not perform it.
 
-### Redaction
+---
 
-Never log sensitive data:
-
-```typescript
-function sanitizeLog(message: string): string {
-  return message
-    .replace(/sk-[a-zA-Z0-9]{20,}/g, 'sk-***REDACTED***')
-    .replace(/Bearer [a-zA-Z0-9._-]+/g, 'Bearer ***REDACTED***')
-    .replace(/password['":\s]*[^\s,}]+/gi, 'password: ***REDACTED***')
-}
-```
-
-### Log Storage
-
-All logs go to the GitLab LogCenter (encrypted at rest), never stored in plaintext on local disk beyond temporary buffering.
-
-## Dependency Security
-
-- Run `npm audit` on every CI build
-- Pin exact dependency versions in `package-lock.json`
-- Review all new dependencies before adding
-- Use `Socket.dev` or similar for supply chain security
-
-## Checklist
-
-Before deploying an agent to production:
-
-- [ ] All secrets in environment variables or vault (not hardcoded)
-- [ ] Permission manager configured with explicit allow/deny lists
-- [ ] Bash tool using `execFile` with dangerous command blocking
-- [ ] MCP servers allowlisted with appropriate permission gates
-- [ ] A2A endpoints require JWT authentication
-- [ ] HTTPS enabled for all external communication
-- [ ] Log redaction enabled for sensitive patterns
-- [ ] Token rotation configured for all long-lived credentials
-- [ ] `npm audit` passing with no critical vulnerabilities
+*Last updated:* 2026-04-10  
+*Status:* **ACTIVE & MANDATORY**  
+*Maintainer:* sin-zeus

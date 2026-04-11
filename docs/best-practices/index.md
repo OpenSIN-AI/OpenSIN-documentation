@@ -4,48 +4,51 @@ title: "Best Practices"
 
 # Best Practices
 
-Production-tested guidelines for building, deploying, and operating OpenSIN agents and infrastructure.
+This section is the rulebook for building, operating, debugging, and scaling the OpenSIN fleet.
+It is not a loose suggestion shelf. It is the operational memory of the system.
 
-## Core Practices
-
-| Document | Focus |
-|----------|-------|
-| [Agent Design](/best-practices/agent-design) | Single responsibility, model selection, system prompts |
-| [Security](/best-practices/security) | Credential management, input validation, MCP security |
-| [Performance](/best-practices/performance) | Model routing, context management, caching |
-
-## Extended Practices
+## Core Mandates
 
 | Document | Focus |
 |----------|-------|
-| [Testing](/best-practices/testing) | Unit, integration, E2E testing strategies |
-| [A2A Communication](/best-practices/a2a-communication) | Message design, reliability, security |
-| [Plugin Development](/best-practices/plugin-development) | Plugin structure, commands, agents, skills, hooks |
-| [MCP Integration](/best-practices/mcp-integration) | Transport selection, connection management, security |
-| [Team Orchestration](/best-practices/team-orchestration) | Delegation strategies, retry, monitoring |
-| [Error Handling](/best-practices/error-handling) | Error classification, retry patterns, recovery |
-| [Monitoring & Observability](/best-practices/monitoring-observability) | Metrics, health checks, alerting, dashboards |
-| [Code Quality](/best-practices/code-quality) | Code style, architecture, review standards |
-| [**CI/CD mit n8n + sin-github-action**](/best-practices/ci-cd-n8n) | **🚨 PFLICHT**: Zero-Billing CI via n8n OCI Runner — NIEMALS normale GitHub Actions! |
+| [Agent Design](/best-practices/agent-design) | Ultimate fleet mandates, no-silo rules, self-healing, test-proof culture |
+| [Code Quality](/best-practices/code-quality) | Extreme commenting mandate, anti-AI-slop, review discipline |
+| [Error Handling](/best-practices/error-handling) | Immediate bug registry, no-assumptions, self-healing escalation |
+| [Browser Automation](/best-practices/browser-automation) | DevTools-first, anti-bot bypass, Chrome profile law |
+| [A2A Communication](/best-practices/a2a-communication) | Pure agentic paradigm, inbound governance, opencode-only LLM usage |
 
-## Quick Reference
+## System Reliability & Execution
 
-### Before Deploying an Agent
+| Document | Focus |
+|----------|-------|
+| [Testing](/best-practices/testing) | Runtime proof, workflow validation, UI/browser verification |
+| [Monitoring & Observability](/best-practices/monitoring-observability) | Health, metrics, evidence retention, alert usefulness |
+| [Team Orchestration](/best-practices/team-orchestration) | Parallel vs sequential work, retries, specialist routing |
+| [HF Fleet Keep-Alive](/best-practices/hf-fleet-keepalive) | Hugging Face wake strategy, persistence, recovery |
+| [CI/CD mit n8n + sin-github-action](/best-practices/ci-cd-n8n) | Zero-billing CI via OCI + n8n |
 
-- [ ] All secrets in environment variables (not hardcoded)
-- [ ] Permission manager configured
-- [ ] Error handling covers edge cases
-- [ ] Tests pass with adequate coverage
-- [ ] Logging configured with redaction
-- [ ] Model routing optimized for cost
-- [ ] A2A endpoints authenticated
+## Advanced / Specialized
 
-### Before Merging Code
+| Document | Focus |
+|----------|-------|
+| [MCP Integration](/best-practices/mcp-integration) | MCP transport, safety, integration patterns |
+| [Plugin Development](/best-practices/plugin-development) | Plugin architecture and extension rules |
+| [Performance](/best-practices/performance) | Cost, model routing, latency, efficiency |
+| [Security](/best-practices/security) | Secrets, auth boundaries, operator trust |
+| [Software 3.0: Neural-Bus](/docs/best-practices/software-3.0-neural-bus) | Higher-level architecture doctrine |
+| [SEO Pipeline](/best-practices/seo-pipeline) | Proof-of-work blog publishing pipeline |
 
-- [ ] ESLint passing
-- [ ] TypeScript strict mode clean
-- [ ] No `as any` or `@ts-ignore`
-- [ ] Tests included
-- [ ] Documentation updated
-- [ ] Security review completed
-- [Software 3.0: Neural-Bus](/docs/best-practices/software-3.0-neural-bus)
+## Before You Call Something “Done”
+
+- [ ] issue exists and matches the work
+- [ ] code is commented with WHAT / WHY / WHY NOT / CONSEQUENCES
+- [ ] repo-native checks pass
+- [ ] runtime proof exists
+- [ ] screenshots/logs exist where relevant
+- [ ] docs updated if architecture or workflow changed
+- [ ] remaining risk is clearly stated
+
+## Final Reminder
+
+The OpenSIN fleet is allowed to move fast **only because** it is forced to leave evidence, structure, and recoverable knowledge behind.
+Without that, autonomy becomes chaos.
