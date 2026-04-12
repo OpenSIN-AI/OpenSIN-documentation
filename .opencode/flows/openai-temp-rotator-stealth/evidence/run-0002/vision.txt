@@ -1,0 +1,1 @@
+RETRY. The screenshot shows the browser is still on `temp-mail.org/en/premium` and has not navigated to Google. No Google home page is visible. Proceeding to retry navigation.
