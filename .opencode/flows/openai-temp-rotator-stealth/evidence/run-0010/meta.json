@@ -1,0 +1,12 @@
+{
+  "step_id": "run-0010",
+  "flow": "openai-temp-rotator-stealth",
+  "slug": "openai-temp-rotator-stealth",
+  "level": "run",
+  "action": "python3 /Users/jeremy/dev/openai-temp-rotator/micro_steps/s11_enter_email.py",
+  "expected": "Email entered and submitted on OpenAI Auth page",
+  "note": "",
+  "screenshot": "/Users/jeremy/dev/OpenSIN-documentation/.opencode/flows/openai-temp-rotator-stealth/evidence/run-0010/screenshot.png",
+  "vision": "RETRY. The email field contains a duplicated, malformed string (`ac535@alysz.comvitonac535@alysz.com`), and the page has not transitioned to the password screen. The input must be cleared and re-entered correctly.",
+  "verdict": "RETRY"
+}

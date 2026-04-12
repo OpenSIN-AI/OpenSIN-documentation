@@ -1,0 +1,3 @@
+RETRY
+
+The OpenAI Auth/Signup page has not been reached yet; the screen shows the standard ChatGPT landing page (chatgpt.com). A large cookie banner is blocking interaction, and while "Sign up" and "Log in" buttons are visible, they haven't been triggered or navigated to yet. Proceed by handling the cookie banner first.
