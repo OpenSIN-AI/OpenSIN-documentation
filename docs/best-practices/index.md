@@ -37,6 +37,7 @@ It is not a loose suggestion shelf. It is the operational memory of the system.
 | [Security](/best-practices/security) | Secrets, auth boundaries, operator trust |
 | [Software 3.0: Neural-Bus](/docs/best-practices/software-3.0-neural-bus) | Higher-level architecture doctrine |
 | [SEO Pipeline](/best-practices/seo-pipeline) | Proof-of-work blog publishing pipeline |
+| [**Simone MCP + PCPM** ⭐ PFLICHT](/best-practices/simone-mcp-pcpm) | Semantic code intelligence + cross-session memory — mandatory for every agent |
 
 ## Before You Call Something “Done”
 
