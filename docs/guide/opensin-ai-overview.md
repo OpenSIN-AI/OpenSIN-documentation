@@ -101,7 +101,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 | Plugin-SIN-Swarm | - | Subagent-Workflow mit tmux |
 | Skill-SIN-Agent-Forge | - | OpenCode Skill: A2A-Agenten |
 | Skill-SIN-Create-Flow | - | OpenCode Skill: Flow-Building mit Screenshot+Vision+Brain-Artefakten |
-| SIN-InkogniFlow | - | Kanonisches Runtime-Repo für create-flow und verpflichtende Basis für neue Flow-Automationen |
+| SIN-InkogniFlow | - | Kanonisches Runtime-Repo für create-flow, verpflichtende Basis für neue Flow-Automationen und Quelle des Drift-Guards |
 | Skill-SIN-Create-TelegramBot | - | OpenCode Skill: Telegram-Bot |
 | Skill-SIN-Enterprise-Deep-Debug | - | OpenCode Skill: Deep Debug |
 
