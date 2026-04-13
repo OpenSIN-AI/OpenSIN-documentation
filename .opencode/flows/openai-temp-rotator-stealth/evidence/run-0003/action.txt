@@ -1,0 +1,9 @@
+python3 -c "import nodriver as uc; import asyncio; 
+async def run(): 
+    b = await uc.start(host=\"127.0.0.1\", port=9334)
+    b._browser_process = b._process_pid = None
+    # Force new window/tab for google
+    t = await b.get(\"https://www.google.com\", new_window=True)
+    await asyncio.sleep(3)
+    return True
+asyncio.run(run())"

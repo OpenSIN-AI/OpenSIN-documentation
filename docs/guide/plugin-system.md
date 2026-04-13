@@ -104,6 +104,17 @@ export const myAgent = defineAgent({
 | `opencode-qwen-proxy` | OpenCode-Qwen-Proxy (Qwen OAuth with throttling) | `npm i -g github:RunMintOn/OpenCode-Qwen-Proxy` |
 | `opencode-openrouter-auth` | OpenRouter auth with local proxy | Local source in upgraded-opencode-stack |
 
+## Flow-Building Skill
+
+Für interaktive Flow-Arbeit ist `create-flow` das Canonical Skill-Pattern:
+
+- speichert Screenshots direkt im aktiven Flow-Workspace
+- erzeugt pro Schritt `vision.txt`, `analysis.json` und `analysis.md`
+- nutzt standardmäßig `google/antigravity-gemini-3-flash` über den Antigravity-Plugin-Pfad
+- fällt bei fehlender Flash-Vision nicht still auf andere Modelle zurück
+- die kanonische Runtime lebt in `OpenSIN-AI/SIN-InkogniFlow`; `upgraded-opencode-stack` spiegelt diese Implementierung nur aus
+- `guard_create_flow.py` beziehungsweise `sin-flow guard` erkennen abweichende Runtime-Dateien in anderen Repos und brechen mit einem Fehlercode ab
+
 ## Best Practices
 
 1. **Namespace your plugin** — Use `opencode-plugin-*` prefix

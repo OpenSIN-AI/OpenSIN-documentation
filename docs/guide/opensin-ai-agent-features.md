@@ -17,7 +17,7 @@
 | Heartbeat/Cron | ✅ | ✅ | ✅ (limited) | ✅ (/loop) |
 | Persistent Memory | ✅ | ✅ | ❌ | ✅ |
 | Structured Wiki | ✅ | ✅ | ❌ | ❌ |
-| Session Branching | 🔲 | ✅ | ❌ | ❌ |
+| Session Branching | ✅ | ✅ | ❌ | ❌ |
 | **Communication** | | | | |
 | Telegram | ✅ | ✅ | ❌ | ✅ |
 | WhatsApp | ✅ | ✅ | ❌ | ❌ |
@@ -46,7 +46,7 @@
 | Risk Classification | 🔲 | ✅ | ❌ | ❌ |
 | **Advanced** | | | | |
 | Voice Wake | ✅ (Siri) | ✅ | ✅ | ❌ |
-| Canvas/A2UI | 🔲 | ✅ | ❌ | ❌ |
+| Canvas/A2UI | ✅ | ✅ | ❌ | ❌ |
 | Computer Use | ✅ | ✅ | ✅ | ✅ |
 
 **Legend:** ✅ Implemented | 🔲 Planned | ❌ Not available

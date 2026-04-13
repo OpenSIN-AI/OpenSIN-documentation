@@ -42,6 +42,7 @@
 | OpenSIN Website | [website-opensin.ai](https://github.com/OpenSIN-AI/website-opensin.ai) |
 | My OpenSIN | [website-my.opensin.ai](https://github.com/OpenSIN-AI/website-my.opensin.ai) |
 | Upgraded Stack | [upgraded-opencode-stack](https://github.com/Delqhi/upgraded-opencode-stack) |
+| Canonical Flow Runtime | [SIN-InkogniFlow](https://github.com/OpenSIN-AI/SIN-InkogniFlow) |
 
 ## Development
 
