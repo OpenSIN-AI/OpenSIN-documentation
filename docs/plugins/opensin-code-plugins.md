@@ -247,6 +247,7 @@ Siehe [Plugin Development Tutorial](/docs/tutorials/plugin-development) für ein
 - Vision-Analyse im selben Schritt
 - strukturierte Artefakte pro Schritt: `screenshot.png`, `vision.txt`, `analysis.json`, `analysis.md`
 - die kanonische Runtime-Quelle ist `OpenSIN-AI/SIN-InkogniFlow`; alternative Flow-Runtimes sollen nicht daneben weiterentwickelt werden
+- `guard_create_flow.py` beziehungsweise `sin-flow guard` erkennen abweichende Runtime-Dateien in anderen Repos und brechen mit einem Fehlercode ab
 
 ### Plugin-Struktur
 

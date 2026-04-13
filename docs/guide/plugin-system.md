@@ -113,6 +113,7 @@ Für interaktive Flow-Arbeit ist `create-flow` das Canonical Skill-Pattern:
 - nutzt standardmäßig `google/antigravity-gemini-3-flash` über den Antigravity-Plugin-Pfad
 - fällt bei fehlender Flash-Vision nicht still auf andere Modelle zurück
 - die kanonische Runtime lebt in `OpenSIN-AI/SIN-InkogniFlow`; `upgraded-opencode-stack` spiegelt diese Implementierung nur aus
+- `guard_create_flow.py` beziehungsweise `sin-flow guard` erkennen abweichende Runtime-Dateien in anderen Repos und brechen mit einem Fehlercode ab
 
 ## Best Practices
 
