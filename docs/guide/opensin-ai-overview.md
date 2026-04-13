@@ -2,7 +2,7 @@
 
 OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Plattform für autonome AI-Agenten, Multi-Agent-Kollaboration und Enterprise AI-Automation.
 
-> **175 Repositories | 17 Teams | 92 Worker | 7 MCP Server | 19 Plugins/Skills | 6 Domains**
+> **175 Repositories | 17 Teams | 92 Worker | 7 MCP Server | 20 Plugins/Skills | 6 Domains**
 
 ## OpenSIN-AI Agent Roadmap
 
@@ -79,7 +79,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 | Template-SIN-Worker | Worker-Prozess Blueprint |
 | Template-SIN-Agent-Worker | Agent Worker Template |
 
-### Plugins & Skills (19)
+### Plugins & Skills (20)
 
 | Plugin | Dateien | Zweck |
 |--------|---------|-------|
@@ -100,6 +100,8 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 | Plugin-SIN-Biometrics | - | Governance, Policy Enforcement |
 | Plugin-SIN-Swarm | - | Subagent-Workflow mit tmux |
 | Skill-SIN-Agent-Forge | - | OpenCode Skill: A2A-Agenten |
+| Skill-SIN-Create-Flow | - | OpenCode Skill: Flow-Building mit Screenshot+Vision+Brain-Artefakten |
+| SIN-InkogniFlow | - | Kanonisches Runtime-Repo für create-flow und verpflichtende Basis für neue Flow-Automationen |
 | Skill-SIN-Create-TelegramBot | - | OpenCode Skill: Telegram-Bot |
 | Skill-SIN-Enterprise-Deep-Debug | - | OpenCode Skill: Deep Debug |
 

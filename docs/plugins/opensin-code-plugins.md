@@ -239,6 +239,15 @@ Ralph-Loop-Technik für iterative Entwicklung. Ähnlich wie sin-loop, aber mit e
 
 Siehe [Plugin Development Tutorial](/docs/tutorials/plugin-development) für eine Schritt-für-Schritt-Anleitung.
 
+### Flow-Builder Skill
+
+`create-flow` gehört nicht zu den OpenSIN-Code-Plugins, ist aber das kanonische OpenCode-Skill für Flow-Arbeit:
+
+- Step-by-step Screenshots direkt im Flow-Workspace
+- Vision-Analyse im selben Schritt
+- strukturierte Artefakte pro Schritt: `screenshot.png`, `vision.txt`, `analysis.json`, `analysis.md`
+- die kanonische Runtime-Quelle ist `OpenSIN-AI/SIN-InkogniFlow`; alternative Flow-Runtimes sollen nicht daneben weiterentwickelt werden
+
 ### Plugin-Struktur
 
 ```
