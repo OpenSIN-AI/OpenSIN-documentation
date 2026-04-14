@@ -274,7 +274,55 @@ sin-sync
 
 ---
 
+## 7. /create-a2a-sin-agent — ULTIMATER Creation Skill
+
+**Dieser Skill ersetzt drei alte Skills:**
+- ❌ `/create-a2a` → deprecated
+- ❌ `/create-a2a-team` → deprecated
+- ❌ `/create-a2a-sin-coder` → deprecated
+- ✅ `/create-a2a-sin-agent` → **ULTIMATIVER Skill** (alle Funktionen in einem)
+
+### Was der ultimative Skill kann
+
+| Erstelle | Zweck | Template |
+|:---|:---|:---|
+| **SIN Agent** | Einzelner A2A Agent (z.B. `A2A-SIN-Google-Docs`) | Template-SIN-Agent (unified) |
+| **SIN Team** | Team Manager (z.B. `Team-SIN-Survey`) | Template-SIN-Team |
+| **SIN Coder** | Entwickler-Agent (z.B. `A2A-SIN-Frontend`) | Template-SIN-Agent + Coder-Mandate |
+
+### Unified Template
+
+**Drei Templates wurden zu EINEM fusioniert:**
+- `Template-SIN-Agent` (Basis)
+- `Template-SIN-Agent-Worker` (Worker)
+- `Template-SIN-Worker` (Minimal)
+
+**→ Jetzt: `Template-SIN-Agent` (all-in-one)**
+
+Jeder neue Agent nutzt dieses eine Template und konfiguriert sich via `agent.json`:
+- `type: "agent"` — Standard Agent
+- `type: "worker"` — Worker Agent (minimal)
+- `type: "coder"` — Coder Agent (mit LangGraph + Security)
+- `type: "team-manager"` — Team Manager (mit Hermes Dispatch)
+
+### PARALLEL-EXPLORATION MANDATE
+
+Bei grossen Codebases (100k+ Zeilen, 1000+ Dateien) MUESSEN Agenten **5-10 parallele explore + 5-10 librarian-Agenten** starten:
+
+```
+task(subagent_type="explore", run_in_background=true, load_skills=[], description="Find APIs", prompt="[CONTEXT]: Grosse Codebase. [GOAL]: Alle API-Endpunkte...")
+task(subagent_type="explore", run_in_background=true, load_skills=[], description="Find Services", prompt="[CONTEXT]: Grosse Codebase. [GOAL]: Alle Services...")
+// ... 5-10 weitere parallele Agenten
+```
+
+---
+
 ## 8. Changelog
+
+### v2.3.0 (2026-04-14)
+- `/create-a2a-sin-agent` — ULTIMATER Skill (mergt create-a2a + create-a2a-team + create-a2a-sin-coder)
+- Template-Fusion: 3 Templates → 1 (Template-SIN-Agent all-in-one)
+- Alte Skills als deprecated markiert
 
 ### v2.2.0 (2026-04-14)
 - `oh-my-sin.json` — Zentrales Team Register eingefuehrt
