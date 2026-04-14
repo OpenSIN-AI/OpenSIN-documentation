@@ -1,0 +1,17 @@
+{
+  "global": {
+    "rules": [
+      {"id": "rule-preview-mandatory", "text": "Images MUST be opened in macOS Preview.app — never tell users to check /tmp", "priority": -4.5},
+      {"id": "rule-sin-brain-auto-sync", "text": "Auto-sync after every chat turn via sync-chat-turn hook", "priority": -4.0}
+    ]
+  },
+  "project": {
+    "facts": [
+      {"id": "fact-docs-vitepress", "text": "OpenSIN-documentation uses VitePress for docs.opensin.ai", "discoveredAt": "2026-04-13"}
+    ],
+    "solutions": [
+      {"id": "sol-global-brain-doc", "text": "Created docs/architecture/global-brain-neural-bus.md with complete Global Brain + Neural-Bus documentation", "createdAt": "2026-04-13"},
+      {"id": "sol-vitepress-config-update", "text": "Added Global Brain & Neural-Bus to VitePress sidebar config", "createdAt": "2026-04-13"}
+    ]
+  }
+}

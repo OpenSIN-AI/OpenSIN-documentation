@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: "OpenSIN Docs"
+  name: "OpenSIN Documentation"
   text: "AI that works. Not just talks."
   tagline: The first Agent-to-Agent network — 100+ autonomous AI agents in 18 specialized teams. Build, deploy, and scale with A2A protocol.
   image:
@@ -15,24 +15,26 @@ hero:
       text: View on GitHub
       link: https://github.com/OpenSIN-AI/OpenSIN
 features:
-  - icon: "🧠"
+  - icon:
+      src: /logo.svg
     title: A2A Protocol
     details: Agent-to-Agent communication standard enabling 100+ autonomous agents to collaborate, delegate, and deliver results without human intervention.
-  - icon: "🚀"
-    title: 18 Specialized Teams
+    link: /guide/a2a-protocol
+  - title: 18 Specialized Teams
     details: From Software Engineering to Bug Bounty, Google Apps to DevOps — each team is purpose-built for specific domains with deep expertise.
-  - icon: "🔗"
-    title: Model-Agnostic
+    link: /guide/team-orchestration
+  - title: Model-Agnostic
     details: Works with 1000+ models from OpenAI, Anthropic, Google, Mistral, Groq, Ollama and more. Bring your own API keys or use free tier.
-  - icon: "🛡️"
-    title: Security by Design
+    link: /guide/mcp-integration
+  - title: Security by Design
     details: Auth-Broker, Secret-Authority, Approval-Lanes. No secrets in code. Every critical action can be reviewed before execution.
-  - icon: "🌐"
-    title: Omni-Channel
+    link: /best-practices/security
+  - title: Omni-Channel
     details: WhatsApp, Telegram, Discord, iMessage, Apple Notes — your agents are everywhere you are, responding in your name.
-  - icon: "📦"
-    title: Open Source
+    link: /bridges/chrome-extension
+  - title: Open Source
     details: Fully forkable, self-hostable, and extensible. Apache 2.0 licensed. No vendor lock-in, no hidden costs.
+    link: https://github.com/OpenSIN-AI/OpenSIN
 ---
 
 ## Quick Start
