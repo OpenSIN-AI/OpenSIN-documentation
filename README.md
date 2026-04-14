@@ -20,6 +20,7 @@
 | Section | Description |
 |---------|-------------|
 | [Guide](docs/guide/) | User guides and tutorials |
+| [Agent Configuration](docs/guide/agent-configuration.md) | 🆕 All agent config files documented |
 | [API](docs/api/) | API reference |
 | [Architecture](docs/architecture/) | System architecture |
 | [Plugins](docs/plugins/) | Plugin documentation |
