@@ -1,0 +1,646 @@
+{
+  "version": "5.0.0",
+  "generatedAt": "2026-04-14T16:09:09.073Z",
+  "teams": {
+    "team-code": {
+      "name": "Team Coding",
+      "manager": "A2A-SIN-Zeus",
+      "description": "Elite-Coder-Flotte fuer Implementation, Testing, Deployment",
+      "primaryModel": "google/antigravity-claude-sonnet-4-6",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "qwen/coder-model",
+        "google/antigravity-gemini-3.1-pro"
+      ],
+      "members": [
+        "A2A-SIN-Simone-MCP",
+        "A2A-SIN-Frontend",
+        "A2A-SIN-Backend",
+        "A2A-SIN-Fullstack"
+      ],
+      "config": {}
+    },
+    "team-worker": {
+      "name": "Team Worker",
+      "manager": "A2A-SIN-Team-Worker",
+      "description": "Autonome Worker fuer Surveys, Freelancing, Monetarisierung",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "qwen/coder-model",
+        "nvidia-nim/stepfun-ai/step-3.5-flash"
+      ],
+      "members": [
+        "A2A-SIN-Worker-Prolific",
+        "A2A-SIN-Worker-Freelancer",
+        "A2A-SIN-Worker-Survey"
+      ],
+      "config": {}
+    },
+    "team-infrastructure": {
+      "name": "Team Infrastructure",
+      "manager": "A2A-SIN-Team-Infrastructure",
+      "description": "DevOps-Flotte fuer Deployment, CI/CD, Monitoring, Infrastructure",
+      "primaryModel": "openai/gpt-5.4",
+      "fallbackModels": [
+        "google/antigravity-claude-sonnet-4-6",
+        "qwen/coder-model",
+        "google/antigravity-gemini-3.1-pro"
+      ],
+      "members": [
+        "A2A-SIN-Deploy",
+        "A2A-SIN-Monitoring",
+        "A2A-SIN-Security"
+      ],
+      "config": {}
+    },
+    "team-google-apps": {
+      "name": "Team Google Apps",
+      "manager": "A2A-SIN-Google-Apps",
+      "description": "Google Workspace Integration — Docs, Sheets, Drive, Gmail",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "qwen/coder-model",
+        "google/antigravity-claude-sonnet-4-6"
+      ],
+      "members": [
+        "A2A-SIN-Google-Docs",
+        "A2A-SIN-Google-Sheets",
+        "A2A-SIN-Google-Drive"
+      ],
+      "config": {}
+    },
+    "team-apple-apps": {
+      "name": "Team Apple Apps",
+      "manager": "A2A-SIN-Apple-Apps",
+      "description": "Apple Ecosystem — macOS Automation, iOS, Shortcuts",
+      "primaryModel": "openai/gpt-5.4",
+      "fallbackModels": [
+        "google/antigravity-gemini-3-flash",
+        "qwen/coder-model"
+      ],
+      "members": [
+        "A2A-SIN-Apple-Shortcuts",
+        "A2A-SIN-Apple-macOS"
+      ],
+      "config": {}
+    },
+    "team-apple": {
+      "name": "Team Apple",
+      "manager": "A2A-SIN-Apple",
+      "description": "macOS/iOS Automation — Mail, Notes, Calendar, FaceTime, Safari, etc.",
+      "primaryModel": "openai/gpt-5.4",
+      "fallbackModels": [
+        "google/antigravity-gemini-3-flash",
+        "qwen/coder-model"
+      ],
+      "members": [
+        "A2A-SIN-Apple-Mail",
+        "A2A-SIN-Apple-Notes",
+        "A2A-SIN-Apple-Calendar-Contacts",
+        "A2A-SIN-Apple-Reminders",
+        "A2A-SIN-Apple-Photos-Files",
+        "A2A-SIN-Apple-FaceTime",
+        "A2A-SIN-Apple-Notifications",
+        "A2A-SIN-Apple-Mobile",
+        "A2A-SIN-Apple-Safari-WebKit",
+        "A2A-SIN-Apple-DeviceControl",
+        "A2A-SIN-Apple-Shortcuts",
+        "A2A-SIN-Apple-SystemSettings"
+      ],
+      "config": {}
+    },
+    "team-social": {
+      "name": "Team Social",
+      "manager": "A2A-SIN-Social",
+      "description": "Social Media Automation — TikTok, Instagram, X, LinkedIn, Facebook, YouTube",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "google/antigravity-claude-sonnet-4-6"
+      ],
+      "members": [
+        "A2A-SIN-Instagram",
+        "A2A-SIN-Medium",
+        "A2A-SIN-YouTube",
+        "A2A-SIN-TikTok",
+        "A2A-SIN-X-Twitter"
+      ],
+      "config": {}
+    },
+    "team-messaging": {
+      "name": "Team Messaging",
+      "manager": "A2A-SIN-Messaging",
+      "description": "Messaging Integration — WhatsApp, Telegram, Signal, Discord, iMessage",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "qwen/coder-model"
+      ],
+      "members": [
+        "A2A-SIN-WhatsApp",
+        "A2A-SIN-Teams",
+        "A2A-SIN-WeChat",
+        "A2A-SIN-LINE",
+        "A2A-SIN-Nostr",
+        "A2A-SIN-Zoom"
+      ],
+      "config": {}
+    },
+    "team-forum": {
+      "name": "Team Forum",
+      "manager": "A2A-SIN-Forum",
+      "description": "Forum Automation — Reddit, HackerNews, StackOverflow, Quora, DevTo",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "qwen/coder-model"
+      ],
+      "members": [
+        "A2A-SIN-StackOverflow",
+        "A2A-SIN-Quora"
+      ],
+      "config": {}
+    },
+    "team-legal": {
+      "name": "Team Legal",
+      "manager": "A2A-SIN-Legal",
+      "description": "Legal Automation — ClaimWriter, Patents, Damages, Compliance, Contract",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "qwen/coder-model"
+      ],
+      "members": [
+        "A2A-SIN-Patents",
+        "A2A-SIN-Tax"
+      ],
+      "config": {}
+    },
+    "team-commerce": {
+      "name": "Team Commerce",
+      "manager": "A2A-SIN-Commerce",
+      "description": "Commerce Automation — Shop-Finance, Shop-Logistic, TikTok-Shop, Stripe",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "google/antigravity-claude-sonnet-4-6"
+      ],
+      "members": [
+        "A2A-SIN-TikTok-Shop"
+      ],
+      "config": {}
+    },
+    "team-community": {
+      "name": "Team Community",
+      "manager": "A2A-SIN-Community",
+      "description": "Community Management — Discord, WhatsApp, Telegram, YouTube Community",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "qwen/coder-model"
+      ],
+      "members": [],
+      "config": {}
+    },
+    "team-google": {
+      "name": "Team Google",
+      "manager": "A2A-SIN-Google",
+      "description": "Google Workspace — Google-Apps, Google-Chat, Opal",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "qwen/coder-model"
+      ],
+      "members": [
+        "A2A-SIN-Opal"
+      ],
+      "config": {}
+    },
+    "team-microsoft": {
+      "name": "Team Microsoft",
+      "manager": "A2A-SIN-Microsoft",
+      "description": "Microsoft 365 — Teams, Outlook, OneDrive, Excel, Word, PowerPoint",
+      "primaryModel": "openai/gpt-5.4",
+      "fallbackModels": [
+        "google/antigravity-claude-sonnet-4-6",
+        "qwen/coder-model"
+      ],
+      "members": [],
+      "config": {}
+    },
+    "team-research": {
+      "name": "Team Research",
+      "manager": "A2A-SIN-Research",
+      "description": "Deep Research Agent",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "google/antigravity-claude-opus-4-6-thinking"
+      ],
+      "members": [
+        "A2A-SIN-Research"
+      ],
+      "config": {}
+    },
+    "team-media-comfyui": {
+      "name": "Team Media ComfyUI",
+      "manager": "A2A-SIN-Media-ComfyUI",
+      "description": "Media Generation — ImageGen, VideoGen, ComfyUI Workflows",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "google/antigravity-claude-sonnet-4-6"
+      ],
+      "members": [],
+      "config": {}
+    },
+    "team-media-music": {
+      "name": "Team Media Music",
+      "manager": "A2A-SIN-Media-Music",
+      "description": "Music Production — Beats, Producer, Singer, Songwriter, Videogen",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "google/antigravity-claude-sonnet-4-6"
+      ],
+      "members": [],
+      "config": {}
+    },
+    "team-coding-cybersec": {
+      "name": "Team Coding CyberSec",
+      "manager": "A2A-SIN-Code-CyberSec",
+      "description": "Security Specialists — BugBounty, Cloudflare, 16x Security-Spezialisten",
+      "primaryModel": "google/antigravity-claude-sonnet-4-6",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "google/antigravity-gemini-3.1-pro"
+      ],
+      "members": [
+        "A2A-SIN-Security-Recon",
+        "A2A-SIN-Security-Fuzz"
+      ],
+      "config": {}
+    },
+    "team-coding-frontend": {
+      "name": "Team Coding Frontend",
+      "manager": "A2A-SIN-Code-Frontend",
+      "description": "Frontend Specialists — Accessibility, App-Shell, Commerce-UI, Design-Systems",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "fallbackModels": [
+        "google/antigravity-claude-sonnet-4-6",
+        "openai/gpt-5.4"
+      ],
+      "members": [],
+      "config": {}
+    },
+    "team-coding-backend": {
+      "name": "Team Coding Backend",
+      "manager": "A2A-SIN-Code-Backend",
+      "description": "Backend Specialists — Server, OracleCloud, Passwordmanager",
+      "primaryModel": "google/antigravity-claude-sonnet-4-6",
+      "fallbackModels": [
+        "openai/gpt-5.4",
+        "google/antigravity-gemini-3.1-pro"
+      ],
+      "members": [],
+      "config": {}
+    }
+  },
+  "agents": [
+    {
+      "name": "A2A-SIN-Simone-MCP",
+      "team": "team-code",
+      "manager": "A2A-SIN-Zeus",
+      "primaryModel": "google/antigravity-claude-sonnet-4-6",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Frontend",
+      "team": "team-code",
+      "manager": "A2A-SIN-Zeus",
+      "primaryModel": "google/antigravity-claude-sonnet-4-6",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Backend",
+      "team": "team-code",
+      "manager": "A2A-SIN-Zeus",
+      "primaryModel": "google/antigravity-claude-sonnet-4-6",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Fullstack",
+      "team": "team-code",
+      "manager": "A2A-SIN-Zeus",
+      "primaryModel": "google/antigravity-claude-sonnet-4-6",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Worker-Prolific",
+      "team": "team-worker",
+      "manager": "A2A-SIN-Team-Worker",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Worker-Freelancer",
+      "team": "team-worker",
+      "manager": "A2A-SIN-Team-Worker",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Worker-Survey",
+      "team": "team-worker",
+      "manager": "A2A-SIN-Team-Worker",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Deploy",
+      "team": "team-infrastructure",
+      "manager": "A2A-SIN-Team-Infrastructure",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Monitoring",
+      "team": "team-infrastructure",
+      "manager": "A2A-SIN-Team-Infrastructure",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Security",
+      "team": "team-infrastructure",
+      "manager": "A2A-SIN-Team-Infrastructure",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Google-Docs",
+      "team": "team-google-apps",
+      "manager": "A2A-SIN-Google-Apps",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Google-Sheets",
+      "team": "team-google-apps",
+      "manager": "A2A-SIN-Google-Apps",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Google-Drive",
+      "team": "team-google-apps",
+      "manager": "A2A-SIN-Google-Apps",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Shortcuts",
+      "team": "team-apple-apps",
+      "manager": "A2A-SIN-Apple-Apps",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-macOS",
+      "team": "team-apple-apps",
+      "manager": "A2A-SIN-Apple-Apps",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Mail",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Notes",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Calendar-Contacts",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Reminders",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Photos-Files",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-FaceTime",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Notifications",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Mobile",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Safari-WebKit",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-DeviceControl",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-Shortcuts",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Apple-SystemSettings",
+      "team": "team-apple",
+      "manager": "A2A-SIN-Apple",
+      "primaryModel": "openai/gpt-5.4",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Instagram",
+      "team": "team-social",
+      "manager": "A2A-SIN-Social",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Medium",
+      "team": "team-social",
+      "manager": "A2A-SIN-Social",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-YouTube",
+      "team": "team-social",
+      "manager": "A2A-SIN-Social",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-TikTok",
+      "team": "team-social",
+      "manager": "A2A-SIN-Social",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-X-Twitter",
+      "team": "team-social",
+      "manager": "A2A-SIN-Social",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-WhatsApp",
+      "team": "team-messaging",
+      "manager": "A2A-SIN-Messaging",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Teams",
+      "team": "team-messaging",
+      "manager": "A2A-SIN-Messaging",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-WeChat",
+      "team": "team-messaging",
+      "manager": "A2A-SIN-Messaging",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-LINE",
+      "team": "team-messaging",
+      "manager": "A2A-SIN-Messaging",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Nostr",
+      "team": "team-messaging",
+      "manager": "A2A-SIN-Messaging",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Zoom",
+      "team": "team-messaging",
+      "manager": "A2A-SIN-Messaging",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-StackOverflow",
+      "team": "team-forum",
+      "manager": "A2A-SIN-Forum",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Quora",
+      "team": "team-forum",
+      "manager": "A2A-SIN-Forum",
+      "primaryModel": "google/antigravity-gemini-3-flash",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Patents",
+      "team": "team-legal",
+      "manager": "A2A-SIN-Legal",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Tax",
+      "team": "team-legal",
+      "manager": "A2A-SIN-Legal",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-TikTok-Shop",
+      "team": "team-commerce",
+      "manager": "A2A-SIN-Commerce",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Opal",
+      "team": "team-google",
+      "manager": "A2A-SIN-Google",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Research",
+      "team": "team-research",
+      "manager": "A2A-SIN-Research",
+      "primaryModel": "google/antigravity-gemini-3.1-pro",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Security-Recon",
+      "team": "team-coding-cybersec",
+      "manager": "A2A-SIN-Code-CyberSec",
+      "primaryModel": "google/antigravity-claude-sonnet-4-6",
+      "status": "active"
+    },
+    {
+      "name": "A2A-SIN-Security-Fuzz",
+      "team": "team-coding-cybersec",
+      "manager": "A2A-SIN-Code-CyberSec",
+      "primaryModel": "google/antigravity-claude-sonnet-4-6",
+      "status": "active"
+    }
+  ],
+  "models": {
+    "explore": "nvidia-nim/stepfun-ai/step-3.5-flash",
+    "librarian": "nvidia-nim/stepfun-ai/step-3.5-flash"
+  }
+}
