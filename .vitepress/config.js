@@ -140,6 +140,9 @@ export default defineConfig({
         ],
       },
     ],
+    search: {
+      provider: 'local',
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/OpenSIN-AI' },
       { icon: 'discord', link: 'https://discord.gg/opensin' },
