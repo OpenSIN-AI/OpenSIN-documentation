@@ -6,6 +6,23 @@ export default defineConfig({
   srcDir: 'docs',
   ignoreDeadLinks: true,
   head: [
+    ['link', { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' }],
+    ['script', { type: 'application/ld+json' }, JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      'name': 'OpenSIN Documentation',
+      'url': 'https://docs.opensin.ai/',
+      'description': 'Complete documentation for OpenSIN — the first Agent-to-Agent network with 100+ autonomous AI agents.',
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'OpenSIN',
+        'url': 'https://opensin.ai',
+        'logo': {
+          '@type': 'ImageObject',
+          'url': 'https://opensin.ai/og-image.png'
+        }
+      }
+    })],
     ['link', { rel: 'canonical', href: 'https://docs.opensin.ai/' }],
     ['meta', { property: 'og:image', content: 'https://opensin.ai/og-image.png' }],
     ['meta', { property: 'og:image:width', content: '1200' }],
