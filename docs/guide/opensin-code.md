@@ -98,7 +98,7 @@ Die Rust Engine bietet ein performantes Backend:
 
 ## Plugin-System
 
-OpenSIN-Code kommt mit 14 vorinstallierten Plugins. Siehe [Plugin-Dokumentation](/docs/plugins/opensin-code-plugins) für Details.
+OpenSIN-Code kommt mit 14 vorinstallierten Plugins. Siehe [Plugin-Dokumentation](/plugins/opensin-code-plugins) für Details.
 
 ### Eigene Plugins entwickeln
 
@@ -114,7 +114,7 @@ mkdir -p plugins/sin-mein-plugin/skills
 mkdir -p plugins/sin-mein-plugin/hooks
 ```
 
-Siehe [Plugin Development Tutorial](/docs/tutorials/plugin-development) für eine Schritt-für-Schritt-Anleitung.
+Siehe [Plugin Development Tutorial](/tutorials/plugin-development) für eine Schritt-für-Schritt-Anleitung.
 
 ---
 

@@ -111,7 +111,7 @@ describe('My Plugin', () => {
 
 ## Examples
 
-See the [examples](./examples) directory for complete plugin implementations.
+See the [Examples section](/examples/hello-world) for complete plugin implementations.
 
 ## Contributing
 

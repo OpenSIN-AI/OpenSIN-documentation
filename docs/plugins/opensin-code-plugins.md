@@ -237,7 +237,7 @@ Ralph-Loop-Technik für iterative Entwicklung. Ähnlich wie sin-loop, aber mit e
 
 ## Plugin-Entwicklung
 
-Siehe [Plugin Development Tutorial](/docs/tutorials/plugin-development) für eine Schritt-für-Schritt-Anleitung.
+Siehe [Plugin Development Tutorial](/tutorials/plugin-development) für eine Schritt-für-Schritt-Anleitung.
 
 ### Flow-Builder Skill
 

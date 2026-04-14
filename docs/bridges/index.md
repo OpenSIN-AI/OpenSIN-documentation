@@ -1,1 +1,1 @@
-- [OpenSIN-Bridge Monetization](/docs/bridges/opensin-bridge-monetization)
+- [OpenSIN-Bridge Monetization](/bridges/opensin-bridge-monetization)
