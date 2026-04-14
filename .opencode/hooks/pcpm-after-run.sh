@@ -4,8 +4,8 @@
 # writes it back into the persistent brain stores.
 # ALSO runs sin-brain auto-sync to keep global and local brain in sync.
 
-BRAIN_CLI="/Users/jeremy/dev/OpenSIN-documentation/src/cli.js"
-BRAIN_ROOT="/Users/jeremy/dev/OpenSIN-documentation"
+BRAIN_CLI="/Users/jeremy/dev/global-brain/src/cli.js"
+BRAIN_ROOT="/Users/jeremy/dev/global-brain"
 PROJECT_ID="OpenSIN-documentation"
 SESSION_ID="session-$(date +%s)"
 
