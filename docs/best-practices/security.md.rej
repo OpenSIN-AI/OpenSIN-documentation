@@ -1,0 +1,15 @@
+diff a/docs/best-practices/security.md b/docs/best-practices/security.md	(rejected hunks)
+@@ -198,3 +198,13 @@ Before deploying an agent to production:
+ - [ ] Log redaction enabled for sensitive patterns
+ - [ ] Token rotation configured for all long-lived credentials
+ - [ ] `npm audit` passing with no critical vulnerabilities
++
++## 🚫 Technology Sovereignty Mandate (Browser Automation)
++
++**STRICTLY ENFORCED:**
++- **Playwright**, **Puppeteer**, **Selenium**, and **Camoufox** are **PERMANENTLY BANNED** across the entire OpenSIN-AI organization.
++- They are easily detected by Cloudflare, trigger massive bot-detection red flags, and lack true native stealth.
++
++**THE OPENSIN STANDARD:**
++All A2A Agents MUST use the **OpenSIN-Bridge Chrome Extension** via the MCP WebSocket Server. 
++Alternatively, if OS-level isolation is absolutely necessary, use `webauto-nodriver-mcp` (which wraps `nodriver`).
