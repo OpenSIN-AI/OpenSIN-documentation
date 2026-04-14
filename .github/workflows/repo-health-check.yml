@@ -1,0 +1,176 @@
+name: Repo Health Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      scan_all_repos:
+        description: 'Scan all repos in OpenSIN-AI org'
+        required: false
+        default: false
+        type: boolean
+      org:
+        description: 'GitHub organization to scan'
+        required: false
+        default: 'OpenSIN-AI'
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install GitHub CLI
+        run: |
+          type -p curl >/dev/null || sudo apt install curl -y
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+          sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt update && sudo apt install gh -y
+
+      - name: Check repo compliance (current repo)
+        id: local-check
+        run: |
+          echo "## Local Repository Health Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          PASS=0
+          FAIL=0
+          
+          # Check for README.md
+          if [ -f "README.md" ]; then
+            echo "- ✅ README.md exists" >> $GITHUB_STEP_SUMMARY
+            PASS=$((PASS + 1))
+          else
+            echo "- ❌ README.md missing" >> $GITHUB_STEP_SUMMARY
+            FAIL=$((FAIL + 1))
+          fi
+          
+          # Check for AGENTS.md
+          if [ -f "AGENTS.md" ]; then
+            echo "- ✅ AGENTS.md exists" >> $GITHUB_STEP_SUMMARY
+            PASS=$((PASS + 1))
+          else
+            echo "- ❌ AGENTS.md missing" >> $GITHUB_STEP_SUMMARY
+            FAIL=$((FAIL + 1))
+          fi
+          
+          # Check for LICENSE
+          if [ -f "LICENSE" ] || [ -f "LICENSE.md" ]; then
+            echo "- ✅ LICENSE exists" >> $GITHUB_STEP_SUMMARY
+            PASS=$((PASS + 1))
+          else
+            echo "- ❌ LICENSE missing" >> $GITHUB_STEP_SUMMARY
+            FAIL=$((FAIL + 1))
+          fi
+          
+          # Check for .gitignore
+          if [ -f ".gitignore" ]; then
+            echo "- ✅ .gitignore exists" >> $GITHUB_STEP_SUMMARY
+            PASS=$((PASS + 1))
+          else
+            echo "- ❌ .gitignore missing" >> $GITHUB_STEP_SUMMARY
+            FAIL=$((FAIL + 1))
+          fi
+          
+          # Check for agent.json (A2A compliance)
+          if [ -f "agent.json" ]; then
+            echo "- ✅ agent.json exists" >> $GITHUB_STEP_SUMMARY
+            PASS=$((PASS + 1))
+          else
+            echo "- ⚠️ agent.json not found (optional for non-agent repos)" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          # Check for hardcoded secrets
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Secret Detection" >> $GITHUB_STEP_SUMMARY
+          SECRETS_FOUND=0
+          
+          # Scan for common secret patterns
+          for pattern in "api_key\s*=\s*['\"][^'\"]*['\"]" "password\s*=\s*['\"][^'\"]*['\"]" "secret\s*=\s*['\"][^'\"]*['\"]" "token\s*=\s*sk-"; do
+            RESULTS=$(grep -rl --include="*.js" --include="*.ts" --include="*.py" --include="*.json" --include="*.env" -E "$pattern" . 2>/dev/null | grep -v node_modules | grep -v .git || true)
+            if [ -n "$RESULTS" ]; then
+              echo "- 🔴 Potential secret found matching pattern: \`$pattern\`" >> $GITHUB_STEP_SUMMARY
+              echo "$RESULTS" | while read -r f; do echo "  - \`$f\`" >> $GITHUB_STEP_SUMMARY; done
+              SECRETS_FOUND=$((SECRETS_FOUND + 1))
+            fi
+          done
+          
+          if [ $SECRETS_FOUND -eq 0 ]; then
+            echo "- ✅ No hardcoded secrets detected" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Passed: $PASS" >> $GITHUB_STEP_SUMMARY
+          echo "- Failed: $FAIL" >> $GITHUB_STEP_SUMMARY
+          
+          # Set output for later use
+          echo "pass=$PASS" >> $GITHUB_OUTPUT
+          echo "fail=$FAIL" >> $GITHUB_OUTPUT
+
+      - name: Check GitHub Topics (current repo)
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          echo "## GitHub Topics" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          TOPICS=$(gh api repos/$REPO/topics -q '.names[]' 2>/dev/null || echo "")
+          
+          if [ -z "$TOPICS" ]; then
+            echo "- ❌ No topics set" >> $GITHUB_STEP_SUMMARY
+            echo "- Suggested topics: \`opnsin-agent\`, \`ai-agents\`, \`opensin\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ✅ Topics: $TOPICS" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Scan all repos in org (workflow_dispatch only)
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.scan_all_repos == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORG: ${{ github.event.inputs.org }}
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "## Organization-Wide Scan: $ORG" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### A2A Agent Repos" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Repo | README | AGENTS.md | agent.json | Topics |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|-----------|------------|--------|" >> $GITHUB_STEP_SUMMARY
+          
+          gh repo list $ORG --limit 100 --json name --jq '.[].name' | while read -r repo; do
+            README=$(gh api repos/$ORG/$repo/contents/README.md --silent 2>/dev/null && echo "✅" || echo "❌")
+            AGENTS=$(gh api repos/$ORG/$repo/contents/AGENTS.md --silent 2>/dev/null && echo "✅" || echo "❌")
+            AGENTJSON=$(gh api repos/$ORG/$repo/contents/agent.json --silent 2>/dev/null && echo "✅" || echo "❌")
+            TOPICS=$(gh api repos/$ORG/$repo/topics -q '.names | length' 2>/dev/null || echo "0")
+            echo "| $repo | $README | $AGENTS | $AGENTJSON | $TOPICS |" >> $GITHUB_STEP_SUMMARY
+          done
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### MCP Server Repos" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Repo | README | AGENTS.md | mcp-config.json | Topics |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|-----------|-----------------|--------|" >> $GITHUB_STEP_SUMMARY
+          
+          gh repo list $ORG --limit 100 --json name --jq '.[].name' | grep "MCP-SIN" | while read -r repo; do
+            README=$(gh api repos/$ORG/$repo/contents/README.md --silent 2>/dev/null && echo "✅" || echo "❌")
+            AGENTS=$(gh api repos/$ORG/$repo/contents/AGENTS.md --silent 2>/dev/null && echo "✅" || echo "❌")
+            MCPCONFIG=$(gh api repos/$ORG/$repo/contents/mcp-config.json --silent 2>/dev/null && echo "✅" || echo "❌")
+            TOPICS=$(gh api repos/$ORG/$repo/topics -q '.names | length' 2>/dev/null || echo "0")
+            echo "| $repo | $README | $AGENTS | $MCPCONFIG | $TOPICS |" >> $GITHUB_STEP_SUMMARY
+          done
