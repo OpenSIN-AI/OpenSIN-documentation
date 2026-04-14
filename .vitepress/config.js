@@ -5,6 +5,9 @@ export default defineConfig({
   description: 'OpenSIN-AI — Autonomous AI Agent Ecosystem',
   srcDir: 'docs',
   ignoreDeadLinks: true,
+  head: [
+    ['script', { defer: '', 'data-domain': 'docs.opensin.ai', src: 'https://plausible.io/js/script.js' }],
+  ],
   themeConfig: {
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
