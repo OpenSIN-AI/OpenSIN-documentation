@@ -41,6 +41,7 @@ export default defineConfig({
       { text: 'Governance', link: '/governance/overview' },
       { text: 'Tutorials', link: '/tutorials/first-agent' },
       { text: 'Examples', link: '/examples/hello-world' },
+      { text: 'Blog', link: 'https://blog.opensin.ai' },
       { text: 'Best Practices', link: '/best-practices/' },
       { text: 'Bridges', link: '/bridges/' },
       { text: 'Migrations', link: '/migrations/overview' },
