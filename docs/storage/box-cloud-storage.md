@@ -102,10 +102,10 @@ def get_public_url(file_id):
 | Alt (GitLab) | Neu (Box.com) |
 |-------------|--------------|
 | GitLab LogCenter Repos | Box.com `/Cache` Ordner |
-| room-07-gitlab-storage | Box.com Upload Agent |
-| `gitlab_logcenter.py` uploads | `box_storage.py` uploads |
+| `room-07-gitlab-storage` | `room-09-box-storage` (A2A-SIN-Box-Storage) |
+| `gitlab_logcenter.py` uploads | Box Storage API (`/api/v1/upload`) |
 
-### Migration Script
+### Migration Script (Upload to Box Cache)
 
 ```bash
 #!/bin/bash
@@ -124,41 +124,75 @@ for file in ./gitlab-exports/*; do
 done
 ```
 
+### Update Agent Configurations
+
+All agents must switch to the new Box Storage API:
+
+1. Change endpoint from GitLab API to `http://room-09-box-storage:3000/api/v1/upload`
+2. Set header `X-Box-Storage-Key: $BOX_STORAGE_API_KEY`
+3. Remove all `gitlab_logcenter.py` imports and references
+4. Test with a sample upload: `curl -F "file=@test.png" -H "X-Box-Storage-Key: xxx" http://localhost:3000/api/v1/upload`
+
+> **BREAKING CHANGE:** No fallback to GitLab Storage will be provided. The `room-07-gitlab-storage` service is deprecated and removed from Infra-SIN-Docker-Empire v2.0.1+.
+
 ---
 
 ## Docker Integration
 
-### Box Storage Agent in docker-compose.yml
+### Room 09: Box Storage Service (A2A-SIN-Box-Storage)
+
+The **A2A-SIN-Box-Storage** service replaces `room-07-gitlab-storage`. Add to `docker-compose.yml`:
 
 ```yaml
-# Box Storage Service (replaces GitLab Storage)
-room-07-box-storage:
+# Box Storage Agent — Public File Upload API
+room-09-box-storage:
   build:
     context: ./services/box-storage
     dockerfile: Dockerfile
-  image: sin-box-storage:latest
-  container_name: room-07-box-storage
+  image: a2a-sin-box-storage:latest
+  container_name: room-09-box-storage
   restart: unless-stopped
   environment:
-    - BOX_DEVELOPER_TOKEN=${BOX_DEVELOPER_TOKEN}
-    - BOX_PUBLIC_FOLDER_ID=${BOX_PUBLIC_FOLDER_ID}
-    - BOX_CACHE_FOLDER_ID=${BOX_CACHE_FOLDER_ID}
+    - BOX_DEVELOPER_TOKEN=${BOX_DEVELOPER_TOKEN:?ERROR: must be set in .env file}
+    - BOX_PUBLIC_FOLDER_ID=${BOX_PUBLIC_FOLDER_ID:?ERROR: must be set in .env file}
+    - BOX_CACHE_FOLDER_ID=${BOX_CACHE_FOLDER_ID:?ERROR: must be set in .env file}
+    - API_KEY=${BOX_STORAGE_API_KEY:?ERROR: must be set in .env file}
+    - PORT=3000
+    - NODE_ENV=production
+    - MAX_FILE_SIZE=2GB
+    - ALLOWED_EXTENSIONS=.png,.jpg,.jpeg,.gif,.pdf,.doc,.docx,.txt,.zip
+  volumes:
+    - box_storage_logs:/app/logs
   networks:
     haus-netzwerk:
-      ipv4_address: 172.20.0.107
+      ipv4_address: 172.20.0.109
   ports:
-    - "8099:8099"
+    - "3000:3000"
   healthcheck:
-    test: ["CMD", "curl", "-f", "http://127.0.0.1:8099/health"]
+    test: ["CMD", "curl", "-f", "http://127.0.0.1:3000/health"]
+    interval: 30s
+    timeout: 10s
+    retries: 3
+    start_period: 30s
+
+volumes:
+  box_storage_logs:
 ```
+
+> **Note:** The service source code lives in the standalone repository:  
+> https://github.com/OpenSIN-AI/A2A-SIN-Box-Storage  
+> Either:
+> - Clone as submodule: `git submodule add https://github.com/OpenSIN-AI/A2A-SIN-Box-Storage.git services/box-storage`
+> - Or copy the contents into `./services/box-storage` before `docker compose up`
 
 ### .env Template
 
 ```bash
-# Box.com Storage
-BOX_DEVELOPER_TOKEN=
-BOX_PUBLIC_FOLDER_ID=
-BOX_CACHE_FOLDER_ID=
+# Box.com Storage (Required)
+BOX_DEVELOPER_TOKEN=your_developer_token_here
+BOX_PUBLIC_FOLDER_ID=1234567890
+BOX_CACHE_FOLDER_ID=0987654321
+BOX_STORAGE_API_KEY=shared_secret_for_agents_min_32_chars
 
 # Google Drive Storage (optional)
 GOOGLE_DRIVE_CLIENT_ID=
