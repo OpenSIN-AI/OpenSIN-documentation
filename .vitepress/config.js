@@ -2,10 +2,15 @@ import { defineConfig } from 'vitepress';
 
 export default defineConfig({
   title: 'OpenSIN Documentation',
-  description: 'OpenSIN-AI — Autonomous AI Agent Ecosystem',
+  description: 'Complete documentation for OpenSIN — the first Agent-to-Agent network with 100+ autonomous AI agents in 18 specialized teams. Build, deploy, and scale.',
   srcDir: 'docs',
   ignoreDeadLinks: true,
   head: [
+    ['link', { rel: 'canonical', href: 'https://docs.opensin.ai/' }],
+    ['meta', { property: 'og:image', content: 'https://opensin.ai/og-image.png' }],
+    ['meta', { property: 'og:image:width', content: '1200' }],
+    ['meta', { property: 'og:image:height', content: '630' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['script', { defer: '', 'data-domain': 'docs.opensin.ai', src: 'https://plausible.io/js/script.js' }],
   ],
   themeConfig: {
