@@ -15,7 +15,7 @@ description: The absolute rulebook for designing, coding, and orchestrating Open
 ## 1. Das "No-Silo" & Self-Healing Mandat
 
 ### WAS passiert hier?
-Ein Agent darf **NIEMALS** versuchen, tiefe Architektur- oder Systemfehler allein und isoliert in einem "Silo" zu reparieren. Stattdessen wird jeder Fehler, Absturz oder Blocker über strukturierte Logs an das zentrale LogCenter (GitLab) und das Issue-System (`A2A-SIN-GitHub-Issues`) gemeldet, sodass das *gesamte* Agenten-Team (die Workforce) das Problem lösen kann.
+Ein Agent darf **NIEMALS** versuchen, tiefe Architektur- oder Systemfehler allein und isoliert in einem "Silo" zu reparieren. Stattdessen wird jeder Fehler, Absturz oder Blocker über strukturierte Logs an **Box Storage (A2A-SIN-Box-Storage)** und das Issue-System (`A2A-SIN-GitHub-Issues`) gemeldet, sodass das *gesamte* Agenten-Team (die Workforce) das Problem lösen kann.
 
 ### WARUM wird es so gemacht?
 Ein einzelner Agent hat oft weder den vollständigen Systemkontext noch die nötige Stabilität (z.B. wenn seine Host-VM gerade abstürzt oder API-Quoten erschöpft sind), um tiefgreifende Fehler nachhaltig zu beheben. Die Schwarm-Intelligenz (Team Coder) ist ausfallsicherer und intelligenter als ein Einzelkämpfer.
@@ -24,7 +24,7 @@ Ein einzelner Agent hat oft weder den vollständigen Systemkontext noch die nöt
 Wenn Agenten versuchen, Fehler isoliert mit "Ad-hoc Bastelfixes" zu flicken, entsteht unwartbarer Spaghetti-Code, Konfigurations-Drift und ein System, das bei der nächsten Ausführung erneut zusammenbricht. Isolierte Fixes verhindern zudem den Wissenstransfer an den Rest der Flotte.
 
 ### WOMIT hängt es zusammen?
-Dieses Mandat ist eng verknüpft mit dem `enterprise-deep-debug` Skill, dem `A2A-SIN-TelegramBot` (für Fleet-Alerts) und dem `gitlab_logcenter.py` Skript.
+Dieses Mandat ist eng verknüpft mit dem `enterprise-deep-debug` Skill, dem `A2A-SIN-TelegramBot` (für Fleet-Alerts) und dem `box_storage.py` Skript (bzw. der A2A-SIN-Box-Storage API).
 
 ### WAS sind die KONSEQUENZEN bei Missachtung?
 - **Für das System:** Wiederkehrende, unsichtbare Fehler, Instabilität und "Zombie"-Agenten.
@@ -101,7 +101,7 @@ Web-UIs ändern sich dynamisch (React, Vue, SPA). Elemente können im DOM existi
 Text-Only-Dokumentationen lassen zu viel Interpretationsspielraum. Ein Screenshot eines 404-Fehlers oder eines kaputten Layouts sagt mehr als 1000 Worte und beschleunigt das Debugging enorm.
 
 ### WOMIT hängt es zusammen?
-Hängt mit dem `gitlab_logcenter.py` und der `webauto-nodriver_screenshot_to_file` Funktion zusammen. Jeder Fehler-Status *muss* bebildert werden.
+Hängt mit der **Box Storage API** (`A2A-SIN-Box-Storage`) und der `webauto-nodriver_screenshot_to_file` Funktion zusammen. Jeder Fehler-Status *muss* bebildert und die Artefakte über die Box Storage API hochgeladen werden.
 
 ### WAS sind die KONSEQUENZEN bei Missachtung?
 Text-Only Issues oder READMEs gelten als Protokollverstoß. Automatisierungs-Scripts, die ohne vorherigen DOM-Check (offsetParent !== null) geschrieben werden, werden in Produktion fehlschlagen und Ressourcen verbrennen.

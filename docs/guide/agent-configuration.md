@@ -334,9 +334,17 @@ task(subagent_type="explore", run_in_background=true, load_skills=[], descriptio
 - Volle Fallback-Ketten restored (6 Modelle pro Agent)
 
 ### v2.1.0 (2026-04-13)
-- GitLab Storage Skill
+- GitLab Storage Skill (deprecated in v2.4.0, replaced by A2A-SIN-Box-Storage)
 - OCI VM Architecture Docs
 - Vision model entfernt, reasoningEffort entfernt
+
+### v2.4.0 (2026-04-15)
+- **Box Storage Migration**: `A2A-SIN-Box-Storage` ersetzt GitLab LogCenter als Standard-Cloud-Storage
+- Migration-Guide: `docs/storage/box-cloud-storage.md`
+- Aktualisierte Mandate in `AGENTS.md` (BOX STORAGE MANDATE PRIORITY 00)
+- Kompatibilitätsschicht: `box_storage.py` (ersetzt `gitlab_logcenter.py`)
+- Deprecated: `gitlab-storage` Plugin, `room-07-gitlab-storage` Service
+- Deadline: Vollständige Migration bis 2026-05-01
 
 ### v2.0.0 (2026-04-12)
 - Qwen OAuth Plugin fix

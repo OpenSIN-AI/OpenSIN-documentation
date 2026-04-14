@@ -24,7 +24,7 @@ Die Alternative ("Ich repariere das schnell lokal, das muss ja keiner wissen") f
 
 ### WOMIT hängt es zusammen?
 - **GitHub Issues**: Das Issue MUSS das Label `Bug` oder einen entsprechenden Tag erhalten.
-- **GitLab LogCenter**: Alle zugehörigen Logs, Screenshots (`/tmp/mXX_stepname_RESULT.png`) und Videos müssen via `gitlab_logcenter.py` hochgeladen werden, bevor das Issue erstellt wird. Das Issue enthält dann nur noch die Links zu den Artefakten.
+- **Box Storage (A2A-SIN-Box-Storage)**: Alle zugehörigen Logs, Screenshots (`/tmp/mXX_stepname_RESULT.png`) und Videos müssen via `box_storage.py` oder direkt über die Box Storage API (`POST /api/v1/upload`) hochgeladen werden, bevor das Issue erstellt wird. Das Issue enthält dann nur noch die Links zu den Artefakten (publicUrl, cdnUrl).
 
 ### WAS sind die KONSEQUENZEN bei Missachtung?
 - **Für das System:** Wiederkehrende Fehler, da Agenten nicht aus vergangenen Fixes lernen können (kein durchsuchbares Issue-Gedächtnis).
