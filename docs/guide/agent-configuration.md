@@ -2,7 +2,7 @@
 
 > **Stand:** 2026-04-14 | **Version:** 2.2.0
 
-Dieses Dokument beschreibt **ALLE** Konfigurationsdateien fuer die A2A-Agenten-Steuerung im OpenSIN-Oekosystem.
+Dieses Dokument beschreibt **ALLE** Konfigurationsdateien für die A2A-Agenten-Steuerung im OpenSIN-Oekosystem.
 
 ---
 
@@ -13,7 +13,7 @@ Das OpenSIN-System verwaltet **7 Konfigurationsdateien** in 3 Kategorien:
 | Kategorie | Dateien | Zweck |
 |:---|:---|:---|
 | **Haupt-Config** | `opencode.json` | Provider, Modelle, MCPs, Agenten, Commands |
-| **Subagenten-Modelle** | `oh-my-openagent.json`, `oh-my-opencode.json` | Modelle fuer interne Subagenten (explore, librarian, etc.) |
+| **Subagenten-Modelle** | `oh-my-openagent.json`, `oh-my-opencode.json` | Modelle für interne Subagenten (explore, librarian, etc.) |
 | **Team-Register** | `oh-my-sin.json` | Zentrales Register aller A2A Teams |
 | **Team-Configs** | `my-sin-team-*.json` | Spezifische Agenten + Modelle pro Team |
 
@@ -24,7 +24,7 @@ Das OpenSIN-System verwaltet **7 Konfigurationsdateien** in 3 Kategorien:
 **Pfad:** `~/.config/opencode/opencode.json` (lokal) oder `upgraded-opencode-stack/opencode.json` (Repo)
 
 ### Zweck
-Die HAUPT-Konfiguration fuer OpenCode CLI. Definiert alles was der User direkt sieht und nutzt.
+Die HAUPT-Konfiguration für OpenCode CLI. Definiert alles was der User direkt sieht und nutzt.
 
 ### Struktur
 
@@ -163,7 +163,7 @@ Das **zentrale Register** ALLER A2A SIN Teams. Klassifiziert Teams, Manager und 
 ## 4. my-sin-team-*.json — Team-spezifische Konfiguration
 
 ### Zweck
-Definiert **spezifische Agenten und Modelle** fuer jedes Team. Jedes Team hat seine eigene Config-Datei.
+Definiert **spezifische Agenten und Modelle** für jedes Team. Jedes Team hat seine eigene Config-Datei.
 
 ### 4.1 my-sin-team-code.json (Team Coding)
 
@@ -241,7 +241,7 @@ task(subagent_type="explore", run_in_background=true, load_skills=[],
 task(subagent_type="librarian", run_in_background=true, load_skills=[],
   description="Framework Docs", prompt="[GOAL]: Offizielle Doku des Frameworks...")
 task(subagent_type="librarian", run_in_background=true, load_skills=[],
-  description="Best Practices", prompt="[GOAL]: Best Practices fuer die Technologie...")
+  description="Best Practices", prompt="[GOAL]: Best Practices für die Technologie...")
 ```
 
 ---
