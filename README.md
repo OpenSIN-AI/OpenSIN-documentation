@@ -2,6 +2,10 @@
 
 > **OpenSIN-AI** — The world's most comprehensive autonomous AI agent ecosystem.
 
+> [!IMPORTANT]
+> **Single Source of Truth (SSOT):** Die kanonische OpenCode-Konfiguration liegt unter [Delqhi/upgraded-opencode-stack](https://github.com/Delqhi/upgraded-opencode-stack).
+> Nach jeder Änderung an `opencode.json` MUSS `sin-sync` ausgeführt werden.
+
 ## Quick Links
 
 - [Website](https://opensin.ai)
