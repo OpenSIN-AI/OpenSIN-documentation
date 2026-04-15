@@ -50,7 +50,7 @@ Replaces older messages with a summary, preserving key decisions and context.
 const compressor = new ContextCompressor({
   strategy: 'summarize',
   maxTokens: 8000,
-  summaryModel: 'gpt-4o-mini',  // cheap model for summaries
+  summaryModel: 'openai/gpt-5.4-mini',  // cheap model for summaries
   summaryMaxTokens: 500,
 })
 ```

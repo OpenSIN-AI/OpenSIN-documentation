@@ -153,7 +153,7 @@ MCP servers expose powerful capabilities. OpenSIN gates access through:
 - All tool invocations logged with timestamp, user, action, and result
 - A2A task history persisted to Supabase
 - Git-based audit trail for all code changes
-- GitLab LogCenter for centralized log aggregation
+- Box.com Storage (A2A-SIN-Box-Storage) for centralized log aggregation
 
 ## Reporting Vulnerabilities
 

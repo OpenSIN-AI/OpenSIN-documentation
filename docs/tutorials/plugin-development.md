@@ -47,7 +47,7 @@ export class MyPlugin {
 ## Step 4: Install
 
 ```bash
-npm install -g .
+bun install -g .
 ```
 
 ## Step 5: Add to opencode.json

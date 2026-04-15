@@ -46,7 +46,7 @@ cd OpenSIN
 
 # Install and start
 pip install opensin-cli
-opensin agent create researcher --model gpt-4
+opensin agent create researcher --model openai/gpt-5.4
 opensin agent test researcher --prompt "What is AI?"
 ```
 

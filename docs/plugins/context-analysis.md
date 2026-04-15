@@ -9,7 +9,7 @@ Tracks token usage per turn, session-level statistics, and cost estimation.
 ## Installation
 
 ```bash
-npm install @opensin/plugin-context-analysis
+bun add @opensin/plugin-context-analysis
 ```
 
 ## Usage

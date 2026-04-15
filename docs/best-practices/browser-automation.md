@@ -28,7 +28,7 @@ Frameworks wie **Playwright, Puppeteer oder Selenium** setzen ein `webdriver: tr
 - **Chrome Profile Regel**: Die Automation *muss* in einem eingeloggten Profil stattfinden.
 
 ### WAS sind die KONSEQUENZEN bei Missachtung?
-- Ein Agent, der Playwright `npm install playwright` ausführt, verliert sofort seine Schreibrechte. 
+- Ein Agent, der Playwright `bun add playwright` ausführt, verliert sofort seine Schreibrechte. 
 - Das Projekt wird von Cloudflare gebannt, die IP verbrannt, und potenzielle Bug-Bounties oder Freelance-Jobs gehen verloren.
 
 ---

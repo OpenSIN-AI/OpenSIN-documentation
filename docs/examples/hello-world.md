@@ -17,7 +17,7 @@ pip install opensin-cli
 
 ```bash
 opensin agent create hello-agent \
-  --model gpt-4 \
+  --model openai/gpt-5.4 \
   --system-prompt "You are a friendly assistant. Respond with enthusiasm!"
 ```
 

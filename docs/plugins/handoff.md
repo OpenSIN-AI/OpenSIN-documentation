@@ -9,7 +9,7 @@ Generates session summaries for seamless context transfer between agents or sess
 ## Installation
 
 ```bash
-npm install @opensin/plugin-handoff
+bun add @opensin/plugin-handoff
 ```
 
 ## Usage

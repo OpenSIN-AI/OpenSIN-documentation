@@ -136,7 +136,7 @@ SUPABASE_URL=http://92.5.60.87:8006
 - restored OCI gateway `OPENAI_BASE` to:
 
 ```text
-https://api.openai.com
+http://92.5.60.87:4100/v1
 ```
 
 ## Validation evidence

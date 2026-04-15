@@ -160,16 +160,16 @@ git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
 cd OpenSIN-Code
 
 # Dependencies installieren
-npm install
+bun install
 
 # Bauen
-npm run build
+bun run build
 
 # Tests ausführen
-npm run test
+bun run test
 
 # Typecheck
-npm run typecheck
+bun run typecheck
 ```
 
 ---

@@ -24,7 +24,7 @@ gh repo create OpenSIN-AI/A2A-SIN-MyAgent \
   --public
 
 cd A2A-SIN-MyAgent
-npm install
+bun install
 ```
 
 ## Manual Setup
@@ -33,9 +33,9 @@ npm install
 
 ```bash
 mkdir my-agent && cd my-agent
-npm init -y
-npm install @opensin/agent-sdk @opensin/sdk typescript
-npx tsc --init
+bun init -y
+bun add @opensin/agent-sdk @opensin/sdk typescript
+bunx tsc --init
 ```
 
 ### 2. Define the Agent
@@ -154,7 +154,7 @@ server.start()
 
 ```bash
 # Build
-npm run build
+bun run build
 
 # Test the agent card
 node dist/src/cli.js print-card
@@ -209,14 +209,14 @@ Every agent needs its own Telegram bot for notifications:
 
 ```bash
 # Register with BotFather, then:
-sin-telegrambot register --token "YOUR_BOT_TOKEN" --name "sin-code-analyzer"
+sin-telegrambot register --token "<DEIN_BOT_TOKEN>" --name "sin-code-analyzer"
 ```
 
 ## Testing Checklist
 
 Before marking your agent as ready:
 
-- [ ] `npm run build` succeeds
+- [ ] `bun run build` succeeds
 - [ ] `print-card` outputs valid agent card JSON
 - [ ] `run-action '{"action":"agent.help"}'` returns help text
 - [ ] Health check action responds successfully

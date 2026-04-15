@@ -142,7 +142,7 @@ await runtime.publishLessonLearned({
 ```bash
 cd ~/dev/OpenSIN-Neural-Bus
 docker compose up -d nats
-npm install && npm test
+bun install && bun test
 ```
 
 ## Integration with OpenCode

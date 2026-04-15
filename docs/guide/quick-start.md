@@ -55,7 +55,7 @@ opencode plugin list
 
 ```bash
 # Configure MCP servers
-opencode mcp add filesystem --command npx -y @modelcontextprotocol/server-filesystem /path/to/dir
+opencode mcp add filesystem --command bunx @modelcontextprotocol/server-filesystem /path/to/dir
 
 # List MCPs
 opencode mcp list

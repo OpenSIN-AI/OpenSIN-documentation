@@ -36,9 +36,9 @@ opencode run --agent my-agent "Hello, world!"
 
 ```bash
 # Install plugins
-npm install -g @opensin/plugin-context-pruning
-npm install -g @opensin/plugin-envsitter
-npm install -g @opensin/plugin-safety-net
+bun add -g @opensin/plugin-context-pruning
+bun add -g @opensin/plugin-envsitter
+bun add -g @opensin/plugin-safety-net
 ```
 
 ## Next Steps

@@ -22,8 +22,8 @@ my-plugin/
 
 ```bash
 mkdir my-plugin && cd my-plugin
-npm init -y
-npm install opencode
+bun init -y
+bun add opencode
 ```
 
 ### 2. package.json
@@ -46,7 +46,7 @@ npm install opencode
 ### 3. Install
 
 ```bash
-npm install -g opencode-plugin-my-plugin
+bun add -g opencode-plugin-my-plugin
 ```
 
 Or add to `opencode.json`:

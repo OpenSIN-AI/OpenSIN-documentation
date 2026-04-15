@@ -133,7 +133,7 @@ Important incidents must preserve evidence:
 - execution IDs
 - commit/branch/issue references
 
-Where LogCenter applies, upload there. `/tmp` is temporary, not authoritative.
+Where Box Storage applies, upload there. `/tmp` is temporary, not authoritative.
 
 ---
 

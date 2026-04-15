@@ -9,7 +9,7 @@ Blocks access to sensitive environment files while allowing safe key listing via
 ## Installation
 
 ```bash
-npm install @opensin/plugin-envsitter
+bun add @opensin/plugin-envsitter
 ```
 
 ## Usage

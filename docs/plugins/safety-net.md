@@ -9,7 +9,7 @@ Intercepts dangerous git/filesystem operations with confirmation prompts.
 ## Installation
 
 ```bash
-npm install @opensin/plugin-safety-net
+bun add @opensin/plugin-safety-net
 ```
 
 ## Usage

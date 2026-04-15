@@ -5,7 +5,7 @@
 ### Pull Request Process
 1. Create a feature branch from `main`
 2. Make your changes
-3. Run `npm run docs:build` to verify build passes
+3. Run `bun run docs:build` to verify build passes
 4. Submit PR with descriptive title and body
 5. Wait for review before merging
 
@@ -32,7 +32,7 @@ docs/
 - `chore:` for maintenance
 
 ### Review Checklist
-- [ ] Build passes (`npm run docs:build`)
+- [ ] Build passes (`bun run docs:build`)
 - [ ] No broken links
 - [ ] Code examples are tested
 - [ ] Spelling and grammar checked

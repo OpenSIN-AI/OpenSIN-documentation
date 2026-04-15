@@ -59,7 +59,7 @@ The OpenSIN-AI Fleet is a network of autonomous A2A (Agent-to-Agent) agents that
 2. **Deploy**: Pushed to GitHub, Cloudflare Workers, or HF Space
 3. **Register**: Added to fleet registry and team configuration
 4. **Operate**: Autonomous task execution, self-healing via GitHub Issues
-5. **Monitor**: GitLab LogCenter collects logs, errors trigger auto-issues
+5. **Monitor**: Box.com Storage collects artifacts, errors trigger auto-issues
 
 ---
 

@@ -9,7 +9,7 @@ Cross-session memory persistence and retrieval with categories, importance scori
 ## Installation
 
 ```bash
-npm install @opensin/plugin-agent-memory
+bun add @opensin/plugin-agent-memory
 ```
 
 ## Usage

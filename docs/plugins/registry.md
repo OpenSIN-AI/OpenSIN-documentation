@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npm install @sin/plugin-sdk
+bun add @sin/plugin-sdk
 ```
 
 ## Quick Start

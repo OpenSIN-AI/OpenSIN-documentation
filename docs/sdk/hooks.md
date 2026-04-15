@@ -68,8 +68,8 @@ Hooks can be async and will be awaited:
 
 ```typescript
 hooks.on('tool:after', async ({ name, result, duration }) => {
-  // Upload to GitLab LogCenter
-  await logCenter.upload({
+  // Upload to Box.com Storage (A2A-SIN-Box-Storage)
+  await boxStorage.upload({
     tool: name,
     duration,
     resultSize: result.content.length,

@@ -50,7 +50,7 @@ Enforced by: [Repo Health Check](/governance/repo-health-check) GitHub Action
 | **SIN-Hermes** | Task Dispatcher | Routes tasks, monitors fleet health |
 | **SIN-Herakles** | Backend/Infra | Heavy lifting, system operations |
 | **PR-Watcher** | Code Review | Automated PR analysis (5 parallel agents) |
-| **LogCenter Agent** | Log Analysis | Monitors GitLab logs, auto-creates issues |
+| **Box Storage Agent** | Artifact Management | Uploads logs/screenshots to Box.com, auto-creates issues |
 
 ---
 

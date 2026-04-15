@@ -49,7 +49,7 @@ LLMs neigen zur Halluzination ("Premature Success"). Sie schreiben Code, der syn
 Theoretische Code-Reviews finden Runtime-Fehler nicht. Wenn wir Code ohne echten Test deployen, bricht die CI/CD-Pipeline oder schlimmer: die Produktion crasht. 
 
 ### WOMIT hängt es zusammen?
-- **Visual Evidence Mandate**: Jeder Fix, jeder Testlauf MUSS visuell (Screenshot in `/tmp/mXX_...`) oder durch direkten Log-Auszug im GitLab LogCenter dokumentiert werden.
+- **Visual Evidence Mandate**: Jeder Fix, jeder Testlauf MUSS visuell (Screenshot in `/tmp/mXX_...`) oder durch direkten Log-Auszug in Box.com Storage dokumentiert werden.
 - **Absolutes Annahmen-Verbot (Priority -5.0)**: Keine Diagnose ohne Beweis. KEIN "ich denke, es klappt".
 
 ### WAS sind die KONSEQUENZEN bei Missachtung?

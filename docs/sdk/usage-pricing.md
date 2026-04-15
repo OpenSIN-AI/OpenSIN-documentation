@@ -21,7 +21,7 @@ pricing.record({
 })
 
 pricing.record({
-  model: 'gpt-4o-mini',
+  model: 'gpt-5.4-mini',
   inputTokens: 500,
   outputTokens: 200,
 })
@@ -36,7 +36,7 @@ console.log(summary)
 //   totalCalls: 2,
 //   byModel: {
 //     'claude-sonnet-4-6': { cost: 0.0234, calls: 1, inputTokens: 2500, outputTokens: 800 },
-//     'gpt-4o-mini': { cost: 0.0015, calls: 1, inputTokens: 500, outputTokens: 200 }
+//     'gpt-5.4-mini': { cost: 0.0015, calls: 1, inputTokens: 500, outputTokens: 200 }
 //   }
 // }
 ```
@@ -47,9 +47,8 @@ Pricing data for 10+ models:
 
 | Model | Input (per 1M) | Output (per 1M) |
 |-------|---------------|-----------------|
-| `gpt-4o-mini` | $0.15 | $0.60 |
-| `gpt-4o` | $2.50 | $10.00 |
-| `gpt-5.2` | $5.00 | $15.00 |
+| `gpt-5.4-mini` | $0.15 | $0.60 |
+| `gpt-5.4` | $5.00 | $15.00 |
 | `claude-sonnet-4-6` | $3.00 | $15.00 |
 | `claude-opus-4-6` | $15.00 | $75.00 |
 | `gemini-3-flash` | $0.15 | $0.60 |

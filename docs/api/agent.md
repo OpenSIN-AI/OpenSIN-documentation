@@ -19,7 +19,7 @@ POST /v1/agents
 ```json
 {
   "name": "researcher",
-  "model": "gpt-4",
+  "model": "openai/gpt-5.4",
   "system_prompt": "You are an expert researcher.",
   "temperature": 0.7,
   "max_tokens": 4000,
@@ -32,8 +32,8 @@ POST /v1/agents
 {
   "id": "agent_123",
   "name": "researcher",
-  "model": "gpt-4",
-  "status": "active",
+  "model": "openai/gpt-5.4",
+  "is_active": true,
   "created_at": "2026-04-04T10:00:00Z"
 }
 ```

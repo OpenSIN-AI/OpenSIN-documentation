@@ -60,7 +60,7 @@ The Passwordmanager can fan out secrets to external systems:
 ```bash
 export SPM_SECRET_BACKEND=gcloud
 
-spm run-action '{"action":"sin.passwordmanager.secret.put","name":"MY_KEY","value":"sk-...","description":"My API key","tags":["auth"]}'
+spm run-action '{"action":"sin.passwordmanager.secret.put","name":"MY_KEY","value":"<DEIN_API_KEY>","description":"My API key","tags":["auth"]}'
 
 spm run-action '{"action":"sin.passwordmanager.secret.get","name":"MY_KEY","reveal":true}'
 ```

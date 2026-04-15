@@ -9,7 +9,7 @@ The Context Pruning Plugin automatically detects when conversation context excee
 ## Installation
 
 ```bash
-npm install @opensin/plugin-context-pruning
+bun add @opensin/plugin-context-pruning
 ```
 
 ## Configuration

@@ -77,7 +77,7 @@ The Passwordmanager supports 3 backends:
 export SPM_SECRET_BACKEND=gcloud
 
 # Store a secret
-spm run-action '{"action":"sin.passwordmanager.secret.put","name":"MY_KEY","value":"sk-...","description":"My API key","tags":["auth"]}'
+spm run-action '{"action":"sin.passwordmanager.secret.put","name":"MY_KEY","value":"<DEIN_API_KEY>","description":"My API key","tags":["auth"]}'
 
 # Retrieve (masked)
 spm run-action '{"action":"sin.passwordmanager.secret.get","name":"MY_KEY"}'

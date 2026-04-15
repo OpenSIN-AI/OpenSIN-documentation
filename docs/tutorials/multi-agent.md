@@ -10,9 +10,9 @@ Learn how to create and manage teams of OpenSIN agents.
 ## Step 1: Create Individual Agents
 
 ```bash
-opensin agent create researcher --model gpt-4
-opensin agent create writer --model gpt-4
-opensin agent create reviewer --model gpt-4
+opensin agent create researcher --model openai/gpt-5.4
+opensin agent create writer --model openai/gpt-5.4
+opensin agent create reviewer --model openai/gpt-5.4
 ```
 
 ## Step 2: Create a Team

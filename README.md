@@ -48,10 +48,10 @@
 ## Development
 
 ```bash
-npm install
-npm run docs:dev
-npm run docs:build
-npm test
+bun install
+bun run docs:dev
+bun run docs:build
+bun test
 ```
 
 ## License

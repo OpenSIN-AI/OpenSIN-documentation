@@ -8,7 +8,7 @@ description: Install OpenSIN-Code on your system
 ## Prerequisites
 
 - Node.js 18 or higher
-- npm or pnpm (Node package manager)
+- Bun (package manager) — `brew install oven-sh/bun/bun`
 - Git (for version control)
 - opencode CLI (for LLM provider configuration)
 
@@ -17,8 +17,8 @@ description: Install OpenSIN-Code on your system
 ```bash
 git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
 cd OpenSIN-Code
-npm install
-npm run build
+bun install
+bun run build
 ```
 
 ## Configure Environment
@@ -38,13 +38,13 @@ OPENSIN_LOG_LEVEL=INFO
 
 ```bash
 # Check the build
-npm run build
+bun run build
 
 # Run tests
-npm test
+bun test
 
 # Start the CLI
-npm start
+bun start
 ```
 
 ## Next Steps
