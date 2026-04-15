@@ -68,7 +68,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 | my.opensin.ai | website-my.opensin.ai | Premium Abo-Modell |
 | docs.opensin.ai | OpenSIN-documentation | Offizielle Dokumentation |
 | blog.opensin.ai | Biz-SIN-Blog-Posts | Blog & Marketing |
-| a2a.delqhi.com | OpenSIN-backend | A2A Fleet Control Plane |
+| chat.opensin.ai | OpenSIN-backend | A2A Fleet Control Plane |
 
 ### Templates & Blueprints (4)
 
@@ -161,7 +161,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 ┌─────────────────────────────────────────────────────────────┐
 │                   CONTROL PLANE / BACKEND                    │
 │  OpenSIN-backend (A2A Fleet Control, n8n Routing, API)      │
-│  a2a.delqhi.com (Fleet Control)                              │
+│  chat.opensin.ai (Fleet Control)                              │
 │  Core-SIN-Control-Plane (Doctor/Preflight/Eval)              │
 └─────────────────────────────────────────────────────────────┘
                               │
@@ -202,7 +202,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 |------------|------|-------|
 | **OCI VM (A1.Flex)** | 92.5.60.87 | n8n, Room-13, Supabase |
 | **HuggingFace Spaces** | cpu-basic | A2A Agent Runtimes |
-| **Vercel** | a2a.delqhi.com | A2A Dashboard |
+| **Vercel** | chat.opensin.ai | A2A Dashboard |
 | **Cloudflare** | opensin.ai | Marketing Site |
 
 ---

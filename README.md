@@ -5,7 +5,7 @@
 ## Quick Links
 
 - [Website](https://opensin.ai)
-- [Dashboard](https://a2a.delqhi.com)
+- [Dashboard](https://chat.opensin.ai)
 - [Discord](https://discord.gg/opensin)
 - [GitHub](https://github.com/OpenSIN-AI)
 
