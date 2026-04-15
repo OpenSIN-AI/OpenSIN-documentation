@@ -41,14 +41,35 @@ features:
 
 ```bash
 # Clone the repository
-git clone https://github.com/OpenSIN-AI/OpenSIN.git
-cd OpenSIN
+git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
+cd OpenSIN-Code
 
-# Install and start
-pip install opensin-cli
-opensin agent create researcher --model openai/gpt-5.4
-opensin agent test researcher --prompt "What is AI?"
+# Install (Bun only — npm/pnpm forbidden)
+bun install
+bun run build
+
+# Start
+bun start
 ```
+
+## 🚨 Absolute Mandates (BEFORE you start)
+
+Every agent and developer in the OpenSIN-AI fleet MUST follow these mandates. No exceptions.
+
+| Mandate | Priority | Rule |
+|---------|----------|------|
+| **A2A-First + Self-Supabase** | -200.0 | SELBST MACHEN via A2A-Agenten — Supabase self-hosted auf OCI VM |
+| **Vision-Gate** | -7.0 | KEINE Web-Aktion ohne Screenshot + Vision-Modell-Check |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne echten Beweis |
+| **Immediate Bug Registry** | -4.0 | JEDER Bug SOFORT als GitHub Issue |
+| **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. PERMANENT verboten |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` — KEINE direkten API-Calls |
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/pnpm PERMANENT verboten |
+| **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
+| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
+
+→ [Full Mandate Documentation](/best-practices/code-quality)
 
 ## Why OpenSIN?
 

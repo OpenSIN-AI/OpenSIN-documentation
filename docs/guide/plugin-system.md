@@ -122,3 +122,15 @@ Für interaktive Flow-Arbeit ist `create-flow` das Canonical Skill-Pattern:
 3. **Document everything** — Include README with usage examples
 4. **Test thoroughly** — Include unit tests for commands and agents
 5. **Version properly** — Use semantic versioning
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)
