@@ -161,3 +161,15 @@ Examples: `scripts/`, `tools/`
 - [#95](https://github.com/OpenSIN-AI/OpenSIN-documentation/issues/95) — 20 repos missing AGENTS.md
 - [#96](https://github.com/OpenSIN-AI/OpenSIN-documentation/issues/96) — 7 MCP servers without README
 - [#97](https://github.com/OpenSIN-AI/OpenSIN-documentation/issues/97) — 8 repos missing GitHub topics
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Immediate Bug Registry** | -4.0 | JEDER Bug SOFORT als GitHub Issue |
+| **PR-Watcher** | 0.0 | Alle Repos brauchen PR-Watcher |
+| **Zeus/Hermes** | 0.0 | Fleet-Kommando via SIN-Zeus |
+
+→ [Alle Mandate](/best-practices/error-handling)

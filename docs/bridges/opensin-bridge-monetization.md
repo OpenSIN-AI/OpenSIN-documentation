@@ -16,3 +16,15 @@ Instead of handling Stripe events directly in the Cloudflare Worker, we leverage
 2. Stripe Webhook fires on successful payment.
 3. **A2A-SIN-Stripe** catches the webhook, validates the payment, and securely updates the user's subscription status in our central **Supabase** database.
 4. The Cloudflare Worker validates the JWT against Supabase on every API call to ensure the user has an active Pro plan.
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

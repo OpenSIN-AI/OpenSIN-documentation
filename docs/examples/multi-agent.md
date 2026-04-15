@@ -185,3 +185,15 @@ SIN-Hermes handles deployment:
 3. **Independent tasks run in parallel** -- design-api has no dependencies, so it starts immediately
 4. **Artifacts flow through the graph** -- each agent's output becomes the next agent's context
 5. **Failures propagate cleanly** -- if tests fail, deployment is automatically skipped
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

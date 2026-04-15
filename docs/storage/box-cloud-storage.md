@@ -237,3 +237,15 @@ Beim OpenSIN Onboarding MUSS der User einen Storage Provider wählen:
 - [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/blob/main/box-storage.md) — Detailed Box Storage Guide
 - [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) — Docker Infrastructure
 - [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) — User Onboarding
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

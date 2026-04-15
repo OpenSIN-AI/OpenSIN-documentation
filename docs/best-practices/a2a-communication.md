@@ -100,3 +100,13 @@ Wenn Agenten ihre eigenen API-Keys mitbringen (`requests.post(...)`), umgehen si
 *Letzte Aktualisierung:* 2026-04-10
 *Status:* **AKTIV & BINDEND**
 *Verantwortlich:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **A2A-First** | -200.0 | SELBST MACHEN via A2A-Agenten |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` |
+| **Fleet Architecture V2** | 0.0 | marketplace metadata in agent.json |

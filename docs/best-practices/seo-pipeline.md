@@ -105,3 +105,12 @@ Initially we tried the built‑in HTTP Request node. Problems encountered:
 *Document version:* 2026‑04‑10  
 *Maintainer:* sin‑zeus  
 *Review cycle:* Monthly or after any workflow change.
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **n8n CI/CD** | 0.0 | Self-hosted auf OCI VM |
+| **Box.com Storage** | 0.0 | Artefakte zu Box.com |

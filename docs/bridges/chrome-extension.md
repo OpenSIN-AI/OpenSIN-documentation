@@ -128,3 +128,15 @@ The Chrome Extension auto-connects to this server on startup.
 ### v2.4.0 (2026-04-04) — HF MCP WebSocket Mode
 ### v2.3.0 (2026-04-04) — Pure Chrome API Mode
 ### v2.0.0 (2026-04-04) — Initial Release
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

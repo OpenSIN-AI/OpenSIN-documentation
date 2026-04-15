@@ -116,3 +116,12 @@ Speed without discipline is just expensive noise.
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Test-Beweis-Pflicht** | 0.0 | Performance MUSS gemessen werden |
+| **Bun-Only** | -1.5 | `bun install` baut schneller |

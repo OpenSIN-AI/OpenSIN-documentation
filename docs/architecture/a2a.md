@@ -196,3 +196,15 @@ graph TD;
 **Key Rules:**
 1. **Workers are Silent:** `A2A-SIN-*` worker agents NEVER communicate with workers from other teams. They only accept tasks from their designated `Team-SIN-*` manager.
 2. **Team Managers Orchestrate:** Only `Team-SIN-*` agents possess the `TELEGRAM_BOT_TOKEN` to communicate with humans.
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **A2A-First** | -200.0 | SELBST MACHEN via A2A-Agenten |
+| **n8n OSS Only** | 0.0 | KEINE n8n Premium Features |
+| **Self-Hosted Supabase** | 0.0 | OCI VM — KEINE Supabase Cloud |
+
+→ [Alle Mandate](/best-practices/a2a-communication)

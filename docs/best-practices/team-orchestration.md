@@ -138,3 +138,12 @@ If many agents are active but nobody can say who owns what, the system is failin
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **A2A-First** | -200.0 | Teams via A2A-Protokoll |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` |

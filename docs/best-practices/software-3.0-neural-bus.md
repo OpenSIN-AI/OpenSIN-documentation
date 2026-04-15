@@ -111,3 +111,12 @@ If the system depends on one human remembering what happened, it is not Software
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Self-Hosted** | 0.0 | OCI VM — KEINE Cloud-Dienste |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
