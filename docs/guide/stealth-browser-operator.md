@@ -124,7 +124,7 @@ recordings/<DATUM_UHRZEIT>/
 | **Vision-Gate** | -7.0 | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
 | **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
 | **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. verboten |
-| **Bun-Only** | -1.5 | `bun install` — npm/pnpm verboten |
+| **Bun-Only** | -1.5 | `bun install` — npm/bun verboten |
 | **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |
 
 → [Alle Mandate](/best-practices/browser-automation)

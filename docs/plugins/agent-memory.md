@@ -52,7 +52,7 @@ Class with `add()`, `get()`, `query()`, `update()`, `delete()`, `getCategories()
 ## Testing
 
 ```bash
-npm test
+bun test
 # 14 tests passing
 ```
 

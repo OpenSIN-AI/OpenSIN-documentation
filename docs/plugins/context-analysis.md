@@ -39,7 +39,7 @@ Class with `recordTurn()`, `getTokenUsage()`, `getCostEstimate()`, `getTurnCost(
 ## Testing
 
 ```bash
-npm test
+bun test
 # 11 tests passing
 ```
 

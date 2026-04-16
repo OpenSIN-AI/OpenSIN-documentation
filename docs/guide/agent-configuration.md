@@ -45,7 +45,7 @@ Die HAUPT-Konfiguration für OpenCode CLI. Definiert alles was der User direkt s
 
 | Provider | Modelle | Zweck |
 |:---|:---|:---|
-| **google** (Antigravity) | `antigravity-claude-sonnet-4-6`, `antigravity-claude-opus-4-6-thinking`, `antigravity-gemini-3.1-pro`, `antigravity-gemini-3-flash` | Hauptmodelle via OAuth |
+| **google** (Antigravity) | `antigravity-claude-sonnet-4-6`, `antigravity-claude-opus-4-6-thinking`, `antigravity-gemini-3.1-pro` | Hauptmodelle via OAuth |
 | **openai** | `gpt-5.4`, `gpt-5.4-mini` | Via OCI Proxy (92.5.60.87:4100) |
 | **nvidia-nim** | `qwen-3.5-122b`, `qwen-3.5-397b`, `qwen-3.5-flash`, `step-3.5-flash` | NVIDIA NIM API |
 | **openrouter** | 8 Free-Modelle (Qwen, DeepSeek, Gemini, Llama, Phi) | OpenRouter Proxy |

@@ -5,7 +5,7 @@ OpenSIN agents are autonomous AI entities that can process inputs, make decision
 ## Creating an Agent
 
 ```bash
-npm start  # then type your query in the REPL
+bun start  # then type your query in the REPL
 ```
 
 ## Agent Configuration
