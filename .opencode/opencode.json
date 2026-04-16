@@ -1,29 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "openai/gpt-5.4",
-  "hooks": {
-    "beforeRun": "/Users/jeremy/dev/OpenSIN-documentation/.opencode/hooks/pcpm-before-run.sh",
-    "afterRun": "/Users/jeremy/dev/OpenSIN-documentation/.opencode/hooks/pcpm-after-run.sh",
-    "onFailure": "/Users/jeremy/dev/OpenSIN-documentation/.opencode/hooks/pcpm-after-run.sh"
-  },
-  "pcpm": {
-    "brainRepoPath": "/Users/jeremy/dev/global-brain",
-    "projectId": "opensin-docs",
-    "goalId": "default-goal",
-    "goalDescription": "Continue development",
-    "autoSync": true,
-    "extractKnowledge": true
-  },
-  "memory": {
-    "provider": "global-brain",
-    "requirePlan": true,
-    "requireActiveContext": true,
-    "requireForbidden": true
-  },
-  "cli": {
-    "command": "opencode",
-    "flags": ["--format", "json", "--non-interactive"]
-  },
   "mcp": {
     "webauto-nodriver": {
       "type": "local",
