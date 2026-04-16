@@ -62,15 +62,53 @@ After any credential discovery: immediately push to global-brain.
 This repo is flagged for update to OpenSIN 2026 standards. Key areas:
 
 ### Phase 1 Critical (in progress)
-- [x] AGENTS.md — populated with mandates (THIS FILE)
-- [ ] OpenCode config — verify minimal config is correct
-- [ ] Dependencies — check all use bun, not npm
-- [ ] Check for outdated patterns in docs
+- [x] AGENTS.md — populated with mandates (THIS FILE) ✅
+- [x] OpenCode config — verify minimal config is correct ✅
+- [x] Dependencies — check all use bun, not npm ✅ (uses bun, no npm)
+- [x] Check for outdated patterns in docs ✅
+- [x] **NEW: Dynamic Input Commands ($ARGUMENTS/$1/$2)** — INTEGRATED
 
 ### Phase 2 Standardization
-- [ ] Docs: verify README.md current
-- [ ] MCP config in .opencode/opencode.json
-- [ ] CI/CD uses bun in GitHub Actions
+- [x] Docs: verify README.md current ✅ (updated with new structure)
+- [x] MCP config in .opencode/opencode.json ✅ (webauto-nodriver, sin-brain, sin-github-issues, simone-mcp, sin-document-forge, sin-telegrambot)
+- [x] CI/CD uses bun in GitHub Actions ✅ (wrangler deploy, no npm)
+
+### ✅ COMPLETED: Dynamic Input Commands (2026-04-16)
+
+25 new browser-automation commands with `$ARGUMENTS`/`$1`/`$2` substitution:
+
+| Command | Purpose |
+|---------|---------|
+| `/browser-goto $ARGUMENTS` | URL navigation + Vision-Gate |
+| `/click-at $1 $2` | Coordinate click + Vision-Gate |
+| `/click-element-safe $ARGUMENTS` | Safe element click + Vision-Gate |
+| `/vision-gate-check $ARGUMENTS` | MANDATORY Vision verification |
+| `/whatsapp-send $1 $ARGUMENTS` | WhatsApp messaging |
+| `/mac-calendar-create $ARGUMENTS` | Calendar events |
+| `/run-shell-cmd $ARGUMENTS` | Shell commands |
+| `/execute-javascript $ARGUMENTS` | Browser JS execution |
+
+**Reference:** `docs/guides/dynamic-input-commands.md`
+
+---
+
+### 🚀 QUICK START: Browser Automation
+
+```bash
+# Navigate + Vision-Gate
+/browser-goto https://github.com/OpenSIN-AI
+
+# Click at coordinates + Vision-Gate
+/click-at 512 384
+
+# Safe element click (selector first, then coords fallback)
+/click-element-safe "a[data-tab-item='i1issues-tab']"
+
+# MANDATORY after EVERY action:
+/vision-gate-check "Klick auf Button"
+```
+
+**Rule: NO blind clicks! Every browser action MUST have Vision-Gate!**
 
 ## 📁 PROJECT STRUCTURE
 

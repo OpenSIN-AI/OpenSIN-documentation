@@ -2,7 +2,7 @@
 
 This project uses the global-brain PCPM system for persistent memory across sessions.
 
-**Project ID:** OpenSIN-documentation
+**Project ID:** opensin-docs
 **Current Goal:** Continue development
 
 ## Rules for All Agents

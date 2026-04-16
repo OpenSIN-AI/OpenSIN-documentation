@@ -6,7 +6,7 @@
   },
   "pcpm": {
     "brainRepoPath": "/Users/jeremy/dev/global-brain",
-    "projectId": "OpenSIN-documentation",
+    "projectId": "opensin-docs",
     "goalId": "default-goal",
     "goalDescription": "Continue development",
     "autoSync": true,

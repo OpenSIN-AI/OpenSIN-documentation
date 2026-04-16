@@ -5,7 +5,7 @@
 
 BRAIN_CLI="/Users/jeremy/dev/global-brain/src/cli.js"
 BRAIN_ROOT="/Users/jeremy/dev/global-brain"
-PROJECT_ID="OpenSIN-documentation"
+PROJECT_ID="opensin-docs"
 GOAL_ID="default-goal"
 GOAL_DESC="Continue development"
 
