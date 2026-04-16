@@ -70,7 +70,7 @@ This repo is flagged for update to OpenSIN 2026 standards. Key areas:
 
 ### Phase 2 Standardization
 - [x] Docs: verify README.md current ✅ (updated with new structure)
-- [ ] MCP config in .opencode/opencode.json (optional for docs repo)
+- [x] MCP config in .opencode/opencode.json ✅ (webauto-nodriver, sin-brain, sin-github-issues, simone-mcp, sin-document-forge, sin-telegrambot)
 - [x] CI/CD uses bun in GitHub Actions ✅ (wrangler deploy, no npm)
 
 ### ✅ COMPLETED: Dynamic Input Commands (2026-04-16)

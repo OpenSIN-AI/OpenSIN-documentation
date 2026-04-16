@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
+    "docs:build": "node node_modules/vitepress/bin/vitepress.js build docs",
     "docs:preview": "vitepress preview",
-    "build": "vitepress build",
+    "build": "node node_modules/vitepress/bin/vitepress.js build docs",
     "deploy": "wrangler pages deploy .vitepress/dist --project-name opensin-docs",
     "test": "vitest run",
     "test:watch": "vitest"
