@@ -6,7 +6,7 @@
 
 BRAIN_CLI="/Users/jeremy/dev/global-brain/src/cli.js"
 BRAIN_ROOT="/Users/jeremy/dev/global-brain"
-PROJECT_ID="OpenSIN-documentation"
+PROJECT_ID="opensin-docs"
 SESSION_ID="session-$(date +%s)"
 
 # Extract knowledge from the session transcript (runs LLM extraction)
