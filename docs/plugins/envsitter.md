@@ -39,7 +39,7 @@ Class with `check()`, `listKeys()`, `getConfig()`, `setConfig()` methods.
 ## Testing
 
 ```bash
-npm test
+bun test
 # 16 tests passing
 ```
 

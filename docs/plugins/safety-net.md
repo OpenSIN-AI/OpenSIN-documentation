@@ -43,7 +43,7 @@ Class with `check()`, `isSafe()`, `getConfig()`, `setConfig()` methods.
 ## Testing
 
 ```bash
-npm test
+bun test
 # 14 tests passing
 ```
 

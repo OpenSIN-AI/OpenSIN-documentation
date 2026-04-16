@@ -44,7 +44,7 @@ features:
 git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
 cd OpenSIN-Code
 
-# Install (Bun only — npm/pnpm forbidden)
+# Install (Bun only — npm/bun forbidden)
 bun install
 bun run build
 
@@ -65,7 +65,7 @@ Every agent and developer in the OpenSIN-AI fleet MUST follow these mandates. No
 | **Immediate Bug Registry** | -4.0 | JEDER Bug SOFORT als GitHub Issue |
 | **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. PERMANENT verboten |
 | **LLM via opencode CLI** | -2.5 | `opencode run --format json` — KEINE direkten API-Calls |
-| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/pnpm PERMANENT verboten |
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/bun PERMANENT verboten |
 | **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
 | **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
 

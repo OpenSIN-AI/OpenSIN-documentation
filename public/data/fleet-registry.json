@@ -24,7 +24,7 @@
       "name": "Team Worker",
       "manager": "A2A-SIN-Team-Worker",
       "description": "Autonome Worker fuer Surveys, Freelancing, Monetarisierung",
-      "primaryModel": "google/antigravity-gemini-3-flash",
+      "primaryModel": "meta/llama-3.2-11b-vision-instruct",
       "fallbackModels": [
         "openai/gpt-5.4",
         "qwen/coder-model",
@@ -77,7 +77,7 @@
       "description": "Apple Ecosystem — macOS Automation, iOS, Shortcuts",
       "primaryModel": "openai/gpt-5.4",
       "fallbackModels": [
-        "google/antigravity-gemini-3-flash",
+        "meta/llama-3.2-11b-vision-instruct",
         "qwen/coder-model"
       ],
       "members": [
@@ -92,7 +92,7 @@
       "description": "macOS/iOS Automation — Mail, Notes, Calendar, FaceTime, Safari, etc.",
       "primaryModel": "openai/gpt-5.4",
       "fallbackModels": [
-        "google/antigravity-gemini-3-flash",
+        "meta/llama-3.2-11b-vision-instruct",
         "qwen/coder-model"
       ],
       "members": [
@@ -133,7 +133,7 @@
       "name": "Team Messaging",
       "manager": "A2A-SIN-Messaging",
       "description": "Messaging Integration — WhatsApp, Telegram, Signal, Discord, iMessage",
-      "primaryModel": "google/antigravity-gemini-3-flash",
+      "primaryModel": "meta/llama-3.2-11b-vision-instruct",
       "fallbackModels": [
         "openai/gpt-5.4",
         "qwen/coder-model"
@@ -152,7 +152,7 @@
       "name": "Team Forum",
       "manager": "A2A-SIN-Forum",
       "description": "Forum Automation — Reddit, HackerNews, StackOverflow, Quora, DevTo",
-      "primaryModel": "google/antigravity-gemini-3-flash",
+      "primaryModel": "meta/llama-3.2-11b-vision-instruct",
       "fallbackModels": [
         "openai/gpt-5.4",
         "qwen/coder-model"
@@ -196,7 +196,7 @@
       "name": "Team Community",
       "manager": "A2A-SIN-Community",
       "description": "Community Management — Discord, WhatsApp, Telegram, YouTube Community",
-      "primaryModel": "google/antigravity-gemini-3-flash",
+      "primaryModel": "meta/llama-3.2-11b-vision-instruct",
       "fallbackModels": [
         "openai/gpt-5.4",
         "qwen/coder-model"

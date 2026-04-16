@@ -152,7 +152,7 @@ The SDK has **573+ passing tests** across all modules, verified with Vitest:
 
 ```bash
 cd packages/opensin-sdk
-npm test
+bun test
 
 # Output:
 # Test Files  15 passed

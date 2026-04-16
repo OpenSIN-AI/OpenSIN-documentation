@@ -8,7 +8,7 @@ Learn how to create a custom plugin for OpenSIN CLI.
 
 ```bash
 mkdir my-plugin && cd my-plugin
-npm init -y
+bun init -y
 ```
 
 ## Step 2: package.json

@@ -42,7 +42,7 @@ Class with `capture()`, `generate()`, `getState()`, `getConfig()`, `setConfig()`
 ## Testing
 
 ```bash
-npm test
+bun test
 # 10 tests passing
 ```
 

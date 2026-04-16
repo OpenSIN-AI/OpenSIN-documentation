@@ -50,7 +50,7 @@ Class with `shouldPrune()`, `prune()`, `getConfig()`, `setConfig()` methods.
 ## Testing
 
 ```bash
-npm test
+bun test
 # 12 tests passing
 ```
 

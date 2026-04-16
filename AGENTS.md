@@ -40,13 +40,13 @@ After any credential discovery: immediately push to global-brain.
 
 | Rule | Requirement |
 |------|-------------|
-| **Package Manager** | `bun install`/`bun run` ONLY — npm/npx permanently banned |
+| **Package Manager** | `bun install`/`bun run` ONLY — npm/bunx permanently banned |
 | **Node.js** | >= 20 required |
-| **Build** | `bun run build` (not npm run build) |
+| **Build** | `bun run build` (not bun run build) |
 | **LLM Calls** | `opencode run --format json` ONLY — no direct API calls |
 
 **BANNED Technologies (immediate permanent ban):**
-- npm, npx, package-lock.json
+- npm, bunx, package-lock.json
 - Camoufox, Playwright, Puppeteer, Selenium (use nodriver + Chrome Profile)
 - Direct Gemini API / `generativelanguage.googleapis.com`
 
@@ -140,7 +140,7 @@ Before claiming work complete, run:
 
 ```bash
 # Verify bun only
-grep -r "npm install\|npm run" . --include="*.md" --include="*.json" | grep -v node_modules || echo "CLEAN"
+grep -r "bun install\|bun run" . --include="*.md" --include="*.json" | grep -v node_modules || echo "CLEAN"
 
 # Verify OpenCode JSON valid
 cat .opencode/opencode.json | python3 -c "import json,sys; json.load(sys.stdin)" && echo "VALID JSON"

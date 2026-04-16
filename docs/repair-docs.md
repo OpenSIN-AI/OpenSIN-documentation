@@ -31,7 +31,7 @@ This document tracks known issues, bugs, and repair procedures for the OpenSIN-d
 |---------|--------|
 | `bun run docs:build` | ✅ Verified |
 | `cat .opencode/opencode.json \| python3 -c "import json,sys; json.load(sys.stdin)"` | ✅ VALID JSON |
-| `grep -r "npm install\|npm run" . --include="*.md" --include="*.json" \| grep -v node_modules` | ✅ CLEAN (no npm patterns) |
+| `grep -r "bun install\|bun run" . --include="*.md" --include="*.json" \| grep -v node_modules` | ✅ CLEAN (no npm patterns) |
 
 ---
 
@@ -137,12 +137,12 @@ bun run docs:preview
 **Solution:**
 ```bash
 # Check wrangler auth
-npx wrangler whoami
+bunx wrangler whoami
 
 # Deploy with correct project
 bun run deploy
 # OR manually:
-npx wrangler pages deploy .vitepress/dist --project-name opensin-docs
+bunx wrangler pages deploy .vitepress/dist --project-name opensin-docs
 ```
 
 ---
@@ -151,7 +151,7 @@ npx wrangler pages deploy .vitepress/dist --project-name opensin-docs
 
 ```bash
 # Verify bun only (no npm)
-grep -r "npm install\|npm run" . --include="*.md" --include="*.json" | grep -v node_modules || echo "CLEAN"
+grep -r "bun install\|bun run" . --include="*.md" --include="*.json" | grep -v node_modules || echo "CLEAN"
 
 # Verify OpenCode JSON valid
 cat .opencode/opencode.json | python3 -c "import json,sys; json.load(sys.stdin)" && echo "VALID JSON"

@@ -125,7 +125,7 @@ rm /tmp/new-key.json
 
 | Mandat | Priority | Doku |
 |--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/pnpm sind verboten |
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/bun sind verboten |
 | **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
 | **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
 
