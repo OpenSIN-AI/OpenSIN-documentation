@@ -103,3 +103,15 @@ Error detected
 - [Governance Overview](/governance/overview)
 - [A2A Architecture](/architecture/a2a)
 - [Inbound Intake Architecture](https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/INBOUND_WORK_ARCHITECTURE.md)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Immediate Bug Registry** | -4.0 | JEDER Bug SOFORT als GitHub Issue |
+| **PR-Watcher** | 0.0 | Alle Repos brauchen PR-Watcher |
+| **Zeus/Hermes** | 0.0 | Fleet-Kommando via SIN-Zeus |
+
+→ [Alle Mandate](/best-practices/error-handling)

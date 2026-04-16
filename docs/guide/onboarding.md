@@ -118,3 +118,15 @@ rm /tmp/new-key.json
 - [OpenSIN-onboarding repository](https://github.com/OpenSIN-AI/OpenSIN-onboarding)
 - [Passwordmanager source](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/a2a/team-infrastructure/A2A-SIN-Passwordmanager)
 - [OpenSIN Bridge extension](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/services/sin-chrome-extension)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/pnpm sind verboten |
+| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+
+→ [Alle Mandate](/best-practices/code-quality)

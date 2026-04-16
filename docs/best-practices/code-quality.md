@@ -80,3 +80,13 @@ Code, der bei einem Crash einen Dump ausgibt statt eines kontrollierten Errors, 
 *Letzte Aktualisierung:* 2026-04-10
 *Status:* **AKTIV & BINDEND**
 *Verantwortlich:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| **Anti-AI-Slop** | 0.0 | review-work Skill vor jedem Merge |

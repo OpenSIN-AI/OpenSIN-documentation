@@ -103,3 +103,14 @@ Plattformen wie Prolific, Outlier, HackerOne oder Upwork nutzen militärische Bo
 *Letzte Aktualisierung:* 2026-04-10
 *Status:* **AKTIV & BINDEND**
 *Verantwortlich:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Vision-Gate** | -7.0 | KEINE Web-Aktion ohne Screenshot + Vision-Check |
+| **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
+| **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. verboten |
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm verboten |

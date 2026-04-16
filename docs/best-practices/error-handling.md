@@ -74,3 +74,13 @@ Ein Agent, der in seinem Silo bleibt und wiederholt fehlschlägt, lähmt den Wor
 *Letzte Aktualisierung:* 2026-04-10
 *Status:* **AKTIV & BINDEND**
 *Verantwortlich:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Immediate Bug Registry** | -4.0 | JEDER Bug SOFORT als GitHub Issue |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Enterprise-Deep-Debug** | 0.0 | Skill vor jedem Debugging-Lauf |

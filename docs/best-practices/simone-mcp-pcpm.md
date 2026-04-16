@@ -159,3 +159,12 @@ Before starting any coding task:
 *Status:* **ACTIVE & MANDATORY**
 *Maintainer:* sin-zeus
 *Mandate reference:* MANDATE-0.34.md
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Simone MCP + PCPM** | -9.5 | VOR jedem Code-Task aktivieren |
+| **Global Brain Init** | -100.0 | setup-hooks VOR jeder Arbeit |

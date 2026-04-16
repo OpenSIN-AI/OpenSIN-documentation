@@ -71,3 +71,13 @@ It is controlled, observable delivery with minimal cost and maximal evidence.
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **n8n OSS Only** | 0.0 | KEINE n8n Premium Features |
+| **Self-Hosted CI/CD** | 0.0 | OCI VM — KEINE GitHub Actions Runner |
+| **Bun-Only** | -1.5 | `bun install` / `bun run` |

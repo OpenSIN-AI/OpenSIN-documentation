@@ -110,3 +110,13 @@ Text-Only Issues oder READMEs gelten als Protokollverstoß. Automatisierungs-Scr
 
 *Letzte Aktualisierung:* 2026-04-10
 *Status:* **AKTIV & BINDEND**
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **create-a2a-sin-agent** | -200.0 | Skill fuer neue Agenten |
+| **Fleet Architecture V2** | 0.0 | marketplace metadata Pflicht |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |

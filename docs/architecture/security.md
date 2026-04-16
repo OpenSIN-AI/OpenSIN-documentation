@@ -158,3 +158,15 @@ MCP servers expose powerful capabilities. OpenSIN gates access through:
 ## Reporting Vulnerabilities
 
 See [SECURITY.md](https://github.com/OpenSIN-AI/OpenSIN-Code/blob/main/SECURITY.md) for responsible disclosure guidelines.
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Box.com Storage** | 0.0 | Alle Logs zu Box.com |
+
+→ [Alle Mandate](/best-practices/code-quality)

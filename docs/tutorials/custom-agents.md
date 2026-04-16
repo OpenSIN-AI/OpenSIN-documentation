@@ -225,3 +225,16 @@ Before marking your agent as ready:
 - [ ] `/a2a/v1` endpoint exists and does not return 404
 - [ ] GitHub topics include `opnsin-agent`
 - [ ] Telegram bot registered and responsive
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` — KEINE direkten API-Calls |
+| **A2A-Agenten-Pflicht** | -200.0 | SELBST MACHEN via `create-a2a-sin-agent` |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |
+
+→ [Alle Mandate](/best-practices/a2a-communication)

@@ -28,3 +28,16 @@ npm start  # then type your query in the REPL
 - [Team Orchestration](/guide/team-orchestration)
 - [A2A Protocol](/guide/a2a-protocol)
 - [MCP Integration](/guide/mcp-integration)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` — KEINE direkten API-Calls |
+| **A2A-Agenten-Pflicht** | -200.0 | SELBST MACHEN via `create-a2a-sin-agent` |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |
+
+→ [Alle Mandate](/best-practices/a2a-communication)

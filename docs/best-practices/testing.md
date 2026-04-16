@@ -214,3 +214,13 @@ If proof is absent, the work is absent.
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Visual Evidence** | 0.0 | Jeder Fix MUSS visuell belegt werden |

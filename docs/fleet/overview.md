@@ -82,3 +82,15 @@ The OpenSIN-AI Fleet is a network of autonomous A2A (Agent-to-Agent) agents that
 - [A2A Architecture](/architecture/a2a)
 - [Team Orchestration](/guide/team-orchestration)
 - [Agent Configuration](/guide/agent-configuration)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **A2A-First** | -200.0 | SELBST MACHEN via A2A-Agenten |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` |
+| **Fleet Architecture V2** | 0.0 | marketplace metadata in agent.json |
+
+→ [Alle Mandate](/best-practices/a2a-communication)

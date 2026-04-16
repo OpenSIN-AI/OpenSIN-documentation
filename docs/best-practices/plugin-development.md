@@ -53,3 +53,12 @@ Document lifecycle, failure modes, expected env, and integration points.
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` |
+| **Plugin-Namespace** | 0.0 | `opencode-plugin-*` Prefix |

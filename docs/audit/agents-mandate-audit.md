@@ -551,3 +551,15 @@ curl http://localhost:PORT/health
 - [ ] All MCP repos have `opnsin-mcp` topic
 - [ ] All changes synced via `sin-sync`
 - [ ] Automated health check enabled (Issue #98)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

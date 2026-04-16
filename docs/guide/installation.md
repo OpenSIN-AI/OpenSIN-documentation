@@ -51,3 +51,15 @@ bun start
 
 - [Quick Start](/guide/quick-start) — Build your first agent
 - [Getting Started](/guide/getting-started) — Overview of OpenSIN
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/pnpm sind verboten |
+| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+
+→ [Alle Mandate](/best-practices/code-quality)

@@ -109,3 +109,12 @@ Treat them like resumable executors, not durable homes.
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **HF Keep-Alive** | 0.0 | JEDER HF Space braucht Ping |
+| **Session-Backup** | 0.0 | Hugging Face Dataset als Storage |

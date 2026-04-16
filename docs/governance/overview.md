@@ -84,3 +84,15 @@ Enforced by: [Repo Health Check](/governance/repo-health-check) GitHub Action
 - [Repo Health Check](/governance/repo-health-check)
 - [Agent Design Best Practices](/best-practices/agent-design)
 - [Security Architecture](/architecture/security)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Immediate Bug Registry** | -4.0 | JEDER Bug SOFORT als GitHub Issue |
+| **PR-Watcher** | 0.0 | Alle Repos brauchen PR-Watcher |
+| **Zeus/Hermes** | 0.0 | Fleet-Kommando via SIN-Zeus |
+
+→ [Alle Mandate](/best-practices/error-handling)

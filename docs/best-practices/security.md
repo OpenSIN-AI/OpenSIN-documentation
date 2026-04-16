@@ -121,3 +121,13 @@ If the system cannot explain why it trusts an action, it should not perform it.
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Box.com Storage** | 0.0 | Alle Logs zu Box.com, nicht lokal |
