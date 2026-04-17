@@ -1,0 +1,63 @@
+{
+  "name": "governance-rollout",
+  "nodes": [
+    {
+      "parameters": {
+        "functionCode": "const org = 'OpenSIN-AI';\nconst token = $env.GITHUB_TOKEN || process.env.GITHUB_TOKEN;\nconst pageSize = 100;\nconst repos = [];\nfor (let page = 1; page <= 10; page++) {\n  const res = await fetch(`https://api.github.com/orgs/${org}/repos?per_page=${pageSize}&page=${page}&type=all`, {\n    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }\n  });\n  const data = await res.json();\n  if (!Array.isArray(data) || data.length === 0) break;\n  repos.push(...data.map(r => ({ owner: org, repo: r.name, full_name: r.full_name })));\n  if (data.length < pageSize) break;\n}\nreturn [{ json: { repos, total: repos.length } }];"
+      },
+      "id": "fetch-repos",
+      "name": "Fetch Org Repos",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "const repos = $input.first().json.repos;\nconst governance = [\n  { path: 'governance/repo-governance.json', source: 'template' },\n  { path: 'n8n-workflows/inbound-intake.json', source: 'template' },\n  { path: 'scripts/watch-pr-feedback.sh', source: 'template' },\n  { path: 'docs/03_ops/inbound-intake.md', source: 'template' },\n  { path: 'platforms/registry.json', source: 'template' }\n];\nconst items = [];\nfor (const repo of repos) {\n  for (const g of governance) {\n    items.push({ json: { ...repo, governance_path: g.path, source: g.source } });\n  }\n}\nreturn items;"
+      },
+      "id": "expand-tasks",
+      "name": "Expand Governance Tasks",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{$json.owner}}/{{$json.repo}}/contents/{{$json.governance_path}}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {}
+      },
+      "id": "check-existing",
+      "name": "Check Existing File",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "const item = $input.first().json;\nconst existing = $input.all().find(i => i.json.existing === true);\nif (existing) {\n  return [{ json: { ...item, action: 'skip', reason: 'already_exists' } }];\n}\nreturn [{ json: { ...item, action: 'apply' } }];"
+      },
+      "id": "decide-action",
+      "name": "Decide Action",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Fetch Org Repos": {
+      "main": [[{ "node": "Expand Governance Tasks", "type": "main", "index": 0 }]]
+    },
+    "Expand Governance Tasks": {
+      "main": [[{ "node": "Check Existing File", "type": "main", "index": 0 }]]
+    },
+    "Check Existing File": {
+      "main": [[{ "node": "Decide Action", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "id": "governance-rollout-workflow"
+}
