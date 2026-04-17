@@ -1,1 +1,1 @@
-1
+{"version": "1.0", "repo": "OpenSIN-documentation", "rules": {"require-pr-watcher": true, "require-visual-evidence": true, "fail-closed": true}}
