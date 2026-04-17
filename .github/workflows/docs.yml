@@ -99,6 +99,8 @@ jobs:
             --exclude-dir=node_modules \
             --exclude-dir=.git \
             --exclude-dir=.vitepress \
+            --exclude-dir=.github \
+            --exclude=AGENTS.md \
             2>/dev/null | grep -v "node_modules" || true)
 
           if [ -n "$NPM_PATTERNS" ]; then
