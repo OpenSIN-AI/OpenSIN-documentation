@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-04-17",
+  "platforms": [
+    {
+      "id": "github",
+      "type": "repo_events",
+      "status": "active",
+      "intake": {
+        "mode": "webhook",
+        "path": "n8n-workflows/inbound-intake.json"
+      },
+      "watcher": {
+        "script": "scripts/watch-pr-feedback.sh"
+      }
+    }
+  ]
+}
