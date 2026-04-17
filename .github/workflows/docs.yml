@@ -72,7 +72,7 @@ jobs:
       # STEP 3: Install Bun (required — npm permanently banned per AGENTS.md)
       # -----------------------------------------------------------------------
       - name: Install Bun
-        uses: oven-sh/setup-bun@v3
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: "${{ env.BUN_VERSION }}"
 
