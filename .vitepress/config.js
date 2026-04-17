@@ -130,9 +130,12 @@ export default defineConfig({
       {
         text: 'Governance',
         items: [
-          { text: 'Overview', link: '/governance/overview' },
-          { text: 'Zeus', link: '/governance/zeus' },
-          { text: 'Hermes', link: '/governance/hermes' },
+{ text: 'Overview', link: '/governance/overview' },
+{ text: 'Sovereign Repo Governance', link: '/governance/sovereign-repo-governance' },
+{ text: 'Project 18 Status Contract', link: '/governance/project18-status-contract' },
+{ text: 'Zeus', link: '/governance/zeus' },
+{ text: 'Hermes', link: '/governance/hermes' },
+{ text: 'Repo Health Check', link: '/governance/repo-health-check' },
         ],
       },
       {
