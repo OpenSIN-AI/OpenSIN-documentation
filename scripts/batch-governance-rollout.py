@@ -63,7 +63,13 @@ def get_all_org_repos(org: str):
 
 
 def repo_has_governance(owner: str, repo_name: str) -> bool:
-    return gh_api(f"repos/{owner}/{repo_name}/contents/governance") is not None
+    data = gh_api(f"repos/{owner}/{repo_name}/contents/governance")
+    return isinstance(data, dict) and "sha" in data
+
+
+def repo_is_archived(owner: str, repo_name: str) -> bool:
+    data = gh_api(f"repos/{owner}/{repo_name}")
+    return isinstance(data, dict) and data.get("archived", False) == True
 
 
 def get_file_sha(owner: str, repo_name: str, path: str) -> str:
@@ -97,11 +103,15 @@ def process_repo(
     owner: str, repo_name: str, template_content: str, dry_run: bool = False
 ):
     if repo_has_governance(owner, repo_name):
-        print(f"  SKIP  {owner}/{repo_name} — governance already exists")
+        print(f"  SKIP {owner}/{repo_name} — governance already exists")
         return "skipped"
 
+    if repo_is_archived(owner, repo_name):
+        print(f"  ARCH {owner}/{repo_name} — repo is archived (read-only)")
+        return "archived"
+
     if dry_run:
-        print(f"  DRY   {owner}/{repo_name} — would apply governance")
+        print(f"  DRY {owner}/{repo_name} — would apply governance")
         return "dry-run"
 
     gov_sha = get_file_sha(owner, repo_name, "governance/repo-governance.json")
