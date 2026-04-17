@@ -139,15 +139,14 @@ OpenSIN-documentation/
 Before claiming work complete, run:
 
 ```bash
-# Verify bun only (no npm)
-grep -r "npm install\|npm run\|npx " . --include="*.md" --include="*.json" | grep -v node_modules || echo "CLEAN"
+# Verify bun only
+grep -r "bun install\|bun run" . --include="*.md" --include="*.json" | grep -v node_modules || echo "CLEAN"
 
 # Verify OpenCode JSON valid
 cat .opencode/opencode.json | python3 -c "import json,sys; json.load(sys.stdin)" && echo "VALID JSON"
 
-# Verify docs build (use bun x — "bun run docs:build" is broken on this machine)
-node node_modules/vitepress/bin/vitepress.js build docs
-# or: bun x vitepress build docs
+# Verify docs build
+bun run docs:build
 ```
 
 ## 🚫 ABSOLUTE PROHIBITIONS

@@ -54,10 +54,7 @@
 ```bash
 bun install
 bun run docs:dev
-# Note: "bun run docs:build" is broken on this machine (bun script-runner SIGKILL).
-# Use either of these instead:
-node node_modules/vitepress/bin/vitepress.js build docs
-bun x vitepress build docs
+bun run docs:build
 bun test
 ```
 

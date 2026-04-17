@@ -72,7 +72,7 @@ jobs:
       # STEP 3: Install Bun (required — npm permanently banned per AGENTS.md)
       # -----------------------------------------------------------------------
       - name: Install Bun
-        uses: oven-sh/setup-bun@v2
+        uses: oven-sh/setup-bun@v3
         with:
           bun-version: "${{ env.BUN_VERSION }}"
 
@@ -111,11 +111,12 @@ jobs:
 
       # -----------------------------------------------------------------------
       # STEP 6: Build VitePress documentation site
+      # Uses bun run docs:build (NOT npm run docs:build)
       # -----------------------------------------------------------------------
       - name: Build docs
         run: |
           echo "=== VitePress Build ==="
-          bun x vitepress build docs
+          bun run docs:build
 
       # -----------------------------------------------------------------------
       # STEP 7: Verify build output exists
