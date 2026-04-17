@@ -1,7 +1,13 @@
 node_modules/
-.vitepress/dist/
+/.vitepress/dist/
+docs/.vitepress/dist/
 *.log
 .DS_Store
 
 temp-test.txt
 testfile.txt
+package-lock.json
+.pcpm/sessions/
+.pcpm/sync-conflicts.json
+plan_*.md
+scripts/__pycache__/

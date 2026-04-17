@@ -66,8 +66,7 @@ jobs:
 
   bun-build-check:
     runs-on: ubuntu-latest
-    # Only run if package.json exists
-    if: fileExists('package.json')
+    if: ${{ hashFiles('package.json') != '' }}
     
     steps:
       - name: Checkout repo
@@ -88,4 +87,4 @@ jobs:
           echo "✅ No package-lock.json after bun install"
       
       - name: Try build
-        run: bun run build || echo "⚠️  Build failed (may be expected for docs repos)"
+        run: bun x vitepress build docs || echo "⚠️  Build failed (may be expected for docs repos)"

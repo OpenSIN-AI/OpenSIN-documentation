@@ -48,11 +48,16 @@ jobs:
       - name: Global Brain sync before run
         run: |
           echo "=== PCPM Before-Run Hook ==="
-          node /Users/jeremy/dev/global-brain/src/cli.js orchestrate \
-            --project opensin-docs \
-            --project-root "$PWD" \
-            2>/dev/null || \
-          echo "Global Brain sync completed (or skipped)"
+          BRAIN_CLI="/Users/jeremy/dev/global-brain/src/cli.js"
+          if [ -f "$BRAIN_CLI" ]; then
+            node "$BRAIN_CLI" orchestrate \
+              --project opensin-docs \
+              --project-root "$PWD" \
+              2>/dev/null || true
+            echo "Global Brain sync completed"
+          else
+            echo "Global Brain sync skipped on non-local runner"
+          fi
 
       # -----------------------------------------------------------------------
       # STEP 2: Checkout with full history for proper submodule handling
@@ -85,16 +90,15 @@ jobs:
       - name: Lint check (no npm patterns)
         run: |
           echo "=== BUN-ONLY Verification ==="
-          # Search for npm patterns that should NOT exist
-          NPM_PATTERNS=$(grep -r "npm install\|npm run\|package-lock\|npx " . \
+          NPM_PATTERNS=$(grep -RInE "npm install|npm run|package-lock|npx " . \
             --include="*.md" \
             --include="*.json" \
             --include="*.yml" \
             --include="*.yaml" \
             --include="*.sh" \
-            ! -path "./node_modules/*" \
-            ! -path "./.vitepress/dist/*" \
-            ! -path "./.git/*" \
+            --exclude-dir=node_modules \
+            --exclude-dir=.git \
+            --exclude-dir=.vitepress \
             2>/dev/null | grep -v "node_modules" || true)
 
           if [ -n "$NPM_PATTERNS" ]; then
@@ -112,7 +116,7 @@ jobs:
       - name: Build docs
         run: |
           echo "=== VitePress Build ==="
-          bun run docs:build
+          bun x vitepress build docs
 
       # -----------------------------------------------------------------------
       # STEP 7: Verify build output exists
@@ -121,14 +125,14 @@ jobs:
       - name: Verify build output exists
         run: |
           echo "=== Build Verification ==="
-          if [ -d ".vitepress/dist" ] && [ -f ".vitepress/dist/index.html" ]; then
+          if [ -d "docs/.vitepress/dist" ] && [ -f "docs/.vitepress/dist/index.html" ]; then
             echo "PASS: Build output verified"
-            echo "  Dist size: $(du -sh .vitepress/dist | cut -f1)"
-            echo "  Files: $(find .vitepress/dist -type f | wc -l)"
+            echo "  Dist size: $(du -sh docs/.vitepress/dist | cut -f1)"
+            echo "  Files: $(find docs/.vitepress/dist -type f | wc -l)"
           else
             echo "FAIL: Build output missing or incomplete"
-            echo "  .vitepress/dist exists: $(test -d .vitepress/dist && echo YES || echo NO)"
-            ls -la .vitepress/ 2>/dev/null || echo "No .vitepress dir"
+            echo "  docs/.vitepress/dist exists: $(test -d docs/.vitepress/dist && echo YES || echo NO)"
+            ls -la docs/.vitepress/ 2>/dev/null || echo "No docs/.vitepress dir"
             exit 1
           fi
 
@@ -140,11 +144,16 @@ jobs:
         if: success()
         run: |
           echo "=== PCPM After-Run Hook ==="
-          node /Users/jeremy/dev/global-brain/src/cli.js extract-knowledge \
-            --project opensin-docs \
-            --project-root "$PWD" \
-            2>/dev/null || \
-          echo "Post-run knowledge extraction completed (or skipped)"
+          BRAIN_CLI="/Users/jeremy/dev/global-brain/src/cli.js"
+          if [ -f "$BRAIN_CLI" ]; then
+            node "$BRAIN_CLI" extract-knowledge \
+              --project opensin-docs \
+              --project-root "$PWD" \
+              2>/dev/null || true
+            echo "Post-run knowledge extraction completed"
+          else
+            echo "Post-run knowledge extraction skipped on non-local runner"
+          fi
 
       # -----------------------------------------------------------------------
       # STEP 9: Upload build artifacts for deploy job
@@ -154,7 +163,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .vitepress/dist
+          path: docs/.vitepress/dist
 
   # ---------------------------------------------------------------------------
   # Job: deploy
@@ -178,7 +187,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: github-pages
-          path: .vitepress/dist
+          path: docs/.vitepress/dist
 
       # -----------------------------------------------------------------------
       # STEP 2: Deploy to Cloudflare Pages
@@ -190,5 +199,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: opensin-docs
-          directory: .vitepress/dist
+          directory: docs/.vitepress/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

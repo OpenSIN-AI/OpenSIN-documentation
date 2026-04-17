@@ -8,7 +8,7 @@
     "docs:build": "node node_modules/vitepress/bin/vitepress.js build docs",
     "docs:preview": "vitepress preview",
     "build": "node node_modules/vitepress/bin/vitepress.js build docs",
-    "deploy": "wrangler pages deploy .vitepress/dist --project-name opensin-docs",
+    "deploy": "wrangler pages deploy docs/.vitepress/dist --project-name opensin-docs",
     "test": "vitest run",
     "test:watch": "vitest"
   },
