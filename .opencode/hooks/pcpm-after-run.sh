@@ -3,11 +3,17 @@
 # Extracts knowledge from the completed session transcript and
 # writes it back into the persistent brain stores.
 # ALSO runs sin-brain auto-sync to keep global and local brain in sync.
+# ALSO optionally uploads session artifacts to Box.com
 
 BRAIN_CLI="/Users/jeremy/dev/global-brain/src/cli.js"
 BRAIN_ROOT="/Users/jeremy/dev/global-brain"
-PROJECT_ID="opensin-docs"
+PROJECT_ID="OpenSIN-documentation"
 SESSION_ID="session-$(date +%s)"
+LOG_DIR="/Users/jeremy/Library/Logs/com.sin.global-brain-sync"
+BOX_UPLOAD_ENABLED="${BOX_STORAGE_ENABLED:-false}"
+
+# Ensure log directory exists
+mkdir -p "$LOG_DIR"
 
 # Extract knowledge from the session transcript (runs LLM extraction)
 node "$BRAIN_CLI" extract-knowledge \
@@ -22,7 +28,7 @@ if [ -n "$PROJECT_ROOT" ]; then
     --root "$BRAIN_ROOT" \
     --project "$PROJECT_ID" \
     --project-root "$PROJECT_ROOT" \
-    2>/dev/null
+  2>/dev/null
 fi
 
 # SIN-BRAIN: Auto-sync after every chat turn — no manual intervention needed
@@ -30,5 +36,33 @@ node "$BRAIN_CLI" sync-chat-turn 2>/dev/null
 
 # SIN-BRAIN: Check if new rules were discovered and add them to global brain
 echo "[SIN-BRAIN] Auto-sync complete after chat turn."
+
+# Box-Storage: Upload session artifacts if enabled
+if [ "$BOX_UPLOAD_ENABLED" = "true" ] && [ -n "$BOX_STORAGE_API_KEY" ]; then
+  ARTIFACT_FILE="/tmp/pcpm-artifact-${PROJECT_ID}-$(date +%Y%m%d-%H%M%S).tar.gz"
+  ARTIFACT_LOG="$LOG_DIR/box-upload-$(date +%Y-%m-%d).log"
+
+  # Gather artifacts to upload
+  (
+    cd /Users/jeremy/dev/OpenSIN-documentation 2>/dev/null || exit 0
+    tar -czf "$ARTIFACT_FILE" \
+      .pcpm/active-context.json \
+      .pcpm/knowledge-summary.json \
+      .pcpm/rules.md \
+      2>/dev/null
+  )
+
+  if [ -f "$ARTIFACT_FILE" ] && [ -s "$ARTIFACT_FILE" ]; then
+    UPLOAD_RESULT=$(curl -s --connect-timeout 10 \
+      -X POST "http://room-09-box-storage:3000/api/v1/upload" \
+      -H "X-Box-Storage-Key: $BOX_STORAGE_API_KEY" \
+      -F "folder_id=${BOX_CACHE_FOLDER_ID:-376701205578}" \
+      -F "file=@${ARTIFACT_FILE}" \
+      2>&1)
+
+    echo "[$(date '+%Y-%m-%dT%H-%M-%S')] Box-Storage upload: $UPLOAD_RESULT" >> "$ARTIFACT_LOG" 2>/dev/null
+    rm -f "$ARTIFACT_FILE"
+  fi
+fi
 
 echo "PCPM_AFTERRUN_COMPLETE=true"
