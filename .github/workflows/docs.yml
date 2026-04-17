@@ -113,12 +113,11 @@ jobs:
 
       # -----------------------------------------------------------------------
       # STEP 6: Build VitePress documentation site
-      # Uses bun run docs:build (NOT npm run docs:build)
       # -----------------------------------------------------------------------
       - name: Build docs
         run: |
           echo "=== VitePress Build ==="
-          bun run docs:build
+          bun x vitepress build docs
 
       # -----------------------------------------------------------------------
       # STEP 7: Verify build output exists
