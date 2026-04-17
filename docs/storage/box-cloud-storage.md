@@ -95,6 +95,90 @@ def get_public_url(file_id):
 
 ---
 
+## A2A-SIN-Box-Storage Agent Interface
+
+The **A2A-SIN-Box-Storage** agent is the canonical interface for Box.com storage within the OpenSIN fleet. All agents should use this service instead of direct Box.com API calls.
+
+### Agent Card
+```json
+{
+  "name": "A2A-SIN-Box-Storage",
+  "slug": "a2a-sin-box-storage",
+  "endpoint": "https://a2a.delqhi.com/a2a/v1/a2a-sin-box-storage",
+  "capabilities": ["storage_upload", "storage_public_url", "file_validation", "cdn_distribution", "cache_management"]
+}
+```
+
+### A2A Protocol Access
+```bash
+# Agent-to-Agent call via A2A protocol
+curl -X POST "https://a2a.delqhi.com/a2a/v1/a2a-sin-box-storage" \
+  -H "Content-Type: application/json" \
+  -H "X-Box-Storage-Key: $BOX_STORAGE_API_KEY" \
+  -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"upload","arguments":{"file":"@test.png"}}}'
+```
+
+### MCP Interface
+For agents with MCP access, configure `sin-box-storage` in opencode.json:
+
+```json
+{
+  "mcpServers": {
+    "sin-box-storage": {
+      "command": "npx",
+      "args": ["-y", "@sin-docker/sin-box-storage-mcp"],
+      "env": {
+        "BOX_STORAGE_URL": "http://room-09-box-storage:3000",
+        "BOX_STORAGE_API_KEY": "${BOX_STORAGE_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+### Python SDK (for direct Box.com usage without agent)
+```python
+import os
+import requests
+
+class BoxStorageClient:
+    """Direct Box.com API client for agents without A2A access"""
+    BASE_URL = "http://room-09-box-storage:3000"
+
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+
+    def upload(self, file_path: str, filename: str = None) -> dict:
+        """Upload file via A2A-SIN-Box-Storage agent"""
+        filename = filename or os.path.basename(file_path)
+        with open(file_path, 'rb') as f:
+            response = requests.post(
+                f"{self.BASE_URL}/api/v1/upload",
+                headers={"X-Box-Storage-Key": self.api_key},
+                files={"file": (filename, f)}
+            )
+        return response.json()
+
+    def validate(self, filename: str, size: int) -> dict:
+        """Preflight validation without upload"""
+        response = requests.post(
+            f"{self.BASE_URL}/api/v1/validate",
+            headers={"X-Box-Storage-Key": self.api_key, "Content-Type": "application/json"},
+            json={"filename": filename, "size": size}
+        )
+        return response.json()
+```
+
+### Error Handling
+| Error Code | Meaning | Solution |
+|------------|---------|----------|
+| `401` | Invalid API key | Check `BOX_STORAGE_API_KEY` in environment |
+| `413` | File too large | Ensure file < 2GB or adjust `MAX_FILE_SIZE` |
+| `415` | Unsupported file type | Check `ALLOWED_EXTENSIONS` whitelist |
+| `500` | Box.com API error | Check `BOX_DEVELOPER_TOKEN` validity |
+
+---
+
 ## Migration von GitLab Storage
 
 ### Was sich ändert:

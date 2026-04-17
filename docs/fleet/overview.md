@@ -40,7 +40,7 @@ The OpenSIN-AI Fleet is a network of autonomous A2A (Agent-to-Agent) agents that
 | **Platform Agents** | 30+ | Prolific, HeyPiggy, Mindrift, Instagram, TikTok, YouTube, LinkedIn |
 | **Messaging Agents** | 15+ | WhatsApp, Telegram, Discord, Signal, Slack, Teams, WeChat, LINE |
 | **Apple Agents** | 10+ | Mail, Notes, Calendar, Safari, Shortcuts, Photos, FaceTime |
-| **Infrastructure** | 5+ | Storage, Stripe, Chrome Extension, Computer Use, Memory |
+| **Infrastructure** | 6+ | A2A-SIN-Box-Storage (Room 09), Stripe, Chrome Extension, Computer Use, Memory, N8N |
 
 ---
 
@@ -73,6 +73,98 @@ The OpenSIN-AI Fleet is a network of autonomous A2A (Agent-to-Agent) agents that
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | CLI core, plugins, engine |
 | [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus) | Event-sourcing mesh |
 | [Fleet Operations Project](https://github.com/orgs/OpenSIN-AI/projects/21) | Tracking board |
+
+---
+
+## Infrastructure Agent Details
+
+### A2A-SIN-Box-Storage (Room 09)
+
+**Box.com Storage API Agent** — Central file upload service for the entire OpenSIN fleet. Replaces deprecated GitLab Storage.
+
+| Property | Value |
+|:---|:---|
+| **Room** | 09 |
+| **Static IP** | `172.20.0.109:3000` |
+| **Internal Endpoint** | `http://room-09-box-storage:3000` |
+| **Public A2A** | `https://a2a.delqhi.com/agents/a2a-sin-box-storage` |
+| **Health** | `GET /health` |
+| **Upload** | `POST /api/v1/upload` |
+| **Validate** | `POST /api/v1/validate` |
+| **Auth** | `X-Box-Storage-Key` header |
+| **Team** | Team Infrastructure |
+| **Agent Repo** | [A2A-SIN-Box-Storage](https://github.com/OpenSIN-AI/A2A-SIN-Box-Storage) |
+
+#### Capabilities
+- `storage_upload` — Upload files to Box.com public folder
+- `storage_public_url` — Return shareable CDN URLs  
+- `file_validation` — Enforce size, type, extension whitelist
+- `cdn_distribution` — Box edge cache integration
+- `cache_management` — ETag, cache-control headers
+
+#### Box.com Folders
+| Folder | Shared Link | Folder ID |
+|--------|-------------|-----------|
+| `/Public` | https://app.box.com/s/1st624o9eb5xdistusew5w0erb8offc7 | `1st624o9eb5xdistusew5w0erb8offc7` |
+| `/Cache` | https://app.box.com/s/9s5htoefw1ux9ajaqj656v9a02h7z7x1 | `9s5htoefw1ux9ajaqj656v9a02h7z7x1` |
+
+#### Usage Example
+```bash
+# Upload file via agent
+curl -X POST "http://room-09-box-storage:3000/api/v1/upload" \
+  -H "X-Box-Storage-Key: $BOX_STORAGE_API_KEY" \
+  -F "file=@screenshot.png"
+
+# Preflight validation
+curl -X POST "http://room-09-box-storage:3000/api/v1/validate" \
+  -H "Content-Type: application/json" \
+  -d '{"filename":"report.pdf","size":5242880}'
+
+# Health check
+curl "http://room-09-box-storage:3000/health"
+```
+
+#### MCP Integration
+Agents can access Box Storage via MCP using the `sin-box-storage` interface:
+
+```json
+// In opencode.json MCP config
+{
+  "mcpServers": {
+    "sin-box-storage": {
+      "command": "npx",
+      "args": ["-y", "@sin-docker/sin-box-storage-mcp"]
+    }
+  }
+}
+```
+
+#### Docker Deployment (Infra-SIN-Docker-Empire)
+```yaml
+room-09-box-storage:
+  build: ./services/box-storage
+  image: a2a-sin-box-storage:latest
+  container_name: room-09-box-storage
+  restart: unless-stopped
+  environment:
+    - BOX_DEVELOPER_TOKEN=${BOX_DEVELOPER_TOKEN}
+    - BOX_PUBLIC_FOLDER_ID=${BOX_PUBLIC_FOLDER_ID}
+    - BOX_CACHE_FOLDER_ID=${BOX_CACHE_FOLDER_ID}
+    - API_KEY=${BOX_STORAGE_API_KEY}
+    - PORT=3000
+  networks:
+    haus-netzwerk:
+      ipv4_address: 172.20.0.109
+  ports:
+    - "3000:3000"
+  healthcheck:
+    test: ["CMD", "curl", "-f", "http://127.0.0.1:3000/health"]
+    interval: 30s
+    timeout: 10s
+    retries: 3
+```
+
+> **Migration Note:** A2A-SIN-Box-Storage replaces `room-07-gitlab-storage`. All agents MUST migrate from `gitlab_logcenter.py` to Box Storage API. See [Box Cloud Storage Docs](/storage/box-cloud-storage) for full migration guide.
 
 ---
 
