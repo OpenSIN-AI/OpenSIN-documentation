@@ -161,3 +161,11 @@ node node_modules/vitepress/bin/vitepress.js build docs
 ---
 
 *This AGENTS.md is the project-specific overlay. The global brain (`global-brain/AGENTS.md`) contains the full mandate stack.*
+
+## Boundary Guidance for Agents
+
+When modifying this repo:
+
+- Prefer official documentation work.
+- Keep claims scoped to documentation canon.
+- Do not redefine runtime, product, ops, or org registry ownership from here.
