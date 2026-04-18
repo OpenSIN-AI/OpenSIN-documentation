@@ -1,7 +1,7 @@
 {
   "name": "opensin-docs",
   "version": "1.0.0",
-  "description": "OpenSIN documentation site — docs.opensin.ai",
+  "description": "OpenSIN documentation site \u2014 docs.opensin.ai",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev",
@@ -15,5 +15,6 @@
   "devDependencies": {
     "vitepress": "^1.5.0",
     "wrangler": "^4.80.0"
-  }
+  },
+  "packageManager": "bun@latest"
 }
