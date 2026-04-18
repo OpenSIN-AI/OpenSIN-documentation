@@ -22,7 +22,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 | **OpenSIN Backend** | [OpenSIN-AI/OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Python + Node.js | 11.679 | SIN Solver | ✅ Abo-Modell |
 | **OpenSIN-Code** | [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | TypeScript + Rust | 4.636 | 37.7K Rust | ✅ CLI |
 | **opensin-ai-cli** | [OpenSIN-AI/opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | Rust | 70 | 34.601 | ✅ NEU April 2026 |
-| **opensin-ai-code** | [OpenSIN-AI/opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | Python | 100 | 2.386 | ✅ NEU April 2026 |
+| **opensin-ai-code** *(archived)* | [OpenSIN-AI/OpenSIN/opensin_agent_platform](https://github.com/OpenSIN-AI/OpenSIN/tree/main/opensin_agent_platform) | Python | 100 | 2.386 | ⚠️ Consolidated 2026-04 into OpenSIN monorepo |
 | **opensin-ai-platform** | [OpenSIN-AI/opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | Multi | 182 | 87.247 | ✅ NEU April 2026 |
 
 ### Team Orchestrators (17 Teams, 92 Worker)

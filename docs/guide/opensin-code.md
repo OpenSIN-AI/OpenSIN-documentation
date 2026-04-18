@@ -191,7 +191,7 @@ Die gesamte Codebasis wurde von sin-claude nach OpenSIN-AI migriert:
 | Projekt | Repo | Dateien | Zeilen | Status |
 |---------|------|---------|--------|--------|
 | **OpenSIN-AI CLI** | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 70 | 34.601 | ✅ Rust |
-| **OpenSIN-AI Code** | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 100 | 2.386 | ✅ Python |
+| **OpenSIN-AI Code** | [OpenSIN/opensin_agent_platform](https://github.com/OpenSIN-AI/OpenSIN/tree/main/opensin_agent_platform) | 100 | 2.386 | ⚠️ Consolidated 2026-04 |
 | **OpenSIN-AI Platform** | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 182 | 87.247 | ✅ Plugins |
 
 ---

@@ -67,7 +67,7 @@ spm run-action '{"action":"sin.passwordmanager.secret.get","name":"MY_KEY","reve
 
 ## Setup
 
-See [Onboarding Guide](/guide/onboarding) for automated setup, or the [OpenSIN-onboarding repo](https://github.com/OpenSIN-AI/OpenSIN-onboarding) for manual installation.
+See [Onboarding Guide](/guide/onboarding) for automated setup, or the [Infra-SIN-Dev-Setup / user-onboarding](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/tree/main/user-onboarding) for manual installation.
 
 ## Source Code
 
