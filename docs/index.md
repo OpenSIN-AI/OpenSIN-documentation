@@ -1,9 +1,9 @@
 ---
 layout: home
 hero:
-  name: "OpenSIN Documentation"
-  text: "AI that works. Not just talks."
-  tagline: The first Agent-to-Agent network — 100+ autonomous AI agents in 18 specialized teams. Build, deploy, and scale with A2A protocol.
+  name: "OpenSIN-AI Documentation"
+  text: "Official docs for the OpenSIN-AI organization."
+  tagline: The first Agent-to-Agent network — 100+ autonomous AI agents in 18 specialized teams. Build, deploy, and scale with the OpenSIN design system and A2A protocol.
   image:
     src: /logo.svg
     alt: OpenSIN Logo

@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
-  title: 'OpenSIN Documentation',
-  description: 'Complete documentation for OpenSIN — the first Agent-to-Agent network with 100+ autonomous AI agents in 18 specialized teams. Build, deploy, and scale.',
+  title: 'OpenSIN-AI Documentation',
+  description: 'Official documentation for the OpenSIN-AI organization — the first Agent-to-Agent network with 100+ autonomous AI agents in 18 specialized teams. Build, deploy, and scale.',
   srcDir: 'docs',
   ignoreDeadLinks: true,
   head: [
@@ -10,12 +10,12 @@ export default defineConfig({
     ['script', { type: 'application/ld+json' }, JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      'name': 'OpenSIN Documentation',
+      'name': 'OpenSIN-AI Documentation',
       'url': 'https://docs.opensin.ai/',
-      'description': 'Complete documentation for OpenSIN — the first Agent-to-Agent network with 100+ autonomous AI agents.',
+      'description': 'Official documentation for the OpenSIN-AI organization and the OpenSIN agent platform.',
       'publisher': {
         '@type': 'Organization',
-        'name': 'OpenSIN',
+        'name': 'OpenSIN-AI',
         'url': 'https://opensin.ai',
         'logo': {
           '@type': 'ImageObject',
