@@ -11,24 +11,24 @@
   --vp-home-hero-name-background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
   --vp-home-hero-image-background-image: linear-gradient(135deg, rgba(29, 185, 84, 0.12) 0%, transparent 100%);
   --vp-home-hero-image-filter: blur(96px);
-  --vp-c-bg: #0a0a0a;
-  --vp-c-bg-alt: #0a0a0a;
-  --vp-c-bg-elv: #121212;
-  --vp-c-bg-soft: #181818;
-  --vp-c-text-1: #f5f5f5;
+  --vp-c-bg: #121212;
+  --vp-c-bg-alt: #121212;
+  --vp-c-bg-elv: #181818;
+  --vp-c-bg-soft: #252525;
+  --vp-c-text-1: #ffffff;
   --vp-c-text-2: #b3b3b3;
-  --vp-c-text-3: #777777;
+  --vp-c-text-3: #7c7c7c;
   --vp-c-border: rgba(255, 255, 255, 0.08);
   --vp-c-divider: rgba(255, 255, 255, 0.08);
-  --vp-c-gutter: #0a0a0a;
+  --vp-c-gutter: #121212;
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
   background:
-    radial-gradient(circle at top, rgba(29, 185, 84, 0.14), transparent 35%),
-    linear-gradient(180deg, #191414 0%, #121212 40%, #0a0a0a 100%);
-  color: #f5f5f5;
+    radial-gradient(circle at top, rgba(29, 185, 84, 0.10), transparent 45%),
+    linear-gradient(180deg, #191414 0%, #121212 100%);
+  color: #ffffff;
 }
 
 .VPHomeHero .image-bg {
