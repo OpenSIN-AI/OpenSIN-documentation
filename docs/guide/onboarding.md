@@ -14,8 +14,8 @@ When a new user runs OpenSIN for the first time, the autonomous onboarding syste
 ## Quick Start
 
 ```bash
-git clone https://github.com/OpenSIN-AI/OpenSIN-onboarding.git
-cd OpenSIN-onboarding
+git clone https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup.git
+cd Infra-SIN-Dev-Setup/user-onboarding
 ./scripts/onboard.sh
 ```
 
@@ -77,7 +77,7 @@ The Passwordmanager supports 3 backends:
 export SPM_SECRET_BACKEND=gcloud
 
 # Store a secret
-spm run-action '{"action":"sin.passwordmanager.secret.put","name":"MY_KEY","value":"sk-...","description":"My API key","tags":["auth"]}'
+spm run-action '{"action":"sin.passwordmanager.secret.put","name":"MY_KEY","value":"<DEIN_API_KEY>","description":"My API key","tags":["auth"]}'
 
 # Retrieve (masked)
 spm run-action '{"action":"sin.passwordmanager.secret.get","name":"MY_KEY"}'
@@ -115,6 +115,18 @@ rm /tmp/new-key.json
 
 ## Further Reading
 
-- [OpenSIN-onboarding repository](https://github.com/OpenSIN-AI/OpenSIN-onboarding)
+- [Infra-SIN-Dev-Setup / user-onboarding](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/tree/main/user-onboarding) (previously `OpenSIN-onboarding`, consolidated April 2026)
 - [Passwordmanager source](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/a2a/team-infrastructure/A2A-SIN-Passwordmanager)
 - [OpenSIN Bridge extension](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/services/sin-chrome-extension)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/bun sind verboten |
+| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+
+→ [Alle Mandate](/best-practices/code-quality)

@@ -1,0 +1,12 @@
+{
+  "projectId": "OpenSIN-documentation",
+  "goalId": "official-docs-vitepress",
+  "goalDescription": "Official VitePress documentation for OpenSIN-AI at docs.opensin.ai",
+  "plan": "v2 — 3/3 steps completed",
+  "knowledge": {
+    "rules": ["Images MUST be opened in macOS Preview.app (PRIORITY -4.5)", "Auto-sync after every chat turn (PRIORITY -4.0)", "BOX STORAGE DEFAULT: Use A2A-SIN-Box-Storage (room-09). GitLab LogCenter deprecated. (PRIORITY 00)"],
+    "facts": ["OpenSIN-documentation uses VitePress for docs.opensin.ai"],
+    "solutions": ["Created docs/architecture/global-brain-neural-bus.md", "Updated VitePress sidebar with Global Brain entry"],
+    "forbidden": ["Broken links in documentation", "Outdated architecture descriptions", "Referencing GitLab as default storage"]
+  }
+}

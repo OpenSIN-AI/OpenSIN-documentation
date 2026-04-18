@@ -9,7 +9,7 @@ The `@opensin/sdk` package provides the core building blocks for creating AI age
 ## Installation
 
 ```bash
-npm install @opensin/sdk
+bun add @opensin/sdk
 ```
 
 ## Module Overview
@@ -44,9 +44,9 @@ import {
 // 1. Set up model routing
 const router = new SmartModelRouter({
   models: {
-    trivial: 'gpt-4o-mini',
-    simple: 'gpt-4o-mini',
-    moderate: 'gpt-4o',
+    trivial: 'gpt-5.4-mini',
+    simple: 'gpt-5.4-mini',
+    moderate: 'gpt-5.4',
     complex: 'claude-sonnet-4-6',
     expert: 'claude-opus-4-6',
   },
@@ -152,10 +152,22 @@ The SDK has **573+ passing tests** across all modules, verified with Vitest:
 
 ```bash
 cd packages/opensin-sdk
-npm test
+bun test
 
 # Output:
 # Test Files  15 passed
 # Tests       573 passed
 # Duration    4.2s
 ```
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

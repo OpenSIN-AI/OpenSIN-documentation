@@ -60,15 +60,27 @@ The Passwordmanager can fan out secrets to external systems:
 ```bash
 export SPM_SECRET_BACKEND=gcloud
 
-spm run-action '{"action":"sin.passwordmanager.secret.put","name":"MY_KEY","value":"sk-...","description":"My API key","tags":["auth"]}'
+spm run-action '{"action":"sin.passwordmanager.secret.put","name":"MY_KEY","value":"<DEIN_API_KEY>","description":"My API key","tags":["auth"]}'
 
 spm run-action '{"action":"sin.passwordmanager.secret.get","name":"MY_KEY","reveal":true}'
 ```
 
 ## Setup
 
-See [Onboarding Guide](/guide/onboarding) for automated setup, or the [OpenSIN-onboarding repo](https://github.com/OpenSIN-AI/OpenSIN-onboarding) for manual installation.
+See [Onboarding Guide](/guide/onboarding) for automated setup, or the [Infra-SIN-Dev-Setup / user-onboarding](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/tree/main/user-onboarding) for manual installation.
 
 ## Source Code
 
 [OpenSIN-backend/a2a/team-infrastructure/A2A-SIN-Passwordmanager](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/a2a/team-infrastructure/A2A-SIN-Passwordmanager)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

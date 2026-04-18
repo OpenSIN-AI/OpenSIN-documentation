@@ -35,7 +35,7 @@ It is not a loose suggestion shelf. It is the operational memory of the system.
 | [Plugin Development](/best-practices/plugin-development) | Plugin architecture and extension rules |
 | [Performance](/best-practices/performance) | Cost, model routing, latency, efficiency |
 | [Security](/best-practices/security) | Secrets, auth boundaries, operator trust |
-| [Software 3.0: Neural-Bus](/docs/best-practices/software-3.0-neural-bus) | Higher-level architecture doctrine |
+| [Software 3.0: Neural-Bus](/best-practices/software-3.0-neural-bus) | Higher-level architecture doctrine |
 | [SEO Pipeline](/best-practices/seo-pipeline) | Proof-of-work blog publishing pipeline |
 | [**Simone MCP + PCPM** ⭐ PFLICHT](/best-practices/simone-mcp-pcpm) | Semantic code intelligence + cross-session memory — mandatory for every agent |
 

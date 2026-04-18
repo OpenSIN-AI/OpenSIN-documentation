@@ -28,7 +28,7 @@ If you allow agents to declare success from code inspection alone, the fleet fil
 ### DEPENDENCIES
 This rule directly depends on:
 - the absolute no-assumptions mandate
-- GitLab LogCenter for evidence retention
+- Box.com Storage (A2A-SIN-Box-Storage) for evidence retention
 - browser automation tooling for UI proof
 - issue tracking for public incident memory
 
@@ -174,7 +174,7 @@ All meaningful verification should leave artifacts when possible:
 - issue updates
 - deployment URLs
 
-When the project is covered by GitLab LogCenter, upload artifacts there instead of leaving them only in `/tmp`.
+When the project is covered by Box.com Storage, upload artifacts there instead of leaving them only in `/tmp`.
 
 ---
 
@@ -193,7 +193,7 @@ When the project is covered by GitLab LogCenter, upload artifacts there instead 
 ## 11. Example Verification Statements
 
 ### Good
-- `npm run build` passed, proving the package and app bundle compile end-to-end.
+- `bun run build` passed, proving the package and app bundle compile end-to-end.
 - Browser loaded `https://blog.opensin.ai` and displayed the shared header/footer; screenshot saved.
 - n8n execution `2200` completed successfully and wrote the markdown file to the blog repo.
 
@@ -214,3 +214,13 @@ If proof is absent, the work is absent.
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Visual Evidence** | 0.0 | Jeder Fix MUSS visuell belegt werden |

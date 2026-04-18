@@ -1,0 +1,13 @@
+{
+  "planId": "opensin-documentation-v2",
+  "projectId": "OpenSIN-documentation",
+  "goalId": "official-docs-vitepress",
+  "goalDescription": "Official VitePress documentation for OpenSIN-AI at docs.opensin.ai",
+  "version": 2,
+  "createdAt": "2026-04-13T17:00:00Z",
+  "steps": [
+    {"id": "step-1", "title": "Create Global Brain & Neural-Bus architecture doc", "status": "completed"},
+    {"id": "step-2", "title": "Update VitePress sidebar config", "status": "completed"},
+    {"id": "step-3", "title": "Update docs/index.md with ecosystem links", "status": "completed"}
+  ]
+}

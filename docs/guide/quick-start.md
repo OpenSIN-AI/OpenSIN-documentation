@@ -55,7 +55,7 @@ opencode plugin list
 
 ```bash
 # Configure MCP servers
-opencode mcp add filesystem --command npx -y @modelcontextprotocol/server-filesystem /path/to/dir
+opencode mcp add filesystem --command bunx @modelcontextprotocol/server-filesystem /path/to/dir
 
 # List MCPs
 opencode mcp list
@@ -78,3 +78,15 @@ opencode mcp list
 - [Agent Basics](./agent-basics.md) — Learn to use agents effectively
 - [MCP Integration](./mcp-integration.md) — Connect external tools
 - [Plugin System](./plugin-system.md) — Build custom plugins
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/bun sind verboten |
+| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+
+→ [Alle Mandate](/best-practices/code-quality)

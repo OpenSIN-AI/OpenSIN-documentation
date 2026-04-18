@@ -1,0 +1,82 @@
+{
+  "name": "inbound-intake",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "inbound-work",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-inbound",
+      "name": "Webhook (Inbound Work)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "inbound-work"
+    },
+    {
+      "parameters": {
+        "functionCode": "const item = $input.item.json;\nconst owner = item.owner || item.metadata?.owner || process.env.GITHUB_OWNER || 'OpenSIN-AI';\nconst repo = item.repo || item.metadata?.repo || process.env.GITHUB_REPO || 'OpenSIN-documentation';\nreturn [{ json: { work_id: item.id || `work-${Date.now()}`, source: item.source || 'unknown', type: item.type || 'task', priority: item.priority || 'medium', title: item.title || 'Untitled', description: item.description || '', metadata: item.metadata || {}, owner, repo, received_at: new Date().toISOString(), status: 'pending' } }];"
+      },
+      "id": "normalize-work",
+      "name": "Normalize Work Item",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{$json.owner}}/{{$json.repo}}/issues",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"title\": $json.title, \"body\": $json.description, \"labels\": [$json.type]}",
+        "options": {}
+      },
+      "id": "create-github-issue",
+      "name": "Create GitHub Issue",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        650,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook (Inbound Work)": {
+      "main": [
+        [
+          {
+            "node": "Normalize Work Item",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Work Item": {
+      "main": [
+        [
+          {
+            "node": "Create GitHub Issue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "id": "inbound-intake-workflow"
+}

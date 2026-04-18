@@ -80,3 +80,12 @@ If it adds magical hidden behavior, document and constrain it before trusting it
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **webauto-nodriver-mcp** | 0.0 | EINZIGES autorisiertes Browser-MCP |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` |

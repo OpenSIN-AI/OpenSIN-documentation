@@ -25,7 +25,7 @@ OpenSIN is an open-source platform for building, deploying, and managing AI agen
 ## Prerequisites
 
 - Node.js 18+
-- npm or pnpm
+- Bun — `brew install oven-sh/bun/bun`
 - An API key from an LLM provider (configured via opencode CLI)
 
 ## Installation
@@ -36,21 +36,21 @@ git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
 cd OpenSIN-Code
 
 # Install dependencies
-npm install
+bun install
 
 # Build the project
-npm run build
+bun run build
 ```
 
 ## Quick Start
 
 ```bash
 # Start the OpenSIN-Code CLI
-npm start
+bun start
 
 # Or run directly
 cd packages/opensin-sdk
-npm run cli
+bun run cli
 ```
 
 ## Next Steps
@@ -58,3 +58,15 @@ npm run cli
 - [Installation Guide](/guide/installation) — Detailed installation instructions
 - [Quick Start](/guide/quick-start) — Build your first agent in 5 minutes
 - [Agent Basics](/guide/agent-basics) — Learn agent fundamentals
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/bun sind verboten |
+| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+
+→ [Alle Mandate](/best-practices/code-quality)

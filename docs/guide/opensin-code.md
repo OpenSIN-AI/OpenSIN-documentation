@@ -98,7 +98,7 @@ Die Rust Engine bietet ein performantes Backend:
 
 ## Plugin-System
 
-OpenSIN-Code kommt mit 14 vorinstallierten Plugins. Siehe [Plugin-Dokumentation](/docs/plugins/opensin-code-plugins) für Details.
+OpenSIN-Code kommt mit 14 vorinstallierten Plugins. Siehe [Plugin-Dokumentation](/plugins/opensin-code-plugins) für Details.
 
 ### Eigene Plugins entwickeln
 
@@ -114,7 +114,7 @@ mkdir -p plugins/sin-mein-plugin/skills
 mkdir -p plugins/sin-mein-plugin/hooks
 ```
 
-Siehe [Plugin Development Tutorial](/docs/tutorials/plugin-development) für eine Schritt-für-Schritt-Anleitung.
+Siehe [Plugin Development Tutorial](/tutorials/plugin-development) für eine Schritt-für-Schritt-Anleitung.
 
 ---
 
@@ -160,16 +160,16 @@ git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
 cd OpenSIN-Code
 
 # Dependencies installieren
-npm install
+bun install
 
 # Bauen
-npm run build
+bun run build
 
 # Tests ausführen
-npm run test
+bun run test
 
 # Typecheck
-npm run typecheck
+bun run typecheck
 ```
 
 ---
@@ -191,9 +191,22 @@ Die gesamte Codebasis wurde von sin-claude nach OpenSIN-AI migriert:
 | Projekt | Repo | Dateien | Zeilen | Status |
 |---------|------|---------|--------|--------|
 | **OpenSIN-AI CLI** | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 70 | 34.601 | ✅ Rust |
-| **OpenSIN-AI Code** | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 100 | 2.386 | ✅ Python |
+| **OpenSIN-AI Code** | [OpenSIN/opensin_agent_platform](https://github.com/OpenSIN-AI/OpenSIN/tree/main/opensin_agent_platform) | 100 | 2.386 | ⚠️ Consolidated 2026-04 |
 | **OpenSIN-AI Platform** | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 182 | 87.247 | ✅ Plugins |
 
 ---
 
 *Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI*
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` — KEINE direkten API-Calls |
+| **A2A-Agenten-Pflicht** | -200.0 | SELBST MACHEN via `create-a2a-sin-agent` |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |
+
+→ [Alle Mandate](/best-practices/a2a-communication)

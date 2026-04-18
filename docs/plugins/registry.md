@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npm install @sin/plugin-sdk
+bun add @sin/plugin-sdk
 ```
 
 ## Quick Start
@@ -111,7 +111,7 @@ describe('My Plugin', () => {
 
 ## Examples
 
-See the [examples](./examples) directory for complete plugin implementations.
+See the [Examples section](/examples/hello-world) for complete plugin implementations.
 
 ## Contributing
 
@@ -124,3 +124,14 @@ See the [examples](./examples) directory for complete plugin implementations.
 ## License
 
 Apache 2.0
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

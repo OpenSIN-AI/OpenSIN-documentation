@@ -13,10 +13,10 @@ The `SmartModelRouter` automatically selects the optimal LLM model based on task
 3. Fall back to a higher tier if the selected model fails
 
 ```
-"fix typo" ──► trivial ──► gpt-4o-mini ($0.15/M)
-"add button" ──► simple ──► gpt-4o-mini ($0.15/M)
-"refactor auth" ──► complex ──► claude-sonnet ($3/M)
-"design system" ──► expert ──► claude-opus ($15/M)
+"fix typo" ──► trivial ──► gpt-5.4-mini ($0.15/M)
+"add button" ──► simple ──► gpt-5.4-mini ($0.15/M)
+"refactor auth" ──► complex ──► claude-sonnet-4-6 ($3/M)
+"design system" ──► expert ──► claude-opus-4-6 ($15/M)
 ```
 
 ## Usage
@@ -26,9 +26,9 @@ import { SmartModelRouter } from '@opensin/sdk'
 
 const router = new SmartModelRouter({
   models: {
-    trivial: 'gpt-4o-mini',
-    simple: 'gpt-4o-mini',
-    moderate: 'gpt-4o',
+    trivial: 'gpt-5.4-mini',
+    simple: 'gpt-5.4-mini',
+    moderate: 'gpt-5.4',
     complex: 'claude-sonnet-4-6',
     expert: 'claude-opus-4-6',
   },
@@ -37,7 +37,7 @@ const router = new SmartModelRouter({
 
 // Automatic selection
 const model = router.selectModel('Fix the typo in README.md')
-// Returns: 'gpt-4o-mini'
+// Returns: 'gpt-5.4-mini'
 
 const model2 = router.selectModel('Refactor the entire authentication system to use JWT')
 // Returns: 'claude-sonnet-4-6'
@@ -60,7 +60,7 @@ The router uses keyword analysis and prompt structure to classify tasks:
 When a model fails (rate limit, error, insufficient output), the router automatically escalates:
 
 ```
-gpt-4o-mini → gpt-4o → claude-sonnet → claude-opus
+gpt-5.4-mini → gpt-5.4 → claude-sonnet-4-6 → claude-opus-4-6
 ```
 
 ```typescript
@@ -68,7 +68,7 @@ const router = new SmartModelRouter({
   models: { ... },
   fallbackOnError: true,
   maxRetries: 2,
-  fallbackChain: ['gpt-4o-mini', 'gpt-4o', 'claude-sonnet-4-6', 'claude-opus-4-6'],
+  fallbackChain: ['gpt-5.4-mini', 'gpt-5.4', 'claude-sonnet-4-6', 'claude-opus-4-6'],
 })
 ```
 
@@ -94,3 +94,15 @@ const agent = new AgentLoop({
 ```
 
 The agent loop calls `router.selectModel(prompt)` on each turn, so the model can change mid-conversation as task complexity evolves.
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

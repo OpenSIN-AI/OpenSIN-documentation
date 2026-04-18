@@ -1,0 +1,50 @@
+{
+  "flow": {
+    "name": "box-developer-app-creation",
+    "slug": "box-developer-app-creation",
+    "root": "/Users/jeremy/dev/OpenSIN-documentation",
+    "description": "",
+    "created_at": "2026-04-15T13:16:09+00:00",
+    "updated_at": "2026-04-15T13:16:09+00:00"
+  },
+  "progress": {
+    "run": {
+      "pair_buffer": 0,
+      "candidate_streak": 0,
+      "approved_units": 0,
+      "approved": false
+    },
+    "mini": {
+      "pair_buffer": 0,
+      "candidate_streak": 0,
+      "approved_units": 0,
+      "approved": false
+    },
+    "low": {
+      "pair_buffer": 0,
+      "candidate_streak": 0,
+      "approved_units": 0,
+      "approved": false
+    },
+    "high": {
+      "pair_buffer": 0,
+      "candidate_streak": 0,
+      "approved_units": 0,
+      "approved": false
+    },
+    "max": {
+      "pair_buffer": 0,
+      "candidate_streak": 0,
+      "approved_units": 0,
+      "approved": false
+    },
+    "full": {
+      "pair_buffer": 0,
+      "candidate_streak": 0,
+      "approved_units": 0,
+      "approved": false
+    }
+  },
+  "steps": [],
+  "promotions": []
+}

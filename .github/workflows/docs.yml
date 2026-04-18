@@ -1,0 +1,204 @@
+# =============================================================================
+# CI/CD Workflow: OpenSIN Documentation Build & Deploy
+# =============================================================================
+# This workflow builds the VitePress documentation site using bun (not npm!)
+# and deploys to Cloudflare Pages on the main branch.
+#
+# BUN-ONLY MANDATE (AGENTS.md): npm is permanently banned.
+# Global Brain hooks (PRIORITY -100.0) sync before/after every run.
+#
+# Secrets required (set in GitHub repo settings):
+# - CLOUDFLARE_API_TOKEN: Cloudflare Pages API token
+# - CLOUDFLARE_ACCOUNT_ID: Cloudflare account ID
+# =============================================================================
+
+name: Docs Build & Deploy
+
+on:
+  push:
+    branches: [main, fix/docs-modernize-standards]
+  pull_request:
+    branches: [main]
+
+# =============================================================================
+# Environment variables — Bun version pinned for reproducibility
+# =============================================================================
+env:
+  BUN_VERSION: "1.3.12"
+  NODE_VERSION: "22"
+
+# =============================================================================
+# Job definitions
+# =============================================================================
+jobs:
+  # ---------------------------------------------------------------------------
+  # Job: build
+  # Purpose: Install dependencies with bun, run VitePress build, verify output
+  # ---------------------------------------------------------------------------
+  build:
+    name: VitePress Build (bun)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # -----------------------------------------------------------------------
+      # STEP 1: Global Brain sync BEFORE run (PRIORITY -100.0 mandate)
+      # Loads active context from the persistent brain before each OpenCode run
+      # -----------------------------------------------------------------------
+      - name: Global Brain sync before run
+        run: |
+          echo "=== PCPM Before-Run Hook ==="
+          BRAIN_CLI="/Users/jeremy/dev/global-brain/src/cli.js"
+          if [ -f "$BRAIN_CLI" ]; then
+            node "$BRAIN_CLI" orchestrate \
+              --project opensin-docs \
+              --project-root "$PWD" \
+              2>/dev/null || true
+            echo "Global Brain sync completed"
+          else
+            echo "Global Brain sync skipped on non-local runner"
+          fi
+
+      # -----------------------------------------------------------------------
+      # STEP 2: Checkout with full history for proper submodule handling
+      # -----------------------------------------------------------------------
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      # -----------------------------------------------------------------------
+      # STEP 3: Install Bun (required — npm permanently banned per AGENTS.md)
+      # -----------------------------------------------------------------------
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "${{ env.BUN_VERSION }}"
+
+      # -----------------------------------------------------------------------
+      # STEP 4: Install dependencies ONLY using bun (AGENTS.md CI/CD mandate)
+      # Bun is ~90% faster and uses 10x less RAM than npm
+      # -----------------------------------------------------------------------
+      - name: Install dependencies (bun ONLY — npm banned per AGENTS.md)
+        run: bun install
+
+      # -----------------------------------------------------------------------
+      # STEP 5: Lint check — verify NO npm patterns in source code
+      # This ensures the BUN-ONLY mandate is enforced across all source files
+      # -----------------------------------------------------------------------
+      - name: Lint check (no npm patterns)
+        run: |
+          echo "=== BUN-ONLY Verification ==="
+          NPM_PATTERNS=$(grep -RInE "npm install|npm run|package-lock|npx " . \
+            --include="*.md" \
+            --include="*.json" \
+            --include="*.yml" \
+            --include="*.yaml" \
+            --include="*.sh" \
+            --exclude-dir=node_modules \
+            --exclude-dir=.git \
+            --exclude-dir=.vitepress \
+            --exclude-dir=.github \
+            --exclude=AGENTS.md \
+            2>/dev/null | grep -v "node_modules" || true)
+
+          if [ -n "$NPM_PATTERNS" ]; then
+            echo "FAIL: Found npm patterns:"
+            echo "$NPM_PATTERNS"
+            exit 1
+          else
+            echo "PASS: No npm patterns found — BUN-ONLY verified"
+          fi
+
+      # -----------------------------------------------------------------------
+      # STEP 6: Build VitePress documentation site
+      # -----------------------------------------------------------------------
+      - name: Build docs
+        run: |
+          echo "=== VitePress Build ==="
+          bun x vitepress build docs
+
+      # -----------------------------------------------------------------------
+      # STEP 7: Verify build output exists
+      # VitePress outputs to .vitepress/dist/ — this must exist for deploy
+      # -----------------------------------------------------------------------
+      - name: Verify build output exists
+        run: |
+          echo "=== Build Verification ==="
+          if [ -d "docs/.vitepress/dist" ] && [ -f "docs/.vitepress/dist/index.html" ]; then
+            echo "PASS: Build output verified"
+            echo "  Dist size: $(du -sh docs/.vitepress/dist | cut -f1)"
+            echo "  Files: $(find docs/.vitepress/dist -type f | wc -l)"
+          else
+            echo "FAIL: Build output missing or incomplete"
+            echo "  docs/.vitepress/dist exists: $(test -d docs/.vitepress/dist && echo YES || echo NO)"
+            ls -la docs/.vitepress/ 2>/dev/null || echo "No docs/.vitepress dir"
+            exit 1
+          fi
+
+      # -----------------------------------------------------------------------
+      # STEP 8: Global Brain sync AFTER successful build (PRIORITY -100.0)
+      # Extracts knowledge from the completed session back into the brain
+      # -----------------------------------------------------------------------
+      - name: Global Brain sync after run
+        if: success()
+        run: |
+          echo "=== PCPM After-Run Hook ==="
+          BRAIN_CLI="/Users/jeremy/dev/global-brain/src/cli.js"
+          if [ -f "$BRAIN_CLI" ]; then
+            node "$BRAIN_CLI" extract-knowledge \
+              --project opensin-docs \
+              --project-root "$PWD" \
+              2>/dev/null || true
+            echo "Post-run knowledge extraction completed"
+          else
+            echo "Post-run knowledge extraction skipped on non-local runner"
+          fi
+
+      # -----------------------------------------------------------------------
+      # STEP 9: Upload build artifacts for deploy job
+      # Artifacts are needed because build and deploy are separate jobs
+      # -----------------------------------------------------------------------
+      - name: Upload build artifacts
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist
+
+  # ---------------------------------------------------------------------------
+  # Job: deploy
+  # Purpose: Deploy built docs to Cloudflare Pages (main branch only)
+  # ---------------------------------------------------------------------------
+  deploy:
+    name: Cloudflare Pages Deploy
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      # -----------------------------------------------------------------------
+      # STEP 1: Download build artifacts from the build job
+      # -----------------------------------------------------------------------
+      - name: Download built artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: docs/.vitepress/dist
+
+      # -----------------------------------------------------------------------
+      # STEP 2: Deploy to Cloudflare Pages
+      # Uses wrangler for deployment (bun run deploy, NOT npm run deploy)
+      # -----------------------------------------------------------------------
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: opensin-docs
+          directory: docs/.vitepress/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

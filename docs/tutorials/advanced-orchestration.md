@@ -166,3 +166,16 @@ orchestrator.on('task:error', (event) => {
 3. **Minimize coupling** -- agents communicate through structured task artifacts, not shared state
 4. **Log everything** -- task execution traces are essential for debugging multi-agent workflows
 5. **Test in isolation** -- verify each agent works independently before composing
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Vision-Gate** | -7.0 | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
+| **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm ist verboten |
+| **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. verboten |
+
+→ [Alle Mandate](/best-practices/browser-automation)

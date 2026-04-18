@@ -1,38 +1,16 @@
-# Contributing to OpenSIN Documentation
+# Contributing
 
-## Code Quality Standards
+## Boundary Rules
 
-### Pull Request Process
-1. Create a feature branch from `main`
-2. Make your changes
-3. Run `npm run docs:build` to verify build passes
-4. Submit PR with descriptive title and body
-5. Wait for review before merging
+Before adding a page or top-level claim, answer:
 
-### Documentation Standards
-- Use Markdown with VitePress extensions
-- Include code examples for all tutorials
-- Keep language clear and concise
-- Link to related pages
+1. Is this official documentation content, or implementation truth that should live in another repo?
+2. Does another OpenSIN repo already own the canonical source of truth?
 
-### File Structure
-```
-docs/
-├── guide/          # User guides
-├── api/            # API reference
-├── architecture/   # Architecture docs
-├── bridges/        # Bridge documentation
-└── .vitepress/     # VitePress config
-```
+### Put it in `OpenSIN-documentation` if:
+- it is official docs content
+- it explains, teaches, or documents owning repos clearly
 
-### Commit Messages
-- `docs:` for documentation changes
-- `feat:` for new features
-- `fix:` for bug fixes
-- `chore:` for maintenance
-
-### Review Checklist
-- [ ] Build passes (`npm run docs:build`)
-- [ ] No broken links
-- [ ] Code examples are tested
-- [ ] Spelling and grammar checked
+### Do NOT put it in `OpenSIN-documentation` if:
+- it becomes the implementation repo for runtime/product/ops
+- it becomes the org-overview registry

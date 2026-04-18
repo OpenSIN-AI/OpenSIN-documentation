@@ -8,7 +8,7 @@ Learn how to create a custom plugin for OpenSIN CLI.
 
 ```bash
 mkdir my-plugin && cd my-plugin
-npm init -y
+bun init -y
 ```
 
 ## Step 2: package.json
@@ -47,7 +47,7 @@ export class MyPlugin {
 ## Step 4: Install
 
 ```bash
-npm install -g .
+bun install -g .
 ```
 
 ## Step 5: Add to opencode.json
@@ -57,3 +57,16 @@ npm install -g .
   "plugin": ["opencode-plugin-my-plugin"]
 }
 ```
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Vision-Gate** | -7.0 | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
+| **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm ist verboten |
+| **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. verboten |
+
+→ [Alle Mandate](/best-practices/browser-automation)

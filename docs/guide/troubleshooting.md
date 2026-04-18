@@ -11,7 +11,7 @@ Common issues and their solutions.
 ## High Error Rate
 
 1. Review error patterns
-2. Check rate limits (For Google accounts and OpenAI pools, see [Dual Auth Rotators](/docs/examples/dual-auth-rotators))
+2. Check rate limits (For Google accounts and OpenAI pools, see [Dual Auth Rotators](/examples/dual-auth-rotators))
 3. Verify input format
 
 ## High Latency
@@ -24,3 +24,15 @@ Common issues and their solutions.
 
 - [Monitoring](/guide/monitoring)
 - [Getting Started](/guide/getting-started)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

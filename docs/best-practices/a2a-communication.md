@@ -23,7 +23,7 @@ Monolithische Backends sind Skalierungs-Flaschenhälse. Wenn ein Teil des Backen
 Traditionelle Microservices erfordern massiven DevOps-Overhead (Kubernetes-Cluster, Service-Meshes). Unsere A2A-Agenten nutzen Hugging Face VMs, OCI VMs und Supabase für eine serverless, dezentrale und nahezu kostenlose Skalierung.
 
 ### WOMIT hängt es zusammen?
-- **sin-a2a-agent-forge**: Wenn ein Agent bei einer Aufgabe feststellt, dass ein Konnektor oder Systemzugriff fehlt, darf er **nicht** abbrechen oder den User fragen. Er **MUSS** autonom den Forge-Skill aufrufen und den fehlenden Agenten (`A2A-SIN-[Name]`) selbst von Grund auf erschaffen und deployen.
+- **create-a2a-sin-agent**: Wenn ein Agent bei einer Aufgabe feststellt, dass ein Konnektor oder Systemzugriff fehlt, darf er **nicht** abbrechen oder den User fragen. Er **MUSS** autonom den Skill `create-a2a-sin-agent` aufrufen und den fehlenden Agenten (`A2A-SIN-[Name]`) selbst von Grund auf erschaffen und deployen.
 
 ### WAS sind die KONSEQUENZEN bei Missachtung?
 - Wer versucht, Backend-Logik in ein zentrales Repo zu pressen, statt einen neuen A2A-Agenten zu deployen, verstößt gegen die Architektur. Der Code wird restlos gelöscht.
@@ -100,3 +100,13 @@ Wenn Agenten ihre eigenen API-Keys mitbringen (`requests.post(...)`), umgehen si
 *Letzte Aktualisierung:* 2026-04-10
 *Status:* **AKTIV & BINDEND**
 *Verantwortlich:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **A2A-First** | -200.0 | SELBST MACHEN via A2A-Agenten |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` |
+| **Fleet Architecture V2** | 0.0 | marketplace metadata in agent.json |

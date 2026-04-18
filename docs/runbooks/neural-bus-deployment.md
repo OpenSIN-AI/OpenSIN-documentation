@@ -133,3 +133,15 @@ docker exec -it opensin-neural-bus-pgvector-1 \
 - [Medusa #1](https://github.com/OpenSIN-AI/A2A-SIN-Medusa/issues/1): Wire Medusa to Neural-Bus NATS event mesh
 - [Medusa #2](https://github.com/OpenSIN-AI/A2A-SIN-Medusa/issues/2): Integrate Ouroboros Memory into Medusa synthesis loop
 - [Neural-Bus #1](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus/issues/1): Initialize the Decentralized Event-Sourcing Mesh (NATS/Redis)
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

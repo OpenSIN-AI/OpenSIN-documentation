@@ -24,7 +24,7 @@ Die Alternative ("Ich repariere das schnell lokal, das muss ja keiner wissen") f
 
 ### WOMIT hängt es zusammen?
 - **GitHub Issues**: Das Issue MUSS das Label `Bug` oder einen entsprechenden Tag erhalten.
-- **GitLab LogCenter**: Alle zugehörigen Logs, Screenshots (`/tmp/mXX_stepname_RESULT.png`) und Videos müssen via `gitlab_logcenter.py` hochgeladen werden, bevor das Issue erstellt wird. Das Issue enthält dann nur noch die Links zu den Artefakten.
+- **Box Storage (A2A-SIN-Box-Storage)**: Alle zugehörigen Logs, Screenshots (`/tmp/mXX_stepname_RESULT.png`) und Videos müssen via `box_storage.py` oder direkt über die Box Storage API (`POST /api/v1/upload`) hochgeladen werden, bevor das Issue erstellt wird. Das Issue enthält dann nur noch die Links zu den Artefakten (publicUrl, cdnUrl).
 
 ### WAS sind die KONSEQUENZEN bei Missachtung?
 - **Für das System:** Wiederkehrende Fehler, da Agenten nicht aus vergangenen Fixes lernen können (kein durchsuchbares Issue-Gedächtnis).
@@ -55,7 +55,7 @@ Ein Agent, der Annahmen macht statt Fakten zu prüfen, dreht sich in einer Endlo
 ## 3. Global Fleet Self-Healing Protocol (Der automatisierte Heilungsprozess)
 
 ### WAS passiert hier?
-Wenn ein Agent feststellt, dass er einen Fehler nicht lösen kann (z.B. weil eine Capability fehlt, eine API restriktiert ist oder seine Host-VM crasht), übergibt er das Problem an die Flotte. Er erstellt ein Issue, lädt die Logs ins GitLab LogCenter und delegiert die Lösung an `A2A-SIN-GitHub-Issues` und `SIN-Hermes`.
+Wenn ein Agent feststellt, dass er einen Fehler nicht lösen kann (z.B. weil eine Capability fehlt, eine API restriktiert ist oder seine Host-VM crasht), übergibt er das Problem an die Flotte. Er erstellt ein Issue, lädt die Logs zu Box.com Storage (A2A-SIN-Box-Storage) und delegiert die Lösung an `A2A-SIN-GitHub-Issues` und `SIN-Hermes`.
 
 ### WARUM wird es so gemacht?
 Ein einzelner Agent hat oft nur begrenzte Ressourcen und lokalen Kontext. Die Flotte (das gesamte "Team Coder" auf den HF VMs) kann die Aufgabe durch parallele Recherche (Oracle, Explore, Librarian) und kollektive Code-Generierung viel schneller und stabiler lösen. Dies macht das OpenSIN-Ökosystem zu einer gigantischen, sich selbst heilenden Maschine.
@@ -64,7 +64,7 @@ Ein einzelner Agent hat oft nur begrenzte Ressourcen und lokalen Kontext. Die Fl
 Silo-Lösungen scheitern an Komplexität, API-Limits (wie Cloudflare 403) oder Host-Einschränkungen (wie fehlende Node.js Module auf einer bestimmten VM). Nur die Schwarm-Intelligenz sichert Resilienz.
 
 ### WOMIT hängt es zusammen?
-- **sin-a2a-agent-forge**: Wenn ein Tool fehlt, muss der Agent sofort den Skill aufrufen und einen neuen Agenten bauen. "Was dir fehlt, fehlt der gesamten Flotte – also erschaffe es autonom!"
+- **create-a2a-sin-agent**: Wenn ein Tool fehlt, muss der Agent sofort den Skill `create-a2a-sin-agent` aufrufen und einen neuen Agenten bauen. "Was dir fehlt, fehlt der gesamten Flotte – also erschaffe es autonom!"
 
 ### WAS sind die KONSEQUENZEN bei Missachtung?
 Ein Agent, der in seinem Silo bleibt und wiederholt fehlschlägt, lähmt den Workflow des Benutzers und sabotiert das Paradigma des autonomen SIN Solvers. Das System erwartet, dass Hindernisse entweder souverän umschifft ("Hacker Bypass") oder an die Flotte delegiert werden.
@@ -74,3 +74,13 @@ Ein Agent, der in seinem Silo bleibt und wiederholt fehlschlägt, lähmt den Wor
 *Letzte Aktualisierung:* 2026-04-10
 *Status:* **AKTIV & BINDEND**
 *Verantwortlich:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Immediate Bug Registry** | -4.0 | JEDER Bug SOFORT als GitHub Issue |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Enterprise-Deep-Debug** | 0.0 | Skill vor jedem Debugging-Lauf |

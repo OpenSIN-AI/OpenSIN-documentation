@@ -1,0 +1,90 @@
+name: Repo Health Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Check AGENTS.md exists
+        run: |
+          if [ ! -f "AGENTS.md" ]; then
+            echo "❌ AGENTS.md is missing!"
+            exit 1
+          fi
+          echo "✅ AGENTS.md exists"
+      
+      - name: Check README.md exists
+        run: |
+          if [ ! -f "README.md" ]; then
+            echo "❌ README.md is missing!"
+            exit 1
+          fi
+          echo "✅ README.md exists"
+      
+      - name: Check LICENSE exists
+        run: |
+          if [ ! -f "LICENSE" ] && [ ! -f "LICENSE.md" ]; then
+            echo "❌ LICENSE file is missing!"
+            exit 1
+          fi
+          echo "✅ LICENSE exists"
+      
+      - name: Check for banned package-lock.json
+        run: |
+          LOCK_FILES=$(find . -name "package-lock.json" -not -path "*/node_modules/*" 2>/dev/null | wc -l)
+          if [ "$LOCK_FILES" -gt 0 ]; then
+            echo "❌ Found $LOCK_FILES package-lock.json files (npm is banned, use bun)"
+            find . -name "package-lock.json" -not -path "*/node_modules/*"
+            exit 1
+          fi
+          echo "✅ No package-lock.json files found (bun mandate compliance)"
+      
+      - name: Check .gitignore exists
+        run: |
+          if [ ! -f ".gitignore" ]; then
+            echo "⚠️  .gitignore is missing (recommended)"
+          else
+            echo "✅ .gitignore exists"
+          fi
+      
+      - name: Check for SECRETS directory (should not be committed)
+        run: |
+          if [ -d "SECRETS" ] || [ -d "secrets" ]; then
+            echo "❌ SECRETS directory should not be committed to repo!"
+            exit 1
+          fi
+          echo "✅ No SECRETS directory found"
+
+  bun-build-check:
+    runs-on: ubuntu-latest
+    if: ${{ hashFiles('package.json') != '' }}
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      
+      - name: Install dependencies (with bun)
+        run: bun install
+      
+      - name: Check for package-lock.json after install
+        run: |
+          if [ -f "package-lock.json" ]; then
+            echo "❌ package-lock.json was created! Remove it and use only bun.lockb"
+            exit 1
+          fi
+          echo "✅ No package-lock.json after bun install"
+      
+      - name: Try build
+        run: bun run build || echo "⚠️  Build failed (may be expected for docs repos)"

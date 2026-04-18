@@ -22,7 +22,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 | **OpenSIN Backend** | [OpenSIN-AI/OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Python + Node.js | 11.679 | SIN Solver | ✅ Abo-Modell |
 | **OpenSIN-Code** | [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | TypeScript + Rust | 4.636 | 37.7K Rust | ✅ CLI |
 | **opensin-ai-cli** | [OpenSIN-AI/opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | Rust | 70 | 34.601 | ✅ NEU April 2026 |
-| **opensin-ai-code** | [OpenSIN-AI/opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | Python | 100 | 2.386 | ✅ NEU April 2026 |
+| **opensin-ai-code** *(archived)* | [OpenSIN-AI/OpenSIN/opensin_agent_platform](https://github.com/OpenSIN-AI/OpenSIN/tree/main/opensin_agent_platform) | Python | 100 | 2.386 | ⚠️ Consolidated 2026-04 into OpenSIN monorepo |
 | **opensin-ai-platform** | [OpenSIN-AI/opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | Multi | 182 | 87.247 | ✅ NEU April 2026 |
 
 ### Team Orchestrators (17 Teams, 92 Worker)
@@ -68,7 +68,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 | my.opensin.ai | website-my.opensin.ai | Premium Abo-Modell |
 | docs.opensin.ai | OpenSIN-documentation | Offizielle Dokumentation |
 | blog.opensin.ai | Biz-SIN-Blog-Posts | Blog & Marketing |
-| a2a.delqhi.com | OpenSIN-backend | A2A Fleet Control Plane |
+| chat.opensin.ai | OpenSIN-backend | A2A Fleet Control Plane |
 
 ### Templates & Blueprints (4)
 
@@ -161,7 +161,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 ┌─────────────────────────────────────────────────────────────┐
 │                   CONTROL PLANE / BACKEND                    │
 │  OpenSIN-backend (A2A Fleet Control, n8n Routing, API)      │
-│  a2a.delqhi.com (Fleet Control)                              │
+│  chat.opensin.ai (Fleet Control)                              │
 │  Core-SIN-Control-Plane (Doctor/Preflight/Eval)              │
 └─────────────────────────────────────────────────────────────┘
                               │
@@ -202,7 +202,7 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 |------------|------|-------|
 | **OCI VM (A1.Flex)** | 92.5.60.87 | n8n, Room-13, Supabase |
 | **HuggingFace Spaces** | cpu-basic | A2A Agent Runtimes |
-| **Vercel** | a2a.delqhi.com | A2A Dashboard |
+| **Vercel** | chat.opensin.ai | A2A Dashboard |
 | **Cloudflare** | opensin.ai | Marketing Site |
 
 ---
@@ -239,3 +239,16 @@ Secure Code Execution mit Filesystem/Network Rules.
 ---
 
 *Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI*
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **LLM via opencode CLI** | -2.5 | `opencode run --format json` — KEINE direkten API-Calls |
+| **A2A-Agenten-Pflicht** | -200.0 | SELBST MACHEN via `create-a2a-sin-agent` |
+| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |
+
+→ [Alle Mandate](/best-practices/a2a-communication)

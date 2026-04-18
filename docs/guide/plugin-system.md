@@ -22,8 +22,8 @@ my-plugin/
 
 ```bash
 mkdir my-plugin && cd my-plugin
-npm init -y
-npm install opencode
+bun init -y
+bun add opencode
 ```
 
 ### 2. package.json
@@ -46,7 +46,7 @@ npm install opencode
 ### 3. Install
 
 ```bash
-npm install -g opencode-plugin-my-plugin
+bun add -g opencode-plugin-my-plugin
 ```
 
 Or add to `opencode.json`:
@@ -99,9 +99,9 @@ export const myAgent = defineAgent({
 
 | Plugin | Description | Install |
 |--------|-------------|---------|
-| `oh-my-opencode` | Multi-agent orchestration framework | `npm i -g oh-my-opencode` |
-| `opencode-antigravity-auth` | OAuth token rotation for Claude/Gemini | `npm i -g opencode-antigravity-auth` |
-| `opencode-qwen-proxy` | OpenCode-Qwen-Proxy (Qwen OAuth with throttling) | `npm i -g github:RunMintOn/OpenCode-Qwen-Proxy` |
+| `oh-my-opencode` | Multi-agent orchestration framework | `bun install -g oh-my-opencode` |
+| `opencode-antigravity-auth` | OAuth token rotation for Claude/Gemini | `bun install -g opencode-antigravity-auth` |
+| `opencode-qwen-proxy` | OpenCode-Qwen-Proxy (Qwen OAuth with throttling) | `bun install -g github:RunMintOn/OpenCode-Qwen-Proxy` |
 | `opencode-openrouter-auth` | OpenRouter auth with local proxy | Local source in upgraded-opencode-stack |
 
 ## Flow-Building Skill
@@ -110,7 +110,7 @@ Für interaktive Flow-Arbeit ist `create-flow` das Canonical Skill-Pattern:
 
 - speichert Screenshots direkt im aktiven Flow-Workspace
 - erzeugt pro Schritt `vision.txt`, `analysis.json` und `analysis.md`
-- nutzt standardmäßig `google/antigravity-gemini-3-flash` über den Antigravity-Plugin-Pfad
+- nutzt standardmäßig `meta/llama-3.2-11b-vision-instruct` (NVIDIA NIM) für Vision-Gate
 - fällt bei fehlender Flash-Vision nicht still auf andere Modelle zurück
 - die kanonische Runtime lebt in `OpenSIN-AI/SIN-InkogniFlow`; `upgraded-opencode-stack` spiegelt diese Implementierung nur aus
 - `guard_create_flow.py` beziehungsweise `sin-flow guard` erkennen abweichende Runtime-Dateien in anderen Repos und brechen mit einem Fehlercode ab
@@ -122,3 +122,15 @@ Für interaktive Flow-Arbeit ist `create-flow` das Canonical Skill-Pattern:
 3. **Document everything** — Include README with usage examples
 4. **Test thoroughly** — Include unit tests for commands and agents
 5. **Version properly** — Use semantic versioning
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+
+→ [Alle Mandate](/best-practices/code-quality)

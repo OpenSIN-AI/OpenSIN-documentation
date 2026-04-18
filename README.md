@@ -2,10 +2,14 @@
 
 > **OpenSIN-AI** — The world's most comprehensive autonomous AI agent ecosystem.
 
+> [!IMPORTANT]
+> **Single Source of Truth (SSOT):** Die kanonische OpenCode-Konfiguration liegt unter [Delqhi/upgraded-opencode-stack](https://github.com/Delqhi/upgraded-opencode-stack).
+> Nach jeder Änderung an `opencode.json` MUSS `sin-sync` ausgeführt werden.
+
 ## Quick Links
 
 - [Website](https://opensin.ai)
-- [Dashboard](https://a2a.delqhi.com)
+- [Dashboard](https://chat.opensin.ai)
 - [Discord](https://discord.gg/opensin)
 - [GitHub](https://github.com/OpenSIN-AI)
 
@@ -20,6 +24,7 @@
 | Section | Description |
 |---------|-------------|
 | [Guide](docs/guide/) | User guides and tutorials |
+| [Agent Configuration](docs/guide/agent-configuration.md) | 🆕 All agent config files documented |
 | [API](docs/api/) | API reference |
 | [Architecture](docs/architecture/) | System architecture |
 | [Plugins](docs/plugins/) | Plugin documentation |
@@ -47,10 +52,13 @@
 ## Development
 
 ```bash
-npm install
-npm run docs:dev
-npm run docs:build
-npm test
+bun install
+bun run docs:dev
+# Note: "bun run docs:build" is broken on this machine (bun script-runner SIGKILL).
+# Use either of these instead:
+node node_modules/vitepress/bin/vitepress.js build docs
+bun x vitepress build docs
+bun test
 ```
 
 ## License

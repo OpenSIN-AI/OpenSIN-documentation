@@ -133,7 +133,7 @@ Important incidents must preserve evidence:
 - execution IDs
 - commit/branch/issue references
 
-Where LogCenter applies, upload there. `/tmp` is temporary, not authoritative.
+Where Box Storage applies, upload there. `/tmp` is temporary, not authoritative.
 
 ---
 
@@ -204,3 +204,12 @@ If a metric cannot drive a decision, rethink why you are collecting it.
 *Last updated:* 2026-04-10  
 *Status:* **ACTIVE & MANDATORY**  
 *Maintainer:* sin-zeus
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Regel |
+|--------|----------|-------|
+| **Box.com Storage** | 0.0 | Logs zu Box.com hochladen |
+| **Test-Beweis-Pflicht** | 0.0 | Monitoring MUSS echte Daten zeigen |

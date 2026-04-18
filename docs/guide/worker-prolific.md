@@ -90,3 +90,16 @@ All secrets loaded from gcloud Secret Manager (`artificial-biometrics` project):
 | v7.1 | Auth0 login fix, real Prolific DOM selectors |
 | v7.2 | 3-state in-progress study FSM |
 | v7.3 | Full submission pipeline, dual-key rotation, popup bypass, auto-complete detection |
+
+---
+
+## Relevante Mandate
+
+| Mandat | Priority | Doku |
+|--------|----------|------|
+| **Vision-Gate** | -7.0 | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
+| **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm ist verboten |
+| **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. verboten |
+
+→ [Alle Mandate](/best-practices/browser-automation)
