@@ -14,8 +14,8 @@ When a new user runs OpenSIN for the first time, the autonomous onboarding syste
 ## Quick Start
 
 ```bash
-git clone https://github.com/OpenSIN-AI/OpenSIN-onboarding.git
-cd OpenSIN-onboarding
+git clone https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup.git
+cd Infra-SIN-Dev-Setup/user-onboarding
 ./scripts/onboard.sh
 ```
 
@@ -115,7 +115,7 @@ rm /tmp/new-key.json
 
 ## Further Reading
 
-- [OpenSIN-onboarding repository](https://github.com/OpenSIN-AI/OpenSIN-onboarding)
+- [Infra-SIN-Dev-Setup / user-onboarding](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/tree/main/user-onboarding) (previously `OpenSIN-onboarding`, consolidated April 2026)
 - [Passwordmanager source](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/a2a/team-infrastructure/A2A-SIN-Passwordmanager)
 - [OpenSIN Bridge extension](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/services/sin-chrome-extension)
 
