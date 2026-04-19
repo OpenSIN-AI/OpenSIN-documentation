@@ -19,7 +19,7 @@ V1 Launch targets **3 flagship agents** (MiroFish, X-Twitter, Discord) on **4 pr
 | **G1** | Lighthouse Performance — opensin.ai <2s render | 🔴 OPEN | Needs performance optimization, Vite build review, Cloudflare Pages caching check |
 | **G2** | ? | — | — |
 | **G3** | Docs Consolidation | ✅ DONE | OpenSIN-documentation fully restructured, dynamic-input-commands added |
-| **G4/G5** | Stripe + Login — chat.opensin.ai login flow + real Stripe purchase (€29/mo Starter) | 🔴 OPEN | Login flow unverified; Stripe webhook processing in backend needs verification |
+| **G4/G5** | Stripe + Login — chat.opensin.ai login flow + real Stripe purchase (€29/mo Starter) | 🔴 BLOCKER (Stripe unimplemented) | **Login: ✅ VERIFIED 2026-04-19** — JWT auth works, session cookie set, dashboard "Willkommen, Jeremy" confirmed. **Stripe: ❌ NOT IMPLEMENTED** — `handleStripeCheckout` and `handleStripeWebhook` are stub references in `OpenSIN-Bridge/server/src/index.ts` (lines 58, 63) but the functions are NEVER DEFINED. `A2A-SIN-Stripe` agent is a stub (just echoes instructions). No `/pricing` page on chat.opensin.ai. Revenue blocked. |
 | **G6** | ? | — | — |
 | **G7** | HF Spaces Fleet — 6 Cloud Coder Spaces keep-alive | ✅ DONE | `hf-keep-alive.yml` deployed in `Infra-SIN-OpenCode-Stack`; Issue #10 closed |
 | **G8** | CLI Install Proof — `bun install -g opensin-code` on clean VM | 🔴 OPEN | Global install smoke test in CI not yet proven |
@@ -39,10 +39,13 @@ V1 Launch targets **3 flagship agents** (MiroFish, X-Twitter, Discord) on **4 pr
 
 ## Remaining Work (Priority Order)
 
-1. **G4/G5 — Stripe + Login** 🔴
-   - Verify chat.opensin.ai login flow end-to-end
-   - Confirm real Stripe purchase flow for €29/mo Starter plan
-   - Check Stripe webhook processing in OpenSIN-Backend
+1. **G4/G5 — Stripe + Login** 🔴 **CRITICAL — REVENUE BLOCKED**
+   - ~~Verify chat.opensin.ai login flow~~ ✅ **DONE** — Pre-filled credentials work, JWT auth confirmed, dashboard loads
+   - **Stripe checkout: implement `handleStripeCheckout()` in `OpenSIN-Bridge/server/src/index.ts`** — create Stripe Checkout session, return URL
+   - **Stripe webhook: implement `handleStripeWebhook()`** — verify signature, update Supabase `subscriptions` table
+   - **Add `/pricing` page to chat.opensin.ai** — 404 today
+   - **Wire up `A2A-SIN-Stripe` agent** to process webhook events (or implement webhook logic directly in bridge server)
+   - See: `OpenSIN-Bridge/docs/ARCHITECTURE.md` line 42 for spec, `OpenSIN-Bridge/docs/MONETIZATION.md` for full webhook event list
 
 2. **G8 — CLI Install Proof** 🔴
    - Add `bun install -g opensin-code` smoke test to CI pipeline
@@ -85,7 +88,7 @@ V1 Launch targets **3 flagship agents** (MiroFish, X-Twitter, Discord) on **4 pr
 | Marketing | opensin.ai | 🟡 Needs G1 (perf) |
 | Premium Marketplace | my.opensin.ai | 🟢 Live |
 | Blog | blog.opensin.ai | 🟢 Live |
-| Chat + Billing | chat.opensin.ai | 🔴 Needs G4/G5 (Stripe + Login) |
+| Chat + Billing | chat.opensin.ai | 🔴 Needs G4/G5 (Stripe + Login) — Login ✅, Stripe ❌ |
 
 ---
 
@@ -99,5 +102,5 @@ V1 Launch targets **3 flagship agents** (MiroFish, X-Twitter, Discord) on **4 pr
 
 ---
 
-*Last updated: 2026-04-19*
+*Last updated: 2026-04-19 (G4/G5 verified — Stripe NOT implemented, revenue blocked)*
 *Maintainer: OpenSIN-Documentation Agent*
