@@ -39,6 +39,7 @@ export default defineConfig({
           { text: 'Agent Author Guide', link: '/guide/how-to-configure-agents' },
           { text: 'MCP Integration', link: '/guide/mcp-integration' },
           { text: 'A2A Protocol', link: '/guide/a2a-protocol' },
+          { text: 'Agent Discovery (/agents.md)', link: '/guide/agent-discovery' },
           { text: 'Plugin System', link: '/guide/plugin-system' },
           { text: 'Team Orchestration', link: '/guide/team-orchestration' },
           { text: 'Deployment', link: '/guide/deployment' },
