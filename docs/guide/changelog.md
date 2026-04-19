@@ -1,5 +1,9 @@
 # Changelog
 
+## April 2026
+
+- [April 2026 Consolidation](/changelog/2026-04-consolidation) — public summary of the repo and product consolidation work that redefined the canonical OpenSIN map.
+
 ## v0.1.0 (2026-04-04)
 
 ### Added

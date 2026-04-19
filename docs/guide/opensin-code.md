@@ -1,202 +1,116 @@
-# OpenSIN Code
-
-OpenSIN-Code ist das autonome CLI- und SDK-System der OpenSIN-AI Organisation. Es ist der Kern des agentic AI Coding Assistant Ökosystems.
-
-> **Repository:** [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code)
->
-> **Umfang:** 2.394 Dateien | 637.024 Zeilen Code | TypeScript + Rust
-
+---
+title: OpenSIN-Code CLI Reference
+description: Canonical V1 reference for the TypeScript OpenSIN CLI surface.
 ---
 
-## Architektur
+# OpenSIN-Code CLI Reference
 
-OpenSIN-Code ist als Monorepo mit Turborepo organisiert:
+`OpenSIN-Code` is the **canonical TypeScript CLI** in the OpenSIN-AI organization.
 
-```
-packages/
-├── opensin-cli/          # CLI Entry Point, Commander.js, REPL
-├── opensin-server/       # Express HTTP Server
-├── opensin-sdk/          # Core SDK (Agent Loop, Tools, MCP, Memory)
-│   ├── src/core/         # 1.902 Dateien migrierter Core-Code
-│   ├── src/utils/plugins/ # Plugin-Architektur (44 Dateien)
-│   └── src/bare_mode/    # Bare Mode (4 Dateien)
-│   └── src/buddy/        # Buddy Companion (4 Dateien)
-│   └── src/copy_command/ # Copy Command (4 Dateien)
-│   └── src/plugin_state/ # Plugin State Management (5 Dateien)
-│   └── src/prompt_interrupt/ # Prompt Interrupt (4 Dateien)
-│   └── src/skill_commands/ # Skill Commands (6 Dateien)
-│   └── src/subtask_tree/ # Subtask Tree (5 Dateien)
-│   └── src/supercomplete/ # Supercomplete (5 Dateien)
-│   └── src/terminal_notifications/ # Terminal Notifications (4 Dateien)
-├── opensin-engine/       # Rust Engine (71 Dateien, 37.7K Zeilen)
-│   ├── crates/api/       # API Layer (Provider Client, Types, SSE)
-│   ├── crates/runtime/   # Runtime (Conversation, Config, Compact)
-│   ├── crates/tools/     # 19 Built-in Tools
-│   ├── crates/sin-cli/   # Rust CLI (REPL, Render, Input)
-│   ├── crates/plugins/   # Rust Plugin System
-│   ├── crates/commands/  # 27+ Slash Commands
-│   ├── crates/lsp/       # LSP Integration
-│   └── crates/server/    # Axum HTTP Server
-├── cli-tools/            # 6 Core CLI Tools (Bash, Read, Edit, Write, Glob, Grep)
-├── plugin-sdk/           # Plugin SDK
-└── plugin-runtime/       # Plugin Loader & Registry
+- Canonical owner: [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code)
+- Org role: [Canonical Repos → Autonomous coding surface](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/CANONICAL-REPOS.md#2-autonomous-coding-surface-typescript)
+- Launch gate: [OpenSIN-Code#1117](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1117)
 
-plugins/                  # 14 migrierte Plugins
-├── sin-code-review/      # Code Review (6 Dateien)
-├── sin-commit-commands/  # Git Workflow (10 Dateien)
-├── sin-feature-dev/      # Feature Dev (12 Dateien)
-├── sin-frontend-design/  # Frontend Design (6 Dateien)
-├── sin-security-guidance/ # Security (6 Dateien)
-├── sin-hookify/          # Hook Engine (48 Dateien)
-├── sin-explanatory-mode/ # Erklär-Modus (8 Dateien)
-├── sin-learning-mode/    # Lern-Modus (8 Dateien)
-├── sin-model-migration/  # Modell-Migration (10 Dateien)
-├── sin-agent-sdk-dev/    # Agent SDK (10 Dateien)
-├── sin-plugin-dev/       # Plugin Dev Toolkit (116 Dateien)
-├── sin-pr-review/        # PR Review (18 Dateien)
-├── sin-loop/             # Self-Referential Loops (16 Dateien)
-└── sin-ralph/            # Ralph Loop (7 Dateien)
+## What this page covers
 
-opensin-code-vscode/      # VS Code Extension (18 Dateien)
-.github/workflows/        # 12 GitHub Actions Workflows
-scripts/                  # 8 Automation Scripts
-examples/                 # Beispiel-Konfigurationen
-```
+This page documents the **V1 user-facing command surface** as it exists in the current source tree and the V1 launch gate.
 
----
+It intentionally separates:
 
-## Core Engine
+1. the commands an OSS user should actually learn first,
+2. the larger source-derived command inventory that still exists in the repo,
+3. experimental or internal modules that are **not** the first thing docs should teach.
 
-### TypeScript SDK (`packages/opensin-sdk/`)
+## Quick orientation
 
-Das TypeScript SDK bildet das Herzstück von OpenSIN-Code:
+| Topic | Current truth |
+|---|---|
+| Product role | TypeScript fork of the autonomous coding CLI surface |
+| Verified install path today | Clone `OpenSIN-Code`, `bun install`, `bun run build`, start locally |
+| Launch target | Public `opensin` install flow tracked in `OpenSIN-Code#1117` |
+| Biggest blocker | [R1 merge/split decision](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1116) |
 
-- **Query Loop** — API Streaming, Tool Execution, Auto-Compact
-- **Tool System** — 40+ Tools (Bash, Read, Edit, Write, Glob, Grep, WebFetch, etc.)
-- **Command Registry** — 70+ Slash Commands
-- **Plugin System** — Installation, Validation, Marketplace
-- **MCP Client** — Multi-Server MCP Integration
-- **Memory System** — Session Memory, Auto-Memory, Team Memory
-- **Permissions** — Permission Modes (Default, Accept Edits, Dangerously)
-- **Auth** — OAuth, API Keys, Bedrock, Vertex
-- **Config** — Global/Project Settings, `.sin/` Directory
+## Core V1 workflows
 
-### Rust Engine (`packages/opensin-engine/`)
+### 1. Start or resume work
 
-Die Rust Engine bietet ein performantes Backend:
+These are the commands a new user should hit first:
 
-- **API Layer** — Provider Client Abstraction, SSE Parser, Model Registry
-- **Runtime** — Core Agent Loop, Config Loading, Session Compaction
-- **Tools** — 19 Built-in Tools in Rust
-- **CLI** — REPL, Terminal Renderer, Vim-mode Line Editor
-- **Commands** — 27+ Slash Commands
-- **Plugins** — Full Plugin System mit Hook Execution
-- **LSP** — Language Server Protocol Integration
-- **Server** — Axum HTTP API mit SSE Streaming
+| Command | Purpose |
+|---|---|
+| `/help` | Show the active command surface |
+| `/resume` | Re-open a previous session |
+| `/status` | Inspect current runtime status |
+| `/session` | Work with saved sessions |
+| `/compact` | Reduce context size without losing the thread |
+| `/rewind` | Step back in the active conversation |
+| `/export` | Export a session or result for later use |
+| `/clear` | Clear conversation state or caches |
 
----
+### 2. Configure the runtime
 
-## Plugin-System
+| Command | Purpose |
+|---|---|
+| `/config` | Inspect or change CLI configuration |
+| `/model` | Change the active model |
+| `/permissions` | Review or change tool permission behavior |
+| `/mcp` | Manage MCP servers and connections |
+| `/plugin` | Browse, install, or manage plugins |
+| `/skills` | Discover and execute skills |
+| `/hooks` | Review hook behavior |
+| `/memory` | Inspect persistent memory surfaces |
+| `/privacy-settings` | Control privacy / telemetry preferences |
 
-OpenSIN-Code kommt mit 14 vorinstallierten Plugins. Siehe [Plugin-Dokumentation](/plugins/opensin-code-plugins) für Details.
+### 3. Do actual code work
 
-### Eigene Plugins entwickeln
+| Command | Purpose |
+|---|---|
+| `/plan` | Build an execution plan before coding |
+| `/review` | Run post-implementation review workflow |
+| `/doctor` | Diagnose local environment problems |
+| `/branch` | Start a focused git workstream |
+| `/diff` | Review current code changes |
+| `/agents` | Manage agent surfaces and agent-mode routing |
+| `/files` | Inspect file-oriented workspace state |
+| `/tasks` | Inspect task execution state |
 
-```bash
-# Plugin erstellen
-/plugin-dev:create-plugin
+## Source-derived command inventory
 
-# Oder manuell
-mkdir -p plugins/sin-mein-plugin/.sin-plugin
-mkdir -p plugins/sin-mein-plugin/commands
-mkdir -p plugins/sin-mein-plugin/agents
-mkdir -p plugins/sin-mein-plugin/skills
-mkdir -p plugins/sin-mein-plugin/hooks
-```
+The current `OpenSIN-Code` source tree contains a broader command inventory under:
 
-Siehe [Plugin Development Tutorial](/tutorials/plugin-development) für eine Schritt-für-Schritt-Anleitung.
+- `packages/opensin-sdk/src/core/commands/`
 
----
+That inventory includes the following top-level modules.
 
-## VS Code Extension
+### Primary user-facing groups
 
-Die `opensin-code-vscode` Extension integriert OpenSIN-Code direkt in VS Code:
+- `add-dir`, `agents`, `branch`, `clear`, `compact`, `config`, `context`, `copy`, `cost`, `diff`, `doctor`, `export`, `files`, `help`, `hooks`, `install`, `login`, `logout`, `mcp`, `memory`, `model`, `permissions`, `plan`, `plugin`, `privacy-settings`, `resume`, `review`, `rewind`, `session`, `skills`, `stats`, `status`, `tasks`, `theme`, `upgrade`, `usage`
 
-- **Task Dispatch** — Agenten-Tasks direkt aus dem Editor starten
-- **Swarm Coordination** — Agent-Schwärme koordinieren
-- **Buddy Companion** — AI-Begleiter im Editor
-- **Memory Consolidation** — Session-Speicher verwalten
-- **Agent Modes** — Zwischen Agent-Modi wechseln
-- **LSP Integration** — Language Server Protocol
+### Platform and setup commands
 
----
+- `chrome`, `desktop`, `install-github-app`, `install-slack-app`, `mobile`, `remote-env`, `remote-setup`, `sandbox-toggle`, `terminalSetup`, `voice`, `vim`
 
-## GitHub Automation
+### Advanced, experimental, or maintenance modules in the tree
 
-### Workflows
+- `advisor`, `ant-trace`, `autofix-pr`, `backfill-sessions`, `break-cache`, `bridge`, `btw`, `bughunter`, `ctx_viz`, `debug-tool-call`, `effort`, `env`, `extra-usage`, `fast`, `feedback`, `good-opensin`, `heapdump`, `issue`, `keybindings`, `mock-limits`, `oauth-refresh`, `onboarding`, `output-style`, `passes`, `perf-issue`, `pr_comments`, `rate-limit-options`, `release-notes`, `reload-plugins`, `rename`, `reset-limits`, `share`, `stickers`, `summary`, `tag`, `teleport`, `thinkback`, `thinkback-play`
 
-| Workflow | Zweck |
-|----------|-------|
-| `opensin.yml` | Haupt CI/CD Pipeline |
-| `opensin-issue-triage.yml` | Auto-Triage neuer Issues |
-| `opensin-dedupe-issues.yml` | Duplicate-Erkennung |
-| `sweep.yml` | Täglicher Stale-Issue Cleanup |
-| `auto-close-duplicates.yml` | Auto-Close von Duplicates |
-| `issue-lifecycle-comment.yml` | Lifecycle Labels & Comments |
-| `lock-closed-issues.yml` | Lock alter Issues |
-| `log-issue-events.yml` | Analytics |
-| `non-write-users-check.yml` | Security Check |
-| `remove-autoclose-label.yml` | Label Management |
-| `backfill-duplicate-comments.yml` | Backfill alter Issues |
-| `issue-opened-dispatch.yml` | Dispatch zu externem Repo |
+## What is still not fully finished for launch
 
----
+The docs gate in [OpenSIN-documentation#135](https://github.com/OpenSIN-AI/OpenSIN-documentation/issues/135) and the CLI gate in [OpenSIN-Code#1117](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1117) still require:
 
-## Schnellstart
+- a final public installer story from the marketing site,
+- a stable `opensin --help` experience with no broken entries,
+- support URLs and error strings that reference the right canonical repos,
+- a command reference that is generated or at least maintained from one source.
 
-```bash
-# Repository klonen
-git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
-cd OpenSIN-Code
+This page closes the "no canonical reference at all" gap, but the launch-gate work in the CLI repo is still the source of truth for final polish.
 
-# Dependencies installieren
-bun install
+## Recommended learning path
 
-# Bauen
-bun run build
-
-# Tests ausführen
-bun run test
-
-# Typecheck
-bun run typecheck
-```
-
----
-
-## Migration
-
-Die gesamte Codebasis wurde von sin-claude nach OpenSIN-AI migriert:
-
-- **352 Dateien** migriert (3 neue Repos)
-- **129.798 Zeilen** Code
-- **100% OpenSIN-Branding** — keine externen Referenzen
-- **14 Plugins** vollständig portiert
-- **Rust Engine** als performantes Backend (34.601 Zeilen)
-- **Python Platform** als metadata-driven Workspace (2.386 Zeilen)
-- **Plugin Ecosystem** mit GitHub Automation (87.247 Zeilen)
-
-### Neue Projekte (April 2026)
-
-| Projekt | Repo | Dateien | Zeilen | Status |
-|---------|------|---------|--------|--------|
-| **OpenSIN-AI CLI** | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 70 | 34.601 | ✅ Rust |
-| **OpenSIN-AI Code** | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 100 | 2.386 | ✅ Python |
-| **OpenSIN-AI Platform** | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 182 | 87.247 | ✅ Plugins |
-
----
-
-*Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI*
+1. [Getting Started](/guide/getting-started)
+2. This CLI reference
+3. [OpenSIN backend V1 API](/api/backend-v1)
+4. [Agent author guide](/guide/how-to-configure-agents)
 
 ---
 
@@ -204,9 +118,8 @@ Die gesamte Codebasis wurde von sin-claude nach OpenSIN-AI migriert:
 
 | Mandat | Priority | Doku |
 |--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **LLM via opencode CLI** | -2.5 | `opencode run --format json` — KEINE direkten API-Calls |
-| **A2A-Agenten-Pflicht** | -200.0 | SELBST MACHEN via `create-a2a-sin-agent` |
-| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |
+| **Bun-Only** | -1.5 | `OpenSIN-Code` uses Bun for the TypeScript workspace |
+| **Annahmen-Verbot** | -5.0 | V1 command claims must track real modules or live issues |
+| **Test-Beweis-Pflicht** | 0.0 | Launch docs must be backed by successful build / runtime validation |
 
-→ [Alle Mandate](/best-practices/a2a-communication)
+→ [Alle Mandate](/best-practices/code-quality)

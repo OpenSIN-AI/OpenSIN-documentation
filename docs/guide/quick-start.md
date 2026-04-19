@@ -1,83 +1,38 @@
 # Quick Start
 
-Get OpenCode running in under 5 minutes.
+Use this page when you want the **shortest possible path** to a real OpenSIN session.
 
-## Prerequisites
+For the full, launch-gate-safe explanation, use [Getting Started](/guide/getting-started).
 
-- Node.js 20+ (`brew install node`)
-- Git configured with GitHub access
-
-## Installation
+## Verified quick path today
 
 ```bash
-# Install OpenCode CLI
-curl -fsSL https://opencode.ai/install | bash
-
-# Verify installation
-opencode --version
+git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
+cd OpenSIN-Code
+bun install
+bun run build
+opensin-code
 ```
 
-## First Session
+Inside the CLI:
 
-```bash
-# Start OpenCode in your project
-cd ~/my-project
-opencode
-
-# Or run with a direct message
-opencode run "Create a REST API with Express"
+```text
+/help
+Explain this repository and propose the smallest safe first change.
 ```
 
-## Using Agents
+## Why this page does not promise `curl | sh` yet
 
-```bash
-# List available agents
-opencode agent list
+The V1 launch plan expects a public installer flow, but that work is still tracked in [OpenSIN-Code#1117](https://github.com/OpenSIN-AI/OpenSIN-Code/issues/1117).
 
-# Create a new agent
-opencode agent create researcher --model openai/gpt-5.4
+Until that gate closes, the source-build route above is the honest quick path.
 
-# Run with a specific agent
-opencode run --agent researcher "Research the latest AI trends"
-```
+## Next steps
 
-## Using Plugins
-
-```bash
-# Install a plugin
-opencode plugin oh-my-opencode
-
-# Verify plugins
-opencode plugin list
-```
-
-## Using MCPs
-
-```bash
-# Configure MCP servers
-opencode mcp add filesystem --command bunx @modelcontextprotocol/server-filesystem /path/to/dir
-
-# List MCPs
-opencode mcp list
-```
-
-## Essential Commands
-
-| Command | Description |
-|---------|-------------|
-| `/help` | Show available commands |
-| `/agents` | List and switch agents |
-| `/models` | List and switch models |
-| `/tools` | Show available tools |
-| `/export` | Export session data |
-| `/compact` | Compact conversation context |
-
-## Next Steps
-
-- [Installation Guide](./installation.md) — Detailed setup instructions
-- [Agent Basics](./agent-basics.md) — Learn to use agents effectively
-- [MCP Integration](./mcp-integration.md) — Connect external tools
-- [Plugin System](./plugin-system.md) — Build custom plugins
+- [Getting Started](/guide/getting-started)
+- [OpenSIN-Code CLI Reference](/guide/opensin-code)
+- [Agent Author Guide](/guide/how-to-configure-agents)
+- [Backend V1 API](/api/backend-v1)
 
 ---
 
@@ -85,8 +40,8 @@ opencode mcp list
 
 | Mandat | Priority | Doku |
 |--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/bun sind verboten |
-| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
-| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm ist im OpenSIN-Ökosystem gebannt |
+| **Annahmen-Verbot** | -5.0 | Nur dokumentieren, was mit Repo- oder Issue-Evidenz belegt ist |
+| **Test-Beweis-Pflicht** | 0.0 | Kein "Done" ohne echten Build- oder Laufnachweis |
 
 → [Alle Mandate](/best-practices/code-quality)

@@ -1,64 +1,111 @@
-# 📋 How to Configure New Agents (A2A v5)
+---
+title: Agent Author Guide
+description: How to scaffold and register a new A2A-SIN agent using the canonical OpenSIN workflow.
+---
 
-> **Target Audience:** Admins & Developers adding new agents to the OpenSIN-AI fleet.
-> **Version:** 5.0.0 (April 2026)
+# Agent Author Guide
 
-## 1. Define the Agent
-Determine the agent's name, team, and role.
+This guide is for maintainers who need to create or extend an `A2A-SIN-*` agent.
 
-```
-Name: A2A-SIN-New-Agent
-Team: Team Coding
-Type: Coder Agent
-```
+The most important rule is simple:
 
-## 2. Register in oh-my-sin.json
-Open `oh-my-sin.json` and add the agent to its team's `members` array.
+> **Start from the canonical template and the canonical repo map. Do not invent a parallel scaffold.**
 
-```json
-"teams": {
-    "team-code": {
-        "name": "Team Coding",
-        "members": ["...existing...", "A2A-SIN-New-Agent"]
-    }
-}
-```
+## 1. Decide whether you need a new repo at all
 
-## 3. Run the Ultimate Skill
-Use the `/create-a2a-sin-agent` skill in OpenCode.
+Before you scaffold anything, read:
 
-```bash
+- [START-HERE](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/START-HERE.md)
+- [Canonical Repos](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/CANONICAL-REPOS.md)
+
+Use this decision rule:
+
+| Situation | Correct action |
+|---|---|
+| The capability belongs inside an existing team monorepo | Add a folder there |
+| The capability is a new standalone A2A agent | Start from `Template-SIN-Agent` |
+| The capability only changes a commercial bundle | Edit the owning `team.json`, not the agent repo |
+
+## 2. Start from `Template-SIN-Agent`
+
+Canonical template:
+
+- [OpenSIN-AI/Template-SIN-Agent](https://github.com/OpenSIN-AI/Template-SIN-Agent)
+
+Canonical creation workflow:
+
+```text
 /create-a2a-sin-agent
-# Follow prompts for name, team, and capabilities
 ```
 
-This will automatically generate:
-- `agent.json` (with marketplace metadata)
-- `A2A-CARD.md` (for discovery)
-- `config/telegram-bot.yaml`
-- `config/hf-space.yaml`
-- `governance/*.json` (security and workflow rules)
-- `Dockerfile` (production ready)
+That workflow exists specifically so new agents do not drift away from the org standard.
 
-## 4. Update n8n Workflows
-If this is a new Team, run the n8n workflow generator script:
+## 3. Minimum files every new agent needs
 
-```bash
-python3 scripts/generate-n8n-workflows.py
-# Import the resulting JSON into n8n via CLI or UI
-```
+At minimum, a new agent repo should expose these surfaces:
 
-## 5. Deploy to HF Space
-The skill generates a space in `/tmp/hf-space-packages/<slug>`.
+| File / surface | Why it exists |
+|---|---|
+| `agent.json` | machine-readable agent identity |
+| `A2A-CARD.md` | human-readable capability summary |
+| `AGENTS.md` | repo-local development rules |
+| `mcp-config.json` | MCP exposure |
+| `clients/opencode-mcp.json` | OpenCode client wiring |
+| `clients/codex-config.toml` | editor / client integration |
+| `.well-known/agent-card.json` | public agent discovery |
+| `.well-known/agent.json` | public machine-readable metadata |
+| `.well-known/oauth-client.json` | auth metadata if the agent exposes OAuth |
 
-```bash
-cd /tmp/hf-space-packages/a2a-sin-new-agent
-hf repo create delqhi/a2a-sin-new-agent --type space
-git push origin main
-```
+## 4. Register the agent in the right commercial layer
 
-## 6. Verify Live Status
-Check `http://92.5.60.87:8006` (Supabase) to ensure the agent is listed in the `agents` table.
+OpenSIN V1 treats `Team-SIN-*` repositories as **team manifests**, not as the runtime home of the agent code.
+
+That means:
+
+- runtime logic lives in the `A2A-SIN-*` repo,
+- bundle composition lives in the team manifest,
+- the marketplace renders from aggregated manifest data.
+
+### Source of truth
+
+- Schema: [team.schema.json](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/schemas/team.schema.json)
+- Templates: [OpenSIN-overview/templates/teams](https://github.com/OpenSIN-AI/OpenSIN-overview/tree/main/templates/teams)
+
+**Do not edit downstream `team.json` mirrors by hand if the overview repo is the canonical source.**
+
+## 5. Validation checklist before you call the agent ready
+
+Use the smallest honest checklist that proves the agent is real:
+
+- build succeeds,
+- the agent card renders,
+- a health or help action responds,
+- the `.well-known/` discovery endpoints exist,
+- the bundle / team manifest references the correct agent id.
+
+## 6. Where docs for the new agent belong
+
+Different docs belong in different places:
+
+| Content | Correct home |
+|---|---|
+| Runtime code and repo-local instructions | the agent repo |
+| Public user documentation | `OpenSIN-documentation` |
+| Org topology / canonical ownership | `OpenSIN-overview` |
+| Marketplace composition and pricing | `team.json` + marketplace docs |
+
+## 7. Common mistakes to avoid
+
+- Creating a new repo when an existing team repo or template already owns the concern.
+- Editing commercial bundle metadata in the wrong place.
+- Documenting an agent as live before its discovery or health surfaces are reachable.
+- Writing docs that disagree with [Canonical Repos](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/CANONICAL-REPOS.md).
+
+## Next steps
+
+- [Team manifest contract](/api/team)
+- [OpenSIN-Code CLI reference](/guide/opensin-code)
+- [April 2026 consolidation](/changelog/2026-04-consolidation)
 
 ---
 
@@ -66,8 +113,8 @@ Check `http://92.5.60.87:8006` (Supabase) to ensure the agent is listed in the `
 
 | Mandat | Priority | Doku |
 |--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| **A2A-First** | -200.0 | New capabilities should route through the existing agent fleet first |
+| **Annahmen-Verbot** | -5.0 | Do not claim an agent is ready until health and discovery are verified |
+| **Test-Beweis-Pflicht** | 0.0 | Every new agent needs build and runtime proof |
 
 → [Alle Mandate](/best-practices/code-quality)

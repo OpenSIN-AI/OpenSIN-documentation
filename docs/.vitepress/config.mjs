@@ -18,7 +18,8 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
-      { text: 'API', link: '/api/' },
+      // Point the top-level API tab at the curated V1 landing page rather than the legacy index route.
+      { text: 'API', link: '/api/overview' },
       { text: 'Architecture', link: '/architecture/overview' },
       { text: 'SDK', link: '/sdk/overview' },
       { text: 'Plugins', link: '/plugins/registry' },
@@ -31,9 +32,11 @@ export default defineConfig({
         text: 'Guide',
         items: [
           { text: 'Getting Started', link: '/guide/getting-started' },
+          { text: 'OpenSIN-Code CLI', link: '/guide/opensin-code' },
           { text: 'Installation', link: '/guide/installation' },
           { text: 'Quick Start', link: '/guide/quick-start' },
           { text: 'Agent Basics', link: '/guide/agent-basics' },
+          { text: 'Agent Author Guide', link: '/guide/how-to-configure-agents' },
           { text: 'MCP Integration', link: '/guide/mcp-integration' },
           { text: 'A2A Protocol', link: '/guide/a2a-protocol' },
           { text: 'Plugin System', link: '/guide/plugin-system' },
@@ -43,6 +46,7 @@ export default defineConfig({
           { text: 'Scaling', link: '/guide/scaling' },
           { text: 'Troubleshooting', link: '/guide/troubleshooting' },
           { text: 'Changelog', link: '/guide/changelog' },
+          { text: 'April 2026 Consolidation', link: '/changelog/2026-04-consolidation' },
         ],
       },
       {
@@ -59,9 +63,10 @@ export default defineConfig({
         text: 'API',
         items: [
           { text: 'Overview', link: '/api/overview' },
+          { text: 'Backend V1', link: '/api/backend-v1' },
           { text: 'Agent API', link: '/api/agent' },
           { text: 'A2A API', link: '/api/a2a' },
-          { text: 'Team API', link: '/api/team' },
+          { text: 'Team Manifest Contract', link: '/api/team' },
         ],
       },
       {

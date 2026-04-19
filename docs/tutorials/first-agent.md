@@ -1,51 +1,62 @@
 # Tutorial: Create Your First Agent
 
-## Prerequisites
+This tutorial shows the **current canonical OpenSIN path** for creating a new `A2A-SIN-*` agent.
 
-- Node.js 20+
-- OpenCode CLI installed
-- GitHub account
+## Before you scaffold anything
 
-## Step 1: Install OpenCode
+Read these first:
 
-```bash
-curl -fsSL https://opencode.ai/install | bash
+1. [Agent Author Guide](/guide/how-to-configure-agents)
+2. [Team Manifest Contract](/api/team)
+3. [Canonical Repos](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/CANONICAL-REPOS.md)
+
+You need to know whether you are:
+
+- creating a new standalone agent repo,
+- adding a capability to an existing team repo,
+- or only changing bundle metadata.
+
+## Step 1: Start from the canonical template
+
+Use the canonical creation workflow:
+
+```text
+/create-a2a-sin-agent
 ```
 
-## Step 2: Install the Upgraded Stack
+Reference template:
 
-```bash
-git clone https://github.com/Delqhi/upgraded-opencode-stack.git
-cd upgraded-opencode-stack
-./install.sh
-```
+- [OpenSIN-AI/Template-SIN-Agent](https://github.com/OpenSIN-AI/Template-SIN-Agent)
 
-## Step 3: Create an Agent
+## Step 2: Fill the minimum agent surfaces
 
-```bash
-opencode agent create my-agent --model openai/gpt-5.4
-```
+Your new agent should expose at least:
 
-## Step 4: Run Your Agent
+- `agent.json`
+- `A2A-CARD.md`
+- `AGENTS.md`
+- `mcp-config.json`
+- `.well-known/agent-card.json`
+- `.well-known/agent.json`
 
-```bash
-opencode run --agent my-agent "Hello, world!"
-```
+## Step 3: Register it in the right commercial layer
 
-## Step 5: Add Tools
+If the agent belongs to an existing `Team-SIN-*` bundle, update the canonical manifest source in `OpenSIN-overview/templates/teams/` instead of inventing a second registry.
 
-```bash
-# Install plugins
-bun add -g @opensin/plugin-context-pruning
-bun add -g @opensin/plugin-envsitter
-bun add -g @opensin/plugin-safety-net
-```
+## Step 4: Validate that it is real
 
-## Next Steps
+Do not call the agent ready until you have proof that:
 
-- Read the [Plugin System Guide](../guide/plugin-system.md)
-- Explore the [A2A Protocol](../guide/a2a-protocol.md)
-- Check the [API Reference](../api/index.md)
+- it builds,
+- its discovery files exist,
+- its help or health action responds,
+- the correct bundle references the right `A2A-SIN-*` id.
+
+## Next steps
+
+- [Agent Author Guide](/guide/how-to-configure-agents)
+- [OpenSIN-Code CLI Reference](/guide/opensin-code)
+- [API Reference](/api/index)
 
 ---
 
@@ -53,9 +64,8 @@ bun add -g @opensin/plugin-safety-net
 
 | Mandat | Priority | Doku |
 |--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **LLM via opencode CLI** | -2.5 | `opencode run --format json` — KEINE direkten API-Calls |
-| **A2A-Agenten-Pflicht** | -200.0 | SELBST MACHEN via `create-a2a-sin-agent` |
-| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |
+| **A2A-First** | -200.0 | Reuse the existing fleet and templates before inventing new scaffolds |
+| **Annahmen-Verbot** | -5.0 | No "ready" claim without build and runtime proof |
+| **Test-Beweis-Pflicht** | 0.0 | Every new agent needs validation evidence |
 
-→ [Alle Mandate](/best-practices/a2a-communication)
+→ [Alle Mandate](/best-practices/code-quality)

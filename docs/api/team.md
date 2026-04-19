@@ -1,63 +1,164 @@
 ---
-title: Team API
-description: API reference for OpenSIN teams
+title: Team Manifest Contract
+description: Canonical documentation for OpenSIN marketplace team manifests and team.json.
 ---
 
-# Team API
+# Team Manifest Contract
 
-Create and manage OpenSIN teams.
+OpenSIN V1 treats each `Team-SIN-*` offering as a **structured marketplace manifest**.
 
-## Endpoints
+That manifest lives in `team.json` and is validated by the canonical schema in `OpenSIN-overview`.
 
-### Create Team
+## Canonical sources
 
-```http
-POST /v1/teams
-```
+- Schema: [`schemas/team.schema.json`](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/schemas/team.schema.json)
+- Product decision: [Product Vision → Marketplace Option A](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/PRODUCT-VISION.md#marketplace--entschieden-option-a-metadata-manifeste)
+- Canonical templates: [`templates/teams/`](https://github.com/OpenSIN-AI/OpenSIN-overview/tree/main/templates/teams)
 
-**Request:**
+## Why this contract exists
+
+The marketplace should not be driven by ad-hoc markdown or manually duplicated sales copy.
+
+Instead, one `team.json` file answers:
+
+- what the bundle is called,
+- which agents belong to it,
+- how it is priced,
+- what permissions and budgets it needs,
+- what marketing copy the marketplace should render.
+
+## Required top-level fields
+
+The schema currently requires these fields:
+
+| Field | Meaning |
+|---|---|
+| `$schema_version` | manifest format version |
+| `id` | canonical Team-SIN repo name |
+| `name` | human-readable bundle name |
+| `slug` | marketplace URL slug |
+| `tier` | bundle placement in the product model |
+| `status` | lifecycle state |
+| `marketing` | summary + bullets for the marketplace card and detail page |
+| `agents` | A2A agents unlocked by the bundle |
+| `pricing` | commercial model |
+
+## Important clarification: old tier words vs current schema
+
+The launch-gate issue for docs was written with shorthand labels like `core-included`, `bundle`, and `addon`.
+
+The **current canonical schema** is slightly more precise:
+
+- `tier` expresses where the team sits in the product model: `marketplace`, `core-included`, `enterprise`
+- `pricing.model` expresses how it is sold: `free-with-pro`, `monthly-addon`, `metered`, `enterprise-quote`
+
+So in practice:
+
+| Older shorthand | Current schema expression |
+|---|---|
+| core-included | `tier: core-included` + `pricing.model: free-with-pro` |
+| addon | `tier: marketplace` + `pricing.model: monthly-addon` |
+| enterprise bundle | `tier: enterprise` + `pricing.model: enterprise-quote` |
+
+## Worked examples from the live templates
+
+### Example 1 — included with Pro
+
+Source template:
+
+- [`Team-SIN-Code-Core.json`](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/templates/teams/Team-SIN-Code-Core.json)
+
+Key shape:
+
 ```json
 {
-  "name": "research-team",
-  "agents": ["agent_123", "agent_456"],
-  "strategy": "sequential",
-  "max_iterations": 10
+  "id": "Team-SIN-Code-Core",
+  "tier": "core-included",
+  "pricing": {
+    "model": "free-with-pro"
+  }
 }
 ```
 
-### List Teams
+What it means:
 
-```http
-GET /v1/teams
-```
+- the team ships with every Pro subscription,
+- no separate marketplace purchase is required,
+- the bundle still declares real agents, permissions, budgets, and provenance.
 
-### Execute Team Task
+### Example 2 — monthly add-on bundle
 
-```http
-POST /v1/teams/{team_id}/execute
-```
+Source template:
 
-**Request:**
+- [`Team-SIN-Commerce.json`](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/templates/teams/Team-SIN-Commerce.json)
+
+Key shape:
+
 ```json
 {
-  "task": "Research AI trends and write a report",
-  "context": {"focus": "enterprise applications"}
+  "id": "Team-SIN-Commerce",
+  "tier": "marketplace",
+  "pricing": {
+    "model": "monthly-addon",
+    "monthly_addon_eur": 19
+  }
 }
 ```
 
-## Next Steps
+What it means:
 
-- [Agent API](/api/agent)
-- [A2A Protocol](/api/a2a)
+- the team is sold as a marketplace add-on,
+- the bundle unlocks multiple agents,
+- the pricing model is explicit and machine-readable.
 
----
+### Example 3 — enterprise shape in the schema
 
-## Relevante Mandate
+The current templates fetched from `OpenSIN-overview/templates/teams/` are using:
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+- one `core-included` example,
+- multiple `marketplace` + `monthly-addon` examples.
 
-→ [Alle Mandate](/best-practices/code-quality)
+The schema also reserves enterprise bundles through:
+
+```json
+{
+  "tier": "enterprise",
+  "pricing": {
+    "model": "enterprise-quote"
+  }
+}
+```
+
+That shape is part of the **canonical contract**, even if the currently published template set has not started using it yet.
+
+## Fields frontend and backend both care about
+
+### For `website-my.opensin.ai`
+
+- `name`
+- `slug`
+- `tagline`
+- `marketing.summary`
+- `marketing.bullets`
+- `status`
+- `pricing`
+
+### For `chat.opensin.ai` and `OpenSIN-backend`
+
+- `agents`
+- `permissions`
+- `budgets`
+- `pricing`
+- `provenance`
+
+## Authoring rules
+
+- Keep runtime code in the `A2A-SIN-*` repo, not in the manifest.
+- Keep bundle composition in `team.json`.
+- Treat `OpenSIN-overview/templates/teams/` as the canonical authoring location when the overview repo is the SSOT.
+
+## Next steps
+
+- [API Overview](/api/overview)
+- [OpenSIN Backend V1 API](/api/backend-v1)
+- [Agent Author Guide](/guide/how-to-configure-agents)
