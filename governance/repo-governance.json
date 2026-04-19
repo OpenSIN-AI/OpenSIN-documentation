@@ -1,9 +1,62 @@
 {
-  "version": "1.0",
-  "repo": "OpenSIN-documentation",
-  "rules": {
-    "require-pr-watcher": true,
-    "require-visual-evidence": true,
-    "fail-closed": true
+  "version": "1.0.0",
+  "repo": "placeholder",
+  "owner": "OpenSIN-AI",
+  "contact": "agent@opensin.ai",
+  "platform": "github",
+  "enforced_at": "2026-04-19",
+  "governance_rules": {
+    "issue_management": {
+      "required_labels": [
+        "bug",
+        "enhancement",
+        "documentation",
+        "question"
+      ],
+      "default_label": "enhancement",
+      "close_stale_after_days": 30,
+      "require_assignment": false
+    },
+    "branch_protection": {
+      "main": {
+        "require_reviews": false,
+        "dismiss_stale_reviews": false,
+        "require_linear_history": false,
+        "allow_force_pushes": false,
+        "allow_deletions": false
+      }
+    },
+    "pull_requests": {
+      "require_checks": false,
+      "require_approval_count": 0,
+      "allow_editors_merge": true,
+      "allow_ownMerge": true,
+      "delete_branch_after_merge": true
+    }
+  },
+  "inbound_intake": {
+    "enabled": true,
+    "workflow_path": "n8n-workflows/inbound-intake.json",
+    "watch_script": "scripts/watch-pr-feedback.sh",
+    "docs_path": "docs/03_ops/inbound-intake.md"
+  },
+  "pr_watcher": {
+    "enabled": true,
+    "platform": "github",
+    "events": [
+      "pull_request",
+      "pull_request_review",
+      "issue_comment"
+    ],
+    "auto_response": false,
+    "escalate_on": [
+      "bug",
+      "critical",
+      "security"
+    ]
+  },
+  "platform_registry": {
+    "enabled": true,
+    "path": "platforms/registry.json"
   }
 }

@@ -1,0 +1,72 @@
+{
+  "name": "governance-rollout",
+  "nodes": [
+    {
+      "parameters": {
+        "functionCode": "const org='OpenSIN-AI'; const token=.GITHUB_TOKEN||process.env.GITHUB_TOKEN; const repos=[]; for(let p=1;p<=10;p++){const r=await fetch('https://api.github.com/orgs/'+org+'/repos?per_page=100&page='+p+'&type=all',{headers:{Authorization:'Bearer '+token}}); const d=await r.json(); if(!Array.isArray(d)||d.length===0)break; repos.push(...d.map(x=>({owner:org,repo:x.name}))); if(d.length<100)break} return[{json:{repos,total:repos.length}}];"
+      },
+      "id": "fetch-repos",
+      "name": "Fetch Org Repos",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "const repos=.first().json.repos; const tasks=[]; for(const r of repos) tasks.push({json:{...r,governance_path:'governance/repo-governance.json'}}); return tasks;"
+      },
+      "id": "expand",
+      "name": "Expand Tasks",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{$json.owner}}/{{$json.repo}}/contents/{{$json.governance_path}}",
+        "method": "GET"
+      },
+      "id": "check",
+      "name": "Check Existing",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        650,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Fetch Org Repos": {
+      "main": [
+        [
+          {
+            "node": "Expand Tasks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Expand Tasks": {
+      "main": [
+        [
+          {
+            "node": "Check Existing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "id": "governance-rollout"
+}
