@@ -1,9 +1,15 @@
 # OpenSIN-AI Code — Python Agent Development Platform
 
+::: warning 🗄️ ARCHIVED — April 2026 Wave 4 Consolidation
+`opensin-ai-code` is **archived**. The active backend is **[OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend)** (FastAPI). The canonical CLI is **[OpenSIN-Code](./opensin-code.md)** (TypeScript + Bun).
+
+This page is kept for historical reference only. Do not start new work against `opensin-ai-code`.
+:::
+
 OpenSIN-AI Code ist die Python-basierte Agent Development Platform der OpenSIN-AI Organisation. Metadata-driven Architektur für schnellen Prototyping und Porting.
 
-> **Repository:** [OpenSIN-AI/opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code)
->
+> **Repository (ARCHIVED):** [OpenSIN-AI/opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code)
+
 > **Umfang:** 100 Dateien | 2.386 Zeilen Python-Code | 26 Subsystem-Pakete
 
 ## OpenSIN-AI Agent Roadmap

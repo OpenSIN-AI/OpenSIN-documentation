@@ -1,9 +1,17 @@
 # OpenSIN-AI CLI — AI Coding Assistant in Rust
 
+::: warning 🗄️ ARCHIVED — April 2026 Wave 4 Consolidation
+`opensin-ai-cli` is **archived**. The active CLI is **[OpenSIN-Code](./opensin-code.md)** (TypeScript + Bun workspace, Rust engine in `packages/opensin-engine/`).
+
+**Canonical repo:** [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code)
+
+This page is kept for historical reference only. Do not start new work against `opensin-ai-cli`.
+:::
+
 OpenSIN-AI CLI ist der hochperformante, speicher-sichere AI Coding Assistant der OpenSIN-AI Organisation. Komplett in Rust implementiert für maximale Geschwindigkeit und Sicherheit.
 
-> **Repository:** [OpenSIN-AI/opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli)
->
+> **Repository (ARCHIVED):** [OpenSIN-AI/opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli)
+
 > **Umfang:** 70 Dateien | 34.601 Zeilen Rust-Code | 9 Crates
 
 ## OpenSIN-AI Agent Roadmap

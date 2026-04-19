@@ -94,7 +94,7 @@ Unlike Claude Code (Claude only) or Gemini Agent (Gemini only):
 ## Implementation Roadmap
 
 ### Phase 1: Foundation (Sprint 1-2)
-- Heartbeat system in `opensin-ai-cli`
+- Heartbeat system in `OpenSIN-Code` (Rust engine in `packages/opensin-engine/`)
 - Multi-model router with failover
 - Cron scheduler and unified agent orchestrator
 - Approval hooks and permission gate integration

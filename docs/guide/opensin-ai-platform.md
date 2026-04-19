@@ -1,9 +1,17 @@
 # OpenSIN-AI Platform — Plugin Ecosystem & GitHub Automation
 
+::: warning 🗄️ ARCHIVED — April 2026 Wave 4 Consolidation
+`opensin-ai-platform` is **archived**. Plugins and automation migrated to **[OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code)** (TypeScript, Bun workspace, 14 built-in plugins).
+
+**Canonical repo:** [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code)
+
+This page is kept for historical reference only. Do not start new work against `opensin-ai-platform`.
+:::
+
 OpenSIN-AI Platform ist das Plugin- und Automatisierungs-Ökosystem der OpenSIN-AI Organisation. 14 Plugins, GitHub Workflows und DevContainer-Setup.
 
-> **Repository:** [OpenSIN-AI/opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform)
->
+> **Repository (ARCHIVED):** [OpenSIN-AI/opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform)
+
 > **Umfang:** 182 Dateien | 87.247 Zeilen | 14 Plugins
 
 ## OpenSIN-AI Agent Roadmap

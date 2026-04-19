@@ -14,8 +14,12 @@ When a new user runs OpenSIN for the first time, the autonomous onboarding syste
 ## Quick Start
 
 ```bash
-git clone https://github.com/OpenSIN-AI/OpenSIN-onboarding.git
-cd OpenSIN-onboarding
+# Preferred: use OpenSIN-Code CLI for new setups
+# See [OpenSIN-Code Guide](./opensin-code.md) for active install path
+
+# Legacy onboard scripts — OpenSIN-onboarding repo is archived
+git clone https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup.git
+cd Infra-SIN-Dev-Setup
 ./scripts/onboard.sh
 ```
 
@@ -115,7 +119,7 @@ rm /tmp/new-key.json
 
 ## Further Reading
 
-- [OpenSIN-onboarding repository](https://github.com/OpenSIN-AI/OpenSIN-onboarding)
+- [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) — Automated onboarding scripts (`OpenSIN-onboarding` repo is **archived**)
 - [Passwordmanager source](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/a2a/team-infrastructure/A2A-SIN-Passwordmanager)
 - [OpenSIN Bridge extension](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/services/sin-chrome-extension)
 

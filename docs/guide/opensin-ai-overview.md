@@ -21,9 +21,9 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 | **OpenSIN Core** | [OpenSIN-AI/OpenSIN](https://github.com/OpenSIN-AI/OpenSIN) | Python | 865 | 310+ Pakete | ✅ Free, Apache 2.0 |
 | **OpenSIN Backend** | [OpenSIN-AI/OpenSIN-backend](https://github.com/OpenSIN-AI/OpenSIN-backend) | Python + Node.js | 11.679 | SIN Solver | ✅ Abo-Modell |
 | **OpenSIN-Code** | [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | TypeScript + Rust | 4.636 | 37.7K Rust | ✅ CLI |
-| **opensin-ai-cli** | [OpenSIN-AI/opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | Rust | 70 | 34.601 | ✅ NEU April 2026 |
-| **opensin-ai-code** | [OpenSIN-AI/opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | Python | 100 | 2.386 | ✅ NEU April 2026 |
-| **opensin-ai-platform** | [OpenSIN-AI/opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | Multi | 182 | 87.247 | ✅ NEU April 2026 |
+| ~~opensin-ai-cli~~ | ~~[OpenSIN-AI/opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli)~~ | Rust | — | — | 🗄️ **Archived** — merged into OpenSIN-Code (R1 pending) |
+| ~~opensin-ai-code~~ | ~~[OpenSIN-AI/opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code)~~ | Python | — | — | 🗄️ **Archived** — superseded by OpenSIN-backend |
+| ~~opensin-ai-platform~~ | ~~[OpenSIN-AI/opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform)~~ | Multi | — | — | 🗄️ **Archived** — plugins migrated to OpenSIN-Code |
 
 ### Team Orchestrators (17 Teams, 92 Worker)
 
@@ -167,9 +167,9 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
                               │
 ┌─────────────────────────────────────────────────────────────┐
 │                     CORE ENGINES                             │
-│  OpenSIN (Python, 310+ pkgs) │ OpenSIN-Code (Python+Rust)   │
-│  opensin-ai-cli (Rust)       │ opensin-ai-code (Python)     │
-│  opensin-ai-platform (14 plugins, 87K+ lines)               │
+│  OpenSIN (Python, 310+ pkgs) │ OpenSIN-Code (TypeScript+Rust)│
+│  OpenSIN-backend (FastAPI)   │ OpenSIN-WebApp (Next.js)     │
+│  [archived: opensin-ai-cli / opensin-ai-code / opensin-ai-platform] │
 └─────────────────────────────────────────────────────────────┘
                               │
 ┌─────────────────────────────────────────────────────────────┐

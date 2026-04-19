@@ -320,7 +320,7 @@ Beim OpenSIN Onboarding MUSS der User einen Storage Provider wählen:
 ## Related
 - [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/blob/main/box-storage.md) — Detailed Box Storage Guide
 - [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) — Docker Infrastructure
-- [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) — User Onboarding
+- ~~OpenSIN-onboarding~~ *(archived — use [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup) for onboarding)*
 
 ---
 
