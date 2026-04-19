@@ -41,8 +41,9 @@ export default defineConfig({
           { text: 'Deployment', link: '/guide/deployment' },
           { text: 'Monitoring', link: '/guide/monitoring' },
           { text: 'Scaling', link: '/guide/scaling' },
-          { text: 'Troubleshooting', link: '/guide/troubleshooting' },
-          { text: 'Changelog', link: '/guide/changelog' },
+{ text: 'Troubleshooting', link: '/guide/troubleshooting' },
+{ text: 'Dynamic Input Commands', link: '/guides/dynamic-input-commands' },
+{ text: 'Changelog', link: '/guide/changelog' },
         ],
       },
       {

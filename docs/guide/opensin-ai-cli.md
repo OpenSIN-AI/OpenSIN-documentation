@@ -6,6 +6,12 @@ OpenSIN-AI CLI ist der hochperformante, speicher-sichere AI Coding Assistant der
 >
 > **Umfang:** 70 Dateien | 34.601 Zeilen Rust-Code | 9 Crates
 
+::: warning Migration Note (2026-04)
+The **primary recommended CLI** for new projects is [**OpenSIN-Code**](/guide/opensin-code) — which incorporates the same Rust engine (`opensin-engine/crates/sin-cli/`) as a first-class component of its monorepo. The standalone `opensin-ai-cli` repo is maintained for existing users but new projects should start with OpenSIN-Code.
+
+See [OpenSIN-Code Quick Start](/guide/opensin-code) for installation instructions.
+:::
+
 ## OpenSIN-AI Agent Roadmap
 
 - Feature spec: [OpenSIN-overview/docs/opensin-ai-agent-feature-spec.md](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/opensin-ai-agent-feature-spec.md)
