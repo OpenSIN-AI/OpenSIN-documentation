@@ -106,6 +106,8 @@ export default defineConfig({
           { text: 'Governance Overview', link: '/governance/overview' },
           { text: 'Zeus', link: '/governance/zeus' },
           { text: 'Hermes', link: '/governance/hermes' },
+          { text: 'Domain & DNS (E7)', link: '/governance/domain-registry' },
+          { text: 'Handoff Playbook (E8)', link: '/governance/handoff-playbook' },
         ],
       },
       {
