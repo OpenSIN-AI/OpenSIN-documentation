@@ -88,7 +88,7 @@ See [agents-mandate-audit.md](./agents-mandate-audit.md) for complete AGENTS.md 
 
 ### Step 3: Add GitHub Topics
 ```bash
-gh repo edit OpenSIN-AI/MCP-SIN-[name] --add-topic "opnsin-mcp"
+gh repo edit OpenSIN-AI/MCP-SIN-[name] --add-topic "opensin-mcp"
 ```
 
 ### Step 4: Verify

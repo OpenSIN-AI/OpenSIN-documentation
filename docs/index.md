@@ -2,8 +2,8 @@
 layout: home
 hero:
   name: "OpenSIN-AI Documentation"
-  text: "Official docs for the OpenSIN-AI organization."
-  tagline: The first Agent-to-Agent network — 100+ autonomous AI agents in 18 specialized teams. Build, deploy, and scale with the OpenSIN design system and A2A protocol.
+  text: "Canonical docs and verified surface registry for the OpenSIN-AI ecosystem."
+  tagline: Guides, architecture, API refs, governance, and AI-ready discovery in one place.
   image:
     src: /logo.svg
     alt: OpenSIN Logo
@@ -12,45 +12,45 @@ hero:
       text: Get Started
       link: /guide/getting-started
     - theme: alt
+      text: View Registry
+      link: /governance/domain-registry
+    - theme: alt
       text: View on GitHub
-      link: https://github.com/OpenSIN-AI/OpenSIN
+      link: https://github.com/OpenSIN-AI/OpenSIN-documentation
 features:
+  - title: Canonical Docs
+    details: Guides, architecture, API references, tutorials, and best practices in one place.
+    link: /guide/getting-started
   - icon:
       src: /logo.svg
     title: A2A Protocol
-    details: Agent-to-Agent communication standard enabling 100+ autonomous agents to collaborate, delegate, and deliver results without human intervention.
+    details: Agent-to-agent communication that lets specialized workers collaborate without a central bottleneck.
     link: /guide/a2a-protocol
-  - title: 18 Specialized Teams
-    details: From Software Engineering to Bug Bounty, Google Apps to DevOps — each team is purpose-built for specific domains with deep expertise.
-    link: /guide/team-orchestration
-  - title: Model-Agnostic
-    details: Works with 1000+ models from OpenAI, Anthropic, Google, Mistral, Groq, Ollama and more. Bring your own API keys or use free tier.
-    link: /guide/mcp-integration
+  - title: Surface Registry
+    details: Public, gated, and internal/unverified surfaces are tracked with evidence, not guesswork.
+    link: /governance/domain-registry
   - title: Security by Design
-    details: Auth-Broker, Secret-Authority, Approval-Lanes. No secrets in code. Every critical action can be reviewed before execution.
+    details: Auth-broker patterns, approval lanes, and no secrets in code. Critical actions stay reviewable.
     link: /best-practices/security
-  - title: Omni-Channel
-    details: WhatsApp, Telegram, Discord, iMessage, Apple Notes — your agents are everywhere you are, responding in your name.
-    link: /bridges/chrome-extension
+  - title: AI Discoverability
+    details: Root llms.txt files keep humans and agents on the same canonical path.
+    link: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/llms.txt
   - title: Open Source
-    details: Fully forkable, self-hostable, and extensible. Apache 2.0 licensed. No vendor lock-in, no hidden costs.
-    link: https://github.com/OpenSIN-AI/OpenSIN
+    details: Fully forkable, self-hostable, and extensible. No vendor lock-in, no hidden costs.
+    link: https://github.com/OpenSIN-AI/OpenSIN-documentation
 ---
 
 ## Quick Start
 
 ```bash
-# Clone the repository
-git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
-cd OpenSIN-Code
-
-# Install (Bun only — npm/bun forbidden)
+git clone https://github.com/OpenSIN-AI/OpenSIN-documentation.git
+cd OpenSIN-documentation
 bun install
-bun run build
-
-# Start
-bun start
+bun run docs:dev
 ```
+
+> [!TIP]
+> If you only want to read, start with the [surface registry](/governance/domain-registry). If you want to contribute, keep claims evidence-based and update the registry first.
 
 ## 🚨 Absolute Mandates (BEFORE you start)
 
@@ -90,5 +90,6 @@ Every agent and developer in the OpenSIN-AI fleet MUST follow these mandates. No
 - **opensin.ai** — [Marketing Site](https://opensin.ai)
 - **my.opensin.ai** — [Premium Marketplace](https://my.opensin.ai)
 - **docs.opensin.ai** — You are here
+- **Domain Registry** — [Verified public / gated / internal map](/governance/domain-registry)
 - **GitHub** — [OpenSIN-AI Organization](https://github.com/OpenSIN-AI)
 - **Discord** — [Community](https://discord.gg/opensin)

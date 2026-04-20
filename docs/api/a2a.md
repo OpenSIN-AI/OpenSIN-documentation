@@ -7,6 +7,9 @@ description: Agent-to-Agent communication protocol
 
 Direct communication between OpenSIN agents.
 
+> [!WARNING]
+> `api.opensin.ai` is documented in the registry as internal/unverified. Use the endpoint examples below only when the backend surface is verified for the environment you are working in.
+
 ## Overview
 
 The A2A (Agent-to-Agent) protocol enables agents to communicate directly without going through a central coordinator.

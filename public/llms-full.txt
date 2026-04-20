@@ -1,34 +1,56 @@
 # OpenSIN Documentation
 
-> Technical documentation for OpenSIN, the open-source Agent-to-Agent network.
+> Canonical docs, governance, and surface registry for the OpenSIN-AI ecosystem.
 
-## Primary URLs
+## Overview
+
+OpenSIN Documentation is the VitePress-powered knowledge base for the OpenSIN-AI ecosystem. It centralizes guides, architecture notes, APIs, governance, and evidence-based surface status for humans and agents.
+
+## Site map
+
 - Docs: https://docs.opensin.ai
 - Main site: https://opensin.ai
 - Marketplace: https://my.opensin.ai
 - Blog: https://blog.opensin.ai
+- Registry: https://docs.opensin.ai/governance/domain-registry.html
 
 ## Documentation map
+
 - Guide: https://docs.opensin.ai/guide/getting-started.html
-- API: https://docs.opensin.ai/api/overview.html
 - Architecture: https://docs.opensin.ai/architecture/overview.html
-- SDK: https://docs.opensin.ai/sdk/overview.html
-- Plugins: https://docs.opensin.ai/plugins/registry.html
+- API: https://docs.opensin.ai/api/overview.html
+- Governance: https://docs.opensin.ai/governance/overview.html
+- Best Practices: https://docs.opensin.ai/best-practices/index.html
 - Tutorials: https://docs.opensin.ai/tutorials/first-agent.html
 - Examples: https://docs.opensin.ai/examples/hello-world.html
-- Best Practices: https://docs.opensin.ai/best-practices/index.html
 - Bridges: https://docs.opensin.ai/bridges/index.html
+- SDK: https://docs.opensin.ai/sdk/overview.html
+- Plugins: https://docs.opensin.ai/plugins/registry.html
 
-## Core topics
-- A2A protocol
-- agent orchestration
-- model routing
-- plugin system
-- MCP integration
-- security and approval lanes
-- deployment and monitoring
+## Surface snapshot
+
+- Public: opensin.ai, my.opensin.ai, blog.opensin.ai, docs.opensin.ai
+- Gated: chat.opensin.ai
+- Internal/unverified: api.opensin.ai, opensin.ai/agents
+
+## Local workflow
+
+```bash
+git clone https://github.com/OpenSIN-AI/OpenSIN-documentation.git
+cd OpenSIN-documentation
+bun install
+bun run docs:dev
+```
+
+## Governance notes
+
+- Keep claims evidence-based.
+- Update the registry before public-facing copy changes.
+- Keep `llms.txt` and `llms-full.txt` in sync with the docs map.
+- Prefer small, surgical documentation changes.
 
 ## Extended references
+
 - What's New: https://docs.opensin.ai/guide/whats-new.html
 - Security best practices: https://docs.opensin.ai/best-practices/security.html
 - Performance best practices: https://docs.opensin.ai/best-practices/performance.html

@@ -2,16 +2,17 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'OpenSIN-AI Documentation',
-  description: 'Official documentation for the OpenSIN-AI organization and its autonomous agent platform.',
+  description: 'Canonical documentation, governance, and surface registry for the OpenSIN-AI ecosystem.',
   lang: 'en-US',
   ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
     ['link', { rel: 'canonical', href: 'https://docs.opensin.ai/' }],
     ['meta', { property: 'og:title', content: 'OpenSIN-AI Documentation' }],
-    ['meta', { property: 'og:description', content: 'Official docs for the OpenSIN-AI organization and agent platform.' }],
-    ['meta', { property: 'og:image', content: 'https://docs.opensin.ai/logo.svg' }],
+    ['meta', { property: 'og:description', content: 'Canonical docs, governance, and surface registry for the OpenSIN-AI ecosystem.' }],
+    ['meta', { property: 'og:image', content: 'https://docs.opensin.ai/social-preview.svg' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:image', content: 'https://docs.opensin.ai/social-preview.svg' }],
   ],
   themeConfig: {
     siteTitle: 'OpenSIN-AI',
@@ -41,9 +42,9 @@ export default defineConfig({
           { text: 'Deployment', link: '/guide/deployment' },
           { text: 'Monitoring', link: '/guide/monitoring' },
           { text: 'Scaling', link: '/guide/scaling' },
-{ text: 'Troubleshooting', link: '/guide/troubleshooting' },
-{ text: 'Dynamic Input Commands', link: '/guides/dynamic-input-commands' },
-{ text: 'Changelog', link: '/guide/changelog' },
+          { text: 'Troubleshooting', link: '/guide/troubleshooting' },
+          { text: 'Dynamic Input Commands', link: '/guides/dynamic-input-commands' },
+          { text: 'Changelog', link: '/guide/changelog' },
         ],
       },
       {
@@ -100,6 +101,7 @@ export default defineConfig({
         items: [
           { text: 'Fleet Overview', link: '/fleet/overview' },
           { text: 'Governance Overview', link: '/governance/overview' },
+          { text: 'Domain Registry', link: '/governance/domain-registry' },
           { text: 'Zeus', link: '/governance/zeus' },
           { text: 'Hermes', link: '/governance/hermes' },
         ],
@@ -121,7 +123,7 @@ export default defineConfig({
       { icon: 'discord', link: 'https://discord.gg/opensin' },
     ],
     footer: {
-      message: 'OpenSIN-AI documentation for the autonomous agent fleet.',
+      message: 'Canonical docs, governance, and surface registry for the OpenSIN-AI ecosystem.',
       copyright: 'Copyright © 2026 OpenSIN-AI',
     },
     search: {

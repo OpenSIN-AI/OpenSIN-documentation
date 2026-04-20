@@ -1,0 +1,58 @@
+# OpenSIN Documentation - Full Context
+
+> Canonical documentation, governance, and surface registry for the OpenSIN-AI ecosystem.
+
+## Overview
+
+OpenSIN Documentation powers docs.opensin.ai and stores the canonical docs, governance notes, architecture maps, and surface registry for the OpenSIN-AI ecosystem.
+
+## Repository layout
+
+- `README.md` — repo landing page and visual map
+- `docs/` — VitePress documentation source
+- `docs/governance/domain-registry.md` — verified public / gated / internal surface ledger
+- `CONTRIBUTING.md` — contribution boundaries and workflow
+- `SECURITY.md` — private reporting path
+- `SUPPORT.md` — reader support routing
+- `CODE_OF_CONDUCT.md` — collaboration norms
+- `public/llms.txt` and `public/llms-full.txt` — site-facing discovery mirrors
+- `docs/.vitepress/` — theme, nav, metadata, and build config
+
+## Local workflow
+
+```bash
+git clone https://github.com/OpenSIN-AI/OpenSIN-documentation.git
+cd OpenSIN-documentation
+bun install
+bun run docs:dev
+```
+
+## Documentation map
+
+- Guide: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/guide/getting-started.md
+- Architecture: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/architecture/overview.md
+- API: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/api/overview.md
+- Governance: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/governance/overview.md
+- Best Practices: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/best-practices/index.md
+- Tutorials: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/tutorials/first-agent.md
+- Examples: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/examples/hello-world.md
+- Bridges: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/bridges/index.md
+
+## Surface registry
+
+- Public: opensin.ai, my.opensin.ai, blog.opensin.ai, docs.opensin.ai
+- Gated: chat.opensin.ai
+- Internal/unverified: api.opensin.ai, opensin.ai/agents
+
+## Governance rules
+
+- Keep claims evidence-based.
+- Update the registry first when a surface changes.
+- Keep discovery files in sync with the docs map.
+- Prefer small, surgical documentation changes.
+
+## Links
+
+- GitHub: https://github.com/OpenSIN-AI/OpenSIN-documentation
+- Docs: https://docs.opensin.ai
+- Registry: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/governance/domain-registry.md

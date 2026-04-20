@@ -61,14 +61,14 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 
 ### Websites & Domains (6)
 
-| Domain | Repo | Zweck |
-|--------|------|-------|
-| opensin.ai | website-opensin.ai | Open-Source Landing Page |
-| chat.opensin.ai | OpenSIN-WebApp | User WebApp mit Login (Vercel) |
-| my.opensin.ai | website-my.opensin.ai | Premium Abo-Modell |
-| docs.opensin.ai | OpenSIN-documentation | Offizielle Dokumentation |
-| blog.opensin.ai | Biz-SIN-Blog-Posts | Blog & Marketing |
-| chat.opensin.ai | OpenSIN-backend | A2A Fleet Control Plane |
+| Domain | Repo | Zweck | Status |
+|--------|------|-------|--------|
+| opensin.ai | website-opensin.ai | Open-Source Landing Page | Public |
+| chat.opensin.ai | OpenSIN-WebApp | User WebApp mit Login (Vercel) | Gated |
+| my.opensin.ai | website-my.opensin.ai | Premium Abo-Modell | Public |
+| docs.opensin.ai | OpenSIN-documentation | Offizielle Dokumentation | Public |
+| blog.opensin.ai | Biz-SIN-Blog-Posts | Blog & Marketing | Public |
+| api.opensin.ai | OpenSIN-backend | A2A Fleet Control Plane | Internal / unverified |
 
 ### Templates & Blueprints (4)
 
@@ -155,13 +155,13 @@ OpenSIN-AI ist das umfassendste AI Agent System der Welt. Eine vollständige Pla
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    WEBSITES / FRONTENDS                      │
-│  opensin.ai │ chat.opensin.ai │ my.opensin.ai │ docs │ blog │
+│  opensin.ai │ chat.opensin.ai │ my.opensin.ai │ docs │ blog │ api │
 └─────────────────────────────────────────────────────────────┘
                               │
 ┌─────────────────────────────────────────────────────────────┐
 │                   CONTROL PLANE / BACKEND                    │
 │  OpenSIN-backend (A2A Fleet Control, n8n Routing, API)      │
-│  chat.opensin.ai (Fleet Control)                              │
+│  api.opensin.ai (Fleet Control, internal/unverified)          │
 │  Core-SIN-Control-Plane (Doctor/Preflight/Eval)              │
 └─────────────────────────────────────────────────────────────┘
                               │
@@ -232,6 +232,7 @@ Secure Code Execution mit Filesystem/Network Rules.
 ## 📚 Dokumentation
 
 - **docs.opensin.ai** — Hauptdokumentation (323+ Seiten)
+- **Domain Registry** — [Verified surface map](../governance/domain-registry.md)
 - **OpenSIN-overview** — [SSOT Registry](https://github.com/OpenSIN-AI/OpenSIN-overview) (175 Repos)
 - **GitHub** — [OpenSIN-AI Organization](https://github.com/OpenSIN-AI)
 - **Discord** — [Community](https://discord.gg/opensin)

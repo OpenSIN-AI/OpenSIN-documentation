@@ -28,7 +28,7 @@ The **Repo Health Check** is a GitHub Action that automatically scans repositori
 |-------|-------------|----------|
 | `AGENTS.md` | Agent operating manual | Critical |
 | `agent.json` | A2A agent card metadata | High |
-| Topic `opnsin-agent` | Discoverability tag | Medium |
+| Topic `opensin-agent` | Discoverability tag | Medium |
 
 ### MCP Server Repositories
 | Check | Description | Severity |
@@ -36,7 +36,7 @@ The **Repo Health Check** is a GitHub Action that automatically scans repositori
 | `README.md` | Server documentation | Critical |
 | `AGENTS.md` | Agent operating manual | Critical |
 | `mcp-config.json` | MCP server configuration | High |
-| Topic `opnsin-mcp` | Discoverability tag | Medium |
+| Topic `opensin-mcp` | Discoverability tag | Medium |
 
 ---
 
@@ -140,11 +140,11 @@ For organization-wide scanning, add a new table section in the "Scan all repos" 
 Repositories are classified into tiers based on their role:
 
 ### Tier 1: A2A Agents
-Must have: `AGENTS.md`, `agent.json`, topic `opnsin-agent`, `README.md`
+Must have: `AGENTS.md`, `agent.json`, topic `opensin-agent`, `README.md`
 Examples: `A2A-SIN-TelegramBot`, `A2A-SIN-Google-Apps`
 
 ### Tier 2: MCP Servers
-Must have: `README.md`, `AGENTS.md`, `mcp-config.json`, topic `opnsin-mcp`
+Must have: `README.md`, `AGENTS.md`, `mcp-config.json`, topic `opensin-mcp`
 Examples: `MCP-SIN-usebrowser`, `MCP-SIN-memory`
 
 ### Tier 3: Infrastructure

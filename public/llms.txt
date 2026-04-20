@@ -1,25 +1,30 @@
 # OpenSIN Documentation
 
-> Technical documentation for OpenSIN, the open-source Agent-to-Agent network.
+> Canonical docs, governance, and surface registry for the OpenSIN-AI ecosystem.
 
-## Primary URLs
+## Site
+
 - Docs: https://docs.opensin.ai
 - Main site: https://opensin.ai
 - Marketplace: https://my.opensin.ai
 - Blog: https://blog.opensin.ai
 
-## Documentation map
-- Guide: https://docs.opensin.ai/guide/getting-started.html
-- API: https://docs.opensin.ai/api/overview.html
-- Architecture: https://docs.opensin.ai/architecture/overview.html
-- SDK: https://docs.opensin.ai/sdk/overview.html
-- Plugins: https://docs.opensin.ai/plugins/registry.html
-- Tutorials: https://docs.opensin.ai/tutorials/first-agent.html
-- Examples: https://docs.opensin.ai/examples/hello-world.html
-- Best Practices: https://docs.opensin.ai/best-practices/index.html
-- Bridges: https://docs.opensin.ai/bridges/index.html
+## Start here
+
+- Getting started: https://docs.opensin.ai/guide/getting-started.html
+- Surface registry: https://docs.opensin.ai/governance/domain-registry.html
+- Architecture overview: https://docs.opensin.ai/architecture/overview.html
+- API overview: https://docs.opensin.ai/api/overview.html
+- Best practices: https://docs.opensin.ai/best-practices/index.html
+
+## Surface snapshot
+
+- Public: opensin.ai, my.opensin.ai, blog.opensin.ai, docs.opensin.ai
+- Gated: chat.opensin.ai
+- Internal/unverified: api.opensin.ai, opensin.ai/agents
 
 ## Core topics
+
 - A2A protocol
 - agent orchestration
 - model routing

@@ -199,8 +199,9 @@ Add your agent's MCP entry to `opencode.json`:
 ### 2. Set GitHub Topics
 
 ```bash
-gh repo edit --add-topic opnsin-agent
-gh repo edit --homepage "https://opensin.ai/agents/sin-code-analyzer"
+gh repo edit --add-topic opensin-agent
+# Keep the homepage pointed at documented surfaces until a public agents directory is verified
+gh repo edit --homepage "https://docs.opensin.ai/governance/domain-registry"
 ```
 
 ### 3. Register Telegram Bot
@@ -223,7 +224,7 @@ Before marking your agent as ready:
 - [ ] MCP server starts and accepts connections
 - [ ] Agent card at `/.well-known/agent-card.json` returns 200
 - [ ] `/a2a/v1` endpoint exists and does not return 404
-- [ ] GitHub topics include `opnsin-agent`
+- [ ] GitHub topics include `opensin-agent`
 - [ ] Telegram bot registered and responsive
 
 ---

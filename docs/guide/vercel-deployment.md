@@ -22,11 +22,14 @@ OpenSIN nutzt Vercel für das Hosting der User WebApp (`chat.opensin.ai`).
 - **Framework:** Next.js 15 (App Router)
 - **Repo:** [OpenSIN-AI/OpenSIN-WebApp](https://github.com/OpenSIN-AI/OpenSIN-WebApp)
 
+> [!IMPORTANT]
+> `NEXT_PUBLIC_BACKEND_URL` and `NEXT_PUBLIC_AUTH_URL` point at `api.opensin.ai`, which this repo treats as internal/unverified until the registry is updated with public evidence.
+
 ### Environment Variables
 | Variable | Wert | Zweck |
 |----------|------|-------|
-| `NEXT_PUBLIC_BACKEND_URL` | `https://api.opensin.ai` | OpenSIN-backend API URL |
-| `NEXT_PUBLIC_AUTH_URL` | `https://api.opensin.ai/auth` | Auth Endpoint |
+| `NEXT_PUBLIC_BACKEND_URL` | `https://api.opensin.ai` | OpenSIN-backend API URL (internal/unverified) |
+| `NEXT_PUBLIC_AUTH_URL` | `https://api.opensin.ai/auth` | Auth Endpoint (internal/unverified) |
 | `AUTH_SECRET` | *(generiert)* | JWT Session Secret |
 
 ### Deployment Flow

@@ -1,0 +1,34 @@
+# OpenSIN Documentation
+
+> Canonical documentation, governance, and surface registry for the OpenSIN-AI ecosystem.
+
+## Repository
+
+- GitHub: https://github.com/OpenSIN-AI/OpenSIN-documentation
+- Docs site: https://docs.opensin.ai
+- License: MIT
+
+## Read first
+
+- README: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/README.md
+- Docs home: https://docs.opensin.ai/
+- Surface registry: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/governance/domain-registry.md
+- Architecture overview: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/architecture/overview.md
+- Getting started: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/guide/getting-started.md
+- Best practices: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/best-practices/index.md
+- API overview: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/api/overview.md
+- Contributing: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/CONTRIBUTING.md
+- Security: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/SECURITY.md
+- Support: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/SUPPORT.md
+
+## Surface snapshot
+
+- Public: opensin.ai, my.opensin.ai, blog.opensin.ai, docs.opensin.ai
+- Gated: chat.opensin.ai
+- Internal/unverified: api.opensin.ai, opensin.ai/agents
+
+## Agent notes
+
+- Bun only.
+- No npm, no direct Gemini API calls, no blind browser actions.
+- Update the registry whenever a surface changes.

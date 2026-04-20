@@ -59,6 +59,7 @@ Enforced by: [Repo Health Check](/governance/repo-health-check) GitHub Action
 | Document | Purpose |
 |----------|---------|
 | [Repo Health Check](/governance/repo-health-check) | Automated compliance checks |
+| [Domain Registry](/governance/domain-registry) | Evidence-based public / gated / internal surface map |
 | [Zeus — Fleet Commander](/governance/zeus) | Zeus operating manual |
 | [Hermes — Task Dispatcher](/governance/hermes) | Hermes operating manual |
 
@@ -82,6 +83,7 @@ Enforced by: [Repo Health Check](/governance/repo-health-check) GitHub Action
 
 - [Fleet Overview](/fleet/overview)
 - [Repo Health Check](/governance/repo-health-check)
+- [Domain Registry](/governance/domain-registry)
 - [Agent Design Best Practices](/best-practices/agent-design)
 - [Security Architecture](/architecture/security)
 

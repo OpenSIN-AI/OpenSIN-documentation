@@ -522,14 +522,14 @@ curl http://localhost:PORT/health
 ### Phase 1: CRITICAL — MCP Servers (Week 1)
 1. Create AGENTS.md for all 7 MCP servers (drafts above)
 2. Create README.md for all 7 MCP servers (see separate MCP README audit)
-3. Add GitHub topics: `opnsin-mcp` to all MCP repos
+3. Add GitHub topics: `opensin-mcp` to all MCP repos
 4. Verify each MCP server can be started and health-checked
 
 ### Phase 2: HIGH — Core Infrastructure (Week 2)
 1. Create AGENTS.md for OpenSIN-Neural-Bus
 2. Create AGENTS.md for opensin-ai-code
 3. Create AGENTS.md for opensin-ai-platform
-4. Add GitHub topics: `opnsin-agent` to all agent repos
+4. Add GitHub topics: `opensin-agent` to all agent repos
 
 ### Phase 3: MEDIUM — Worker & Team Agents (Week 3)
 1. Create AGENTS.md for remaining 7 medium-priority repos
@@ -547,8 +547,8 @@ curl http://localhost:PORT/health
 
 - [ ] All 20 repos have AGENTS.md
 - [ ] All 7 MCP servers have README.md + AGENTS.md
-- [ ] All agent repos have `opnsin-agent` topic
-- [ ] All MCP repos have `opnsin-mcp` topic
+- [ ] All agent repos have `opensin-agent` topic
+- [ ] All MCP repos have `opensin-mcp` topic
 - [ ] All changes synced via `sin-sync`
 - [ ] Automated health check enabled (Issue #98)
 
