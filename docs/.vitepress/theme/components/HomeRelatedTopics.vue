@@ -1,8 +1,14 @@
 <template>
   <section class="home-related-topics">
+    <div class="home-related-topics__eyebrow">Cross-surface navigation</div>
     <h2 class="home-related-topics__title">Related topics</h2>
+    <p class="home-related-topics__lede">
+      Keep the ecosystem scan-friendly without changing the protected four-card section shape.
+    </p>
+
     <div class="home-related-topics__grid">
       <a v-for="card in cards" :key="card.title" :href="card.href" class="home-related-topics__card">
+        <div class="home-related-topics__label">{{ card.label }}</div>
         <div class="home-related-topics__heading">
           {{ card.title }}
         </div>
@@ -15,44 +21,65 @@
 <script setup lang="ts">
 /**
  * Homepage related-topics grid.
- * DO NOT replace with inline HTML in index.md again.
- * This component exists so the homepage can keep the premium surface-card look
- * without polluting markdown content with raw layout markup.
+ * - Keep this array at exactly 4 items while issue #141 is the active contract.
+ * - This component exists so the homepage keeps a polished surface-card system
+ *   without pushing raw layout HTML into docs/index.md.
  */
 const cards = [
   {
     title: 'OpenSIN Marketing',
-    description: 'Brand, discovery and product storytelling',
+    description: 'Brand, discovery, and the public-facing narrative around the ecosystem.',
     href: 'https://opensin.ai',
+    label: 'Surface',
   },
   {
     title: 'OpenSIN Marketplace',
-    description: 'Plans, bundles and premium access',
+    description: 'Plans, bundles, and commercial packaging for premium access.',
     href: 'https://my.opensin.ai',
+    label: 'Commerce',
   },
   {
     title: 'OpenSIN Dashboard',
-    description: 'Authenticated fleet control and chat',
+    description: 'Authenticated fleet control, chat, and the active operator workspace.',
     href: 'https://chat.opensin.ai',
+    label: 'Control',
   },
   {
     title: 'Domain Registry',
-    description: 'Verified public, gated and internal surfaces',
+    description: 'Verified public, gated, and internal surfaces kept in one canonical map.',
     href: '/governance/domain-registry',
+    label: 'Governance',
   },
 ]
 </script>
 
 <style scoped>
 .home-related-topics {
-  margin-top: 3rem;
+  margin-top: 3.25rem;
+}
+
+.home-related-topics__eyebrow {
+  margin-bottom: 0.7rem;
+  color: var(--opensin-home-accent-text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .home-related-topics__title {
-  margin: 0 0 1rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  margin: 0;
+  font-size: clamp(1.75rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.home-related-topics__lede {
+  max-width: 42rem;
+  margin: 0.85rem 0 1.5rem;
+  color: var(--vp-c-text-2);
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
 .home-related-topics__grid {
@@ -63,51 +90,47 @@ const cards = [
 
 .home-related-topics__card {
   display: block;
-  padding: 1.15rem 1.2rem;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: #141414;
+  padding: 1.2rem 1.2rem 1.3rem;
+  border-radius: 20px;
+  border: 1px solid var(--opensin-home-card-border);
+  background: var(--opensin-home-card-bg);
+  box-shadow: var(--opensin-home-card-shadow);
   text-decoration: none;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
 .home-related-topics__card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0, 204, 136, 0.45);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  transform: translateY(-3px);
+  border-color: var(--opensin-home-card-border-strong);
+  box-shadow: var(--opensin-home-card-shadow-hover);
+}
+
+.home-related-topics__label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.65rem;
+  margin-bottom: 0.9rem;
+  padding: 0.18rem 0.62rem;
+  border-radius: 999px;
+  background: var(--opensin-home-pill-bg);
+  color: var(--opensin-home-accent-text);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .home-related-topics__heading {
-  color: #f5f5f5;
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 0.3rem;
+  color: var(--vp-c-text-1);
+  font-size: 1.08rem;
+  font-weight: 750;
+  margin-bottom: 0.35rem;
 }
 
 .home-related-topics__description {
-  color: #8e8ea0;
-  font-size: 0.95rem;
-  line-height: 1.45;
-}
-
-:global(html:not(.dark)) .home-related-topics__card {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
-}
-
-:global(html:not(.dark)) .home-related-topics__heading {
-  color: #0f172a;
-}
-
-:global(html:not(.dark)) .home-related-topics__description {
-  color: #475569;
-}
-
-@media (max-width: 960px) {
-  .home-related-topics__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  color: var(--vp-c-text-2);
+  font-size: 0.97rem;
+  line-height: 1.58;
 }
 
 @media (max-width: 640px) {
