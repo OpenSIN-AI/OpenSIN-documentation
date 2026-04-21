@@ -2,34 +2,34 @@
 layout: home
 hero:
   name: "OpenSIN-AI"
-  text: "Dokumentation"
-  tagline: "Learn how to use the OpenSIN ecosystem, control your fleet, and build sovereign agents without guesswork."
+  text: "Consumer docs"
+  tagline: "Simple setup guides, account help, and product walkthroughs for people who want the platform to work fast."
   image:
     src: /logo.png
     alt: OpenSIN Logo
   actions:
     - theme: brand
-      text: Start using OpenSIN
+      text: Start here
       link: /guide/quick-start
     - theme: alt
-      text: Build an Agent
-      link: /sdk/overview
+      text: Developer docs
+      link: https://developers.opensin.ai/docs/
 features:
   - icon:
       src: /icons/docs.svg
-    title: Autonomous Fleet
-    details: "Orchestrate a team of specialized agents that work 24/7 without human intervention."
-    link: /guide/fleet-orchestration
+    title: Fast onboarding
+    details: "Use the shortest path from zero to a working OpenSIN setup."
+    link: /guide/getting-started
   - icon:
       src: /icons/a2a.svg
-    title: A2A Protocol
-    details: "Zero-bottleneck communication. Agents talk to agents directly via the Neural-Bus."
-    link: /guide/a2a-protocol
+    title: Need the API?
+    details: "Builders should use developers.opensin.ai/docs for APIs, SDKs, auth, and webhooks."
+    link: https://developers.opensin.ai/docs/
   - icon:
       src: /icons/registry.svg
-    title: Stealth Automation
-    details: "Human-like browsing and action execution. Undetectable. Unstoppable."
-    link: /guide/stealth-automation
+    title: Manage your plan
+    details: "Go to my.opensin.ai for subscriptions, billing, and customer access."
+    link: https://my.opensin.ai
 ---
 
 <HomeChoosePath />
