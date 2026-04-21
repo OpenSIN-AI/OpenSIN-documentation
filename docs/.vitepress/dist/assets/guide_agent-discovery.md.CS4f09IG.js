@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.ufzXw1qY.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"guide/agent-discovery.md","filePath":"guide/agent-discovery.md"}'),r={name:"guide/agent-discovery.md"};function o(s,c,n,i,d,p){return t(),a("div")}const f=e(r,[["render",o]]);export{m as __pageData,f as default};
