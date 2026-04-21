@@ -5,104 +5,115 @@ description: The mandatory protocols for web interactions, DevTools-first coding
 
 # Ultimate Browser Automation & Anti-Bot Bypass
 
-> **⚠️ WICHTIGER HINWEIS AN ALLE AGENTEN UND ENTWICKLER ⚠️**
-> Diese Seite definiert die **EINZIG ERLAUBTEN** Methoden zur Interaktion mit Webseiten.
-> Wer bei einer Web-Aufgabe eigenmächtig auf veraltete Tools wie Puppeteer oder Selenium zurückgreift,
-> oder CSS-Selektoren "rät", anstatt sie in den DevTools zu verifizieren, **fliegt permanent aus dem Netzwerk.**
+> **Mandate:** Web interaction work must stay inside the approved OpenSIN browser stack. Use `webauto-nodriver-mcp`, attached Chrome profiles, and verified selectors; do not improvise with legacy browser frameworks or guessed DOM targets.
+
+## At a glance
+
+| Area | Standard |
+|---|---|
+| Allowed tooling | `webauto-nodriver-mcp`, `nodriver`, Chrome DevTools Protocol, `curl_cffi` when TLS impersonation is explicitly required |
+| Required proof | DevTools verification, screenshot + vision check after every action, runtime artifacts for failures |
+| Forbidden | Playwright, Puppeteer, Selenium, Camoufox, temporary clean profiles, blind selector guesses |
+
+## 1. Technology sovereignty mandate
+
+### What
+All web interactions, logins, CAPTCHA handling, and scraping tasks must run through `webauto-nodriver-mcp`, `nodriver`, CDP, or `curl_cffi` when the task specifically needs TLS spoofing.
+
+### Why
+`nodriver` attaches to a real Chrome session and reuses genuine cookies, history, and session state. That keeps the interaction close to human browsing behavior and preserves the trust already built into the profile.
+
+### Why not otherwise
+Playwright, Puppeteer, Selenium, and similar stacks expose browser automation fingerprints immediately. They also break the shared Chrome-profile workflow the rest of the fleet depends on.
+
+### Dependencies
+- `webauto-nodriver-mcp` for browser control
+- the Chrome profile rule for authenticated and trusted sessions
+- the vision-gate mandate for post-action verification
+
+### Consequences
+- Shipping `bun add playwright` or a similar stack is a protocol violation
+- Burning trusted sessions or getting the project flagged by Cloudflare destroys future automation capacity
+
+## 2. DevTools-first workflow
+
+### What
+Before every click, form fill, or selector change, inspect the live DOM and verify the exact target in DevTools.
+
+1. Check the Elements tab for the real `id`, `class`, and `data-*` attributes.
+2. Validate the selector in Console with `document.querySelector(...)`; if it returns `null`, stop.
+3. Confirm visibility with checks such as `element.offsetParent !== null` and `window.getComputedStyle(el)`.
+4. Read Console errors before triggering the action.
+
+### Why
+Modern React/Vue/SPAs generate transient classes, overlays, and delayed elements. Guessing selectors from memory creates flaky scripts that only work under lucky timing.
+
+### Why not otherwise
+Blind automation turns recoverable page-state issues into retries, timeouts, and noisy failures. A selector that is not validated against the live DOM is not ready for production use.
+
+### Dependencies
+This workflow depends on screenshot capture, console evidence, and explicit failure logging when a selector cannot be proven.
+
+### Consequences
+- Unverified selectors are treated as protocol violations
+- Empty clicks waste compute, stall flows, and obscure the real page failure
+
+## 3. Chrome profile discipline
+
+### What
+Automation must run inside the documented Chrome profiles for the task. Never switch bot-sensitive work to an empty or temporary profile.
+
+| Profile | Example use | Rule |
+|---|---|---|
+| Business/admin profile | Workspace or admin-console operations | Keep separated from personal and general agent work |
+| Default / general profile | Standard agent browsing and known trusted sessions | Do not reuse for admin-only tasks |
+| Specialized profile | Bug bounty, freelancing, or target-specific tasks | Reserve it for the documented workflow only |
+
+### Why
+Profile separation protects privileged sessions and preserves the trust cookies required for hard targets.
+
+### Why not otherwise
+A fresh profile starts without trust history and is far more likely to trigger anti-bot systems immediately.
+
+### Dependencies
+One live Chrome instance should own one profile directory at a time. If a profile is already active, attach to the existing session instead of trying to force a second writer onto the same profile.
+
+### Consequences
+Cross-contaminating profiles or wiping trusted state is a long-lived operational failure, not a small local mistake.
+
+## 4. Anti-bot defense layers
+
+### What
+For bot-sensitive or revenue-critical flows, keep all five layers aligned:
+
+1. **IP reputation** — avoid exposing raw datacenter IPs when the target requires higher trust.
+2. **TLS fingerprint** — use native browser traffic or `curl_cffi` where transport impersonation matters.
+3. **Browser fingerprint** — stay in visible, real-profile Chrome sessions.
+4. **Behavioral signals** — pace input like a human, not a benchmark script.
+5. **Challenge persistence** — preserve reusable cookies and session state.
+
+### Why
+Hard targets evaluate transport, browser, behavior, and prior trust together. Failing only one layer can still burn the session.
+
+## Verification checklist
+
+- [ ] Approved browser tooling was used end-to-end
+- [ ] Every selector was verified against the live DOM before use
+- [ ] The correct Chrome profile was documented or reused
+- [ ] Screenshot + vision evidence exists after each critical action
+- [ ] Bot-sensitive steps use realistic pacing and preserve session state
+
+## Related docs
+
+- [Best-Practice Page Pattern](/best-practices/page-pattern)
+- [Testing](/best-practices/testing)
+- [Agent Design](/best-practices/agent-design)
 
 ---
 
-## 1. Technology Sovereignty Mandate (Priority -2)
-
-### WAS passiert hier?
-Alle Web-Interaktionen, Logins, Captcha-Lösungen und Scraping-Aufgaben müssen **AUSSCHLIESSLICH** über `nodriver`, `webauto-nodriver-mcp`, `CDP` (Chrome DevTools Protocol) oder `curl_cffi` (für TLS-Spoofing) erfolgen. 
-
-### WARUM wird es so gemacht?
-`nodriver` steuert den Browser nicht über den erkennbaren WebDriver-Port, sondern klinkt sich nativ in den Browser ein. Es nutzt das **echte** Chrome-Profil des Nutzers, inklusive all seiner echten Cookies, History und Session-Tokens. Cloudflare und andere WAFs (Web Application Firewalls) stufen diese Interaktionen als "menschlich" ein.
-
-### WESHALB nicht anders?
-Frameworks wie **Playwright, Puppeteer oder Selenium** setzen ein `webdriver: true` Flag im Browser-Fingerprint. Cloudflare Turnstile, DataDome und reCAPTCHA erkennen dies in Millisekunden und blockieren die IP (`403 Forbidden` oder Endlos-Captchas). Auch "Camoufox" oder andere Firefox-basierte Tarnkappen sind streng verboten, da sie unser Chrome-Profil-Ökosystem (Password-Manager, gespeicherte Sessions) brechen.
-
-### WOMIT hängt es zusammen?
-- **webauto-nodriver-mcp**: Unser zentrales MCP-Tool für alle Agenten.
-- **Chrome Profile Regel**: Die Automation *muss* in einem eingeloggten Profil stattfinden.
-
-### WAS sind die KONSEQUENZEN bei Missachtung?
-- Ein Agent, der Playwright `bun add playwright` ausführt, verliert sofort seine Schreibrechte. 
-- Das Projekt wird von Cloudflare gebannt, die IP verbrannt, und potenzielle Bug-Bounties oder Freelance-Jobs gehen verloren.
-
----
-
-## 2. DevTools-First Mandate (Priority -1)
-
-### WAS passiert hier?
-Vor **JEDEM** Klick, **JEDEM** Ausfüllen eines Formulars und **JEDEM** geschriebenen CSS-Selektor **MUSS** der Agent die Chrome DevTools (Console, Elements, Network) konsultieren, um die Annahme zu verifizieren.
-
-1. **Elements-Tab**: Exakte HTML-Struktur inkl. `id`, `class`, `data-*` prüfen.
-2. **Console**: `document.querySelector('.dein-selektor')` ausführen. Wenn `null` zurückkommt → **STOP**. Falscher Selektor.
-3. **Sichtbarkeits-Check**: `element.offsetParent !== null` und `window.getComputedStyle(el).display` prüfen.
-4. **Console Errors**: Alle JS-Errors *vor* dem Klick lesen!
-
-### WARUM wird es so gemacht?
-Moderne Webseiten (React, Vue, SPAs) generieren dynamische Klassen (z.B. `.btn-xk29a`), verstecken Elemente hinter Overlays (`display: none`) oder fangen Klicks über unsichtbare `<div>`-Layer ab. Ein LLM-Agent, der Selektoren aus seinem Trainingsdaten-Gedächtnis "rät" (z.B. `button[type="submit"]`), klickt oft ins Leere oder löst React-Fehler aus.
-
-### WESHALB nicht anders?
-Blindes Automatisieren ("Fire and Forget") führt zu Scripts, die beim ersten Run funktionieren und beim zweiten (weil der DOM langsamer lädt) crashen. Ein Skript, das nicht dynamisch den echten DOM-Status ausliest, ist unzuverlässig.
-
-### WOMIT hängt es zusammen?
-Das **Visual Evidence Mandate**: Bei jedem `FAIL` und bei jedem kritischen Schritt muss ein Screenshot (`/tmp/mXX_stepname_RESULT.png`) gemacht werden. Die DevTools-Ausgabe (via CDP `Runtime.exceptionThrown`) muss geloggt werden.
-
-### WAS sind die KONSEQUENZEN bei Missachtung?
-- Wer einen CSS-Selektor in ein Skript schreibt, ohne den Console-Beweis vorzulegen, begeht einen Protokollverstoß.
-- Klicks ins Leere verursachen Timeout-Loops, die teure Compute-Ressourcen binden.
-
----
-
-## 3. Die strikte Chrome Profile Regel
-
-### WAS passiert hier?
-Es gibt genau dokumentierte Chrome-Profile, die für spezifische Aufgaben reserviert sind. Es darf **NIEMALS** ein leeres, temporäres Profil (`user_data_dir=None`) für Bot-Aufgaben verwendet werden!
-
-| Profil | Email | WANN NUTZEN |
-|--------|-------|-------------|
-| **Geschäftlich** | `info@zukunftsorientierte-energie.de` | **NUR** für Google Admin Console, Domain-Wide Delegation, Workspace Management. |
-| **Default** | `zukunftsorientierte.energie@gmail.com` | **NUR** privat/Agent-Work. Niemals für Admin-Tasks! |
-| **Profile X** | div. | Spezifische Agenten-Aufgaben (z.B. Bug-Bounties). |
-
-### WARUM wird es so gemacht?
-Die Trennung der Profile verhindert Session-Hijacking zwischen Projekten und schützt kritische Infrastruktur (Google Admin). Zudem sind die Profile bereits durch manuelle Logins mit Trust-Cookies (Google OAuth, Cloudflare Clearance) aufgeladen. 
-
-### WESHALB nicht anders?
-Ein neues, leeres Profil hat keine Cookie-Historie. Wenn ein Agent mit einem leeren Profil auf eine stark geschützte Seite zugreift, wird er zu 100% als Bot eingestuft und mit Captchas blockiert.
-
-### WOMIT hängt es zusammen?
-- **Nur EINE Session pro Profil!** Ein Profil-Verzeichnis (z.B. `/Default`) ist exklusiv gelockt, sobald Chrome läuft. Ein Agent darf niemals versuchen, eine zweite Instanz auf dasselbe Profil zu erzwingen (führt zu WindowServer-Sperren auf macOS). Er muss sich via CDP in die *existierende* Instanz einklinken oder einen anderen Port / ein anderes freies Profil nutzen.
-
-### WAS sind die KONSEQUENZEN bei Missachtung?
-- Nutzung des "Default"-Profils für Admin-Tasks: **SOFORTIGER BAN**.
-- Überschreiben von Trust-Cookies durch "Clean State" Neustarts: Verlust des hart erarbeiteten Bot-Trust-Scores.
-
----
-
-## 4. Anti-Bot 5-Layer Bypass Architecture (2026)
-
-### WAS passiert hier?
-Für alle Geld-verdienenden Agenten (Freelancing, Bug-Bounties, Surveys) muss diese Architektur implementiert werden:
-
-1. **Layer 1: IP Reputation** → Niemals direkte OCI/Datacenter-IPs für Ziel-Webseiten nutzen. Immer Residential/Mobile-Proxys vorschalten.
-2. **Layer 2: TLS Fingerprint (JA3/JA4)** → HTTP-Requests erfolgen über `curl_cffi` (impersonate Chrome) oder nativ über `nodriver`.
-3. **Layer 3: Browser Fingerprint** → `nodriver` mit `headless=False` (Pflicht!) und echtem macOS/Windows User-Agent.
-4. **Layer 4: Behavioral Analysis** → Nutzung von Human-Emulation-Layers (zufällige Pausen, Maus-Kurven, Scroll-Delays). Niemals 5 Formularfelder in 0.01 Sekunden ausfüllen.
-5. **Layer 5: Active Challenges** → Persistente Sessions (Cookies speichern) zur Wiederverwendung.
-
-### WARUM wird es so gemacht?
-Plattformen wie Prolific, Outlier, HackerOne oder Upwork nutzen militärische Bot-Erkennung. Fällt der Agent nur auf einem dieser Layer durch, wird das Konto sofort gesperrt und die Einnahmequelle ist tot.
-
----
-
-*Letzte Aktualisierung:* 2026-04-10
-*Status:* **AKTIV & BINDEND**
-*Verantwortlich:* sin-zeus
+*Last updated:* 2026-04-21  
+*Status:* **ACTIVE & MANDATORY**  
+*Maintainer:* sin-zeus
 
 ---
 
