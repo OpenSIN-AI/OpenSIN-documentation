@@ -21,23 +21,23 @@
  */
 const cards = [
   {
-    title: 'OpenSIN Marketing',
-    description: 'Brand, discovery and product storytelling',
-    href: 'https://opensin.ai',
+    title: 'Consumer docs',
+    description: 'Guides, onboarding, and product help',
+    href: '/guide/getting-started',
   },
   {
-    title: 'OpenSIN Marketplace',
-    description: 'Plans, bundles and premium access',
+    title: 'Developer portal',
+    description: 'APIs, SDKs, auth, and webhooks',
+    href: 'https://developers.opensin.ai/docs/',
+  },
+  {
+    title: 'MyOpenSIN',
+    description: 'Plans, billing, and customer access',
     href: 'https://my.opensin.ai',
   },
   {
-    title: 'OpenSIN Dashboard',
-    description: 'Authenticated fleet control and chat',
-    href: 'https://chat.opensin.ai',
-  },
-  {
-    title: 'Domain Registry',
-    description: 'Verified public, gated and internal surfaces',
+    title: 'Surface registry',
+    description: 'Public, gated, and internal surface rules',
     href: '/governance/domain-registry',
   },
 ]

@@ -227,6 +227,90 @@ html:not(.dark) .VPFeature .icon {
 .VPNavBarTitle .logo { height: 32px !important; width: auto !important; margin-right: 12px !important; }
 .VPHero .image-container .image-src { max-width: 280px !important; height: auto !important; }
 
-body { font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
-.VPNav { backdrop-filter: blur(10px); border-bottom: 1px solid var(--vp-c-divider); }
-.VPSwitchAppearance { display: flex !important; }
+/* [OPENAI 1:1 CLONE SYSTEM] */
+.openai-theme {
+  --oa-bg: #ffffff;
+  --oa-text: #000000;
+  --oa-muted: #6e6e73;
+  --oa-border: #e5e5e7;
+  --oa-hover: #f5f5f7;
+  
+  background: var(--oa-bg);
+  color: var(--oa-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.openai-theme a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Hide VitePress standard elements on custom layouts */
+.openai-theme .VPNav, .openai-theme .VPFooter, .openai-theme .VPLocalNav {
+  display: none !important;
+}
+
+.oa-main-content {
+  margin-top: 0;
+}
+
+.dark .openai-theme {
+  --oa-bg: #0a0a0a;
+  --oa-text: #ececf1;
+  --oa-muted: #c5c5d2;
+  --oa-border: #2a2a2a;
+  --oa-hover: #1a1a1a;
+}
+
+
+/* [DOCS CODE READABILITY] */
+:root {
+  --vp-code-lang-color: #485469;
+  --vp-inline-code-bg: rgba(10, 10, 10, 0.06);
+  --vp-inline-code-text: #12333d;
+}
+
+.dark {
+  --vp-code-lang-color: #b7c2d4;
+  --vp-inline-code-bg: rgba(255, 255, 255, 0.08);
+  --vp-inline-code-text: #dbf7ea;
+}
+
+.vp-doc div[class*='language-'] {
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+}
+
+.dark .vp-doc div[class*='language-'] {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.vp-doc div[class*='language-'] > span.lang {
+  color: var(--vp-code-lang-color);
+  opacity: 1;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(127, 127, 127, 0.12);
+  border: 1px solid rgba(127, 127, 127, 0.16);
+}
+
+.vp-doc div[class*='language-'] > button.copy {
+  right: 56px;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+  background: color-mix(in srgb, var(--vp-c-bg) 72%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.vp-doc div[class*='language-'] > button.copy:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+/* Inline code appears frequently in command-heavy docs and needs stronger contrast. */
+.vp-doc :not(pre) > code {
+  color: var(--vp-inline-code-text);
+  background: var(--vp-inline-code-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+}

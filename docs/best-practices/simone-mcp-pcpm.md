@@ -1,65 +1,67 @@
 ---
 title: Simone MCP + PCPM — Mandatory Agent Intelligence Layer
-description: Every OpenSIN agent MUST use Simone MCP for symbolic code intelligence and PCPM for persistent project memory. No exceptions.
+description: Every OpenSIN agent must use Simone MCP for symbolic code intelligence and PCPM for persistent project memory before implementation work begins.
 ---
 
 # Simone MCP + PCPM — Mandatory Agent Intelligence Layer
 
-> **MANDATE (PRIORITY -9.5):** Every OpenSIN agent, every worker, every coder must activate Simone MCP and load PCPM context **before** any code navigation, symbol editing, structural change, or implementation task begins. This is not optional.
+> **Mandate (Priority -9.5):** Every OpenSIN coder, worker, and implementation agent must activate Simone MCP and load PCPM context before code navigation, symbol editing, structural change, or implementation work begins.
 
----
+## At a glance
 
-## Why Simone MCP?
+| Area | Standard |
+|---|---|
+| Required before coding | Global-Brain / PCPM hooks installed, Simone MCP reachable, repo config wired |
+| Required tooling | Simone MCP for symbol search, references, structural edits, and semantic memory |
+| Forbidden behavior | Blind grep-led refactors, raw search/replace symbol edits, editing without context hydration |
+| Proof | Passing health check, visible MCP config, and Simone-backed code navigation for structural work |
 
-AI coding agents that operate without semantic code understanding are blind. They guess file locations, copy-paste symbols without understanding call graphs, and create regressions by editing in the dark.
+## 1. Why Simone MCP exists
 
-**Simone MCP** is the OpenSIN semantic intelligence server that gives every agent:
+Agents that edit code without semantic structure are guessing. Simone MCP gives the fleet a reliable way to navigate symbols, understand references, and make structural changes without treating the repository like plain text.
 
-- **Symbol navigation** — find exactly where a function, class, or variable is defined across the entire workspace
-- **Reference discovery** — know every call site before you rename or refactor
-- **Structural editing** — replace symbol bodies via LSP, not fragile regex hacks
-- **Project overview** — language-aware codebase map for any directory
-- **Hybrid memory** — Qdrant + Neo4j vector/graph store for cross-session knowledge
-- **A2A + MCP surface** — streamable HTTP MCP at `/mcp`, A2A JSON-RPC at `/a2a/v1`, health at `/health`, metrics at `/metrics`
+It provides:
 
----
+- **Symbol navigation** for exact definitions
+- **Reference discovery** before rename or refactor work
+- **Structural editing** through LSP-grade operations
+- **Project overview** for language-aware workspace mapping
+- **Hybrid memory** across sessions through vector + graph storage
+- **A2A + MCP endpoints** for shared automation surfaces
 
-## Why PCPM?
+## 2. Why PCPM exists
 
-Without persistent context, every agent session starts from scratch. The Global-Brain DPMA v4 / PCPM system ensures:
+Persistent context keeps sessions from starting cold every time. PCPM and Global Brain preserve prior decisions, bug history, active plans, and evidence, so the next agent continues the work instead of rediscovering it.
 
-- **No amnesia between sessions** — architectural decisions, bug history, and coding conventions survive restarts
-- **Hive mind synchronization** — all agents share the same knowledge base
-- **Plan continuity** — active tasks are resumed, not restarted
-- **Evidence-first audit** — every decision is backed by stored context, not hallucination
+It protects:
 
----
+- continuity between sessions
+- shared knowledge across the fleet
+- plan handoff quality
+- evidence-first decision making
 
-## Activation Protocol (MANDATORY before any coding task)
+## 3. Required activation flow
 
-### Step 1 — Check PCPM / Global-Brain coupling
+### Step 1 — Couple the project to Global Brain / PCPM
 
 ```bash
-# In every project root, before any other work:
-node /path/to/Infra-SIN-Global-Brain/src/cli.js setup-hooks \
-  --project $(basename "$PWD") \
-  --project-root "$PWD" \
-  --agents-directive
+node /path/to/Infra-SIN-Global-Brain/src/cli.js setup-hooks   --project $(basename "$PWD")   --project-root "$PWD"   --agents-directive
 ```
 
-If `.pcpm/` or `.opencode/opencode.json` with hooks already exists → skip, already coupled.
+If `.pcpm/` already exists and `.opencode/opencode.json` already contains the hooks, keep the existing coupling.
 
-### Step 2 — Verify Simone MCP is reachable
+### Step 2 — Verify Simone MCP health
 
 ```bash
-# Health check (local):
+# Local
 curl -s http://localhost:8765/health | python3 -m json.tool
 
-# Health check (HF Space — production):
+# HF Space
 curl -s https://openjerro-simone-mcp.hf.space/health | python3 -m json.tool
 ```
 
-Expected response:
+Expected shape:
+
 ```json
 {
   "status": "ok",
@@ -71,21 +73,19 @@ Expected response:
 }
 ```
 
-### Step 3 — Use Simone MCP for ALL code operations
+### Step 3 — Use Simone MCP for structural work
 
 | Task | Correct approach | Forbidden approach |
 |------|------------------|--------------------|
-| Find where `UserService` is defined | `find_symbol("UserService")` via Simone MCP | Grepping blindly through files |
-| Rename `getUser` everywhere | `replace_symbol_body` + LSP rename via Simone MCP | sed/awk across the repo |
-| Understand the codebase before editing | `get_project_overview()` via Simone MCP | Reading random files and guessing |
-| Find all callers of `processPayment` | `find_references("processPayment")` via Simone MCP | Manual grep |
-| Insert a new method into a class | `insert_after_symbol` via Simone MCP | Raw file append |
+| Find where `UserService` is defined | Use Simone symbol search | Grep blindly through files |
+| Rename `getUser` everywhere | Use Simone-backed rename / structural edit flow | `sed` or manual repo-wide replacement |
+| Understand a codebase before editing | Ask for a project overview | Read random files and guess |
+| Find all callers of `processPayment` | Use reference discovery | Manual search only |
+| Insert a new method into a class | Use structural edit primitives | Raw file append |
 
----
+## 4. OpenCode integration
 
-## OpenCode Integration
-
-Add Simone MCP to your project's OpenCode config (`.opencode/opencode.json`):
+Add Simone MCP to `.opencode/opencode.json`:
 
 ```json
 {
@@ -101,66 +101,49 @@ Add Simone MCP to your project's OpenCode config (`.opencode/opencode.json`):
 
 For local development, replace the URL with `http://localhost:8765/mcp`.
 
----
-
-## Simone MCP Tool Reference
+## 5. Tool reference
 
 | Tool | Description |
 |------|-------------|
-| `find_symbol` | Find all definitions of a symbol by name path pattern |
-| `find_references` | Find all usages/call sites of a symbol |
-| `replace_symbol_body` | Replace a symbol's full body (LSP-grade) |
+| `find_symbol` | Find all definitions of a symbol by name or path pattern |
+| `find_references` | Find all usages and call sites |
+| `replace_symbol_body` | Replace a symbol body with structural safety |
 | `insert_after_symbol` | Insert code immediately after a symbol definition |
-| `get_project_overview` | Get a language-aware overview of the codebase structure |
-| `execute_simone_action` | Run a named high-level action (refactor, validate, audit) |
-| `process_lsp_task` | Submit an LSP task for async processing |
-| `memory_store` | Persist a knowledge item to hybrid vector/graph memory |
-| `memory_query` | Retrieve relevant knowledge from hybrid memory |
-| `health_check` | Verify Simone MCP is alive and responsive |
+| `get_project_overview` | Return a language-aware map of the repository |
+| `execute_simone_action` | Run a named high-level action such as refactor or validate |
+| `process_lsp_task` | Submit an async LSP task |
+| `memory_store` | Persist a knowledge item to hybrid memory |
+| `memory_query` | Retrieve relevant stored context |
+| `health_check` | Verify Simone MCP responsiveness |
 
----
+## 6. Verification checklist
 
-## Repository
-
-- **GitHub:** [https://github.com/OpenSIN-AI/Simone-MCP](https://github.com/OpenSIN-AI/Simone-MCP)
-- **HF Space:** [https://huggingface.co/spaces/openjerro/simone-mcp](https://huggingface.co/spaces/openjerro/simone-mcp)
-- **MCP endpoint:** `https://openjerro-simone-mcp.hf.space/mcp`
-- **A2A endpoint:** `https://openjerro-simone-mcp.hf.space/a2a/v1`
-- **Dashboard:** `https://openjerro-simone-mcp.hf.space/dashboard`
-
----
-
-## Enforcement
-
-This mandate is enforced at multiple levels:
-
-1. **Global AGENTS.md** (`~/.config/opencode/AGENTS.md`) — Priority -9.5 rule
-2. **Infra-SIN-OpenCode-Stack installer** — checks for Simone MCP coupling on install
-3. **MANDATE-0.34.md** — canonical blueprint mandate file in `Infra-SIN-OpenCode-Stack`
-4. **worker-code.md** — explicit `<orchestration_mandate>` block in every worker instruction
-5. **Template-SIN-Agent AGENTS.md** — every new agent inherits this requirement
-
-**Violation = architectural failure.** If an agent edits code without Simone MCP + PCPM active, its changes are considered unverified and must be reviewed before merge.
-
----
-
-## Quick Checklist
-
-Before starting any coding task:
-
-- [ ] PCPM / Global-Brain hooks are installed in this project (`.opencode/opencode.json` exists with `beforeRun`/`afterRun` hooks)
+- [ ] Global-Brain / PCPM hooks are installed for this project
 - [ ] Simone MCP health check returns `"status": "ok"`
-- [ ] OpenCode MCP config includes `simone-mcp` entry
-- [ ] No symbol edits are made via raw file search/replace without first running `find_symbol` or `find_references`
+- [ ] `.opencode/opencode.json` includes the `simone-mcp` entry
+- [ ] Symbol edits use Simone-backed navigation or structural operations
+- [ ] Cross-session context was loaded before major implementation work
+
+## Related docs
+
+- [Best-Practice Page Pattern](/best-practices/page-pattern)
+- [MCP Integration](/best-practices/mcp-integration)
+- [Team Orchestration](/best-practices/team-orchestration)
+- [Simone MCP repository](https://github.com/OpenSIN-AI/Simone-MCP)
+- [Simone MCP HF Space](https://huggingface.co/spaces/openjerro/simone-mcp)
 
 ---
 
-*Last updated:* 2026-04-12
-*Status:* **ACTIVE & MANDATORY**
-*Maintainer:* sin-zeus
+*Last updated:* 2026-04-21  
+*Status:* **ACTIVE & MANDATORY**  
+*Maintainer:* sin-zeus  
 *Mandate reference:* MANDATE-0.34.md
 
 ---
+
+## Enforcement signals
+
+This mandate is enforced through the global AGENTS stack, installer coupling, worker instructions, and template inheritance. Code changes made without Simone MCP + PCPM active should be treated as unverified until reviewed.
 
 ## Relevante Mandate
 

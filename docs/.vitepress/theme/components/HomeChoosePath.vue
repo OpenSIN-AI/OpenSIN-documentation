@@ -3,12 +3,12 @@
     <h2 class="home-choose-path__title">Choose Your Path</h2>
     <div class="home-choose-path__grid">
       <a href="/guide/getting-started" class="home-choose-path__card is-highlight">
-        <div class="home-choose-path__heading">User Documentation <span class="home-choose-path__arrow">→</span></div>
-        <div class="home-choose-path__description">How to use OpenSIN, manage your fleet, and leverage autonomous intelligence.</div>
+        <div class="home-choose-path__heading">Consumer Documentation <span class="home-choose-path__arrow">→</span></div>
+        <div class="home-choose-path__description">Guides, onboarding, plan help, and the quickest path to using OpenSIN.</div>
       </a>
-      <a href="/sdk/overview" class="home-choose-path__card">
+      <a href="https://developers.opensin.ai/docs/" class="home-choose-path__card">
         <div class="home-choose-path__heading">Developer Documentation <span class="home-choose-path__arrow">→</span></div>
-        <div class="home-choose-path__description">Build plugins, create A2A agents, and integrate with the Neural-Bus.</div>
+        <div class="home-choose-path__description">APIs, SDKs, auth, webhooks, and integration details live on the builder surface.</div>
       </a>
     </div>
   </section>

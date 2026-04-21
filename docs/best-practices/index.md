@@ -7,6 +7,10 @@ title: "Best Practices"
 This section is the rulebook for building, operating, debugging, and scaling the OpenSIN fleet.
 It is not a loose suggestion shelf. It is the operational memory of the system.
 
+## Page Pattern
+
+New or normalized pages should follow the [Best-Practice Page Pattern](/best-practices/page-pattern): Markdown-first structure, stable section order, minimal raw HTML, and explicit verification guidance.
+
 ## Core Mandates
 
 | Document | Focus |
@@ -31,6 +35,7 @@ It is not a loose suggestion shelf. It is the operational memory of the system.
 
 | Document | Focus |
 |----------|-------|
+| [Best-Practice Page Pattern](/best-practices/page-pattern) | Repeatable VitePress-first authoring shape for this section |
 | [MCP Integration](/best-practices/mcp-integration) | MCP transport, safety, integration patterns |
 | [Plugin Development](/best-practices/plugin-development) | Plugin architecture and extension rules |
 | [Performance](/best-practices/performance) | Cost, model routing, latency, efficiency |

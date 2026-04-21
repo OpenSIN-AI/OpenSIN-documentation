@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.2.0 (2026-04-21)
+
+### Changed
+- Added a repeatable best-practice page pattern for VitePress-first docs authoring.
+- Normalized the `browser-automation`, `seo-pipeline`, and `simone-mcp-pcpm` pages around the shared pattern.
+- Improved code-block and inline-code readability across light and dark themes.
+
+---
+
+## v1.1.0 (2026-04-21)
+
+### Changed
+- Polished the docs homepage inside the existing VitePress `layout: home` contract instead of rebuilding it.
+- Unified hero, feature, and custom homepage card styling behind shared surface tokens so the premium treatment is consistent across light and dark mode.
+- Added in-code comments around the protected 3/2/4 homepage structure and homepage-only theme logic to reduce accidental regressions.
+
+---
+
 ## v0.1.0 (2026-04-04)
 
 ### Added

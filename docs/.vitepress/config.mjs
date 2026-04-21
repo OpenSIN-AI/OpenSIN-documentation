@@ -2,14 +2,14 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'OpenSIN-AI Documentation',
-  description: 'Canonical documentation, governance, and surface registry for the OpenSIN-AI ecosystem.',
+  description: 'Consumer documentation, governance, and surface registry for the OpenSIN-AI ecosystem.',
   lang: 'en-US',
   ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
     ['link', { rel: 'canonical', href: 'https://docs.opensin.ai/' }],
     ['meta', { property: 'og:title', content: 'OpenSIN-AI Documentation' }],
-    ['meta', { property: 'og:description', content: 'Canonical docs, governance, and surface registry for the OpenSIN-AI ecosystem.' }],
+    ['meta', { property: 'og:description', content: 'Consumer documentation, governance, and surface registry for the OpenSIN-AI ecosystem.' }],
     ['meta', { property: 'og:image', content: 'https://docs.opensin.ai/social-preview.svg' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:image', content: 'https://docs.opensin.ai/social-preview.svg' }],
@@ -25,6 +25,7 @@ export default defineConfig({
       { text: 'Plugins', link: '/plugins/registry' },
       { text: 'Fleet', link: '/fleet/overview' },
       { text: 'Blog', link: 'https://blog.opensin.ai' },
+      { text: 'Developer docs', link: 'https://developers.opensin.ai/docs/' },
       { text: 'Marketplace', link: 'https://my.opensin.ai' },
     ],
     sidebar: {
@@ -156,7 +157,7 @@ export default defineConfig({
       { icon: 'discord', link: 'https://discord.gg/opensin' },
     ],
     footer: {
-      message: 'Canonical docs, governance, and surface registry for the OpenSIN-AI ecosystem.',
+      message: 'Consumer documentation, governance, and surface registry for the OpenSIN-AI ecosystem.',
       copyright: 'Copyright © 2026 OpenSIN-AI',
     },
     search: {
