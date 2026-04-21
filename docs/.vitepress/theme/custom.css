@@ -227,9 +227,41 @@ html:not(.dark) .VPFeature .icon {
 .VPNavBarTitle .logo { height: 32px !important; width: auto !important; margin-right: 12px !important; }
 .VPHero .image-container .image-src { max-width: 280px !important; height: auto !important; }
 
-body { font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
-.VPNav { backdrop-filter: blur(10px); border-bottom: 1px solid var(--vp-c-divider); }
-.VPSwitchAppearance { display: flex !important; }
+/* [OPENAI 1:1 CLONE SYSTEM] */
+.openai-theme {
+  --oa-bg: #ffffff;
+  --oa-text: #000000;
+  --oa-muted: #6e6e73;
+  --oa-border: #e5e5e7;
+  --oa-hover: #f5f5f7;
+  
+  background: var(--oa-bg);
+  color: var(--oa-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.openai-theme a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Hide VitePress standard elements on custom layouts */
+.openai-theme .VPNav, .openai-theme .VPFooter, .openai-theme .VPLocalNav {
+  display: none !important;
+}
+
+.oa-main-content {
+  margin-top: 0;
+}
+
+.dark .openai-theme {
+  --oa-bg: #0a0a0a;
+  --oa-text: #ececf1;
+  --oa-muted: #c5c5d2;
+  --oa-border: #2a2a2a;
+  --oa-hover: #1a1a1a;
+}
 
 
 /* [DOCS CODE READABILITY] */
