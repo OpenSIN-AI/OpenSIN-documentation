@@ -7,6 +7,11 @@
 **Fix:** Explicitly defined `border-radius: 8px !important` on both `.VPButton` and `.VPButton:hover`.
 **Evidence:** [Image 1] from user session.
 
+**Permanent contract:**
+- Homepage CTA buttons must stay compact and premium.
+- Hover must preserve shape, color contrast, and spacing.
+- Future CSS changes must treat button hover as protected UI state.
+
 ---
 
 ## ⚖️ Mandates for Future Agents
