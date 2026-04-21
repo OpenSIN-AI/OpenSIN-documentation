@@ -11,9 +11,28 @@ The OpenSIN-AI Fleet is a network of autonomous A2A (Agent-to-Agent) agents that
 
 ---
 
-## Fleet Architecture
+## Fleet Architecture (Hub & Spoke)
 
+As defined in the `OpenSIN-overview` SSOT, the fleet follows a strict **Hub & Spoke** model to ensure massive scalability and governance.
+
+```mermaid
+graph TD;
+    User[Operator / Mobile] -->|Task| TeamManager[Team-SIN-* Orchestrator];
+    NeuralBus[OpenSIN Neural-Bus] <-->|Event Mesh| TeamManager;
+    
+    subgraph Team Monorepo
+        TeamManager -->|Delegate| WorkerA[A2A-SIN-Worker-A];
+        TeamManager -->|Delegate| WorkerB[A2A-SIN-Worker-B];
+    end
+    
+    TeamManager -->|Register| Registry[Domain Registry / Global Brain];
 ```
+
+### Key Principles
+
+1. **Managers Orchestrate:** Only `Team-SIN-*` agents are authorized to manage multi-step workflows and communicate with the Neural-Bus Hub.
+2. **Workers Execute:** `A2A-SIN-*` worker agents are specialists. They do not talk to workers from other teams; they only report to their designated Manager.
+3. **Registry Truth:** An agent does not exist until it is verified in the [Domain Registry](/governance/domain-registry).
 ┌──────────────────────────────────────────────┐
 │               SIN-Zeus                        │
 │          (Fleet Commander)                    │
@@ -85,9 +104,9 @@ The OpenSIN-AI Fleet is a network of autonomous A2A (Agent-to-Agent) agents that
 | Property | Value |
 |:---|:---|
 | **Room** | 09 |
-| **Static IP** | `172.20.0.109:3000` |
+| **Static IP** | `<canonical-box-storage-ip>:3000` |
 | **Internal Endpoint** | `http://room-09-box-storage:3000` |
-| **Public A2A** | `https://a2a.delqhi.com/agents/a2a-sin-box-storage` |
+| **Public A2A** | `Unverified in public docs — verify in owning repo before external use` |
 | **Health** | `GET /health` |
 | **Upload** | `POST /api/v1/upload` |
 | **Validate** | `POST /api/v1/validate` |
@@ -132,8 +151,8 @@ Agents can access Box Storage via MCP using the `sin-box-storage` interface:
 {
   "mcpServers": {
     "sin-box-storage": {
-      "command": "npx",
-      "args": ["-y", "@sin-docker/sin-box-storage-mcp"]
+      "command": "bun",
+      "args": ["x", "@sin-docker/sin-box-storage-mcp"]
     }
   }
 }
@@ -154,7 +173,7 @@ room-09-box-storage:
     - PORT=3000
   networks:
     haus-netzwerk:
-      ipv4_address: 172.20.0.109
+      ipv4_address: <canonical-box-storage-ip>
   ports:
     - "3000:3000"
   healthcheck:

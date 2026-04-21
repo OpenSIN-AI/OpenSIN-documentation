@@ -9,15 +9,14 @@
 
 | Surface | Status | Owner / repo | Evidence | Notes |
 |:---|:---|:---|:---|:---|
-| `opensin.ai` | Public | `website-opensin.ai` | Live public marketing site | Canonical landing page |
-| `my.opensin.ai` | Public | `website-my.opensin.ai` | Live public marketplace | Subscription / commerce surface |
-| `blog.opensin.ai` | Public | `opensin-blog.pages.dev` | Live public blog | Content and updates |
 | `docs.opensin.ai` | Public | `OpenSIN-documentation` | Live public docs site | This repository |
-| `chat.opensin.ai` | Gated | `OpenSIN-WebApp` | Login required | Dashboard / user workspace |
-| `api.opensin.ai` | Internal / unverified | `OpenSIN-backend` | Not publicly resolvable from this environment | Do not advertise as public until verified |
-| `opensin.ai/agents` | Internal / unverified | Unclear | Public route returns 404 | Treat as non-public |
-| `hermes.opensin.ai` | Internal / unverified | Unclear | Not publicly resolvable from this environment | Reference only |
-| `code-analyzer.opensin.ai` | Internal / unverified | Unclear | Not publicly resolvable from this environment | Reference only |
+| `chat.opensin.ai` | Gated | `OpenSIN-WebApp` | HTTP 200 (Dashboard) | Official user interface |
+| `opensin.ai` | Public | `website-opensin.ai` | Live marketing surface | Product landing |
+
+## Internal Assets (Unverified)
+*The following are currently internal or in-transition:*
+- `api.opensin.ai` (Neural-Bus Hub)
+- `registry.opensin.ai` (Skill Discovery)
 
 ## Change policy
 

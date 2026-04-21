@@ -15,7 +15,7 @@ Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Pas
 
 2. **README-Korrekturen** (nach Verifizierung der Zahlen!)
    - **Infra-SIN-Docker-Empire**: 26→25 Container, korrigierte Namen, 5 fehlende Container hinzugefügt
-   - **upgraded-opencode-stack**: Alle falschen Statistiken korrigiert
+    - **Infra-SIN-OpenCode-Stack**: Alle falschen Statistiken korrigiert
    - **Infra-SIN-Dev-Setup**: Zahlen + Grammatik gefixt
    - **website-opensin.ai**: IRRTÜMLICH "korrigiert" dann REVERTIERT (Zahlen waren korrekt!)
 
@@ -25,7 +25,7 @@ Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Pas
    - `rule-20260415-never-ask-human-passwords`: Niemals Menschen nach Passwörtern fragen
 
 4. **Chrome Password Manager Integration dokumentiert**
-   - Location: `/Users/jeremy/dev/A2A-SIN-Google-Apps/src/chrome/`
+    - Location: `A2A-SIN-Google-Apps/src/chrome/`
    - `password-manager.ts` — Extrahiert Passwörter aus Chrome SQLite DB
    - `cookie-extractor.ts` — Extrahiert Cookies
    - Nutzt macOS Keychain "Chrome Safe Storage" für Entschlüsselung
@@ -94,7 +94,7 @@ Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Pas
 ## Chrome Password Manager Integration
 
 ### Location
-`/Users/jeremy/dev/A2A-SIN-Google-Apps/src/chrome/`
+`A2A-SIN-Google-Apps/src/chrome/`
 
 ### Dateien
 - `password-manager.ts` — Extrahiert Passwörter aus Chrome SQLite DB
@@ -135,7 +135,7 @@ Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Pas
 |-------|--------|--------|
 | `box-storage.md` | Erstellt | b9ecb72 |
 | `README.md` (Infra-SIN-Dev-Setup) | Korrigiert | 14ccbb6, 0761612 |
-| `README.md` (upgraded-opencode-stack) | Korrigiert | c231479 |
+| `README.md` (Infra-SIN-OpenCode-Stack) | Korrigiert | c231479 |
 | `README.md` (Infra-SIN-Docker-Empire) | Korrigiert | beb6601 |
 | `README.md` (website-opensin.ai) | REVERTIERT | 4b9c62f |
 | `docs/guide/agent-configuration.md` | "fuer" → "für" | 2df6b407cf |
@@ -153,9 +153,9 @@ Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Pas
 
 ## Repos die geändert wurden
 
-- `Delqhi/upgraded-opencode-stack` (Haupt-Config Repo)
+- `Infra-SIN-OpenCode-Stack` (Haupt-Config Repo)
 - `OpenSIN-AI/Infra-SIN-Dev-Setup` (Dokumentation)
-- `Delqhi/global-brain` (Persistentes Gedächtnis)
+- `Infra-SIN-Global-Brain` (Persistentes Gedächtnis)
 - `OpenSIN-AI/website-opensin.ai` (NUR gelesen nach Revert!)
 
 ---
@@ -177,7 +177,7 @@ Diese Session-Summary wurde erstellt damit ALLE Team-Mitglieder sofort wissen:
 3. **WARUM** manche Änderungen reverted wurden
 4. **WO** die Informationen gespeichert sind
 
-Bei Fragen → Global Brain konsultieren: `Delqhi/global-brain`
+Bei Fragen → Global Brain konsultieren: `Infra-SIN-Global-Brain`
 
 ---
 

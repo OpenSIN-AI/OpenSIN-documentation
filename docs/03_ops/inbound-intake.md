@@ -12,14 +12,14 @@ The **Inbound Intake** system normalizes all incoming work (GitHub webhooks, Tel
 
 ## Prerequisites
 
-- n8n running on OCI VM (`http://92.5.60.87:5678`)
+- n8n running on the canonical self-hosted OCI VM (see the owning infra repo)
 - GitHub Personal Access Token with repo scope
 - `inbound-intake` workflow activated in n8n
 
 ## Workflow: `inbound-intake`
 
 ### Trigger
-Webhook POST to `http://92.5.60.87:5678/webhook/inbound-work`
+Webhook POST to the canonical n8n webhook URL configured in the owning infra repo
 
 ### Body Schema
 ```json
@@ -44,7 +44,7 @@ Webhook POST to `http://92.5.60.87:5678/webhook/inbound-work`
 Runs as a cron job every 5 minutes:
 
 ```bash
-*/5 * * * * /Users/jeremy/dev/OpenSIN-documentation/scripts/watch-pr-feedback.sh
+*/5 * * * * ./scripts/watch-pr-feedback.sh
 ```
 
 Monitors:
@@ -66,7 +66,7 @@ Monitors:
 ### n8n workflow not triggering
 - Check workflow is **activated** in n8n
 - Verify webhook URL is correct in platform config
-- Check n8n logs: `http://92.5.60.87:5678/execution`
+- Check n8n logs in the self-hosted n8n execution UI
 
 ### GitHub issue not created
 - Verify PAT has `repo` scope
@@ -79,7 +79,7 @@ Monitors:
 crontab -l
 
 # Manual run
-bash /Users/jeremy/dev/OpenSIN-documentation/scripts/watch-pr-feedback.sh
+bash ./scripts/watch-pr-feedback.sh
 ```
 
 ## Activation

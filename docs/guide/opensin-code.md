@@ -186,13 +186,17 @@ Die gesamte Codebasis wurde von sin-claude nach OpenSIN-AI migriert:
 - **Python Platform** als metadata-driven Workspace (2.386 Zeilen)
 - **Plugin Ecosystem** mit GitHub Automation (87.247 Zeilen)
 
-### Neue Projekte (April 2026)
+### Compatibility & Consolidated Surfaces
 
-| Projekt | Repo | Dateien | Zeilen | Status |
-|---------|------|---------|--------|--------|
-| **OpenSIN-AI CLI** | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 70 | 34.601 | ✅ Rust |
-| **OpenSIN-AI Code** | [OpenSIN/opensin_agent_platform](https://github.com/OpenSIN-AI/OpenSIN/tree/main/opensin_agent_platform) | 100 | 2.386 | ⚠️ Consolidated 2026-04 |
-| **OpenSIN-AI Platform** | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 182 | 87.247 | ✅ Plugins |
+OpenSIN-Code is the canonical autonomous coding surface. The rows below are
+compatibility or absorbed surfaces, listed only so older links stay understandable.
+
+| Surface | Repo | Files | Lines | Status |
+|---------|------|-------|-------|--------|
+| **OpenSIN-Code** | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | Canonical | Active | ✅ Recommended |
+| **opensin-ai-cli** | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 70 | 34.601 | ⚠️ Rationalization pending |
+| **opensin-ai-platform** | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 182 | 87.247 | ⚠️ Rationalization pending |
+| **opensin_agent_platform** | [OpenSIN/opensin_agent_platform](https://github.com/OpenSIN-AI/OpenSIN/tree/main/opensin_agent_platform) | 100 | 2.386 | ⚠️ Absorbed reference material |
 
 ---
 

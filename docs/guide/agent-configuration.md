@@ -21,7 +21,7 @@ Das OpenSIN-System verwaltet **7 Konfigurationsdateien** in 3 Kategorien:
 
 ## 1. opencode.json — Haupt-Konfiguration
 
-**Pfad:** `~/.config/opencode/opencode.json` (lokal) oder `upgraded-opencode-stack/opencode.json` (Repo)
+**Pfad:** `~/.config/opencode/opencode.json` (lokal) oder `Infra-SIN-OpenCode-Stack/opencode.json` (kanonisches Repo)
 
 ### Zweck
 Die HAUPT-Konfiguration für OpenCode CLI. Definiert alles was der User direkt sieht und nutzt.
@@ -46,7 +46,7 @@ Die HAUPT-Konfiguration für OpenCode CLI. Definiert alles was der User direkt s
 | Provider | Modelle | Zweck |
 |:---|:---|:---|
 | **google** (Antigravity) | `antigravity-claude-sonnet-4-6`, `antigravity-claude-opus-4-6-thinking`, `antigravity-gemini-3.1-pro` | Hauptmodelle via OAuth |
-| **openai** | `gpt-5.4`, `gpt-5.4-mini` | Via OCI Proxy (92.5.60.87:4100) |
+| **openai** | `gpt-5.4`, `gpt-5.4-mini` | Via canonical provider bridge configured in `Infra-SIN-OpenCode-Stack` |
 | **nvidia-nim** | `qwen-3.5-122b`, `qwen-3.5-397b`, `qwen-3.5-flash`, `step-3.5-flash` | NVIDIA NIM API |
 | **openrouter** | 8 Free-Modelle (Qwen, DeepSeek, Gemini, Llama, Phi) | OpenRouter Proxy |
 | **qwen** | `qwen/coder-model` → `qwen3-coder-plus` | Qwen OAuth (2000/day free) |
@@ -65,7 +65,7 @@ Die HAUPT-Konfiguration für OpenCode CLI. Definiert alles was der User direkt s
 
 ## 2. oh-my-openagent.json — Subagenten-Modell-Konfiguration
 
-**Pfad:** `~/.config/opencode/oh-my-openagent.json` oder `upgraded-opencode-stack/oh-my-openagent.json`
+**Pfad:** `~/.config/opencode/oh-my-openagent.json` oder `Infra-SIN-OpenCode-Stack/oh-my-openagent.json`
 
 ### Zweck
 Definiert welche Modelle die **internen Subagenten** nutzen wenn delegiert wird.
@@ -121,7 +121,7 @@ Explore-Agent startet mit Step 3.5 Flash
 
 ## 3. oh-my-sin.json — Zentrales A2A Team Register
 
-**Pfad:** `upgraded-opencode-stack/oh-my-sin.json`
+**Pfad:** `Infra-SIN-OpenCode-Stack/oh-my-sin.json`
 
 ### Zweck
 Das **zentrale Register** ALLER A2A SIN Teams. Klassifiziert Teams, Manager und verweist auf Team-Configs.
@@ -133,9 +133,9 @@ Das **zentrale Register** ALLER A2A SIN Teams. Klassifiziert Teams, Manager und 
   "teams": {
     "team-code": {
       "name": "Team Coding",
-      "manager": "A2A-SIN-Zeus",
+      "manager": "<canonical team manager>",
       "config_file": "my-sin-team-code.json",
-      "members": ["A2A-SIN-Simone-MCP", ...],
+      "members": ["<team-member-1>", "<team-member-2>", "..."],
       "primary_model": "...",
       "fallback_models": [...]
     }
@@ -152,11 +152,11 @@ Das **zentrale Register** ALLER A2A SIN Teams. Klassifiziert Teams, Manager und 
 
 | Team | Manager | Config-Datei | Primaer-Modell |
 |:---|:---|:---|:---|
-| **Team Coding** | A2A-SIN-Zeus | `my-sin-team-code.json` | `claude-sonnet-4-6` |
-| **Team Worker** | A2A-SIN-Team-Worker | `my-sin-team-worker.json` | `gemini-3-flash` |
-| **Team Infrastructure** | A2A-SIN-Team-Infrastructure | `my-sin-team-infrastructure.json` | `gpt-5.4` |
-| **Team Google Apps** | A2A-SIN-Google-Apps | `my-sin-team-google-apps.json` | `gemini-3.1-pro` |
-| **Team Apple Apps** | A2A-SIN-Apple-Apps | `my-sin-team-apple-apps.json` | `gpt-5.4` |
+| **Coding Team** | Canonical manager in `oh-my-sin.json` | `my-sin-team-code.json` | fleet-defined |
+| **Worker Team** | Canonical manager in `oh-my-sin.json` | `my-sin-team-worker.json` | fleet-defined |
+| **Infrastructure Team** | Canonical manager in `oh-my-sin.json` | `my-sin-team-infrastructure.json` | fleet-defined |
+| **Google Team** | Canonical manager in `oh-my-sin.json` | `my-sin-team-google-apps.json` | fleet-defined |
+| **Apple Team** | Canonical manager in `oh-my-sin.json` | `my-sin-team-apple-apps.json` | fleet-defined |
 
 ---
 
@@ -250,7 +250,7 @@ task(subagent_type="librarian", run_in_background=true, load_skills=[],
 
 | Repo | Pfad | Datei |
 |:---|:---|:---|
-| **upgraded-opencode-stack** | `/` | `opencode.json`, `oh-my-sin.json`, `oh-my-openagent.json`, `my-sin-team-*.json` |
+| **Infra-SIN-OpenCode-Stack** | `/` | `opencode.json`, `oh-my-sin.json`, `oh-my-openagent.json`, `my-sin-team-*.json` |
 | **~/.config/opencode/** | `/` | Alle oben genannten (via `sin-sync` synchronisiert) |
 | **OCI VM** | `~/.config/opencode/` | Synchronisiert via `sin-sync` |
 | **HF VMs** | `~/.config/opencode/` | Synchronisiert via `sin-sync` |
@@ -263,7 +263,7 @@ Nach jeder Aenderung an einer Config-Datei:
 
 ```bash
 # 1. Aenderung im Repo committen
-cd ~/dev/upgraded-opencode-stack
+cd ~/dev/Infra-SIN-OpenCode-Stack
 git add -A && git commit -m "update: agent config changes" && git push origin main
 
 # 2. Auf alle Maschinen syncen

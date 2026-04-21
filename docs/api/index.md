@@ -70,7 +70,7 @@ Manage MCP servers.
 
 ```bash
 opencode mcp list
-opencode mcp add filesystem --command bunx @modelcontextprotocol/server-filesystem /path
+opencode mcp add filesystem --command bun x @modelcontextprotocol/server-filesystem /path
 ```
 
 ### `opencode stats`

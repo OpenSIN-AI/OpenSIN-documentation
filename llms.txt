@@ -1,34 +1,18 @@
-# OpenSIN Documentation
+# OpenSIN-AI Documentation Master Index
 
-> Canonical documentation, governance, and surface registry for the OpenSIN-AI ecosystem.
+> Canonical knowledge for Humans and AI Agents.
 
-## Repository
+## Documentation Surfaces
+- [Guide Index](https://docs.opensin.ai/guide/getting-started)
+- [Developer SDK](https://docs.opensin.ai/sdk/overview)
+- [A2A JSON-RPC Spec](https://docs.opensin.ai/api/a2a)
+- [Fleet Governance](https://docs.opensin.ai/governance/overview)
 
-- GitHub: https://github.com/OpenSIN-AI/OpenSIN-documentation
-- Docs site: https://docs.opensin.ai
-- License: MIT
+## Security & Rules
+- [Sovereign Security Mandate](https://docs.opensin.ai/governance/security-mandate)
+- [Performance Standards](https://docs.opensin.ai/best-practices/performance)
 
-## Read first
-
-- README: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/README.md
-- Docs home: https://docs.opensin.ai/
-- Surface registry: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/governance/domain-registry.md
-- Architecture overview: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/architecture/overview.md
-- Getting started: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/guide/getting-started.md
-- Best practices: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/best-practices/index.md
-- API overview: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/docs/api/overview.md
-- Contributing: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/CONTRIBUTING.md
-- Security: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/SECURITY.md
-- Support: https://github.com/OpenSIN-AI/OpenSIN-documentation/blob/main/SUPPORT.md
-
-## Surface snapshot
-
-- Public: opensin.ai, my.opensin.ai, blog.opensin.ai, docs.opensin.ai
-- Gated: chat.opensin.ai
-- Internal/unverified: api.opensin.ai, opensin.ai/agents
-
-## Agent notes
-
-- Bun only.
-- No npm, no direct Gemini API calls, no blind browser actions.
-- Update the registry whenever a surface changes.
+## Repositories
+- [OpenSIN Core](https://github.com/OpenSIN-AI/OpenSIN)
+- [OpenSIN-Code CLI](https://github.com/OpenSIN-AI/OpenSIN-Code)
+- [Fleet Templates](https://github.com/OpenSIN-AI/Template-SIN-Agent)

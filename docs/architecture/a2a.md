@@ -168,11 +168,11 @@ Each A2A agent also exposes an MCP (Model Context Protocol) server, allowing LLM
 
 ## Creating an A2A Agent
 
-See the [Custom Agents Tutorial](/tutorials/custom-agents) for a step-by-step guide, or use the template:
+See the [Custom Agents Tutorial](/tutorials/custom-agents) for a step-by-step guide, or start from the canonical template:
 
 ```bash
-gh repo create OpenSIN-AI/A2A-SIN-MyAgent \
-  --template OpenSIN-AI/Template-A2A-SIN-Agent \
+gh repo create OpenSIN-AI/my-new-agent \
+  --template OpenSIN-AI/Template-SIN-Agent \
   --public
 ```
 

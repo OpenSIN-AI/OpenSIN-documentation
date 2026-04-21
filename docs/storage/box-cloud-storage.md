@@ -104,7 +104,7 @@ The **A2A-SIN-Box-Storage** agent is the canonical interface for Box.com storage
 {
   "name": "A2A-SIN-Box-Storage",
   "slug": "a2a-sin-box-storage",
-  "endpoint": "https://a2a.delqhi.com/a2a/v1/a2a-sin-box-storage",
+  "endpoint": "public endpoint must be verified via the owning repo and registry before use",
   "capabilities": ["storage_upload", "storage_public_url", "file_validation", "cdn_distribution", "cache_management"]
 }
 ```
@@ -112,7 +112,8 @@ The **A2A-SIN-Box-Storage** agent is the canonical interface for Box.com storage
 ### A2A Protocol Access
 ```bash
 # Agent-to-Agent call via A2A protocol
-curl -X POST "https://a2a.delqhi.com/a2a/v1/a2a-sin-box-storage" \
+# Replace <verified-public-endpoint> only after the owning repo and registry confirm it.
+curl -X POST "<verified-public-endpoint>" \
   -H "Content-Type: application/json" \
   -H "X-Box-Storage-Key: $BOX_STORAGE_API_KEY" \
   -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"upload","arguments":{"file":"@test.png"}}}'
@@ -249,7 +250,7 @@ room-09-box-storage:
     - box_storage_logs:/app/logs
   networks:
     haus-netzwerk:
-      ipv4_address: 172.20.0.109
+      ipv4_address: <canonical-box-storage-ip>
   ports:
     - "3000:3000"
   healthcheck:

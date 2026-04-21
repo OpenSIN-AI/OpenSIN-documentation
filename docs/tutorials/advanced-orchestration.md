@@ -134,8 +134,8 @@ Chain n8n workflows for complex pipelines:
 ```
 GitHub PR Created
     → n8n: Extract PR diff
-    → A2A-SIN-Herakles: Code review
-    → A2A-SIN-Tester: Run test suite
+    → Specialist review agent: Code review
+    → Specialist test agent: Run test suite
     → n8n: Post review comment
     → Telegram: Notify team
 ```

@@ -55,7 +55,7 @@ python3 ~/.config/opencode/tools/master-operator.py \
   --url "https://my.opensin.ai" \
   --task "Gehe zu Settings und aktiviere Dark Mode" \
   --tts-text "Ich zeige dir jetzt die Einstellungen von OpenSIN AI" \
-  --logo "/Users/jeremy/dev/OpenSIN-documentation/docs/public/logo.png" \
+  --logo "/logo.png" \
   --text-overlay "OpenSIN AI — Settings Tutorial" \
   --output-dir "./recordings/$(date +%Y%m%d_%H%M%S)" \
   --chrome-profile "Default"

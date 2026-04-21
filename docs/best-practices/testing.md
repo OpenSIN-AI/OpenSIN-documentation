@@ -193,7 +193,7 @@ When the project is covered by Box.com Storage, upload artifacts there instead o
 ## 11. Example Verification Statements
 
 ### Good
-- `bun run build` passed, proving the package and app bundle compile end-to-end.
+- `bun ./scripts/build-docs.mjs` passed, proving the docs bundle compiles end-to-end.
 - Browser loaded `https://blog.opensin.ai` and displayed the shared header/footer; screenshot saved.
 - n8n execution `2200` completed successfully and wrote the markdown file to the blog repo.
 

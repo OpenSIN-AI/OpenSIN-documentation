@@ -84,7 +84,7 @@ grep -A1 '"browser-goto":' ~/.config/opencode/opencode.json
 
 ## Sync-Status
 - ✅ **Mac:** Commands aktiv
-- ✅ **OCI VM (92.5.60.87):** Synchronisiert via `sin-sync`
+- ✅ **OCI VM:** Synchronisiert via `sin-sync` (see canonical infra repo for host details)
 - ⚠️ **HF VMs:** Noch nicht synchronisiert (Optional)
 
 ---

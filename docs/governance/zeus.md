@@ -3,7 +3,7 @@
 **Role:** Fleet Commander & Control-Plane Orchestrator
 **Model:** `qwen/coder-model` (primary), `claude-opus-4.6-thinking` (fallback)
 **Status:** Active
-**Owner:** Jeremy Schulze (Delqhi)
+**Owner:** OpenSIN-AI control-plane governance
 
 ---
 

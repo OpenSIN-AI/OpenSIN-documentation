@@ -8,7 +8,7 @@ The OpenSIN ecosystem uses two complementary systems for fleet-wide intelligence
 
 | System | Purpose | Repository |
 |--------|---------|-----------|
-| **Global Brain (PCPM)** | Persistent Code Plan Memory — cross-project knowledge, rules, plans | [global-brain](https://github.com/Delqhi/global-brain) |
+| **Global Brain (PCPM)** | Persistent Code Plan Memory — cross-project knowledge, rules, plans | [Infra-SIN-Global-Brain](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain) |
 | **Neural-Bus (JetStream)** | Real-time agent-to-agent messaging via NATS JetStream | [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus) |
 
 ## Global Brain (PCPM)
@@ -82,7 +82,7 @@ OpenCode CLI / Agent Runtime
   ↓
 OpenSinAgentRuntime (agentId, sessionId, bus)
   ↓
-JetStream (nats://127.0.0.1:4222)
+JetStream (nats://<canonical-nats-host>:4222)
   ↓
 Subjects: workflow.request, workflow.reply, agent.observation, agent.lesson
   ↓
@@ -154,12 +154,12 @@ Both systems are integrated into the global OpenCode configuration:
   "mcp": {
     "sin-brain": {
       "type": "local",
-      "command": ["node", "/Users/jeremy/dev/global-brain/src/mcp/sin-brain-server.mjs"],
+      "command": ["node", "/path/to/Infra-SIN-Global-Brain/src/mcp/sin-brain-server.mjs"],
       "enabled": true
     },
     "sin-preview": {
       "type": "local",
-      "command": ["node", "/Users/jeremy/dev/global-brain/src/mcp/preview-server.mjs"],
+      "command": ["node", "/path/to/Infra-SIN-Global-Brain/src/mcp/preview-server.mjs"],
       "enabled": true
     }
   }
@@ -168,9 +168,9 @@ Both systems are integrated into the global OpenCode configuration:
 
 ## Related
 
-- [PCPM AGENTS.md](https://github.com/Delqhi/global-brain/blob/main/AGENTS.md)
+- [PCPM AGENTS.md](https://github.com/OpenSIN-AI/Infra-SIN-Global-Brain/blob/main/AGENTS.md)
 - [Neural-Bus Subject Taxonomy](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus/blob/main/docs/jetstream-subject-taxonomy.md)
-- [OpenCode Configuration](https://github.com/Delqhi/global-brain/blob/main/src/cli.js)
+- [OpenCode Configuration](https://github.com/OpenSIN-AI/Infra-SIN-OpenCode-Stack)
 
 ---
 

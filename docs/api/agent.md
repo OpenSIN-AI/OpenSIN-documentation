@@ -1,89 +1,77 @@
 ---
-title: Agent API
-description: API reference for OpenSIN agents
+title: Agent Identity API
+description: Specification for OpenSIN Agent Cards and .well-known discovery.
 ---
 
-# Agent API
+# Agent Identity API
 
-Create and manage OpenSIN agents.
+The Agent Identity API defines how an agent advertises its capabilities, versioning, and security requirements to the fleet.
 
-## Endpoints
+## Discovery Mechanism
 
-### Create Agent
+Every OpenSIN-compatible agent **MUST** expose its identity via the standard `.well-known` path:
 
-```http
-POST /v1/agents
+```text
+GET https://<agent-domain>/.well-known/agent-card.json
 ```
 
-**Request:**
+## Agent Card Schema
+
+The `agent-card.json` is the source of truth for the agent's contract.
+
 ```json
 {
-  "name": "researcher",
-  "model": "openai/gpt-5.4",
-  "system_prompt": "You are an expert researcher.",
-  "temperature": 0.7,
-  "max_tokens": 4000,
-  "tools": ["web_search", "summarizer"]
+  "name": "Research-Agent",
+  "version": "2.4.1",
+  "description": "Deep-web research and data extraction specialist.",
+  "url": "https://research.opensin.ai",
+  "capabilities": {
+    "streaming": true,
+    "stateful": false,
+    "a2a_native": true
+  },
+  "skills": [
+    {
+      "id": "search",
+      "name": "Web Search",
+      "description": "Access real-time information via Google Search"
+    }
+  ],
+  "authentication": {
+    "schemes": ["bearer", "mtls"],
+    "registry_url": "https://auth.opensin.ai"
+  }
 }
 ```
 
-**Response:**
-```json
-{
-  "id": "agent_123",
-  "name": "researcher",
-  "model": "openai/gpt-5.4",
-  "is_active": true,
-  "created_at": "2026-04-04T10:00:00Z"
-}
-```
+## Fields Definition
 
-### List Agents
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | Yes | Canonical ID of the agent |
+| `version` | string | Yes | SemVer versioning |
+| `description` | string | Yes | Human-readable purpose |
+| `capabilities` | object | Yes | Technical flags (streaming, stateful) |
+| `skills` | array | Yes | List of skill-objects the agent can perform |
+| `authentication` | object | Yes | Supported auth methods and endpoints |
 
-```http
-GET /v1/agents
-```
+## Versioning Policy
 
-### Get Agent
+OpenSIN agents follow strict **SemVer**:
+- **Major:** Breaking changes in JSON-RPC methods or parameters.
+- **Minor:** New tools added or non-breaking capability changes.
+- **Patch:** Internal fixes and prompt optimizations.
 
-```http
-GET /v1/agents/{agent_id}
-```
+---
 
-### Send Message
+## Best Practices
 
-```http
-POST /v1/agents/{agent_id}/send
-```
-
-**Request:**
-```json
-{
-  "message": "Research AI trends for 2026",
-  "stream": false,
-  "max_tokens": 4000
-}
-```
-
-### Delete Agent
-
-```http
-DELETE /v1/agents/{agent_id}
-```
+1. **Keep it Static:** The agent-card should be a static file or a fast-cached endpoint.
+2. **Detailed Skill Descriptions:** Use clear descriptions for skills; other agents use these to decide when to delegate.
+3. **Valid JSON-Schema:** Ensure all tool parameters are documented with valid JSON-Schema for automated validation.
 
 ## Next Steps
 
-- [Team API](/api/team)
-- [A2A Protocol](/api/a2a)
-
----
-
-## Relevante Mandate
-
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
-
-→ [Alle Mandate](/best-practices/code-quality)
+- [A2A Protocol Specification](/api/a2a)
+- [SDK Tool System](/sdk/tool-system)
+- [Domain Registry](/governance/domain-registry)

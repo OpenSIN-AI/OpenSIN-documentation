@@ -36,8 +36,8 @@ E‑E‑A‑T guidelines.
                                             │
                                   ┌──────────▼──────────┐
                                   │  GitHub API (PUT)   │
-                                  │  Delqhi/opensin-    │
-                                  │  blog-content       │
+                                   │  OpenSIN-AI/        │
+                                   │  Biz-SIN-Blog-Posts │
                                   └──────────┬───────────┘
                                             │
                                   ┌──────────▼──────────┐
@@ -69,10 +69,10 @@ Initially we tried the built‑in HTTP Request node. Problems encountered:
 | Setting | Value (Placeholder) |
 |---------|---------------------|
 | **n8n API Key** | `<YOUR_N8N_API_KEY>` |
-| **n8n Host** | `http://92.5.60.87:5678` |
+| **n8n Host** | Internal self-hosted n8n endpoint (see owning infra repo) |
 | **Workflow ID** | `sq7YR8vkdPf3usnz` |
 | **GitHub Token** | `<YOUR_GITHUB_TOKEN>` (repo scope) – store in n8n Credentials |
-| **Blog Repo** | `Delqhi/opensin-blog-content` |
+| **Blog Repo** | `OpenSIN-AI/Biz-SIN-Blog-Posts` |
 | **Cloudflare Pages** | Project `opensin-blog` → Domain `blog.opensin.ai` |
 | **Trigger Path** | `/webhook/blog-publish` (POST) |
 

@@ -1,65 +1,65 @@
 ---
-title: Installation
-description: Install OpenSIN-Code on your system
+title: "Installation Guide"
+description: "High-performance setup for the OpenSIN-AI ecosystem."
 ---
 
-# Installation
+# Installation & Optimization
 
-## Prerequisites
+Setting up OpenSIN-AI requires a commitment to the **Billion-Dollar Standard**. We do not use "easy" installers. We build for performance and security.
 
-- Node.js 18 or higher
-- Bun (package manager) — `brew install oven-sh/bun/bun`
-- Git (for version control)
-- opencode CLI (for LLM provider configuration)
+## 1. Runtime Layer
 
-## Install from Source
+OpenSIN-AI is optimized for **Bun**. We have permanently banned `npm` and `bunx` for production environments.
 
 ```bash
-git clone https://github.com/OpenSIN-AI/OpenSIN-Code.git
-cd OpenSIN-Code
-bun install
-bun run build
+# Install Bun (The only authorized runtime)
+curl -fsSL https://bun.sh/install | bash
 ```
 
-## Configure Environment
+## 2. Global Brain Sync
 
-Create a `.env` file in your project directory:
+Every machine in the OpenSIN fleet must be coupled with the **Global Brain (PCPM)**.
 
 ```bash
-# LLM Provider API Keys (configured via opencode CLI)
-# Run: opencode auth login
-# OpenSIN-Code uses opencode for all LLM calls automatically
-
-# OpenSIN Configuration
-OPENSIN_LOG_LEVEL=INFO
+# Sync Global Brain
+git clone https://github.com/Delqhi/global-brain.git ~/dev/global-brain
+cd ~/dev/global-brain && bun install
 ```
 
-## Verify Installation
+## 3. Neural-Bus Infrastructure
+
+For local development of A2A agents, you need a local **NATS JetStream** instance.
 
 ```bash
-# Check the build
-bun run build
-
-# Run tests
-bun test
-
-# Start the CLI
-bun start
+# Launch Neural-Bus (Dockerized)
+docker run -d --name neural-bus -p 4222:4222 nats:latest -js
 ```
 
-## Next Steps
+## 4. OpenCode CLI
 
-- [Quick Start](/guide/quick-start) — Build your first agent
-- [Getting Started](/guide/getting-started) — Overview of OpenSIN
+The primary interface for developers.
+
+```bash
+# Global install
+bun add -g @opensin/opencode-cli
+```
 
 ---
 
-## Relevante Mandate
+## ⚖️ Verification Mandate
 
-| Mandat | Priority | Doku |
-|--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/bun sind verboten |
-| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
-| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+After installation, run the **Enterprise Health Check**:
 
-→ [Alle Mandate](/best-practices/code-quality)
+```bash
+opencode run --action '{"action":"system.health"}'
+```
+
+If the response latency is >200ms, your environment is non-compliant. Optimize your network routing or consult the [Performance Guide](/best-practices/performance).
+
+---
+
+## Related
+
+- [First Agent Tutorial](/tutorials/first-agent)
+- [SDK Overview](/sdk/overview)
+- [Agent Configuration](/guide/agent-configuration)

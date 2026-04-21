@@ -1,80 +1,82 @@
 ---
 title: A2A Protocol API
-description: Agent-to-Agent communication protocol
+description: Agent-to-Agent communication protocol specification.
 ---
 
-# A2A Protocol API
+# A2A Protocol Specification
 
-Direct communication between OpenSIN agents.
+The **Agent-to-Agent (A2A)** protocol is a JSON-RPC 2.0 compliant interface that enables autonomous agents to collaborate without a central bottleneck.
 
-> [!WARNING]
-> `api.opensin.ai` is documented in the registry as internal/unverified. Use the endpoint examples below only when the backend surface is verified for the environment you are working in.
+## Transport Layers
 
-## Overview
+1. **HTTPS (REST):** Used for initial handshakes, discovery, and high-latency tasks.
+2. **NATS JetStream:** Used for real-time orchestration, event streaming, and low-latency interaction.
 
-The A2A (Agent-to-Agent) protocol enables agents to communicate directly without going through a central coordinator.
+## JSON-RPC 2.0 Request Structure
 
-## Endpoints
+Every A2A request must follow the standard JSON-RPC format:
 
-### Get Agent Card
-
-```http
-GET /v1/a2a/{agent_url}/card
-```
-
-**Response:**
 ```json
 {
-  "name": "researcher",
-  "version": "1.0.0",
-  "capabilities": ["web_search", "summarization"],
-  "protocols": ["a2a"],
-  "endpoints": {
-    "a2a": "https://api.opensin.ai/v1/a2a/researcher"
-  }
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "web_search",
+    "arguments": {
+      "query": "OpenSIN-AI 2026 standards"
+    }
+  },
+  "id": "req-9b1b-4d56"
 }
 ```
 
-### Send A2A Message
+## Primary Methods
+
+### `tools/list`
+Returns a list of all tools exposed by the target agent.
+
+- **Request Params:** `{}`
+- **Response:** Array of Tool definitions (name, description, inputSchema).
+
+### `tools/call`
+Executes a specific tool on the target agent.
+
+- **Request Params:** `{ "name": string, "arguments": object }`
+- **Response:** `{ "content": string, "isError": boolean }`
+
+### `agent/identity`
+Returns the full Agent Card including version and status.
+
+- **Request Params:** `{}`
+- **Response:** See [Agent Identity API](/api/agent).
+
+## Error Handling
+
+A2A uses standard JSON-RPC error codes:
+
+| Code | Message | Description |
+|------|---------|-------------|
+| `-32700` | Parse error | Invalid JSON was received |
+| `-32600` | Invalid Request | The JSON sent is not a valid Request object |
+| `-32601` | Method not found | The method does not exist / is not available |
+| `-32602` | Invalid params | Invalid method parameter(s) |
+| `-32603` | Internal error | Internal JSON-RPC error |
+| `-40300` | Permission Denied | Permission Manager blocked the execution |
+
+## Security & Auth
+
+Every request must include the `X-SIN-Agent-ID` and `Authorization` header:
 
 ```http
-POST /v1/a2a/message
+POST /a2a/v1/message
+Authorization: Bearer <JWT_TOKEN>
+X-SIN-Agent-ID: researcher-agent-01
 ```
 
-**Request:**
-```json
-{
-  "version": "1.0.0",
-  "type": "request",
-  "from_agent": "writer",
-  "to_agent": "researcher",
-  "content": "Research AI trends for 2026",
-  "priority": "high"
-}
-```
+---
 
-## Message Types
-
-| Type | Description |
-|------|-------------|
-| request | Request information or action |
-| response | Response to a request |
-| notification | One-way notification |
-| error | Error message |
-
-## Next Steps
+## Related
 
 - [Agent API](/api/agent)
-- [Team API](/api/team)
-
----
-
-## Relevante Mandate
-
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
-
-→ [Alle Mandate](/best-practices/code-quality)
+- [SDK Overview](/sdk/overview)
+- [Neural-Bus Architecture](/architecture/global-brain-neural-bus)

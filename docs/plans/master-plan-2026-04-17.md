@@ -17,7 +17,7 @@
 - KR3: Qwen auth handles non-JSON OAuth responses — from broken to working
 - KR4: All 6 new coder repos fully registered with governance — from incomplete to complete
 - KR5: MODAL_BASE_URL enforced in bootstrap — from missing to 100% enforced
-- KR6: No `npm`/`bunx` usage anywhere in fleet — purge all legacy patterns
+- KR6: No npm-style legacy CLI usage anywhere in fleet — purge all legacy patterns
 
 ---
 
@@ -39,7 +39,7 @@
 - Stale OpenCode model metadata on existing installs
 
 ### Critical Gaps
-- All 3 repos (`upgraded-opencode-stack`, `Infra-SIN-Dev-Setup`, `global-brain`) missing mandatory governance files
+- All 3 repos (`Infra-SIN-OpenCode-Stack`, `Infra-SIN-Dev-Setup`, `Infra-SIN-Global-Brain`) missing mandatory governance files
 - `sovereign-repo-governance` skill mandates `governance/repo-governance.json`, `pr-watcher.json`, `coder-dispatch-matrix.json`, `platforms/registry.json`, `n8n-workflows/inbound-intake.json`, `docs/03_ops/inbound-intake.md`, `scripts/watch-pr-feedback.sh`
 - Antigravity pool has no preflight check before delegating to background subagents
 
@@ -52,7 +52,7 @@
 | Publish governance baseline BEFORE stack updates | PR-Watcher rules must be in place before code changes land | Do stack update first (REJECTED — breaks governance) | developer-boss |
 | Antigravity preflight as first auth task | Pool exhaustion blocks ALL downstream delegation | Fix pool first then preflight (REJECTED — will re-break) | developer-boss |
 | Use `oh-my-sin.json` as source of truth for team registry | Already the canonical roster, my-sin-coding-agents.json references it | Separate registry (REJECTED — duplication) | developer-boss |
-| Deploy governance to upgraded-opencode-stack first | Most critical — all agents pull from here | Parallel deploy to all 3 (REJECTED — need template from one) | developer-boss |
+| Deploy governance to Infra-SIN-OpenCode-Stack first | Most critical — all agents pull from here | Parallel deploy to all 3 (REJECTED — need template from one) | developer-boss |
 
 ---
 
@@ -62,7 +62,7 @@
 |------------|-----------|-------------------|
 | sin-sync will succeed after governance changes | 0.85 | Test on OCI VM after changes |
 | sovereign-repo-governance templates are complete | 0.90 | Review template files before deployment |
-| Antigravity pool API (Port 8090) is reachable | 0.95 | curl to `http://92.5.60.87:8090/health` |
+| Antigravity pool API (Port 8090) is reachable | 0.95 | curl to the canonical internal health endpoint |
 | Qwen OAuth endpoint still returns form-urlencoded | 0.70 | Test with live OAuth flow |
 | All 6 new coder repos are реально deployed | 0.80 | Check each repo for `agent.json` and running service |
 
@@ -88,7 +88,7 @@
   - Effort: P=1h, R=30m, O=15m
   - Dependencies: None
   - Owner: A2A-SIN-Code-Command
-  - Validation: Fresh `bun install` on new machine has `MODAL_BASE_URL=http://92.5.60.87:4100/modal/v1` in `~/.config/opencode/opencode.env`.
+  - Validation: Fresh `bun install` on new machine has the canonical MODAL base URL in `~/.config/opencode/opencode.env`.
 
 - [ ] **P1-T4: Fix Qwen auth non-JSON OAuth response handling (#23)**
   - Effort: P=2h, R=1h, O=30m
@@ -100,7 +100,7 @@
 
 ### Phase 2: Governance Baseline Publishing — HIGH
 
-- [ ] **P2-T1: Publish sovereign-repo-governance baseline in upgraded-opencode-stack (#26)**
+- [ ] **P2-T1: Publish sovereign-repo-governance baseline in Infra-SIN-OpenCode-Stack (#26)**
   - Effort: P=4h, R=2h, O=1h
   - Dependencies: None
   - Owner: developer-boss
@@ -108,7 +108,7 @@
 
 - [ ] **P2-T2: Add governance/ to Infra-SIN-Dev-Setup**
   - Effort: P=2h, R=1h, O=30m
-  - Dependencies: [P2-T1] (need template from upgraded-opencode-stack)
+  - Dependencies: [P2-T1] (need template from Infra-SIN-OpenCode-Stack)
   - Owner: developer-boss
   - Validation: `governance/repo-governance.json` exists and valid, references OCI VM services correctly.
 
@@ -122,11 +122,11 @@
 
 ### Phase 3: Stack Update & Cleanup — MEDIUM
 
-- [ ] **P3-T1: Update upgraded-opencode-stack — purge outdated patterns (#22)**
+- [ ] **P3-T1: Update Infra-SIN-OpenCode-Stack — purge outdated patterns (#22)**
   - Effort: P=3h, R=2h, O=1h
   - Dependencies: [P2-T1]
   - Owner: developer-boss
-  - Validation: `grep -r "npm install\|bunx\|npm run" . --include="*.md" --include="*.json" | grep -v node_modules` returns empty. All package.json scripts use `bun run`.
+  - Validation: Source scan returns empty. Direct Bun scripts under `scripts/` handle docs build/deploy.
 
 - [ ] **P3-T2: Upgraded OpenCode stack sync via sin-sync (#21)**
   - Effort: P=2h, R=1h, O=30m
@@ -229,7 +229,7 @@ P4-T3 (3d-web skill) ──► (standalone)
 
 - [ ] Phase 1 (Critical): All 4 auth/pool tasks pass validation
 - [ ] Phase 2 (Governance): All 3 repos have `governance/` with 7 required files
-- [ ] Phase 3 (Stack): No `npm`/`bunx` found, sin-sync succeeds, model metadata clean
+- [ ] Phase 3 (Stack): No npm-style legacy CLI usage found, sin-sync succeeds, model metadata clean
 - [ ] Phase 4 (Docs/Skills): Antigravity recovery documented, /gen-thumbnail works, /3d-web exists
 - [ ] Phase 5 (Epics): Explicitly deferred OR completed with validated boardroom sessions
 - [ ] All GitHub issues closed or deferred with reason logged

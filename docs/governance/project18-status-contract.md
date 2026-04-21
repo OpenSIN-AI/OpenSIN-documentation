@@ -54,7 +54,7 @@ Moving an item backward (e.g., In Review → In Progress, Done → In Progress) 
 
 An item is NOT Done just because the PR merged. Post-merge verification checklist:
 
-- [ ] `bun run build` succeeds on main after merge
+- [ ] The documented build command succeeds on main after merge
 - [ ] Agent card parses correctly (if agent repo)
 - [ ] No regression in fleet validator output
 - [ ] Required files from `required-files.manifest.json` all present (if applicable)
@@ -73,7 +73,7 @@ Project 18 items are organized into execution waves with explicit dependency ord
 
 ### Wave 0: Foundation (CURRENT)
 - Template-SIN-Agent canonical manifest (#149, #147, #148)
-- Governance contract templates (upgraded-opencode-stack#26)
+- Governance contract templates (Infra-SIN-OpenCode-Stack#26)
 - Project 18 status contract (this document, #117)
 
 ### Wave 1: Factory & Routes
@@ -116,7 +116,10 @@ When CI is available on Project 18 repos:
 
 ## Master Tracker
 
-The master tracker for the entire rollout is `Delqhi/global-brain#30`. Every wave completion and every significant status change MUST be posted as a comment there.
+The master tracker for the entire rollout is maintained in the canonical
+OpenSIN infrastructure SSOT, not in a legacy personal namespace. Every wave
+completion and every significant status change must be posted to the current
+canonical tracker referenced by the owning infra repo.
 
 ## Compliance Verification
 
@@ -135,7 +138,7 @@ jq -r '.requiredFiles[] | select(.failSeverity == "critical") | .path' required-
 
 ## References
 
-- Master Tracker: [global-brain#30](https://github.com/Delqhi/global-brain/issues/30)
+- Master Tracker: `See canonical tracker in OpenSIN-AI/Infra-SIN-Global-Brain`
 - Project Board: [Project 18](https://github.com/orgs/OpenSIN-AI/projects/18)
 - Required Files Manifest: [Template-SIN-Agent/required-files.manifest.json](https://github.com/OpenSIN-AI/Template-SIN-Agent/blob/main/required-files.manifest.json)
 - Repo Governance Contract: [Template-SIN-Agent/governance/repo-governance.json](https://github.com/OpenSIN-AI/Template-SIN-Agent/blob/main/governance/repo-governance.json)

@@ -24,7 +24,7 @@ V1 Launch targets **3 flagship agents** (MiroFish, X-Twitter, Discord) on **4 pr
 | **G7** | HF Spaces Fleet — 6 Cloud Coder Spaces keep-alive | ✅ DONE | `hf-keep-alive.yml` deployed in `Infra-SIN-OpenCode-Stack`; Issue #10 closed |
 | **G8** | CLI Install Proof — `bun install -g opensin-code` on clean VM | 🔴 OPEN | Global install smoke test in CI not yet proven |
 | **G9** | ? | — | — |
-| **G10** | Link Sweep — Delqhi → OpenSIN-AI link replacement | ✅ 90% DONE | Core repos updated; some boundary branches may need final sweep |
+| **G10** | Link Sweep — legacy alias cleanup | ✅ 90% DONE | Core repos updated; some boundary branches may need final sweep |
 
 ---
 

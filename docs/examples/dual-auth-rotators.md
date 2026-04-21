@@ -121,14 +121,14 @@ Documented safe behavior for `~/.config/openAntigravity-auth-rotator/`:
 
 ## OpenAI pool recovery
 
-Documented safe behavior for `/Users/jeremy/dev/openai-google-rotator/` and OCI gateway components:
+Documented safe behavior for the canonical auth-rotator surfaces and the OCI gateway components:
 
 - restored AppleScript-based native Chrome dialog handling in `fast_runner.py`
 - kept OpenAI debugging independent from antigravity daemon behavior
 - updated `.env` to use the direct Supabase endpoint:
 
 ```text
-SUPABASE_URL=http://92.5.60.87:8006
+SUPABASE_URL=<canonical-supabase-url>
 ```
 
 - ensured fresh tokens were pushed into `openai_tokens`
@@ -136,7 +136,7 @@ SUPABASE_URL=http://92.5.60.87:8006
 - restored OCI gateway `OPENAI_BASE` to:
 
 ```text
-http://92.5.60.87:4100/v1
+<canonical-openai-gateway-base>/v1
 ```
 
 ## Validation evidence
@@ -200,9 +200,9 @@ That is a project/permission issue, not evidence that the antigravity watcher sh
 - `~/.config/openAntigravity-auth-rotator/src/rotator.py`
 - `~/.config/openAntigravity-auth-rotator/src/config.py`
 - `~/.cache/opencode/node_modules/opencode-antigravity-auth/dist/src/plugin.js`
-- `/Users/jeremy/dev/openai-google-rotator/fast_runner.py`
-- `/Users/jeremy/dev/openai-google-rotator/push_to_pool.py`
-- `/Users/jeremy/dev/openai-google-rotator/token_pool.py`
+- `./fast_runner.py`
+- `./push_to_pool.py`
+- `./token_pool.py`
 - `/opt/llm-gateway/gateway.py`
 
 ## Outcome

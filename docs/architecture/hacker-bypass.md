@@ -39,7 +39,7 @@ resp = requests.get(url, impersonate="chrome124")
 ```
 
 ### 3. Human Emulation Layer
-The `HumanEmulator` class (implemented in `A2A-SIN-Worker-Prolific` and others) provides:
+The `HumanEmulator` class (implemented in specialized worker runtimes and related automation surfaces) provides:
 - **Variable Typing Speed**: Mimics human WPM with natural mistakes/corrections.
 - **Bezier Mouse Movements**: Avoids straight lines between coordinates.
 - **Randomized Micro-Pauses**: Prevents detection of constant request intervals.

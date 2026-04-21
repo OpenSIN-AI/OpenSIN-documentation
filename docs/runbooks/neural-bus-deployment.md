@@ -2,7 +2,7 @@
 
 **Status:** LIVE ✅  
 **Deployed:** 2026-04-09  
-**Host:** OCI VM `ubuntu@92.5.60.87`
+**Host:** canonical OCI VM (private infrastructure host)
 
 ---
 
@@ -25,16 +25,16 @@
 
 ```bash
 # NATS client (JetStream enabled)
-nats://92.5.60.87:4222
+nats://<canonical-oci-vm>:4222
 
 # NATS monitoring dashboard
-http://92.5.60.87:8222/varz
+http://<canonical-oci-vm>:8222/varz
 
 # Redis (password required)
-redis://:${REDIS_PASSWORD}@92.5.60.87:6380
+redis://:${REDIS_PASSWORD}@<canonical-oci-vm>:6380
 
 # pgvector / Ouroboros DNA DB
-postgresql://opensin:${PG_PASSWORD}@92.5.60.87:5435/ouroboros_dna
+postgresql://opensin:${PG_PASSWORD}@<canonical-oci-vm>:5435/ouroboros_dna
 ```
 
 ---
@@ -44,9 +44,9 @@ postgresql://opensin:${PG_PASSWORD}@92.5.60.87:5435/ouroboros_dna
 In any A2A agent, inject via environment or `opencode` secrets:
 
 ```python
-NATS_URL = "nats://92.5.60.87:4222"
-REDIS_URL = "redis://:REDIS_PASSWORD@92.5.60.87:6380"
-PG_DSN   = "postgresql://opensin:PG_PASSWORD@92.5.60.87:5435/ouroboros_dna"
+NATS_URL = "nats://<canonical-oci-vm>:4222"
+REDIS_URL = "redis://:REDIS_PASSWORD@<canonical-oci-vm>:6380"
+PG_DSN   = "postgresql://opensin:PG_PASSWORD@<canonical-oci-vm>:5435/ouroboros_dna"
 ```
 
 Credentials are stored in `~/OpenSIN-Neural-Bus/.env` on the OCI VM. **Never commit `.env` to the repo.**
@@ -56,7 +56,7 @@ Credentials are stored in `~/OpenSIN-Neural-Bus/.env` on the OCI VM. **Never com
 ## Management Commands (run on OCI via SSH)
 
 ```bash
-ssh ubuntu@92.5.60.87
+ssh ubuntu@<canonical-oci-vm>
 
 # Status
 cd ~/OpenSIN-Neural-Bus && docker compose ps

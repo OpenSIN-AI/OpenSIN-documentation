@@ -1,73 +1,64 @@
-# 📋 How to Configure New Agents (A2A v5)
+# How to Configure New Agents
 
-> **Target Audience:** Admins & Developers adding new agents to the OpenSIN-AI fleet.
-> **Version:** 5.0.0 (April 2026)
+This page describes the current OpenSIN path for introducing new agents without
+creating duplicate repos or drifting away from canonical ownership.
 
-## 1. Define the Agent
-Determine the agent's name, team, and role.
+> [!IMPORTANT]
+> Before creating any new agent surface, read
+> [`OpenSIN-overview/docs/CANONICAL-REPOS.md`](https://github.com/OpenSIN-AI/OpenSIN-overview/blob/main/docs/CANONICAL-REPOS.md).
+> Many new agent ideas belong inside an existing `Team-SIN-*` monorepo instead
+> of a brand-new repository.
 
-```
-Name: A2A-SIN-New-Agent
-Team: Team Coding
-Type: Coder Agent
-```
+## Step 1: Decide Where the Agent Belongs
 
-## 2. Register in oh-my-sin.json
-Open `oh-my-sin.json` and add the agent to its team's `members` array.
+Use this rule first:
 
-```json
-"teams": {
-    "team-code": {
-        "name": "Team Coding",
-        "members": ["...existing...", "A2A-SIN-New-Agent"]
-    }
-}
-```
+- if the agent belongs to an existing team, add it to that `Team-SIN-*` repo
+- if it requires a new standalone agent repo, start from `Template-SIN-Agent`
+- if you are unsure, open a repo proposal in `OpenSIN-overview` before coding
 
-## 3. Run the Ultimate Skill
-Use the `/create-a2a-sin-agent` skill in OpenCode.
+## Step 2: Use the Canonical Template
 
-```bash
-/create-a2a-sin-agent
-# Follow prompts for name, team, and capabilities
-```
+OpenSIN standardizes new standalone agents from:
 
-This will automatically generate:
-- `agent.json` (with marketplace metadata)
-- `A2A-CARD.md` (for discovery)
-- `config/telegram-bot.yaml`
-- `config/hf-space.yaml`
-- `governance/*.json` (security and workflow rules)
-- `Dockerfile` (production ready)
+- [`Template-SIN-Agent`](https://github.com/OpenSIN-AI/Template-SIN-Agent)
 
-## 4. Update n8n Workflows
-If this is a new Team, run the n8n workflow generator script:
+This template is the canonical blueprint for new A2A-capable agents.
 
-```bash
-python3 scripts/generate-n8n-workflows.py
-# Import the resulting JSON into n8n via CLI or UI
-```
+## Step 3: Register the Agent in Canonical Config
 
-## 5. Deploy to HF Space
-The skill generates a space in `/tmp/hf-space-packages/<slug>`.
+Agent registration and model routing belong in the canonical OpenCode stack:
 
-```bash
-cd /tmp/hf-space-packages/a2a-sin-new-agent
-hf repo create delqhi/a2a-sin-new-agent --type space
-git push origin main
-```
+- `OpenSIN-AI/Infra-SIN-OpenCode-Stack`
+- local `~/.config/opencode/*` files when working on a machine-specific setup
 
-## 6. Verify Live Status
-Check `http://92.5.60.87:8006` (Supabase) to ensure the agent is listed in the `agents` table.
+Update only the canonical config locations. Do not invent parallel config repos.
 
----
+## Step 4: Define the Agent Contract
 
-## Relevante Mandate
+Every production-grade agent needs at minimum:
 
-| Mandat | Priority | Doku |
-|--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+- `agent.json`
+- `.well-known/agent-card.json`
+- `AGENTS.md`
+- governance metadata required by the template
 
-→ [Alle Mandate](/best-practices/code-quality)
+## Step 5: Verify Ownership and Exposure
+
+Before claiming the agent is ready:
+
+- confirm the owning repo is canonical
+- confirm the docs point to the right repo and surface
+- confirm any public endpoint is verified before publishing it in docs
+
+## Step 6: Publish Safely
+
+Public docs must not expose internal IPs, internal dashboards, or unverified
+production endpoints. If an endpoint is not publicly verified, document it as
+internal/unverified instead of presenting it as final truth.
+
+## Related
+
+- [Agent Configuration](/guide/agent-configuration)
+- [Building Custom Agents](/tutorials/custom-agents)
+- [A2A Protocol](/guide/a2a-protocol)

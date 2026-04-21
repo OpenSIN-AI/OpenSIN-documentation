@@ -41,7 +41,7 @@ Without persistent context, every agent session starts from scratch. The Global-
 
 ```bash
 # In every project root, before any other work:
-node /Users/jeremy/dev/global-brain/src/cli.js setup-hooks \
+node /path/to/Infra-SIN-Global-Brain/src/cli.js setup-hooks \
   --project $(basename "$PWD") \
   --project-root "$PWD" \
   --agents-directive
@@ -135,10 +135,10 @@ For local development, replace the URL with `http://localhost:8765/mcp`.
 This mandate is enforced at multiple levels:
 
 1. **Global AGENTS.md** (`~/.config/opencode/AGENTS.md`) — Priority -9.5 rule
-2. **upgraded-opencode-stack installer** — checks for Simone MCP coupling on install
-3. **MANDATE-0.34.md** — canonical blueprint mandate file in `upgraded-opencode-stack`
+2. **Infra-SIN-OpenCode-Stack installer** — checks for Simone MCP coupling on install
+3. **MANDATE-0.34.md** — canonical blueprint mandate file in `Infra-SIN-OpenCode-Stack`
 4. **worker-code.md** — explicit `<orchestration_mandate>` block in every worker instruction
-5. **Template-A2A-SIN-Agent AGENTS.md** — every new agent inherits this requirement
+5. **Template-SIN-Agent AGENTS.md** — every new agent inherits this requirement
 
 **Violation = architectural failure.** If an agent edits code without Simone MCP + PCPM active, its changes are considered unverified and must be reviewed before merge.
 

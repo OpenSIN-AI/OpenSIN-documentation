@@ -1,6 +1,6 @@
-# Passwordmanager (A2A-SIN-Passwordmanager)
+# Passwordmanager
 
-The **A2A-SIN-Passwordmanager** is the central secrets authority for the OpenSIN ecosystem. Every agent, extension, and service retrieves credentials through it.
+The OpenSIN Passwordmanager is the central secrets authority for the OpenSIN ecosystem. Every agent, extension, and service retrieves credentials through it.
 
 ## Architecture
 
@@ -71,7 +71,9 @@ See [Onboarding Guide](/guide/onboarding) for automated setup, or the [Infra-SIN
 
 ## Source Code
 
-[OpenSIN-backend/a2a/team-infrastructure/A2A-SIN-Passwordmanager](https://github.com/OpenSIN-AI/OpenSIN-backend/tree/main/a2a/team-infrastructure/A2A-SIN-Passwordmanager)
+The canonical runtime implementation belongs to the infrastructure/auth surfaces
+owned by `OpenSIN-backend`. Public docs intentionally avoid over-specifying
+internal folder topology when it is not required for end users.
 
 ---
 
