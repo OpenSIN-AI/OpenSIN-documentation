@@ -1,205 +1,197 @@
+/**
+ * OpenSIN-AI Documentation Theme - SOVEREIGN STANDARD
+ * 🚨 ANTI-DEMENZ PROTOCOL: DO NOT REMOVE VISUAL REFINEMENTS 🚨
+ */
+
 :root {
-  color-scheme: dark;
-  --vp-c-brand-1: #008060;
-  --vp-c-brand-2: #00ff9e;
-  --vp-c-brand-3: #006e52;
-  --vp-c-brand-soft: rgba(0, 128, 96, 0.18);
+  /* [BRAND TOKENS] */
+  --vp-c-brand-1: #00cc88;
+  --vp-c-brand-2: #00ffaa;
+  --vp-c-brand-3: #00aa77;
+  --vp-c-brand-soft: rgba(0, 204, 136, 0.14);
+
+  /* [LIGHT MODE] */
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f6f6f7;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f6f6f7;
+  --vp-c-text-1: #0a0a0a;
+  --vp-c-text-2: #444444;
+  --vp-c-divider: rgba(0, 0, 0, 0.1);
+  --vp-code-bg: #f8f8f8;
+  
+  /* [BUTTONS LIGHT] */
+  --vp-button-brand-bg: #00cc88;
+  --vp-button-brand-border: #00cc88;
+  --vp-button-brand-text: #ffffff;
+  --vp-button-alt-bg: #f6f6f7;
+  --vp-button-alt-border: #dcdde1;
+  --vp-button-alt-text: #0a0a0a;
+}
+
+.dark {
+  /* [DARK MODE] */
   --vp-c-bg: #0a0a0a;
   --vp-c-bg-alt: #0a0a0a;
   --vp-c-bg-elv: #141414;
   --vp-c-bg-soft: #1a1a1a;
-  --vp-c-divider: #2a2a2a;
-  --vp-c-gutter: #141414;
-  --vp-c-text-1: #f5f5f5;
-  --vp-c-text-2: #a0a0a0;
-  --vp-c-text-3: #666666;
-  --vp-c-text-4: #3f3f46;
-  --vp-button-brand-bg: #00ff9e;
-  --vp-button-brand-border: #00ff9e;
+  --vp-c-text-1: #ececf1;
+  --vp-c-text-2: #c5c5d2;
+  --vp-c-divider: rgba(255, 255, 255, 0.1);
+  --vp-code-bg: #0f1115;
+  
+  /* [BUTTONS DARK] */
   --vp-button-brand-text: #0a0a0a;
-  --vp-button-brand-hover-bg: #008060;
-  --vp-button-brand-hover-border: #008060;
-  --vp-button-brand-hover-text: #ffffff;
-  --vp-button-alt-bg: transparent;
+  --vp-button-alt-bg: #1a1a1a;
   --vp-button-alt-border: #2a2a2a;
-  --vp-button-alt-text: #f5f5f5;
-  --vp-button-alt-hover-bg: rgba(0, 128, 96, 0.08);
-  --vp-button-alt-hover-border: #008060;
-  --vp-button-alt-hover-text: #00ff9e;
-  --vp-home-hero-name-color: #f5f5f5;
-  --vp-home-hero-name-background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 35%, #00ff9e 100%);
-  --vp-home-hero-image-background-image: radial-gradient(circle at center, rgba(0, 128, 96, 0.20) 0%, rgba(0, 255, 158, 0.04) 45%, rgba(0, 128, 96, 0) 72%);
-  --vp-home-hero-image-filter: blur(52px);
+  --vp-button-alt-text: #ececf1;
 }
 
-html, body, #app {
-  background: #0a0a0a;
+/* 🚨 MANDATORY BUTTON SHAPE 🚨 */
+.VPButton, .VPButton:hover {
+  border-radius: 8px !important; 
+  font-weight: 600 !important;
 }
 
-body {
-  color: #f5f5f5;
-}
-
-.VPNav {
-  background: rgba(10, 10, 10, 0.84);
-  border-bottom: 1px solid rgba(42, 42, 42, 0.88);
-  backdrop-filter: blur(18px);
-}
-
-.VPNavBarTitle .title {
-  color: #f5f5f5;
-}
-
-.VPNavBarMenuLink,
-.VPNavBarMenuGroup .text {
-  color: #a0a0a0;
-}
-
-.VPNavBarMenuLink:hover,
-.VPNavBarMenuGroup .text:hover {
-  color: #f5f5f5;
-}
-
-.VPNavBarMenuLink.active,
-.VPNavBarMenuGroup .text.active {
-  color: #008060;
-}
-
-.VPSidebar {
-  background: linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
-  border-right: 1px solid #2a2a2a;
-}
-
-.VPSidebarItem .text {
-  color: #a0a0a0;
-}
-
-.VPSidebarItem.is-active .text {
-  color: #008060;
-}
-
-.VPSidebarItem:hover .text {
-  color: #f5f5f5;
-}
-
-.VPSidebarItem .link:hover,
-.VPSidebarItem .link.active {
-  background: rgba(0, 128, 96, 0.08);
-}
-
-.VPHero .name,
-.VPHero .text {
-  font-weight: 100;
-  letter-spacing: -0.04em;
-}
-
-.VPHero .tagline {
-  color: #a0a0a0;
-}
-
-.VPHero .actions {
-  gap: 0.75rem;
-}
-
-.VPButton {
-  border-radius: 8px;
-}
-
-.VPButton.brand {
-  box-shadow: 0 0 0 1px rgba(0, 255, 158, 0.12), 0 0 18px rgba(0, 128, 96, 0.18);
-}
-
-.VPButton.brand:hover {
-  box-shadow: 0 0 0 1px rgba(0, 255, 158, 0.18), 0 0 28px rgba(0, 255, 158, 0.16);
-}
-
-.VPFeatures {
-  gap: 1.5rem;
-}
-
-.VPFeature {
-  background: linear-gradient(180deg, rgba(20, 20, 20, 0.96) 0%, rgba(10, 10, 10, 0.98) 100%);
-  border: 1px solid #2a2a2a;
+/* Homepage feature icons: premium green cards, not plain raw images. */
+.VPFeature .icon {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
   border-radius: 12px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  background: rgba(0, 204, 136, 0.08);
+  border: 1px solid rgba(0, 204, 136, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
-.VPFeature:hover {
-  border-color: #008060;
-  box-shadow: 0 0 0 1px rgba(0, 128, 96, 0.16), 0 18px 40px rgba(0, 0, 0, 0.35);
-  transform: translateY(-2px);
+html:not(.dark) .VPFeature .icon {
+  background: rgba(0, 204, 136, 0.07);
+  border-color: rgba(0, 128, 96, 0.16);
 }
 
-.vp-doc, .VPDoc {
-  color: #f5f5f5;
-}
-
-.vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4, .vp-doc h5, .vp-doc h6 {
-  color: #f5f5f5;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-}
-
-.vp-doc p, .vp-doc li, .vp-doc td {
-  color: #a0a0a0;
-}
-
-.vp-doc a {
-  color: #00ff9e;
-}
-
-.vp-doc a:hover {
-  color: #f5f5f5;
-}
-
-.vp-doc blockquote {
-  border-left-color: #008060;
-  background: rgba(20, 20, 20, 0.88);
-  color: #a0a0a0;
-}
-
+/* 🚨 TABLE ENHANCEMENTS 🚨 */
 .vp-doc table {
-  border: 1px solid #2a2a2a;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 32px 0;
+  border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   overflow: hidden;
-}
-
-.vp-doc thead {
-  background: #141414;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .vp-doc th {
-  color: #f5f5f5;
-  border-bottom: 1px solid #2a2a2a;
+  background-color: var(--vp-c-bg-soft) !important;
+  padding: 16px 20px !important;
+  text-align: left;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .vp-doc td {
-  background: rgba(20, 20, 20, 0.7);
-  border-color: #2a2a2a;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
 }
 
-.vp-doc :not(pre) > code {
-  background: rgba(34, 34, 34, 0.92);
-  color: #c1fbd4;
-  border: 1px solid #2a2a2a;
+/* 🚨 CODE BLOCKS REPAIR (BUG-002: Fixed floating label) 🚨 */
+.vp-doc div[class*='language-'] {
+  background: var(--vp-code-bg) !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  border-radius: 12px !important;
+  position: relative;
+  overflow: hidden;
+  margin: 32px 0;
 }
 
-.vp-code-group, .vp-code, .vp-doc pre {
-  background: #222222;
-  border-color: #2a2a2a;
+.vp-doc div[class*='language-'] > span.lang {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.6;
 }
 
-.vp-doc hr {
-  border-color: #2a2a2a;
+.vp-doc div[class*='language-'] > button.copy {
+  position: absolute;
+  top: 8px;
+  right: 48px; /* Neben das Label schieben */
+  z-index: 3;
 }
 
-::selection {
-  background: rgba(0, 255, 158, 0.22);
-  color: #f5f5f5;
+.vp-doc pre {
+  margin: 0 !important;
+  padding: 24px 20px !important;
+  background: transparent !important;
 }
 
-::-webkit-scrollbar { width: 12px; height: 12px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
-::-webkit-scrollbar-thumb { background: #2a2a2a; border: 3px solid #0a0a0a; border-radius: 999px; }
-::-webkit-scrollbar-thumb:hover { background: #008060; }
+/* 🚨 CUSTOM CONTAINERS (ALERTS) - Billion Dollar Restoration 🚨 */
+.vp-doc .custom-block {
+  margin: 24px 0;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border-left: 4px solid transparent;
+  line-height: 1.6;
+}
+
+.vp-doc .custom-block .custom-block-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+/* [TIP] - OpenSIN Green Glow */
+.vp-doc .custom-block.tip {
+  background-color: rgba(0, 204, 136, 0.05) !important;
+  border-color: #00cc88 !important;
+}
+.vp-doc .custom-block.tip .custom-block-title { color: #00ffaa; }
+
+/* [WARNING] - Solar Yellow */
+.vp-doc .custom-block.warning {
+  background-color: rgba(255, 191, 0, 0.05) !important;
+  border-color: #ffbf00 !important;
+}
+.vp-doc .custom-block.warning .custom-block-title { color: #ffdb70; }
+
+/* [DANGER / CAUTION] - Crimson Red */
+.vp-doc .custom-block.danger, .vp-doc .custom-block.caution {
+  background-color: rgba(255, 95, 86, 0.05) !important;
+  border-color: #ff5f56 !important;
+}
+.vp-doc .custom-block.danger .custom-block-title, 
+.vp-doc .custom-block.caution .custom-block-title { color: #ff918a; }
+
+/* [IMPORTANT / INFO] - Deep Sky */
+.vp-doc .custom-block.important, .vp-doc .custom-block.info {
+  background-color: rgba(0, 153, 255, 0.05) !important;
+  border-color: #0099ff !important;
+}
+.vp-doc .custom-block.important .custom-block-title,
+.vp-doc .custom-block.info .custom-block-title { color: #70c5ff; }
+
+/* Ensure text inside alerts is readable in both modes */
+.vp-doc .custom-block p {
+  color: var(--vp-c-text-1) !important;
+  margin: 0 !important;
+}
+
+/* 🚨 LOGO PROTECTION 🚨 */
+.VPNavBarTitle .logo { height: 32px !important; width: auto !important; margin-right: 12px !important; }
+.VPHero .image-container .image-src { max-width: 280px !important; height: auto !important; }
+
+body { font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+.VPNav { backdrop-filter: blur(10px); border-bottom: 1px solid var(--vp-c-divider); }
+.VPSwitchAppearance { display: flex !important; }
