@@ -90,7 +90,7 @@ jobs:
       - name: Lint check (no npm patterns)
         run: |
           echo "=== BUN-ONLY Verification ==="
-          NPM_PATTERNS=$(grep -RInE "npm install|npm run|package-lock|npx " . \
+          NPM_PATTERNS=$(grep -RInE "npm install|npm run|package-lock|npx |bunx " . \
             --include="*.md" \
             --include="*.json" \
             --include="*.yml" \
@@ -117,7 +117,7 @@ jobs:
       - name: Build docs
         run: |
           echo "=== VitePress Build ==="
-          bun x vitepress build docs
+          bun ./scripts/build-docs.mjs
 
       # -----------------------------------------------------------------------
       # STEP 7: Verify build output exists
@@ -192,7 +192,7 @@ jobs:
 
       # -----------------------------------------------------------------------
       # STEP 2: Deploy to Cloudflare Pages
-      # Uses wrangler for deployment (bun run deploy, NOT npm run deploy)
+      # Uses Cloudflare Pages action for deployment (direct artifact upload, not npm)
       # -----------------------------------------------------------------------
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1

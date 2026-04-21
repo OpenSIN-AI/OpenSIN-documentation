@@ -87,4 +87,4 @@ jobs:
           echo "✅ No package-lock.json after bun install"
       
       - name: Try build
-        run: bun run build || echo "⚠️  Build failed (may be expected for docs repos)"
+        run: bun ./scripts/build-docs.mjs || echo "⚠️  Build failed (may be expected for docs repos)"

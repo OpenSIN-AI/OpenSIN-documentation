@@ -25,8 +25,8 @@ Before adding a page or top-level claim, answer:
 
 ```bash
 bun install
-bun run docs:dev
-node node_modules/vitepress/bin/vitepress.js build docs
+bun ./scripts/dev-docs.mjs
+bun ./scripts/build-docs.mjs
 ```
 
 ## PR checklist

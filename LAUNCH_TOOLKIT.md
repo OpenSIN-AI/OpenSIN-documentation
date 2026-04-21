@@ -26,7 +26,7 @@
 - **Hybrid Memory:** Qdrant (Vector) + Neo4j (Graph) = smarteres Indexing.
 - **Security:** OAuth 2.1 + PKCE.
 - **Native A2A:** OpenSIN-first agent workflow.
-- **1-Click Install:** `bunx @opensin/simone-mcp start`
+- **1-Click Install:** `bun x @opensin/simone-mcp start`
 
 ## 3. Reddit Post Template (r/LocalLLaMA, r/mcp)
 **Title:** [Show HN] Simone MCP: Enterprise MCP 2.0 + A2A Code Worker with Hybrid Memory

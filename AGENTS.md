@@ -40,9 +40,9 @@ After any credential discovery: immediately push to global-brain.
 
 | Rule | Requirement |
 |------|-------------|
-| **Package Manager** | `bun install`/`bun run` ONLY — npm/bunx permanently banned |
+| **Package Manager** | `bun install` / direct `bun` scripts ONLY — npm/bunx permanently banned |
 | **Node.js** | >= 20 required |
-| **Build** | `bun run build` (not bun run build) |
+| **Build** | `bun ./scripts/build-docs.mjs` |
 | **LLM Calls** | `opencode run --format json` ONLY — no direct API calls |
 
 **BANNED Technologies (immediate permanent ban):**
@@ -71,7 +71,7 @@ This repo is flagged for update to OpenSIN 2026 standards. Key areas:
 ### Phase 2 Standardization
 - [x] Docs: verify README.md current ✅ (updated with new structure)
 - [x] MCP config in .opencode/opencode.json ✅ (webauto-nodriver, sin-brain, sin-github-issues, simone-mcp, sin-document-forge, sin-telegrambot)
-- [x] CI/CD uses bun in GitHub Actions ✅ (wrangler deploy, no npm)
+- [x] CI/CD uses direct Bun build in GitHub Actions ✅ (Cloudflare Pages action, no npm/bunx)
 
 ### ✅ COMPLETED: Dynamic Input Commands (2026-04-16)
 
@@ -140,14 +140,13 @@ Before claiming work complete, run:
 
 ```bash
 # Verify bun only (no npm)
-grep -r "npm install\|npm run\|npx " . --include="*.md" --include="*.json" | grep -v node_modules || echo "CLEAN"
+grep -r "npm install\|npm run\|npx \|bunx " . --include="*.md" --include="*.json" | grep -v node_modules || echo "CLEAN"
 
 # Verify OpenCode JSON valid
 cat .opencode/opencode.json | python3 -c "import json,sys; json.load(sys.stdin)" && echo "VALID JSON"
 
-# Verify docs build (use bun x — "bun run docs:build" is broken on this machine)
-node node_modules/vitepress/bin/vitepress.js build docs
-# or: bun x vitepress build docs
+# Verify docs build (direct Bun invocation; bun run is broken on this machine)
+bun ./scripts/build-docs.mjs
 ```
 
 ## 🚫 ABSOLUTE PROHIBITIONS

@@ -1,20 +1,16 @@
 {
   "name": "opensin-docs",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "description": "OpenSIN documentation site \u2014 docs.opensin.ai",
   "type": "module",
-  "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "node node_modules/vitepress/bin/vitepress.js build docs",
-    "docs:preview": "vitepress preview",
-    "build": "node node_modules/vitepress/bin/vitepress.js build docs",
-    "deploy": "wrangler pages deploy .vitepress/dist --project-name opensin-docs",
-    "test": "vitest run",
-    "test:watch": "vitest"
-  },
   "devDependencies": {
     "vitepress": "^1.5.0",
     "wrangler": "^4.80.0"
   },
-  "packageManager": "bun@latest"
+  "packageManager": "bun@latest",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "bun ./scripts/build-docs.mjs",
+    "preview": "vitepress preview docs"
+  }
 }
