@@ -53,6 +53,41 @@
   font-weight: 600 !important;
 }
 
+/**
+ * BUTTON CONTRACT — DO NOT CHANGE CASUALLY
+ * The user explicitly wanted the homepage buttons back in the compact 8px style,
+ * and hover must preserve shape, contrast, and premium appearance.
+ * If buttons are touched again, preserve these states 1:1.
+ */
+.VPButton.brand {
+  background: var(--vp-button-brand-bg) !important;
+  border: 1px solid var(--vp-button-brand-border) !important;
+  color: var(--vp-button-brand-text) !important;
+  box-shadow: 0 10px 24px rgba(0, 204, 136, 0.18);
+}
+
+.VPButton.brand:hover {
+  background: var(--vp-c-brand-2) !important;
+  border-color: var(--vp-c-brand-2) !important;
+  color: var(--vp-button-brand-text) !important;
+  box-shadow: 0 14px 30px rgba(0, 204, 136, 0.24) !important;
+  transform: translateY(-1px);
+}
+
+.VPButton.alt {
+  background: var(--vp-button-alt-bg) !important;
+  border: 1px solid var(--vp-button-alt-border) !important;
+  color: var(--vp-button-alt-text) !important;
+}
+
+.VPButton.alt:hover {
+  background: var(--vp-button-alt-bg) !important;
+  border-color: var(--vp-c-brand-1) !important;
+  color: var(--vp-button-alt-text) !important;
+  box-shadow: 0 10px 24px rgba(0, 204, 136, 0.08) !important;
+  transform: translateY(-1px);
+}
+
 /* Homepage feature icons: premium green cards, not plain raw images. */
 .VPFeature .icon {
   width: 52px;
