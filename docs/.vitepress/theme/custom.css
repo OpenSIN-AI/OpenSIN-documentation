@@ -234,6 +234,8 @@ html:not(.dark) .VPFeature .icon {
   --oa-muted: #6e6e73;
   --oa-border: #e5e5e7;
   --oa-hover: #f5f5f7;
+  --oa-accent: #00cc88; /* OpenSIN Green */
+  --oa-accent-soft: rgba(0, 204, 136, 0.1);
   
   background: var(--oa-bg);
   color: var(--oa-text);
