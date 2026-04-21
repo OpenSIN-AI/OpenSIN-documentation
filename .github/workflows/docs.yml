@@ -63,7 +63,7 @@ jobs:
       # STEP 2: Checkout with full history for proper submodule handling
       # -----------------------------------------------------------------------
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true
           fetch-depth: 0
