@@ -175,64 +175,62 @@ console.log(task.status);</code></pre>
 <style scoped>
 .oad-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 280px 1fr;
   min-height: 100vh;
   background: #ffffff;
 }
 
 .oad-sidebar {
-  padding: 40px 24px;
-  background: #f9f9f9;
-  border-right: 1px solid #e5e5e7;
-}
-
-.oad-sidebar__section {
-  margin-bottom: 32px;
+  padding: 48px 32px;
+  background: #f9fafb;
+  border-right: 1px solid #e5e7eb;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
 }
 
 .oad-sidebar h6 {
-  font-size: 13px;
-  font-weight: 600;
-  color: #1d1d1f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #111827;
   margin-bottom: 12px;
   padding-left: 12px;
-}
-
-.oad-sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .oad-sidebar li {
   padding: 8px 12px;
-  font-size: 14px;
-  color: #6e6e73;
+  font-size: 0.875rem;
+  color: #4b5563;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: all 0.2s ease;
 }
 
 .oad-sidebar li:hover {
   color: #00cc88;
-  background: rgba(0, 204, 136, 0.05);
+  background: #f3f4f6;
 }
 
 .oad-sidebar li.is-active {
-  color: #000000;
-  background: #e5e5e7;
-  font-weight: 500;
+  color: #111827;
+  background: #e5e7eb;
+  font-weight: 600;
 }
 
 .oad-main {
-  padding: 48px 60px;
-  max-width: 1000px;
+  padding: 64px 80px;
+  max-width: 1040px;
 }
 
 .oad-header h1 {
-  font-size: 32px;
-  font-weight: 600;
-  margin-bottom: 40px;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 48px;
+  letter-spacing: -0.03em;
 }
 
 .oad-schnellstart {
