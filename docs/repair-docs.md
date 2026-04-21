@@ -11,6 +11,23 @@
 - Homepage CTA buttons must stay compact and premium.
 - Hover must preserve shape, color contrast, and spacing.
 - Future CSS changes must treat button hover as protected UI state.
+- Tracking issue: [#141](https://github.com/OpenSIN-AI/OpenSIN-documentation/issues/141)
+
+## ✅ VERIFIED HOMEPAGE STATE (LOCKED)
+
+The following state was explicitly verified live and is now treated as the
+homepage baseline until the user requests a deliberate redesign:
+
+- 3 feature cards at the top
+- 2 `Choose Your Path` cards
+- 4 `Related topics` cards
+- no large comparison table on the homepage
+- dynamic sidebar by top navigation section
+- toggle visible in header
+- Discord icon visible in header
+
+Any future homepage fix must preserve this state unless the user requests a
+specific structural change.
 
 ---
 
