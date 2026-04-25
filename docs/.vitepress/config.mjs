@@ -1,32 +1,28 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'OpenSIN-AI Documentation',
-  description: 'Consumer documentation, governance, and surface registry for the OpenSIN-AI ecosystem.',
+  title: 'OpenSIN API Platform Documentation',
+  description: 'Guides and concepts for the OpenSIN API.',
   lang: 'en-US',
   ignoreDeadLinks: true,
   head: [
-    ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'icon', href: '/logo.png' }],
     ['link', { rel: 'canonical', href: 'https://docs.opensin.ai/' }],
-    ['meta', { property: 'og:title', content: 'OpenSIN-AI Documentation' }],
-    ['meta', { property: 'og:description', content: 'Consumer documentation, governance, and surface registry for the OpenSIN-AI ecosystem.' }],
+    ['meta', { property: 'og:title', content: 'OpenSIN API Platform Documentation' }],
+    ['meta', { property: 'og:description', content: 'Guides and concepts for the OpenSIN API.' }],
     ['meta', { property: 'og:image', content: 'https://docs.opensin.ai/social-preview.svg' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:image', content: 'https://docs.opensin.ai/social-preview.svg' }],
   ],
   themeConfig: {
-    siteTitle: 'OpenSIN-AI',
-    logo: '/logo.png',
+    siteTitle: 'OpenSIN Developers',
+    logo: '/logo.svg',
     nav: [
-      { text: 'Guide', link: '/guide/getting-started' },
+      { text: 'Home', link: '/' },
       { text: 'API', link: '/api/' },
-      { text: 'Architecture', link: '/architecture/overview' },
-      { text: 'SDK', link: '/sdk/overview' },
-      { text: 'Plugins', link: '/plugins/registry' },
-      { text: 'Fleet', link: '/fleet/overview' },
-      { text: 'Blog', link: 'https://blog.opensin.ai' },
-      { text: 'Developer docs', link: 'https://developers.opensin.ai/docs/' },
-      { text: 'Marketplace', link: 'https://my.opensin.ai' },
+      { text: 'OpenSIN Code', link: '/guide/opensin-code' },
+      { text: 'Chat', link: 'https://chat.opensin.ai' },
+      { text: 'Resources', link: '/guide/getting-started' },
     ],
     sidebar: {
       '/guide/': [
@@ -104,7 +100,7 @@ export default defineConfig({
             { text: 'Context Analysis', link: '/plugins/context-analysis' },
             { text: 'Agent Memory', link: '/plugins/agent-memory' },
             { text: 'MCP Servers', link: '/plugins/mcp-servers' },
-            { text: 'OpenSIN Code Plugins', link: '/plugins/opensin-code-plugins' },
+            { text: 'Code Plugins', link: '/plugins/opensin-code-plugins' },
           ],
         },
       ],
@@ -157,7 +153,7 @@ export default defineConfig({
       { icon: 'discord', link: 'https://discord.gg/opensin' },
     ],
     footer: {
-      message: 'Consumer documentation, governance, and surface registry for the OpenSIN-AI ecosystem.',
+      message: 'Guides and concepts for the OpenSIN API.',
       copyright: 'Copyright © 2026 OpenSIN-AI',
     },
     search: {

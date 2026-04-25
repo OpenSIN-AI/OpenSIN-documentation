@@ -1,6 +1,6 @@
 /**
- * OpenSIN-AI Documentation Theme - SOVEREIGN STANDARD
- * 🚨 ANTI-DEMENZ PROTOCOL: DO NOT REMOVE VISUAL REFINEMENTS 🚨
+ * OpenSIN-AI Documentation Theme - CANONICAL DOCS BASELINE
+ * docs.opensin.ai is the visual reference for the rest of the web surfaces.
  */
 
 :root {
@@ -47,18 +47,12 @@
   --vp-button-alt-text: #ececf1;
 }
 
-/* 🚨 MANDATORY BUTTON SHAPE 🚨 */
+/* Button shape baseline */
 .VPButton, .VPButton:hover {
   border-radius: 8px !important; 
   font-weight: 600 !important;
 }
 
-/**
- * BUTTON CONTRACT — DO NOT CHANGE CASUALLY
- * The user explicitly wanted the homepage buttons back in the compact 8px style,
- * and hover must preserve shape, contrast, and premium appearance.
- * If buttons are touched again, preserve these states 1:1.
- */
 .VPButton.brand {
   background: var(--vp-button-brand-bg) !important;
   border: 1px solid var(--vp-button-brand-border) !important;
@@ -88,7 +82,7 @@
   transform: translateY(-1px);
 }
 
-/* Homepage feature icons: premium green cards, not plain raw images. */
+/* Homepage feature icons: premium neutral cards. */
 .VPFeature .icon {
   width: 52px;
   height: 52px;
@@ -97,17 +91,66 @@
   justify-content: center;
   padding: 10px;
   border-radius: 12px;
-  background: rgba(0, 204, 136, 0.08);
-  border: 1px solid rgba(0, 204, 136, 0.18);
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
 html:not(.dark) .VPFeature .icon {
-  background: rgba(0, 204, 136, 0.07);
-  border-color: rgba(0, 128, 96, 0.16);
+  background: #f9fafb;
+  border-color: #e5e7eb;
 }
 
-/* 🚨 TABLE ENHANCEMENTS 🚨 */
+/* Global icon baseline for docs.opensin.ai surfaces */
+.opensin-theme svg,
+.oa-page svg,
+.oad-shell svg,
+.resource-card svg,
+.home-choose-path__card svg,
+.home-related-topics__card svg {
+  display: block;
+  flex-shrink: 0;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.opensin-theme .oa-ann-icon,
+.opensin-theme .feature-tile__icon,
+.opensin-theme .latest-item__icon,
+.opensin-theme .explore-block__icon,
+.opensin-theme .card-thumb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+/* Shared sidebar styling for VitePress subpages */
+.VPSidebar {
+  background: rgba(255, 255, 255, 0.92);
+  border-right: 1px solid var(--vp-c-divider);
+  backdrop-filter: blur(12px);
+}
+
+.VPSidebarItem {
+  border-radius: 10px;
+}
+
+.VPSidebarItem.is-active > .item {
+  color: var(--vp-c-brand-1);
+  background: rgba(0, 204, 136, 0.08);
+}
+
+.VPSidebarItem .item {
+  border-radius: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.VPSidebarItem .item:hover {
+  background: rgba(0, 204, 136, 0.06);
+}
+
+/* Table enhancements */
 .vp-doc table {
   width: 100%;
   border-collapse: separate;
@@ -134,7 +177,7 @@ html:not(.dark) .VPFeature .icon {
   color: var(--vp-c-text-2);
 }
 
-/* 🚨 CODE BLOCKS REPAIR (BUG-002: Fixed floating label) 🚨 */
+/* Code block readability */
 .vp-doc div[class*='language-'] {
   background: var(--vp-code-bg) !important;
   border: 1px solid var(--vp-c-divider) !important;
@@ -170,7 +213,7 @@ html:not(.dark) .VPFeature .icon {
   background: transparent !important;
 }
 
-/* 🚨 CUSTOM CONTAINERS (ALERTS) - Billion Dollar Restoration 🚨 */
+/* Custom containers */
 .vp-doc .custom-block {
   margin: 24px 0;
   padding: 16px 24px;
@@ -223,12 +266,12 @@ html:not(.dark) .VPFeature .icon {
   margin: 0 !important;
 }
 
-/* 🚨 LOGO PROTECTION 🚨 */
+/* Logo sizing */
 .VPNavBarTitle .logo { height: 32px !important; width: auto !important; margin-right: 12px !important; }
 .VPHero .image-container .image-src { max-width: 280px !important; height: auto !important; }
 
-/* [OPENAI 1:1 CLONE SYSTEM] */
-.openai-theme {
+/* OpenAI-inspired content surface, OpenSIN-branded */
+.opensin-theme {
   --oa-bg: #ffffff;
   --oa-text-primary: #111827;
   --oa-text-secondary: #4b5563;
@@ -244,24 +287,24 @@ html:not(.dark) .VPFeature .icon {
   -webkit-font-smoothing: antialiased;
 }
 
-.openai-theme a {
+.opensin-theme a {
   text-decoration: none;
   color: inherit;
   transition: color 0.2s ease;
 }
 
-.openai-theme h1, .openai-theme h2, .openai-theme h3, .openai-theme h4 {
+.opensin-theme h1, .opensin-theme h2, .opensin-theme h3, .opensin-theme h4 {
   color: var(--oa-text-primary);
   letter-spacing: -0.02em;
 }
 
-.openai-theme p {
+.opensin-theme p {
   color: var(--oa-text-secondary);
   line-height: 1.6;
 }
 
 /* Hide VitePress standard elements on custom layouts */
-.openai-theme .VPNav, .openai-theme .VPFooter, .openai-theme .VPLocalNav {
+.opensin-theme .VPNav, .opensin-theme .VPFooter, .opensin-theme .VPLocalNav {
   display: none !important;
 }
 
@@ -269,10 +312,11 @@ html:not(.dark) .VPFeature .icon {
   margin-top: 0;
 }
 
-.dark .openai-theme {
+.dark .opensin-theme {
   --oa-bg: #0a0a0a;
-  --oa-text: #ececf1;
-  --oa-muted: #c5c5d2;
+  --oa-text-primary: #ececf1;
+  --oa-text-secondary: #c5c5d2;
+  --oa-text-muted: #9ca3af;
   --oa-border: #2a2a2a;
   --oa-hover: #1a1a1a;
 }
@@ -327,4 +371,56 @@ html:not(.dark) .VPFeature .icon {
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   padding: 0.2rem 0.4rem;
+}
+
+/* Clickable API link grid used across API reference pages */
+.vp-doc .api-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0 32px;
+}
+
+.vp-doc .api-link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vp-doc .api-link-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+}
+
+.vp-doc .api-link-card strong {
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc .api-link-card span {
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .vp-doc .api-link-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Homepage text polish for canonical docs baseline */
+.oa-hero__subtitle,
+.oa-panel__copy p,
+.oa-card p,
+.home-related-topics__description,
+.home-choose-path__description {
+  color: var(--vp-c-text-2);
 }

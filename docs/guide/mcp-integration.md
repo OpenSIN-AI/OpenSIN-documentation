@@ -1,6 +1,29 @@
+---
+title: MCP Integration
+description: Connect OpenSIN agents to external tools
+---
+
+<script setup>
+const links = [
+  { title: 'Agent Basics', href: '/guide/agent-basics', description: 'Fundamentals of agents and tools.' },
+  { title: 'Team Orchestration', href: '/guide/team-orchestration', description: 'How multiple agents collaborate.' },
+  { title: 'Getting Started', href: '/guide/getting-started', description: 'Setup and first steps.' },
+  { title: 'OpenSIN Code', href: '/guide/opensin-code', description: 'The autonomous coding surface.' },
+]
+</script>
+
 # MCP Integration
 
 The Model Context Protocol (MCP) enables OpenSIN agents to connect to external tools and data sources.
+
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
 
 ## Overview
 

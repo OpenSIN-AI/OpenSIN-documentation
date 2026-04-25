@@ -49,6 +49,9 @@ CORS_DOMAINS = [
     "https://a2a.delqhi.com",
 ]
 
+POLL_MAX_ATTEMPTS = 12
+POLL_INTERVAL_SECONDS = 5
+
 # Output file for credentials
 CREDENTIALS_FILE = "/Users/jeremy/dev/OpenSIN-documentation/.opencode/flows/box-developer-app-creation/credentials.json"
 
@@ -91,6 +94,145 @@ async def take_screenshot(page, name: str):
     await page.save_screenshot(screenshot_path)
     print(f"[INFO] Screenshot saved: {screenshot_path}")
     return screenshot_path
+
+
+async def poll_until(label: str, check_fn, *, max_attempts: int = POLL_MAX_ATTEMPTS, interval_seconds: int = POLL_INTERVAL_SECONDS):
+    """Poll a fresh condition multiple times before giving up."""
+    last_error = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            result = await check_fn()
+        except Exception as exc:
+            last_error = exc
+            print(f"[WARN] {label} poll attempt {attempt}/{max_attempts} failed: {exc}")
+            result = None
+
+        if result:
+            print(f"[INFO] {label} satisfied on attempt {attempt}/{max_attempts}")
+            return result
+
+        if attempt < max_attempts:
+            print(
+                f"[INFO] {label} not ready yet on attempt {attempt}/{max_attempts}; retrying in {interval_seconds}s"
+            )
+            await asyncio.sleep(interval_seconds)
+
+    if last_error:
+        raise TimeoutError(
+            f"{label} timed out after {max_attempts} attempts (last error: {last_error})"
+        )
+    raise TimeoutError(f"{label} timed out after {max_attempts} attempts")
+
+
+async def find_opensin_app_link(page):
+    """Re-read the page and return the OpenSIN app link if Box exposes it."""
+    return await page.query_selector("tr:has-text('OpenSIN') a, a:has-text('OpenSIN')")
+
+
+async def find_opensin_app_row(page):
+    """Re-read the app list and report whether OpenSIN is visible."""
+    return await page.evaluate("""
+        () => {
+            const rows = document.querySelectorAll('tr');
+            for (const row of rows) {
+                if ((row.textContent || '').includes('OpenSIN')) {
+                    return 'found';
+                }
+            }
+            return null;
+        }
+    """)
+
+
+async def find_new_app_button(page):
+    """Re-read the page and return the new-app button if Box exposes it."""
+    return await page.query_selector("button:has-text('Neue App'), button:has-text('New App')")
+
+
+async def find_app_name_input(page):
+    """Re-read the page and return the app-name input if Box exposes it."""
+    return await page.query_selector(
+        "input[name='name'], input[placeholder*='App'], input[type='text']"
+    )
+
+
+async def find_app_submit_button(page):
+    """Re-read the page and return the create/submit button if Box exposes it."""
+    return await page.query_selector(
+        "button:has-text('Erstellen'), button:has-text('Create')"
+    )
+
+
+async def extract_developer_token(page):
+    """Re-read the page and extract a visible developer token if present."""
+    page_content = await page.evaluate("() => document.body.innerText")
+    token_match = re.search(r"([a-zA-Z0-9]{40,})", page_content)
+    if token_match:
+        potential_token = token_match.group(1)
+        if len(potential_token) > 40:
+            return potential_token
+    return None
+
+
+async def find_developer_token_section(page):
+    """Re-read the page and return the token section if Box exposes it."""
+    return await page.query_selector(
+        "*:has-text('Entwicklertoken'), *:has-text('Developer Token'), *:has-text('kb7w')"
+    )
+
+
+async def find_cors_input(page):
+    """Re-read the page and return the CORS/domain input if Box exposes it."""
+    return await page.query_selector(
+        "input[placeholder*='CORS'], input[placeholder*='Domain']"
+    )
+
+
+async def find_cors_add_button(page):
+    """Re-read the page and return the CORS add button if Box exposes it."""
+    return await page.query_selector(
+        "button:has-text('Hinzufügen'), button:has-text('Add')"
+    )
+
+
+async def find_cors_save_button(page):
+    """Re-read the page and return the CORS save button if Box exposes it."""
+    return await page.query_selector(
+        "button:has-text('Speichern'), button:has-text('Save')"
+    )
+
+
+async def read_cors_save_confirmation(page):
+    """Re-read the page and detect whether the save likely landed."""
+    page_text = await page.evaluate("() => document.body.innerText")
+    normalized = page_text.lower()
+    return any(
+        token in normalized
+        for token in ("saved", "gespeichert", "updated", "success", "successfully")
+    )
+
+
+async def extract_folder_list(page):
+    """Re-read the folder page and extract visible folder IDs if present."""
+    folder_info = await page.evaluate(r"""
+        () => {
+            const folders = document.querySelectorAll('a[href*="/folder/"]');
+            const result = [];
+            folders.forEach(f => {
+                const href = f.href;
+                const name = (f.textContent || '').trim();
+                const idMatch = href.match(/\/folder\/([^/?]+)/);
+                if (idMatch && name) {
+                    result.push({name: name.substring(0, 50), id: idMatch[1]});
+                }
+            });
+            return JSON.stringify(result.slice(0, 20));
+        }
+    """)
+    if not folder_info:
+        return None
+    folders = json.loads(folder_info)
+    return folders or None
 
 
 # ============================================================================
@@ -153,33 +295,34 @@ async def main():
     # -------------------------------------------------------------------------
     log_step("STEP 3", "Checking for existing OpenSIN app")
 
-    # Look for "Neue App +" button and OpenSIN in app list
-    app_list_text = await page.evaluate("""
-        () => {
-            const rows = document.querySelectorAll('tr');
-            for (const row of rows) {
-                if (row.textContent.includes('OpenSIN')) {
-                    return 'found';
-                }
-            }
-            return 'not_found';
-        }
-    """)
+    # Poll the app list so we do not misread a slow async load as "not found".
+    app_list_text = None
+    try:
+        app_list_text = await poll_until(
+            "OpenSIN app row",
+            lambda: find_opensin_app_row(page),
+        )
+    except TimeoutError as e:
+        log_step("STEP 3", f"OpenSIN app row not visible after polling: {e}")
 
-    if app_list_text == "not_found":
+    if not app_list_text:
         log_step("STEP 3", "OpenSIN app NOT found - creating new app")
 
         # Click "Neue App +" button
         try:
-            neue_app_btn = await page.query_selector("button:has-text('Neue App')")
+            neue_app_btn = await poll_until(
+                "New app button",
+                lambda: find_new_app_button(page),
+            )
             if neue_app_btn:
                 await neue_app_btn.click()
                 await asyncio.sleep(2)
                 await take_screenshot(page, "step3_new_app_dialog")
 
                 # Fill in app name
-                name_input = await page.query_selector(
-                    "input[name='name'], input[placeholder*='App'], input[type='text']"
+                name_input = await poll_until(
+                    "New app name input",
+                    lambda: find_app_name_input(page),
                 )
                 if name_input:
                     await name_input.clear()
@@ -187,8 +330,9 @@ async def main():
                     await asyncio.sleep(0.5)
 
                 # Click Create/Submit
-                submit_btn = await page.query_selector(
-                    "button:has-text('Erstellen'), button:has-text('Create')"
+                submit_btn = await poll_until(
+                    "New app submit button",
+                    lambda: find_app_submit_button(page),
                 )
                 if submit_btn:
                     await submit_btn.click()
@@ -207,16 +351,22 @@ async def main():
     # -------------------------------------------------------------------------
     log_step("STEP 4", "Navigating to OpenSIN app configuration")
 
-    # Try to click on OpenSIN app link/row
+    # Poll the fresh DOM until the OpenSIN app link appears, then click it.
     try:
-        opensin_link = await page.query_selector(
-            "tr:has-text('OpenSIN') a, a:has-text('OpenSIN')"
+        opensin_link = await poll_until(
+            "OpenSIN app link",
+            lambda: find_opensin_app_link(page),
         )
-        if opensin_link:
-            await opensin_link.click()
-            await asyncio.sleep(3)
+        await opensin_link.click()
+        await asyncio.sleep(3)
+    except TimeoutError as e:
+        log_step("STEP 4", f"Timed out waiting for OpenSIN app link: {e}")
+        await take_screenshot(page, "step4_timeout")
+        raise
     except Exception as e:
         log_step("STEP 4", f"Link click failed, trying direct navigation: {e}")
+        await take_screenshot(page, "step4_link_error")
+        raise
 
     await take_screenshot(page, "step4_app_config")
 
@@ -225,28 +375,36 @@ async def main():
     # -------------------------------------------------------------------------
     log_step("STEP 5", "Extracting Developer Token")
 
-    # Look for the token in the page source or via API
     dev_token = None
 
-    # Method 1: Check page content for token display
-    page_content = await page.evaluate("() => document.body.innerText")
-
-    # Look for token pattern (base64-like string)
-    token_match = re.search(r"([a-zA-Z0-9]{40,})", page_content)
-    if token_match:
-        potential_token = token_match.group(1)
-        if len(potential_token) > 40:
-            dev_token = potential_token
-            log_step("STEP 5", f"Found potential token: {dev_token[:20]}...")
-
-    # Method 2: Look for "Entwicklertoken" or "Developer Token" section
-    if not dev_token:
-        token_section = await page.query_selector(
-            "*:has-text('Entwicklertoken'), *:has-text('kb7w')"
+    # Poll the page text first because Box loads token details asynchronously.
+    try:
+        dev_token = await poll_until(
+            "Developer token text",
+            lambda: extract_developer_token(page),
         )
-        if token_section:
+        if dev_token:
+            log_step("STEP 5", f"Found potential token: {dev_token[:20]}...")
+    except TimeoutError as e:
+        log_step("STEP 5", f"Token text not visible yet after polling: {e}")
+
+    # If the token is still hidden, open the token section and poll again.
+    if not dev_token:
+        try:
+            token_section = await poll_until(
+                "Developer token section",
+                lambda: find_developer_token_section(page),
+            )
             await token_section.click()
             await asyncio.sleep(1)
+            dev_token = await poll_until(
+                "Developer token text after section click",
+                lambda: extract_developer_token(page),
+            )
+            if dev_token:
+                log_step("STEP 5", f"Found token after opening section: {dev_token[:20]}...")
+        except TimeoutError as e:
+            log_step("STEP 5", f"Token section not ready after polling: {e}")
 
     # Method 3: Use Box API to get token info
     # Note: This would require OAuth flow - simplified here
@@ -266,9 +424,10 @@ async def main():
 
     # Navigate to CORS settings (usually in app configuration)
     try:
-        # Look for CORS/domain settings
-        cors_input = await page.query_selector(
-            "input[placeholder*='CORS'], input[placeholder*='Domain']"
+        # Poll the CORS/domain controls because the settings panel can load late.
+        cors_input = await poll_until(
+            "CORS input",
+            lambda: find_cors_input(page),
         )
         if cors_input:
             # Clear and enter first domain
@@ -277,8 +436,9 @@ async def main():
             await asyncio.sleep(0.3)
 
             # Look for add button or enter more domains
-            add_btn = await page.query_selector(
-                "button:has-text('Hinzufügen'), button:has-text('Add')"
+            add_btn = await poll_until(
+                "CORS add button",
+                lambda: find_cors_add_button(page),
             )
             if add_btn:
                 for domain in CORS_DOMAINS[1:]:
@@ -287,14 +447,24 @@ async def main():
                     await cors_input.send_keys(domain)
 
             # Save
-            save_btn = await page.query_selector(
-                "button:has-text('Speichern'), button:has-text('Save')"
+            save_btn = await poll_until(
+                "CORS save button",
+                lambda: find_cors_save_button(page),
             )
             if save_btn:
                 await save_btn.click()
                 await asyncio.sleep(1)
+                try:
+                    await poll_until(
+                        "CORS save confirmation",
+                        lambda: read_cors_save_confirmation(page),
+                    )
+                except TimeoutError as e:
+                    log_step("STEP 6", f"CORS save confirmation not visible after polling: {e}")
 
         log_step("STEP 6", "CORS configuration attempted")
+    except TimeoutError as e:
+        log_step("STEP 6", f"CORS controls not ready after polling: {e}")
     except Exception as e:
         log_step("STEP 6", f"CORS config failed (may need manual): {e}")
 
@@ -311,24 +481,16 @@ async def main():
         await page.goto("https://app.box.com/folder", timeout=20)
         await wait_for_page_load(page)
 
-        # Look for folder links and extract IDs
-        folder_info = await page.evaluate("""
-            () => {
-                const folders = document.querySelectorAll('a[href*="/folder/"]');
-                const result = [];
-                folders.forEach(f => {
-                    const href = f.href;
-                    const name = f.textContent.trim();
-                    const idMatch = href.match(/\\/folder\\/([^/?]+)/);
-                    if (idMatch && name) {
-                        result.push({name: name.substring(0, 50), id: idMatch[1]});
-                    }
-                });
-                return JSON.stringify(result.slice(0, 20));
-            }
-        """)
+        # Poll the folder list because Box may hydrate it after navigation.
+        folders = []
+        try:
+            folders = await poll_until(
+                "Box folder list",
+                lambda: extract_folder_list(page),
+            )
+        except TimeoutError as e:
+            log_step("STEP 7", f"Folder list not visible after polling: {e}")
 
-        folders = json.loads(folder_info) if folder_info else []
         log_step("STEP 7", f"Found {len(folders)} folders")
 
         # Find Public and Cache folders

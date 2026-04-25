@@ -1,6 +1,29 @@
+---
+title: Team Orchestration
+description: Coordinate multiple OpenSIN agents
+---
+
+<script setup>
+const links = [
+  { title: 'Agent Basics', href: '/guide/agent-basics', description: 'Core agent fundamentals and config.' },
+  { title: 'A2A Protocol', href: '/api/a2a-protocol', description: 'Communication, transport, and errors.' },
+  { title: 'MCP Integration', href: '/guide/mcp-integration', description: 'Tooling and external connections.' },
+  { title: 'OpenSIN Code', href: '/guide/opensin-code', description: 'Autonomous coding surface and CLI.' },
+]
+</script>
+
 # Team Orchestration
 
 OpenSIN teams enable multiple agents to work together on complex tasks.
+
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
 
 ## Creating a Team
 

@@ -1,6 +1,29 @@
+---
+title: Agent Basics
+description: Learn the fundamentals of OpenSIN agents
+---
+
+<script setup>
+const links = [
+  { title: 'Getting Started', href: '/guide/getting-started', description: 'Overview, prerequisites, and first steps.' },
+  { title: 'Team Orchestration', href: '/guide/team-orchestration', description: 'Coordinate multiple agents together.' },
+  { title: 'MCP Integration', href: '/guide/mcp-integration', description: 'Connect agents to external tools.' },
+  { title: 'A2A Protocol', href: '/api/a2a-protocol', description: 'Learn the agent-to-agent layer.' },
+]
+</script>
+
 # Agent Basics
 
 OpenSIN agents are autonomous AI entities that can process inputs, make decisions, and produce outputs using LLMs and tools.
+
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
 
 ## Creating an Agent
 

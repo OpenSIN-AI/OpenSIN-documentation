@@ -3,9 +3,27 @@ title: Team API
 description: API reference for OpenSIN teams
 ---
 
+<script setup>
+const links = [
+  { title: 'API Overview', href: '/api/overview', description: 'Architecture and shared API layers.' },
+  { title: 'Agent Identity API', href: '/api/agent', description: 'Discovery and identity contract.' },
+  { title: 'A2A Protocol', href: '/api/a2a', description: 'Transport and JSON-RPC methods.' },
+  { title: 'A2A Hub', href: '/api/a2a-protocol', description: 'Shortest path into the protocol docs.' },
+]
+</script>
+
 # Team API
 
 Create and manage OpenSIN teams.
+
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
 
 ## Endpoints
 

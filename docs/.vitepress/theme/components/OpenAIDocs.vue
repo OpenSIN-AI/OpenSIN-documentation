@@ -1,708 +1,885 @@
 <script setup>
-/**
- * OpenAIDocs.vue - Branded with OpenSIN Green
- * Billion Dollar Restoration & Content Filling
- */
+const sidebarSections = [
+  {
+    title: 'Get started',
+    links: [
+      { title: 'Overview', href: '/api/overview' },
+      { title: 'Quickstart', href: '/guide/getting-started' },
+      { title: 'Models', href: '/api/overview' },
+      { title: 'Pricing', href: '/guide/changelog' },
+      { title: 'Libraries', href: '/guide/opensin-code' },
+      { title: 'Latest: OpenSIN Code', href: '/guide/whats-new' },
+      { title: 'Prompt guidance', href: '/guide/opensin-code' },
+    ],
+  },
+  {
+    title: 'Core concepts',
+    links: [
+      { title: 'Text generation', href: '/guide/opensin-code' },
+      { title: 'Code generation', href: '/guide/opensin-code' },
+      { title: 'Images and vision', href: '/guide/agent-basics' },
+      { title: 'Audio and speech', href: '/guide/mcp-integration' },
+      { title: 'Structured output', href: '/api/overview' },
+      { title: 'Function calling', href: '/api/a2a' },
+      { title: 'OpenSIN API', href: '/api/overview' },
+      { title: 'Using tools', href: '/guide/opensin-code' },
+    ],
+  },
+  {
+    title: 'OpenSIN Code',
+    links: [
+      { title: 'Overview', href: '/guide/opensin-code' },
+      { title: 'Quickstart', href: '/guide/getting-started' },
+      { title: 'Agent definitions', href: '/guide/agent-basics' },
+      { title: 'Models and providers', href: '/api/agent' },
+      { title: 'Running agents', href: '/guide/team-orchestration' },
+      { title: 'Sandbox agents', href: '/guide/stealth-browser-operator' },
+      { title: 'Orchestration', href: '/api/team' },
+      { title: 'Guardrails', href: '/best-practices/security' },
+      { title: 'Results and state', href: '/guide/mcp-integration' },
+      { title: 'Integrations and observability', href: '/guide/monitoring' },
+      { title: 'Evaluate agent workflows', href: '/best-practices/testing' },
+      { title: 'Voice agents', href: '/guide/whats-new' },
+    ],
+  },
+  {
+    title: 'Tools',
+    links: [
+      { title: 'Web search', href: '/guide/mcp-integration' },
+      { title: 'MCP and Connectors', href: '/guide/mcp-integration' },
+      { title: 'Skills', href: '/guide/opensin-code' },
+      { title: 'Shell', href: '/guide/opensin-code' },
+      { title: 'Computer use', href: '/guide/opensin-code' },
+      { title: 'File search', href: '/guide/mcp-integration' },
+      { title: 'Retrieval', href: '/guide/mcp-integration' },
+      { title: 'Tool search', href: '/guide/opensin-code' },
+    ],
+  },
+  {
+    title: 'Run and scale',
+    links: [
+      { title: 'Conversation state', href: '/guide/agent-basics' },
+      { title: 'Background mode', href: '/guide/opensin-code' },
+      { title: 'Streaming', href: '/guide/opensin-code' },
+      { title: 'WebSocket mode', href: '/guide/opensin-code' },
+      { title: 'Webhooks', href: '/guide/mcp-integration' },
+      { title: 'File inputs', href: '/guide/getting-started' },
+      { title: 'Prompting', href: '/guide/opensin-code' },
+      { title: 'Reasoning', href: '/guide/opensin-code' },
+    ],
+  },
+  {
+    title: 'Evaluation',
+    links: [
+      { title: 'Getting started', href: '/best-practices/testing' },
+      { title: 'Working with evals', href: '/best-practices/testing' },
+      { title: 'Prompt optimizer', href: '/best-practices/performance' },
+      { title: 'External models', href: '/best-practices/performance' },
+      { title: 'Best practices', href: '/best-practices/testing' },
+    ],
+  },
+  {
+    title: 'Realtime API',
+    links: [
+      { title: 'Overview', href: '/guide/mcp-integration' },
+      { title: 'WebRTC', href: '/guide/mcp-integration' },
+      { title: 'WebSocket', href: '/guide/mcp-integration' },
+      { title: 'SIP', href: '/guide/mcp-integration' },
+      { title: 'Using realtime models', href: '/guide/opensin-code' },
+      { title: 'Managing conversations', href: '/guide/agent-basics' },
+      { title: 'MCP servers', href: '/guide/mcp-integration' },
+      { title: 'Webhooks and server-side controls', href: '/guide/mcp-integration' },
+      { title: 'Managing costs', href: '/best-practices/performance' },
+      { title: 'Realtime transcription', href: '/guide/opensin-code' },
+      { title: 'Voice agents', href: '/guide/whats-new' },
+    ],
+  },
+  {
+    title: 'Model optimization',
+    links: [
+      { title: 'Optimization cycle', href: '/best-practices/performance' },
+      { title: 'Supervised fine-tuning', href: '/guide/opensin-code' },
+      { title: 'Vision fine-tuning', href: '/guide/agent-basics' },
+      { title: 'Direct preference optimization', href: '/best-practices/performance' },
+      { title: 'Reinforcement fine-tuning', href: '/best-practices/performance' },
+      { title: 'RFT use cases', href: '/best-practices/performance' },
+      { title: 'Best practices', href: '/best-practices/performance' },
+      { title: 'Graders', href: '/best-practices/testing' },
+    ],
+  },
+  {
+    title: 'Specialized models',
+    links: [
+      { title: 'Image generation', href: '/guide/opensin-code' },
+      { title: 'Video generation', href: '/guide/whats-new' },
+      { title: 'Text to speech', href: '/guide/opensin-code' },
+      { title: 'Speech to text', href: '/guide/opensin-code' },
+      { title: 'Deep research', href: '/guide/whats-new' },
+      { title: 'Embeddings', href: '/guide/opensin-code' },
+      { title: 'Moderation', href: '/best-practices/security' },
+    ],
+  },
+  {
+    title: 'Going live',
+    links: [
+      { title: 'Production best practices', href: '/best-practices/performance' },
+      { title: 'Deployment checklist', href: '/guide/deployment' },
+      { title: 'Latency optimization', href: '/best-practices/performance' },
+      { title: 'Cost optimization', href: '/best-practices/performance' },
+      { title: 'Accuracy optimization', href: '/best-practices/performance' },
+      { title: 'Safety best practices', href: '/best-practices/security' },
+      { title: 'Safety checks', href: '/best-practices/security' },
+      { title: 'Cybersecurity checks', href: '/best-practices/security' },
+    ],
+  },
+  {
+    title: 'Legacy APIs',
+    links: [
+      { title: 'Assistants API', href: '/guide/opensin-code' },
+      { title: 'Migration guide', href: '/guide/opensin-code' },
+      { title: 'Deep dive', href: '/guide/opensin-code' },
+      { title: 'Tools', href: '/guide/opensin-code' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { title: 'Terms and policies', href: 'https://opensin.ai/policies', external: true },
+      { title: 'Changelog', href: '/guide/changelog' },
+      { title: 'Your data', href: '/governance/overview' },
+      { title: 'Permissions', href: '/governance/overview' },
+      { title: 'Rate limits', href: '/guide/opensin-code' },
+      { title: 'Deprecations', href: '/guide/changelog' },
+      { title: 'Developer mode', href: '/guide/opensin-code' },
+    ],
+  },
+]
+
+const quickstartSamples = [
+  {
+    id: 'shell',
+    label: 'Shell',
+    code: `bun add @opensin/sdk`,
+  },
+  {
+    id: 'js',
+    label: 'JavaScript',
+    code: `import { AgentLoop } from '@opensin/sdk';
+
+const loop = new AgentLoop();
+const response = await loop.run('Write a short bedtime story about a unicorn.');
+
+console.log(response.outputText);`,
+  },
+  {
+    id: 'python',
+    label: 'Python',
+    code: `from opensin_ouroboros import AgentLoop
+
+loop = AgentLoop()
+response = loop.run('Write a short bedtime story about a unicorn.')
+
+print(response.output_text)`,
+  },
+  {
+    id: 'csharp',
+    label: 'C#',
+    code: `using OpenSIN.SDK;
+
+var client = new OpenSINClient();
+var response = client.CreateResponse("Write a short bedtime story about a unicorn.");
+
+Console.WriteLine(response.OutputText);`,
+  },
+]
+
+const buildPaths = [
+  {
+    title: 'OpenSIN API',
+    description: 'Make direct platform requests for text, structured output, tools, and multimodal workflows.',
+    href: '/api/overview',
+    cta: 'Start with OpenSIN API',
+  },
+  {
+    title: 'OpenSIN Code',
+    description: 'Build code-first agents that orchestrate tools, handoffs, approvals, tracing, and container-based execution.',
+    href: '/guide/opensin-code',
+    cta: 'Start with OpenSIN Code',
+  },
+]
+
+const models = [
+  {
+    title: 'OpenSIN API',
+    badge: 'New',
+    description: 'Primary surface for text, tools, and multimodal workflows.',
+    href: '/api/overview',
+  },
+  {
+    title: 'OpenSIN Agents',
+    badge: '',
+    description: 'Code-first agent orchestration with handoffs and tracing.',
+    href: '/api/overview',
+  },
+  {
+    title: 'OpenSIN Mini',
+    badge: '',
+    description: 'Lower-latency execution for lightweight tasks and subagents.',
+    href: '/api/overview',
+  },
+]
+
+const startBuilding = [
+  {
+    title: 'Read and generate text',
+    description: 'Use the API to prompt a model and generate text.',
+    href: '/guide/opensin-code',
+    image: 'https://cdn.openai.com/devhub/resources/guide-2.png',
+    icon: 'book',
+  },
+  {
+    title: "Use a model's vision capabilities",
+    description: 'Allow models to see and analyze images in your application.',
+    href: '/guide/agent-basics',
+    image: 'https://cdn.openai.com/devhub/resources/guide-3.png',
+    icon: 'image',
+  },
+  {
+    title: 'Generate images as output',
+    description: 'Create images with OpenSIN image models.',
+    href: '/guide/opensin-code',
+    image: 'https://cdn.openai.com/devhub/resources/code-2.png',
+    icon: 'spark',
+  },
+  {
+    title: 'Build apps with audio',
+    description: 'Analyze, transcribe, and generate audio with API endpoints.',
+    href: '/guide/mcp-integration',
+    image: 'https://cdn.openai.com/devhub/resources/video-2.png',
+    icon: 'monitor',
+  },
+  {
+    title: 'Build agentic applications',
+    description: 'Use the API to build agents that use tools and computers.',
+    href: '/guide/team-orchestration',
+    image: 'https://cdn.openai.com/devhub/resources/code-3.png',
+    icon: 'chat',
+  },
+  {
+    title: 'Achieve complex tasks with reasoning',
+    description: 'Use reasoning models to carry out complex tasks.',
+    href: '/best-practices/performance',
+    image: 'https://cdn.openai.com/devhub/resources/video-1.png',
+    icon: 'spark',
+  },
+  {
+    title: 'Get structured data from models',
+    description: 'Use Structured Outputs to get model responses that adhere to a JSON schema.',
+    href: '/api/overview',
+    image: 'https://cdn.openai.com/devhub/resources/guide-4.png',
+    icon: 'book',
+  },
+  {
+    title: 'Tailor to your use case',
+    description: 'Adjust our models to perform specifically for your use case with fine-tuning, evals, and distillation.',
+    href: '/best-practices/performance',
+    image: 'https://cdn.openai.com/devhub/resources/cookbook-4.png',
+    icon: 'spark',
+  },
+]
 </script>
 
 <template>
-  <div class="oad-layout">
-    <!-- Sidebar -->
-    <aside class="oad-sidebar">
-      <div class="oad-sidebar__section">
-        <h6>Los geht's!</h6>
-        <ul>
-          <li class="is-active">Überblick</li>
-          <li>Schnellstart</li>
-          <li>Agenten-Modelle</li>
-          <li>API-Referenz</li>
-          <li>Bibliotheken</li>
-          <li>OpenCode CLI</li>
-          <li>Neural-Bus Core</li>
-        </ul>
-      </div>
-      <div class="oad-sidebar__section">
-        <h6>Kernkonzepte</h6>
-        <ul>
-          <li>Neural-Bus Relay</li>
-          <li>A2A Kommunikation</li>
-          <li>Behavioral Biometrics</li>
-          <li>Stealth Browsing</li>
-          <li>Strukturierte A2A-Daten</li>
-          <li>Tool-Orchestrierung</li>
-          <li>Relay API</li>
-          <li>OpenSIN Skills</li>
-        </ul>
-      </div>
-      <div class="oad-sidebar__section">
-        <h6>OpenSIN SDK</h6>
-        <ul>
-          <li>Übersicht</li>
-          <li>Python SDK</li>
-          <li>TypeScript SDK</li>
-        </ul>
-      </div>
-    </aside>
-
-    <!-- Content Area -->
-    <main class="oad-main">
-      <header class="oad-header">
-        <h1>Neural-Bus API</h1>
-      </header>
-
-      <!-- Schnellstart Card -->
-      <section class="oad-schnellstart">
-        <div class="oad-schnellstart__body">
-          <h3>Entwickler-Schnellstart</h3>
-          <p>Senden Sie Ihre erste A2A-Anfrage in wenigen Sekunden. Orchestrieren Sie autonome Flotten über den OpenSIN Neural-Bus.</p>
-          <div class="oad-schnellstart__actions">
-            <button class="oa-btn oa-btn--black">Jetzt starten</button>
-            <button class="oa-btn oa-btn--grey">API-Dashboard</button>
-          </div>
+  <div class="oa-page">
+    <div class="oa-container">
+      <aside class="oa-sidebar" aria-label="Documentation navigation">
+        <div class="oa-sidebar__search">
+          <span>Search docs</span>
+          <small>opensin code agents mcp memory</small>
         </div>
-        <div class="oad-code">
-          <div class="oad-code__header">
-            <span>Javascript / Node.js</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-          </div>
-          <pre><code><span class="c-k">import</span> { OpenSIN } <span class="c-k">from</span> <span class="c-s">"@opensin/sdk"</span>;
-<span class="c-k">const</span> sin = <span class="c-k">new</span> OpenSIN();
 
-<span class="c-k">const</span> task = <span class="c-k">await</span> sin.fleet.dispatch({
-  agent: <span class="c-s">"core-executor-01"</span>,
-  input: <span class="c-s">"Build a dashboard for A2A monitoring"</span>,
-  priority: <span class="c-s">"high"</span>
-});
-
-console.log(task.status);</code></pre>
+        <div v-for="section in sidebarSections" :key="section.title" class="oa-sidebar__section">
+          <p class="oa-sidebar__label">{{ section.title }}</p>
+          <a
+            v-for="link in section.links"
+            :key="link.title"
+            class="oa-sidebar__link"
+            :class="{ 'oa-sidebar__link--external': link.external }"
+            :href="link.href"
+            :target="link.external ? '_blank' : undefined"
+            :rel="link.external ? 'noreferrer' : undefined"
+          >
+            {{ link.title }}
+          </a>
         </div>
-      </section>
+      </aside>
 
-      <!-- Pfade erstellen -->
-      <section class="oad-section">
-        <h2 class="oad-section__title">Integrationen bauen</h2>
-        <div class="oad-path-grid">
-          <div class="oad-path-card">
-            <h4>Neural-Bus Relay</h4>
-            <p>Echtzeit-Event-Streaming für Agenten-Kommunikation. Hohe Durchsatzraten und geringe Latenz.</p>
-            <span class="oad-path-card__link">Relay-Dokumentation lesen ↗</span>
-          </div>
-          <div class="oad-path-card">
-            <h4>OpenCode SDK</h4>
-            <p>Entwickeln Sie eigene Agenten mit nativem Zugriff auf das Global-Brain und den Neural-Bus.</p>
-            <span class="oad-path-card__link">SDK-Referenz öffnen ↗</span>
-          </div>
-        </div>
-      </section>
+      <main class="oa-main">
+        <header class="oa-hero">
+          <h1>OpenSIN API Platform Documentation</h1>
+        </header>
 
-      <!-- Modelle -->
-      <section class="oad-section">
-        <div class="oad-section__header">
-          <h2 class="oad-section__title">Agenten-Modelle</h2>
-          <a href="/guide/agent-discovery" class="oa-link">Alle anzeigen</a>
-        </div>
-        <p class="oad-section__subtitle">Wählen Sie das passende Basis-Modell für Ihre Agenten-Instanzen. Von leichtgewichtigen Task-Runnern bis hin zu komplexen Reasoning-Nodes.</p>
-        
-        <div class="oad-model-grid">
-          <div class="oad-model-card">
-            <div class="oad-model-card__img oad-model-card__img--green">
-              <span>sin-core</span>
-            </div>
-            <div class="oad-model-card__body">
-              <h5>SIN Core 1.0 <span class="badge">Standard</span></h5>
-              <p>Optimiert für komplexe multi-agenten Orchestrierung und langfristige Task-Planung.</p>
+        <section class="oa-quickstart">
+          <div class="oa-quickstart__copy">
+            <p class="oa-kicker">Developer quickstart</p>
+            <h2>Make your first API request in minutes.</h2>
+            <p>
+              Learn the basics of the OpenSIN platform with the same calm, high-signal layout used by the reference experience.
+            </p>
+
+            <div class="oa-actions">
+              <a class="oa-button oa-button--primary" href="/api/overview">Get started</a>
+              <a class="oa-button oa-button--secondary" href="https://chat.opensin.ai">Create API key</a>
             </div>
           </div>
-          <div class="oad-model-card">
-            <div class="oad-model-card__img oad-model-card__img--blue">
-              <span>sin-fast</span>
-            </div>
-            <div class="oad-model-card__body">
-              <h5>SIN Fast-Link <span class="badge">Speed</span></h5>
-              <p>Unser reaktionsschnellstes Modell für einfache Tool-Calls und schnelles Daten-Relaying.</p>
-            </div>
-          </div>
-          <div class="oad-model-card">
-            <div class="oad-model-card__img oad-model-card__img--orange">
-              <span>sin-stealth</span>
-            </div>
-            <div class="oad-model-card__body">
-              <h5>SIN Stealth-Ops <span class="badge">Security</span></h5>
-              <p>Spezialisiert auf Behavioral Biometrics und Umgehung von Bot-Detection-Systemen.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- Building Grid -->
-      <section class="oad-section">
-        <h2 class="oad-section__title">OpenSIN Ökosystem</h2>
-        <div class="oad-building-grid">
-           <div class="oad-building-item">
-             <div class="oad-building-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00cc88" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-             <div>
-               <h6>A2A Kommunikation</h6>
-               <p>Lassen Sie Ihre Agenten direkt miteinander sprechen und Aufgaben delegieren.</p>
-             </div>
-           </div>
-           <div class="oad-building-item">
-             <div class="oad-building-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00cc88" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
-             <div>
-               <h6>Behavioral Analytics</h6>
-               <p>Integrieren Sie menschliche Interaktionsmuster in Ihre automatisierten Abläufe.</p>
-             </div>
-           </div>
-           <div class="oad-building-item">
-             <div class="oad-building-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00cc88" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div>
-             <div>
-               <h6>Stealth Vision ↗</h6>
-               <p>KI-gestützte Bildanalyse ohne Spuren im Web-Traffic zu hinterlassen.</p>
-             </div>
-           </div>
-           <div class="oad-building-item">
-             <div class="oad-building-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00cc88" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></div>
-             <div>
-               <h6>Voice Fleet Control</h6>
-               <p>Steuern Sie Ihre Agenten-Flotte per Sprachbefehl über verschlüsselte A2A-Kanäle.</p>
-             </div>
-           </div>
-        </div>
-      </section>
-    </main>
+          <div class="oa-snippet-grid" aria-label="Quickstart code examples">
+            <article v-for="sample in quickstartSamples" :key="sample.id" class="oa-snippet">
+              <div class="oa-snippet__bar">
+                <span>{{ sample.label }}</span>
+                <span>Copy</span>
+              </div>
+              <pre><code>{{ sample.code }}</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="oa-section">
+          <div class="oa-section-header">
+            <h2 class="oa-section-title">Build paths</h2>
+          </div>
+
+          <div class="oa-build-grid">
+            <a v-for="path in buildPaths" :key="path.title" :href="path.href" class="oa-build-card oa-card--link">
+              <h3>{{ path.title }}</h3>
+              <p>{{ path.description }}</p>
+              <span class="oa-card__cta">{{ path.cta }}</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="oa-section">
+          <div class="oa-section-header">
+            <h2 class="oa-section-title">Models</h2>
+            <a class="oa-view-all" href="/api/overview">View all</a>
+          </div>
+
+          <p class="oa-section-subtitle">
+            Start with OpenSIN API for complex workflows, or choose OpenSIN mini for lower-latency, lower-cost workloads.
+          </p>
+
+          <div class="oa-model-grid">
+            <a v-for="model in models" :key="model.title" :href="model.href" class="oa-model-card">
+              <span v-if="model.badge" class="oa-model-card__badge">{{ model.badge }}</span>
+              <span class="oa-model-card__title">{{ model.title }}</span>
+              <span class="oa-model-card__desc">{{ model.description }}</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="oa-section">
+          <div class="oa-section-header">
+            <h2 class="oa-section-title">Start building</h2>
+          </div>
+
+          <div class="oa-start-grid">
+            <a v-for="card in startBuilding" :key="card.title" :href="card.href" class="oa-start-card">
+              <div class="oa-start-card__media">
+                <img :src="card.image" :alt="card.title" />
+                <span class="oa-start-card__badge">
+                  <CardIcon :name="card.icon" variant="explore" />
+                </span>
+              </div>
+              <div class="oa-start-card__body">
+                <h3>{{ card.title }}</h3>
+                <p>{{ card.description }}</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.oad-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
+.oa-page {
   min-height: 100vh;
+  background: #ffffff;
+  color: #111827;
+}
+
+.oa-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 262px minmax(0, 1fr);
+}
+
+.oa-sidebar {
+  position: sticky;
+  top: 72px;
+  align-self: start;
+  max-height: calc(100vh - 72px);
+  overflow: auto;
+  padding: 28px 18px 40px;
+  border-right: 1px solid #e5e7eb;
   background: #ffffff;
 }
 
-.oad-sidebar {
-  padding: 48px 32px;
-  background: #f9fafb;
-  border-right: 1px solid #e5e7eb;
-  position: sticky;
-  top: 64px;
-  height: calc(100vh - 64px);
-  overflow-y: auto;
+.oa-sidebar__search {
+  padding: 14px 14px 16px;
+  margin-bottom: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
 }
 
-.oad-sidebar h6 {
-  font-size: 0.75rem;
-  font-weight: 700;
+.oa-sidebar__search span {
+  display: block;
+  margin-bottom: 6px;
   color: #111827;
-  margin-bottom: 12px;
-  padding-left: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
-.oad-sidebar li {
+.oa-sidebar__search small {
+  display: block;
+  color: #6b7280;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.oa-sidebar__section + .oa-sidebar__section {
+  margin-top: 24px;
+}
+
+.oa-sidebar__label,
+.oa-kicker {
+  margin: 0 0 12px;
+  color: #111827;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.oa-sidebar__link {
+  display: block;
   padding: 8px 12px;
-  font-size: 0.875rem;
+  border-radius: 10px;
   color: #4b5563;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.oad-sidebar li:hover {
-  color: #00cc88;
-  background: #f3f4f6;
-}
-
-.oad-sidebar li.is-active {
+.oa-sidebar__link:hover {
   color: #111827;
-  background: #e5e7eb;
-  font-weight: 600;
+  background: rgba(0, 0, 0, 0.04);
 }
 
-.oad-main {
-  padding: 64px 80px;
-  max-width: 1040px;
+.oa-sidebar__link--external::after {
+  content: '↗';
+  margin-left: 6px;
+  font-size: 0.75rem;
+  color: #9ca3af;
 }
 
-.oad-header h1 {
-  font-size: 2.25rem;
+.oa-main {
+  padding: 34px 50px 82px;
+}
+
+.oa-hero {
+  max-width: 860px;
+  margin-bottom: 18px;
+}
+
+.oa-hero h1 {
+  margin: 0;
+  color: #111827;
+  font-size: clamp(2.8rem, 4vw, 3.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
   font-weight: 700;
+}
+
+.oa-quickstart {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.oa-quickstart__copy h2,
+.oa-section-title,
+.oa-build-card h3,
+.oa-model-card__title,
+.oa-start-card h3 {
+  margin: 0;
   color: #111827;
-  margin-bottom: 48px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
 }
 
-.oad-schnellstart {
-  display: flex;
-  background: #f5f5f7;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 60px;
+.oa-quickstart__copy h2 {
+  font-size: 1.95rem;
+  line-height: 1.12;
 }
 
-.oad-schnellstart__body {
-  flex: 1;
-  padding: 40px;
+.oa-quickstart__copy p,
+.oa-build-card p,
+.oa-model-card__desc,
+.oa-start-card p,
+.oa-section-subtitle {
+  color: #6b7280;
+  line-height: 1.65;
 }
 
-.oad-schnellstart h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 16px;
+.oa-quickstart__copy p {
+  margin: 12px 0 0;
+  max-width: 60ch;
 }
 
-.oad-schnellstart p {
-  font-size: 16px;
-  color: #6e6e73;
-  line-height: 1.5;
-  margin-bottom: 32px;
-}
-
-.oad-schnellstart__actions {
+.oa-actions {
   display: flex;
   gap: 12px;
+  margin-top: 20px;
 }
 
-.oa-btn {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  transition: all 0.2s ease;
-}
-
-.oa-btn--black {
-  background: #000000;
-  color: #ffffff;
-}
-
-.oa-btn--black:hover {
-  background: #333333;
-}
-
-.oa-btn--grey {
-  background: #e5e5e7;
-  color: #000000;
-}
-
-.oad-code {
-  flex: 1.2;
-  background: #000000;
-  color: #ffffff;
-  padding: 24px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 13px;
-  position: relative;
-}
-
-.oad-code__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #86868b;
-  margin-bottom: 16px;
-}
-
-.oad-code pre { margin: 0; }
-.c-k { color: #00cc88; } /* Changed to Green */
-.c-s { color: #8ec5fc; }
-
-.oad-section {
-  margin-bottom: 80px;
-}
-
-.oad-section__title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 24px;
-}
-
-.oad-section__subtitle {
-  font-size: 15px;
-  color: #6e6e73;
-  margin-bottom: 32px;
-  line-height: 1.5;
-}
-
-.oad-path-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.oad-path-card {
-  padding: 32px;
-  border: 1px solid #e5e5e7;
-  border-radius: 12px;
-  transition: all 0.2s ease;
-}
-
-.oad-path-card:hover {
-  border-color: #00cc88;
-  box-shadow: 0 4px 12px rgba(0, 204, 136, 0.08);
-}
-
-.oad-path-card h4 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.oad-path-card p {
-  font-size: 14px;
-  color: #6e6e73;
-  line-height: 1.5;
-  margin-bottom: 24px;
-}
-
-.oad-path-card__link {
-  font-size: 14px;
-  font-weight: 600;
-  color: #00cc88;
-}
-
-.oad-model-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.oad-model-card__img {
-  height: 180px;
-  border-radius: 12px;
-  display: flex;
+.oa-button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.oa-button--primary {
+  background: #000000;
   color: #ffffff;
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 16px;
 }
 
-.oad-model-card__img--green { background: linear-gradient(135deg, #008060 0%, #00cc88 100%); }
-.oad-model-card__img--blue { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
-.oad-model-card__img--orange { background: linear-gradient(135deg, #008060 0%, #00ffaa 100%); }
-
-.oad-model-card h5 {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.oa-button--secondary {
+  background: #e5e7eb;
+  color: #111827;
 }
 
-.badge {
-  background: #e8f5e9;
-  color: #2e7d32;
-  font-size: 11px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 700;
-}
-
-.oad-model-card p {
-  font-size: 13px;
-  color: #6e6e73;
-  line-height: 1.4;
-}
-
-.oad-building-grid {
+.oa-snippet-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-.oad-building-item {
-  display: flex;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
-.oad-building-item__icon {
-  width: 40px;
-  height: 40px;
-  background: #f5f5f7;
-  border-radius: 8px;
+.oa-snippet {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #060606;
+  color: #f5f5f5;
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+
+.oa-snippet__bar {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.oad-building-item h6 {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.oad-building-item p {
-  font-size: 13px;
-  color: #6e6e73;
-  line-height: 1.4;
-}
-</style>
-
-<style scoped>
-.oad-layout {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  min-height: 100vh;
-  background: #ffffff;
-}
-
-.oad-sidebar {
-  padding: 40px 24px;
-  background: #f9f9f9;
-  border-right: 1px solid #e5e5e7;
-}
-
-.oad-sidebar__section {
-  margin-bottom: 32px;
-}
-
-.oad-sidebar h6 {
-  font-size: 13px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 12px;
-  padding-left: 12px;
-}
-
-.oad-sidebar ul {
-  list-style: none;
-  padding: 0;
+.oa-snippet pre {
   margin: 0;
+  padding: 16px 14px 18px;
+  overflow-x: auto;
+  font-size: 0.84rem;
+  line-height: 1.58;
+  white-space: pre;
 }
 
-.oad-sidebar li {
-  padding: 8px 12px;
-  font-size: 14px;
-  color: #6e6e73;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.oad-sidebar li:hover {
-  color: #000000;
-  background: #f0f0f2;
-}
-
-.oad-sidebar li.is-active {
-  color: #000000;
-  background: #e5e5e7;
-  font-weight: 500;
-}
-
-.oad-main {
-  padding: 48px 60px;
-  max-width: 1000px;
-}
-
-.oad-header h1 {
-  font-size: 32px;
-  font-weight: 600;
+.oa-section {
   margin-bottom: 40px;
 }
 
-.oad-schnellstart {
+.oa-section-header {
   display: flex;
-  background: #f5f5f7;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 60px;
-}
-
-.oad-schnellstart__body {
-  flex: 1;
-  padding: 40px;
-}
-
-.oad-schnellstart h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.oad-schnellstart p {
-  font-size: 16px;
-  color: #6e6e73;
-  line-height: 1.5;
-  margin-bottom: 32px;
-}
-
-.oad-schnellstart__actions {
-  display: flex;
-  gap: 12px;
-}
-
-.oa-btn {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-}
-
-.oa-btn--black {
-  background: #000000;
-  color: #ffffff;
-}
-
-.oa-btn--grey {
-  background: #e5e5e7;
-  color: #000000;
-}
-
-.oad-code {
-  flex: 1.2;
-  background: #000000;
-  color: #ffffff;
-  padding: 24px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 13px;
-  position: relative;
-}
-
-.oad-code__header {
-  display: flex;
+  align-items: end;
   justify-content: space-between;
-  align-items: center;
-  color: #86868b;
-  margin-bottom: 16px;
-}
-
-.oad-code pre { margin: 0; }
-.c-k { color: #d19a66; }
-.c-s { color: #98c379; }
-
-.oad-section {
-  margin-bottom: 80px;
-}
-
-.oad-section__title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 24px;
-}
-
-.oad-section__subtitle {
-  font-size: 15px;
-  color: #6e6e73;
-  margin-bottom: 32px;
-  line-height: 1.5;
-}
-
-.oad-path-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.oad-path-card {
-  padding: 32px;
-  border: 1px solid #e5e5e7;
-  border-radius: 12px;
-}
-
-.oad-path-card h4 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.oad-path-card p {
-  font-size: 14px;
-  color: #6e6e73;
-  line-height: 1.5;
-  margin-bottom: 24px;
-}
-
-.oad-path-card__link {
-  font-size: 14px;
-  font-weight: 600;
-  color: #000000;
-}
-
-.oad-model-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.oad-model-card__img {
-  height: 180px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.oad-model-card__img--pollen { background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%); }
-.oad-model-card__img--rose { background: linear-gradient(135deg, #f8ceec 0%, #a88beb 100%); }
-.oad-model-card__img--ocean { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
-
-.oad-model-card h5 {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.badge {
-  background: #e8f5e9;
-  color: #2e7d32;
-  font-size: 11px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 700;
-}
-
-.oad-model-card p {
-  font-size: 13px;
-  color: #6e6e73;
-  line-height: 1.4;
-}
-
-.oad-building-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-.oad-building-item {
-  display: flex;
   gap: 16px;
+  margin-bottom: 16px;
 }
 
-.oad-building-item__icon {
-  width: 40px;
-  height: 40px;
-  background: #f5f5f7;
-  border-radius: 8px;
+.oa-view-all {
+  color: #111827;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.oa-section-subtitle {
+  margin: -4px 0 18px;
+  max-width: 70ch;
+}
+
+.oa-build-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.oa-build-card {
+  border: 0;
+  border-radius: 16px;
+  padding: 22px;
+  background: #f9fafb;
+  box-shadow: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.oa-build-card:hover {
+  transform: translateY(-2px);
+  background: #f3f4f6;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.oa-card--link {
+  text-decoration: none;
+  display: block;
+}
+
+.oa-card__cta {
+  display: inline-flex;
+  margin-top: 18px;
+  color: #111827;
+  font-weight: 700;
+}
+
+.oa-model-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 2px;
+}
+
+.oa-model-card {
+  min-height: 172px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 20px;
+  border: 0;
+  background: #f9fafb;
+  box-shadow: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.oa-model-card:hover {
+  transform: translateY(-2px);
+  background: #f3f4f6;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.oa-model-card__badge {
+  align-self: flex-start;
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #111827;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.oa-model-card__title {
+  font-size: 1.45rem;
+  line-height: 1.08;
+}
+
+.oa-model-card__desc {
+  font-size: 0.92rem;
+}
+
+.oa-start-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.oa-start-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: transform 0.2s ease;
+}
+
+.oa-start-card:hover {
+  transform: translateY(-2px);
+}
+
+.oa-start-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+  border-radius: 16px;
+}
+
+.oa-start-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.oa-start-card__badge {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1d1d1f;
+  pointer-events: none;
 }
 
-.oad-building-item h6 {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 4px;
+.oa-start-card__body {
+  padding: 14px 0 0;
 }
 
-.oad-building-item p {
-  font-size: 13px;
-  color: #6e6e73;
-  line-height: 1.4;
+.oa-start-card h3 {
+  font-size: 1.02rem;
+  line-height: 1.28;
+}
+
+.oa-start-card p {
+  margin: 6px 0 0;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 1100px) {
+  .oa-container,
+  .oa-quickstart,
+  .oa-build-grid,
+  .oa-model-grid,
+  .oa-start-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .oa-sidebar {
+    position: static;
+    max-height: none;
+    border-right: 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .oa-main {
+    padding: 28px 20px 72px;
+  }
+}
+
+@media (max-width: 720px) {
+  .oa-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .oa-button {
+    width: 100%;
+  }
+
+  .oa-snippet-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+:global(.dark) .oa-page {
+  background: #0a0a0a;
+  color: #ececf1;
+}
+
+:global(.dark) .oa-sidebar {
+  background: #0b0b0b;
+  border-right-color: #2a2a2a;
+}
+
+:global(.dark) .oa-sidebar__search,
+:global(.dark) .oa-build-card,
+:global(.dark) .oa-model-card,
+:global(.dark) .oa-start-card {
+  background: #111111;
+  border-color: #2a2a2a;
+  box-shadow: none;
+}
+
+:global(.dark) .oa-sidebar__search span,
+:global(.dark) .oa-hero h1,
+:global(.dark) .oa-section-title,
+:global(.dark) .oa-quickstart__copy h2,
+:global(.dark) .oa-build-card h3,
+:global(.dark) .oa-model-card__title,
+:global(.dark) .oa-start-card h3 {
+  color: #ececf1;
+}
+
+:global(.dark) .oa-sidebar__search small,
+:global(.dark) .oa-quickstart__copy p,
+:global(.dark) .oa-build-card p,
+:global(.dark) .oa-model-card__desc,
+:global(.dark) .oa-start-card p,
+:global(.dark) .oa-section-subtitle {
+  color: #c5c5d2;
+}
+
+:global(.dark) .oa-sidebar__link,
+:global(.dark) .oa-view-all {
+  color: #c5c5d2;
+}
+
+:global(.dark) .oa-sidebar__link:hover,
+:global(.dark) .oa-view-all:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+:global(.dark) .oa-button--primary {
+  background: #ececf1;
+  color: #0a0a0a;
+}
+
+:global(.dark) .oa-button--secondary {
+  background: #1a1a1a;
+  color: #ececf1;
+  border: 1px solid #2a2a2a;
+}
+
+:global(.dark) .oa-snippet {
+  background: #0b0b0b;
+  color: #ececf1;
+}
+
+:global(.dark) .oa-snippet__bar {
+  color: #9ca3af;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(.dark) .oa-model-card__badge {
+  background: #1f2937;
+  color: #ececf1;
+}
+
+:global(.dark) .oa-start-card__media,
+:global(.dark) .oa-start-card__badge {
+  background: #0b0b0b;
 }
 </style>

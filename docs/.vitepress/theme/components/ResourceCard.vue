@@ -32,7 +32,7 @@ defineProps({
   flex-direction: column;
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
@@ -43,7 +43,7 @@ defineProps({
 .resource-card:hover {
   transform: translateY(-4px);
   border-color: #00cc88;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 204, 136, 0.04);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08), 0 8px 20px rgba(0, 204, 136, 0.08);
 }
 
 .card-thumb {
@@ -51,7 +51,7 @@ defineProps({
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f9fafb;
+  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
   position: relative;
   overflow: hidden;
 }
@@ -113,7 +113,34 @@ defineProps({
   color: #00cc88;
 }
 
-/* Gradients for OpenSIN */
+:global(html:not(.dark)) .resource-card {
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+:global(html:not(.dark)) .card-thumb {
+  background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+}
+
+:global(.dark) .resource-card {
+  background: #141414;
+  border-color: #2a2a2a;
+}
+
+:global(.dark) .card-thumb {
+  background: linear-gradient(180deg, #1a1a1a 0%, #141414 100%);
+}
+
+:global(.dark) .card-title,
+:global(.dark) .card-arrow {
+  color: #f5f5f5;
+}
+
+:global(.dark) .card-desc,
+:global(.dark) .card-meta {
+  color: #a0a0a0;
+}
+
+/* OpenSIN-inspired gradients */
 .bg-sin-green { background: linear-gradient(135deg, #008060 0%, #00cc88 100%); color: white; }
 .bg-sin-blue { background: linear-gradient(135deg, #00cc88 0%, #8ec5fc 100%); }
 .bg-sin-orange { background: linear-gradient(135deg, #008060 0%, #00ffaa 100%); }

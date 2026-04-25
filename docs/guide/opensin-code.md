@@ -1,6 +1,29 @@
+---
+title: OpenSIN Code
+description: The autonomous coding surface for OpenSIN-AI
+---
+
+<script setup>
+const links = [
+  { title: 'Getting Started', href: '/guide/getting-started', description: 'Overview, install, and first steps.' },
+  { title: 'Agent Basics', href: '/guide/agent-basics', description: 'Learn the agent model and config.' },
+  { title: 'Team Orchestration', href: '/guide/team-orchestration', description: 'Coordinate multi-agent workflows.' },
+  { title: 'MCP Integration', href: '/guide/mcp-integration', description: 'Attach tools and external data.' },
+]
+</script>
+
 # OpenSIN Code
 
 OpenSIN-Code ist das autonome CLI- und SDK-System der OpenSIN-AI Organisation. Es ist der Kern des agentic AI Coding Assistant Ökosystems.
+
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
 
 > **Repository:** [OpenSIN-AI/OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code)
 >

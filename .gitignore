@@ -11,3 +11,17 @@ package-lock.json
 .pcpm/sync-conflicts.json
 plan_*.md
 website-developers.opensin.ai/
+
+# Nested local worktrees / separate repos kept outside this repo's scope
+coder-SIN-Qwen/
+m2/
+modul-google-alias-rotator-01/
+modul-openai-auth-rotator-01/
+modul-opencode-gpt-rotator-01/
+omo-SIN-Qwen/
+opensin-monorepo/
+pipeline-open-openai-O1/
+pool-chrome-profiles/
+rotator-temp/
+source-of-truth/
+website-member.opensin.ai/

@@ -1,48 +1,54 @@
-# DESIGN.md - Spotify Inspired Design System for OpenSIN-AI
+# DESIGN.md - Canonical OpenSIN Docs Design System
 
 ## Visual Identity
-Dark, immersive, music-platform energy. Bold type, green accents, rounded panels, and album-art-like blocks.
+White-first, OpenAI-inspired content surfaces with disciplined dark-mode parity. OpenSIN Green is the primary accent and docs.opensin.ai is the visual baseline for all other surfaces.
 
 ## Colors
-- **Background**: `#121212`
-- **Elevated Surface**: `#181818`
-- **Primary Surface**: `#191414`
-- **Primary Accent**: `#1db954`
-- **Secondary Accent**: `#1ed760`
-- **Success**: `#1ed760`
-- **Text Primary**: `#f5f5f5`
-- **Text Secondary**: `#b3b3b3`
-- **Border**: `rgba(255, 255, 255, 0.08)`
+- **Background**: `#ffffff`
+- **Elevated Surface**: `#f9fafb`
+- **Primary Surface**: `#f3f4f6`
+- **Primary Accent**: `#00cc88`
+- **Secondary Accent**: `#00ffaa`
+- **Success**: `#00cc88`
+- **Text Primary**: `#111827`
+- **Text Secondary**: `#4b5563`
+- **Border**: `#e5e7eb`
 
 ## Typography
-- **Font Family**: `Inter`, `Helvetica Neue`, `Arial`, sans-serif
-- **Monospace**: `IBM Plex Mono`, `SFMono-Regular`, monospace
+- **Font Family**: `Inter`, `system-ui`, `sans-serif`
+- **Monospace**: `JetBrains Mono`, `Fira Code`, monospace
 - **Scale**:
-  - Display: 56px / 800
+  - Display: 72px / 100
   - Heading: 28px / 700
   - Body: 16px / 400
   - Code: 14px / 500
 
 ## UI Components
 - **Buttons**:
-  - Primary: pill-shaped, green fill, black text, strong hover glow
-  - Secondary: transparent dark fill, subtle border, rounded full
+   - Primary: green fill, white text, compact 8px radius baseline
+   - Secondary: transparent with subtle border
 - **Cards**:
-  - Background: `#181818`
-  - Border: `1px solid rgba(255,255,255,0.08)`
-  - Radius: 18px–28px
+   - Background: `#ffffff` or `#f9fafb`
+   - Border: `1px solid #e5e7eb`
+   - Radius: `12px`–`18px`
 - **Navigation**:
-  - Sticky dark bar with blur
-  - Compact spacing
-  - Green active state
+   - Sticky light bar with blur
+   - Compact spacing
+   - Green active state
+
+## Icon Contract
+- SVG icons must render with `display: block`
+- Use rounded stroke caps and joins
+- Icon wrappers should be centered, square, and visually quiet
+- Feature/icon surfaces should not feel broken, clipped, or oversized
 
 ## Layout Principles
-- Dark stacked sections with breathable spacing
-- Album-art-style feature blocks
+- White stacked sections with breathable spacing
 - Large hero copy with simple supporting text
-- Content should feel premium, minimal, and energetic
+- Content should feel premium, minimal, and calm
+- The `/api/` subpage defines the canonical docs subpage pattern
 
 ## Effects
-- Soft green radial glow near heroes and CTAs
+- Soft green accent glow near heroes and CTAs
 - Subtle hover lift on cards
 - Fast, crisp transitions (150–200ms)

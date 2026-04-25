@@ -36,3 +36,33 @@ Common issues and their solutions.
 | **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
 
 → [Alle Mandate](/best-practices/code-quality)
+---
+title: Troubleshooting
+description: Diagnose common OpenSIN issues
+---
+
+<script setup>
+const links = [
+  { title: 'Getting Started', href: '/guide/getting-started', description: 'Check prerequisites and setup.' },
+  { title: 'Installation', href: '/guide/installation', description: 'Verify Bun and dependency setup.' },
+  { title: 'Quick Start', href: '/guide/quick-start', description: 'Fast path to a working agent loop.' },
+  { title: 'API Overview', href: '/api/overview', description: 'Cross-check the reference surfaces.' },
+]
+</script>
+
+# Troubleshooting
+
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
+
+## Common checks
+
+- Confirm Bun is installed.
+- Confirm the repo built successfully.
+- Confirm the route you are opening exists.

@@ -3,6 +3,15 @@ title: API Overview
 description: Technical architecture of the OpenSIN-AI API ecosystem.
 ---
 
+<script setup>
+const links = [
+  { title: 'Agent Identity API', href: '/api/agent', description: 'Discovery, Agent Cards, versioning, and auth requirements.' },
+  { title: 'A2A Protocol', href: '/api/a2a', description: 'JSON-RPC transport, methods, and security headers.' },
+  { title: 'Team API', href: '/api/team', description: 'Team creation, execution, and orchestration flow.' },
+  { title: 'A2A Protocol Hub', href: '/api/a2a-protocol', description: 'Shortest path into the protocol reference.' },
+]
+</script>
+
 # API Overview
 
 The OpenSIN-AI ecosystem exposes two primary API layers: the **Local SDK Layer** for internal agent logic and the **Remote A2A Layer** for cross-agent communication via the Neural-Bus.
@@ -36,6 +45,15 @@ Managed by `Team-SIN-*` agents to coordinate multi-agent workflows.
 - **Purpose:** Parallel task distribution and result aggregation.
 - **Backbone:** SIN-Hermes Router.
 
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
+
 ## Authentication
 
 OpenSIN uses a tiered authentication model managed by the [Passwordmanager](/guide/passwordmanager):
@@ -47,6 +65,12 @@ OpenSIN uses a tiered authentication model managed by the [Passwordmanager](/gui
 ## Rate Limiting & Safety
 
 All API calls are subject to the **Permission Manager** gate. Destructive actions or high-cost model calls are paused for human approval unless pre-authorized.
+
+## Related
+
+- [Agent Identity API](/api/agent)
+- [A2A Protocol](/api/a2a)
+- [Team API](/api/team)
 
 ---
 

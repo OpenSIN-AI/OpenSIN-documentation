@@ -15,30 +15,28 @@
 <script setup lang="ts">
 /**
  * Homepage related-topics grid.
- * DO NOT replace with inline HTML in index.md again.
- * This component exists so the homepage can keep the premium surface-card look
- * without polluting markdown content with raw layout markup.
+ * Keeps the homepage aligned with the current docs.opensin.ai card baseline.
  */
 const cards = [
   {
-    title: 'Consumer docs',
-    description: 'Guides, onboarding, and product help',
+    title: 'API docs',
+    description: 'Guides, onboarding, and platform help',
     href: '/guide/getting-started',
   },
   {
     title: 'Developer portal',
     description: 'APIs, SDKs, auth, and webhooks',
-    href: 'https://developers.opensin.ai/docs/',
+    href: 'https://docs.opensin.ai/api/',
   },
   {
-    title: 'MyOpenSIN',
+    title: 'Chat',
     description: 'Plans, billing, and customer access',
-    href: 'https://my.opensin.ai',
+    href: 'https://chat.opensin.ai',
   },
   {
-    title: 'Surface registry',
+    title: 'Resources',
     description: 'Public, gated, and internal surface rules',
-    href: '/governance/domain-registry',
+    href: '/guide/getting-started',
   },
 ]
 </script>
@@ -65,8 +63,8 @@ const cards = [
   display: block;
   padding: 1.15rem 1.2rem;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: #141414;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
   text-decoration: none;
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -74,34 +72,41 @@ const cards = [
 .home-related-topics__card:hover {
   transform: translateY(-2px);
   border-color: rgba(0, 204, 136, 0.45);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.08);
 }
 
 .home-related-topics__heading {
-  color: #f5f5f5;
+  color: #111827;
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 0.3rem;
 }
 
 .home-related-topics__description {
-  color: #8e8ea0;
+  color: #4b5563;
   font-size: 0.95rem;
   line-height: 1.45;
 }
 
-:global(html:not(.dark)) .home-related-topics__card {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+.home-related-topics__card:hover .home-related-topics__heading {
+  color: #00cc88;
 }
 
-:global(html:not(.dark)) .home-related-topics__heading {
-  color: #0f172a;
+:global(.dark) .home-related-topics__card {
+  background: #141414;
+  border-color: #2a2a2a;
 }
 
-:global(html:not(.dark)) .home-related-topics__description {
-  color: #475569;
+:global(.dark) .home-related-topics__heading {
+  color: #f5f5f5;
+}
+
+:global(.dark) .home-related-topics__description {
+  color: #a0a0a0;
+}
+
+:global(.dark) .home-related-topics__card:hover {
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
 }
 
 @media (max-width: 960px) {

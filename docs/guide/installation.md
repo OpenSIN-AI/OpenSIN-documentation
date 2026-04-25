@@ -63,3 +63,33 @@ If the response latency is >200ms, your environment is non-compliant. Optimize y
 - [First Agent Tutorial](/tutorials/first-agent)
 - [SDK Overview](/sdk/overview)
 - [Agent Configuration](/guide/agent-configuration)
+---
+title: Installation
+description: Install and verify OpenSIN locally
+---
+
+<script setup>
+const links = [
+  { title: 'Getting Started', href: '/guide/getting-started', description: 'Overview and prerequisites.' },
+  { title: 'Quick Start', href: '/guide/quick-start', description: 'The fastest path to a working setup.' },
+  { title: 'Troubleshooting', href: '/guide/troubleshooting', description: 'Common issues and fixes.' },
+  { title: 'OpenSIN Code', href: '/guide/opensin-code', description: 'Autonomous coding surface.' },
+]
+</script>
+
+# Installation
+
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
+
+## Install
+
+```bash
+bun install
+```

@@ -59,6 +59,15 @@ After any credential discovery: immediately push to global-brain.
 
 ## 📋 ISSUE 107: UPDATE TO 2026 STANDARDS
 
+**OpenAI Token Rotator Pipeline (2026)** is now documented at [`docs/examples/openai-token-rotator-pipeline-2026.md`](docs/examples/openai-token-rotator-pipeline-2026.md).
+
+Three production modules:
+- [`modul-google-alias-rotator`](https://github.com/SIN-Rotator/modul-google-alias-rotator)
+- [`modul-openai-auth-rotator`](https://github.com/SIN-Rotator/modul-openai-auth-rotator) (dynamic birthday/age UI + signal-file keep-alive)
+- [`modul-opencode-gpt-rotator`](https://github.com/SIN-Rotator/modul-opencode-gpt-rotator) (CDP connect to live Chrome session)
+
+All issues closed, main branches clean, full E2E architecture with `/tmp/auth_rotator_done` + `/tmp/auth_rotator_release` signal files verified.
+
 This repo is flagged for update to OpenSIN 2026 standards. Key areas:
 
 ### Phase 1 Critical (in progress)
@@ -156,6 +165,7 @@ bun ./scripts/build-docs.mjs
 3. **NEVER use npm** — instant ban
 4. **NEVER blind browser automation** — screenshot + vision gate required
 5. **NEVER store credentials locally** — global-brain only
+6. **NEVER leak top-secret project details** (SIN-Rotator pipeline internals, credentials, CLI commands) into public or global-facing docs — modul-level AGENTS.md only
 
 ---
 

@@ -36,6 +36,9 @@
 
 > [!IMPORTANT]
 > This repository is the **Single Source of Truth (SSOT)** for all OpenSIN-AI documentation, API references, and architecture blueprints. It is managed by the OpenSIN-AI Governance Board.
+>
+> The visual design language shown on `docs.opensin.ai` is now the canonical OpenSIN web design baseline for all other surfaces.
+> Keep `developers.opensin.ai` and `member.opensin.ai` aligned to this look, but preserve their separate runtimes and repos.
 
 ## 🚀 Quick Start
 

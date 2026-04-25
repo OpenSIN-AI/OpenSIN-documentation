@@ -1,153 +1,229 @@
 <script setup>
-/**
- * OpenAIHome.vue - Billion Dollar Restoration v2
- * Based on professional design audit.
- * Implements ResourceCard component and strict 8px spacing.
- */
+const featuredLead = {
+  title: 'Introducing the OpenSIN Code app',
+  meta: 'Video February 2, 2026',
+  href: '/guide/opensin-code',
+  image: 'https://cdn.openai.com/devhub/resources/video-1.png',
+}
+
+const featuredCards = [
+  {
+    title: 'OpenSIN Apps SDK examples',
+    meta: 'Code October 6, 2025',
+    href: '/guide/opensin-code',
+    image: 'https://cdn.openai.com/devhub/resources/code-2.png',
+  },
+  {
+    title: 'OpenSIN ChatKit starter app',
+    meta: 'Code October 6, 2025',
+    href: '/guide/opensin-code',
+    image: 'https://cdn.openai.com/devhub/resources/code-3.png',
+  },
+  {
+    title: 'OpenSIN A2A Protocol',
+    meta: 'Guide September 29, 2025',
+    href: '/guide/a2a-protocol',
+    image: 'https://cdn.openai.com/devhub/resources/guide-4.png',
+  },
+]
+
+const latestCards = [
+  {
+    title: 'OpenSIN Code Prompting Guide',
+    meta: 'Kochbuch',
+    description: 'Kochbuch zur Erstellung effektiver Video-Instrumente für die OpenSIN Code-Generation.',
+    href: '/guide/opensin-code',
+    tone: 'violet',
+    icon: 'book',
+  },
+  {
+    title: 'OpenSIN-Leitfaden für Gesprächsagenten',
+    meta: 'Kochbuch',
+    description: 'OpenSIN-Modelle erweitern die Grenzen von Intelligenz und Effizienz und unser empfohlenes agentenbasiertes Setup.',
+    href: '/guide/team-orchestration',
+    tone: 'gold',
+    icon: 'chat',
+  },
+  {
+    title: 'Wir stellen die OpenSIN-Code-App vor',
+    meta: 'Video',
+    description: 'Sehen Sie die OpenSIN Code-App in Aktion und erfahren Sie, wie sie Ihnen hilft, schneller zu entwickeln und zu liefern.',
+    href: '/guide/opensin-code',
+    tone: 'orange',
+    icon: 'terminal',
+  },
+  {
+    title: 'OpenSIN in JetBrains IDEs',
+    meta: 'Video',
+    description: 'Wie man OpenSIN in JetBrains IDEs wie Rider, IntelliJ, PyCharm und WebStorm verwendet.',
+    href: '/guide/opensin-code',
+    tone: 'sky',
+    icon: 'monitor',
+  },
+  {
+    title: 'Docs MCP',
+    meta: 'Führung',
+    description: 'Suchen und lesen Sie die Entwicklerdokumentation von OpenSIN direkt in Ihrem Editor mithilfe von MCP.',
+    href: '/guide/mcp-integration',
+    tone: 'mint',
+    icon: 'search',
+  },
+  {
+    title: 'OpenSIN Image-1.5 Prompting Guide',
+    meta: 'Kochbuch',
+    description: 'Anleitung zu zuverlässiger Bilderzeugung mit OpenSIN Image-1.5.',
+    href: '/guide/opensin-code',
+    tone: 'lavender',
+    icon: 'image',
+  },
+]
+
+const exploreCards = [
+  {
+    title: 'Blog',
+    href: 'https://blog.opensin.ai',
+    tone: 'violet',
+    icon: 'spark',
+  },
+  {
+    title: 'Ressourcen',
+    href: '/guide/getting-started',
+    tone: 'sky',
+    icon: 'gift',
+  },
+  {
+    title: 'Kochbuch',
+    href: '/examples/hello-world',
+    tone: 'mint',
+    icon: 'book',
+  },
+]
 </script>
 
 <template>
   <div class="oa-page">
     <div class="oa-container">
-      <!-- Hero Section -->
       <section class="oa-hero">
-        <h1 class="oa-hero__title">OpenSIN für Entwickler</h1>
+        <h1 class="oa-hero__title">OpenSIN for developers</h1>
         <p class="oa-hero__subtitle">
-          Dokumente und Ressourcen, die Ihnen helfen, mit der Neural-Bus API
-          autonome Agenten-Flotten zu bauen und zu steuern.
+          Docs and resources to help you build with, for, and on OpenSIN.
         </p>
       </section>
 
-      <!-- Announcement Bar -->
-      <div class="oa-announcement">
-        <a href="/guide/whats-new" class="oa-announcement-card">
-          <div class="oa-ann-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00cc88" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          </div>
-          <div class="oa-ann-content">
-            <span class="oa-ann-tag">Neu</span>
-            <span class="oa-ann-text">OpenSIN Core v2.0 Standard – Native n8n Integration & Stealth-Biometrics</span>
-          </div>
-          <div class="oa-ann-arrow">→</div>
-        </a>
-      </div>
+      <a class="oa-promo" href="/api/overview">
+        <div class="oa-promo__media">
+            <img
+            src="https://developers.openai.com/images/api/models/icons/gpt-5.5.png"
+            alt="OpenSIN sandbox agents"
+          />
+        </div>
+        <div class="oa-promo__body">
+          <span class="oa-promo__eyebrow">New</span>
+          <h2 class="oa-promo__title">Sandbox agents in the OpenSIN Agents SDK</h2>
+          <p class="oa-promo__description">
+            Run agents in container-based environments with files, commands, skills, snapshots, and memory.
+          </p>
+        </div>
+        <span class="oa-promo__arrow" aria-hidden="true">›</span>
+      </a>
 
-      <!-- Main Feature Grid (Image 2 Top) -->
       <div class="oa-grid oa-grid--3">
-        <a href="/api/" class="feature-tile feature-tile--light">
-           <div class="feature-tile__icon">
-             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-           </div>
-           <div class="feature-tile__body">
-             <h3>Neural-Bus API</h3>
-             <p>Nutzen Sie unsere APIs und Modelle, um Ihre eigenen KI-Erlebnisse zu entwickeln.</p>
-           </div>
+        <a class="oa-tile" href="/api/">
+          <span class="oa-tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <path d="M3 9h18" />
+              <path d="M9 21V9" />
+            </svg>
+          </span>
+          <h3>OpenSIN Platform</h3>
+          <p>Use OpenSIN APIs and models to build your own AI experiences.</p>
         </a>
 
-        <a href="/guide/opensin-code" class="feature-tile feature-tile--gradient">
-           <div class="feature-tile__icon feature-tile__icon--white">
-             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-           </div>
-           <div class="feature-tile__body">
-             <h3>OpenCode CLI</h3>
-             <p>Der autonome Entwickler-Agent für dein Terminal. Schneller entwickeln und validieren.</p>
-           </div>
+        <a class="oa-tile" href="/guide/opensin-code">
+          <span class="oa-tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M8 6 2 12l6 6" />
+              <path d="m16 6 6 6-6 6" />
+            </svg>
+          </span>
+          <h3>OpenSIN Code</h3>
+          <p>Build and ship faster with OpenSIN Code — everywhere you work.</p>
         </a>
 
-        <a href="/guide/a2a-protocol" class="feature-tile feature-tile--light">
-           <div class="feature-tile__icon">
-             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-           </div>
-           <div class="feature-tile__body">
-             <h3>A2A Protocol</h3>
-             <p>Standardisierte Protokolle für Agent-to-Agent Interaktionen auf dem Neural-Bus.</p>
-           </div>
+        <a class="oa-tile" href="/guide/a2a-protocol">
+          <span class="oa-tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="7" height="7" rx="1.5" />
+              <rect x="14" y="3" width="7" height="7" rx="1.5" />
+              <rect x="14" y="14" width="7" height="7" rx="1.5" />
+              <rect x="3" y="14" width="7" height="7" rx="1.5" />
+            </svg>
+          </span>
+          <h3>OpenSIN Apps SDK</h3>
+          <p>Extend OpenSIN surfaces with your apps built on top of the Model Context Protocol.</p>
         </a>
       </div>
 
-      <!-- Recommended Section -->
       <section class="oa-section">
         <div class="oa-section-header">
-          <h2 class="oa-section-title">Empfohlen</h2>
+          <h2 class="oa-section-title">Featured</h2>
         </div>
-        <div class="oa-grid oa-grid--3">
-          <ResourceCard 
-            title="Erste Schritte mit Kairos" 
-            description="Lernen Sie, wie Sie hochperformante Agent-Loops mit Kairos orchestrieren." 
-            link="/tutorials/agent-basics"
-            meta="Tutorial"
-            imageClass="bg-sin-blue"
-          />
-          <ResourceCard 
-            title="Building Custom MCP Servers" 
-            description="Eigene Datenquellen und Tools über das Model Context Protocol anbinden." 
-            link="/best-practices/mcp-integration"
-            meta="Entwicklung"
-            imageClass="bg-sin-green"
-          />
-          <ResourceCard 
-            title="Fleet Orchestration Patterns" 
-            description="Best Practices für die Verwaltung von 100+ autonomen Agenten-Instanzen." 
-            link="/guide/team-orchestration"
-            meta="Führung"
-            imageClass="bg-sin-orange"
-          />
-        </div>
-      </section>
 
-      <!-- Latest Section -->
-      <section class="oa-section">
-        <div class="oa-section-header">
-          <h2 class="oa-section-title">Letzte Updates</h2>
-          <a href="/guide/changelog" class="oa-view-all">Alle anzeigen →</a>
-        </div>
-        <div class="oa-latest-list">
-          <a href="/best-practices/browser-automation" class="latest-item">
-            <div class="latest-item__icon latest-item__icon--green">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <a class="oa-featured-lead" :href="featuredLead.href">
+          <div class="oa-featured-lead__media">
+            <img :src="featuredLead.image" :alt="featuredLead.title" />
+          </div>
+          <div class="oa-featured-lead__body">
+            <h3>{{ featuredLead.title }}</h3>
+            <p>{{ featuredLead.meta }}</p>
+          </div>
+        </a>
+
+        <div class="oa-featured-grid">
+          <a v-for="card in featuredCards" :key="card.title" :href="card.href" class="oa-featured-card">
+            <div class="oa-featured-card__media">
+              <img :src="card.image" :alt="card.title" />
             </div>
-            <div class="latest-item__content">
-              <h4>Behavioral Biometrics Guide</h4>
-              <p>Menschliches Verhalten simulieren für Stealth-Automatisierung.</p>
-              <span class="latest-item__meta">Best Practices</span>
-            </div>
-          </a>
-          <a href="/tutorials/ci-cd-n8n" class="latest-item">
-            <div class="latest-item__icon latest-item__icon--green">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            </div>
-            <div class="latest-item__content">
-              <h4>n8n Workflow Automation</h4>
-              <p>Verbinden Sie Agenten mit Enterprise Workflows.</p>
-              <span class="latest-item__meta">Tutorial</span>
+            <div class="oa-featured-card__body">
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.meta }}</p>
             </div>
           </a>
         </div>
       </section>
 
-      <!-- Explore Blocks -->
       <section class="oa-section">
         <div class="oa-section-header">
-          <h2 class="oa-section-title">Erkunden</h2>
+          <h2 class="oa-section-title">Latest</h2>
+          <a href="/guide/getting-started" class="oa-view-all">View all</a>
         </div>
-        <div class="oa-grid oa-grid--3">
-          <a href="https://blog.opensin.ai" class="explore-block explore-block--blog">
-             <div class="explore-block__icon">
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00cc88" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path></svg>
-             </div>
-             <span>Engineering Blog</span>
+
+        <div class="oa-latest-grid">
+          <a v-for="card in latestCards" :key="card.title" :href="card.href" class="oa-latest-card">
+            <div :class="['oa-latest-card__media', `oa-latest-card__media--${card.tone}`]">
+              <CardIcon :name="card.icon" variant="latest" />
+            </div>
+            <div class="oa-latest-card__body">
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.description }}</p>
+              <span class="oa-latest-card__meta">{{ card.meta }}</span>
+            </div>
           </a>
-          <a href="/guide/getting-started" class="explore-block explore-block--resources">
-             <div class="explore-block__icon">
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00cc88" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path></svg>
-             </div>
-             <span>Onboarding Ressourcen</span>
-          </a>
-          <a href="/examples/hello-world" class="explore-block explore-block--cookbook">
-             <div class="explore-block__icon">
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00cc88" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path></svg>
-             </div>
-             <span>OpenSIN Cookbook</span>
+        </div>
+      </section>
+
+      <section class="oa-section oa-section--explore">
+        <div class="oa-section-header">
+          <h2 class="oa-section-title">Explore</h2>
+        </div>
+
+        <div class="oa-explore-grid">
+          <a v-for="card in exploreCards" :key="card.title" :href="card.href" class="oa-explore-card">
+            <div :class="['oa-explore-card__media', `oa-explore-card__media--${card.tone}`]">
+              <CardIcon :name="card.icon" variant="explore" />
+            </div>
+            <h3>{{ card.title }}</h3>
           </a>
         </div>
       </section>
@@ -157,268 +233,612 @@
 
 <style scoped>
 .oa-page {
-  background: #ffffff;
   min-height: 100vh;
-  padding-bottom: 120px;
+  background: #ffffff;
+  color: #111827;
 }
 
 .oa-container {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 40px 96px;
 }
 
-/* Hero Section */
 .oa-hero {
-  padding: 80px 0 64px;
+  padding: 56px 0 26px;
   text-align: center;
 }
 
 .oa-hero__title {
-  font-size: 3.5rem;
-  font-weight: 700;
+  margin: 0;
   color: #111827;
-  letter-spacing: -0.04em;
-  margin-bottom: 16px;
+  font-size: clamp(3rem, 6vw, 4.6rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  font-weight: 700;
 }
 
 .oa-hero__subtitle {
-  font-size: 1.25rem;
-  color: #4b5563;
+  margin: 16px auto 0;
   max-width: 680px;
-  margin: 0 auto;
-  line-height: 1.6;
+  color: #4b5563;
+  font-size: 1.05rem;
+  line-height: 1.65;
 }
 
-/* Announcement Bar */
-.oa-announcement {
-  margin-bottom: 48px;
-}
-
-.oa-announcement-card {
+.oa-promo {
   display: flex;
   align-items: center;
-  padding: 12px 24px;
-  background: #ffffff;
+  gap: 24px;
+  padding: 20px 22px;
+  margin: 0 auto 28px;
   border: 1px solid #e5e7eb;
-  border-radius: 99px;
+  border-radius: 20px;
+  background: #ffffff;
   text-decoration: none;
   color: inherit;
-  transition: all 0.2s ease;
-  width: fit-content;
-  margin: 0 auto;
+  box-shadow: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.oa-announcement-card:hover {
-  border-color: #00cc88;
+.oa-promo:hover {
+  transform: translateY(-1px);
+  border-color: #d1d5db;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.oa-promo__media {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  overflow: hidden;
   background: #f9fafb;
+  border: none;
 }
 
-.oa-ann-tag {
-  background: #ecfdf5;
-  color: #059669;
+.oa-promo__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  display: block;
+}
+
+.oa-promo__body {
+  min-width: 0;
+}
+
+.oa-promo__arrow {
+  margin-left: auto;
+  color: #6b7280;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.oa-promo__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #111827;
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 2px 10px;
-  border-radius: 99px;
-  margin-right: 12px;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-.oa-ann-text {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #374151;
+.oa-promo__title {
+  margin: 0;
+  color: #111827;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  font-weight: 700;
 }
 
-.oa-ann-arrow {
-  margin-left: 12px;
-  color: #9ca3af;
+.oa-promo__description {
+  margin: 10px 0 0;
+  color: #4b5563;
+  font-size: 0.98rem;
+  line-height: 1.55;
 }
 
-/* Grids */
 .oa-grid {
   display: grid;
-  gap: 24px;
+  gap: 20px;
 }
 
 .oa-grid--3 {
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-/* Feature Tiles */
-.feature-tile {
-  padding: 40px;
-  border-radius: 16px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.oa-tile {
   display: flex;
   flex-direction: column;
-  height: 240px;
-}
-
-.feature-tile--light {
+  min-height: 168px;
+  padding: 24px;
+  border: 0;
+  border-radius: 18px;
   background: #f9fafb;
-  border: 1px solid #f3f4f6;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.feature-tile--light:hover {
+.oa-tile:hover {
+  transform: translateY(-2px);
   background: #f3f4f6;
-  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
 }
 
-.feature-tile--gradient {
-  background: linear-gradient(135deg, #008060 0%, #00cc88 100%);
-  color: #ffffff;
-}
-
-.feature-tile--gradient:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 204, 136, 0.15);
-}
-
-.feature-tile__icon {
-  margin-bottom: 32px;
+.oa-tile__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: transparent;
   color: #111827;
 }
 
-.feature-tile__icon--white { color: #ffffff; }
+.oa-tile__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
 
-.feature-tile h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
+.oa-tile h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.12rem;
+  line-height: 1.25;
   letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
-.feature-tile p {
-  font-size: 1rem;
-  line-height: 1.5;
-  opacity: 0.85;
+.oa-tile p {
+  margin: 10px 0 0;
+  color: #4b5563;
+  font-size: 0.96rem;
+  line-height: 1.55;
 }
 
-/* Sections */
 .oa-section {
-  margin-top: 88px;
+  margin-top: 72px;
 }
 
 .oa-section-header {
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 32px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #f3f4f6;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
 }
 
 .oa-section-title {
-  font-size: 1.5rem;
-  font-weight: 700;
+  margin: 0;
   color: #111827;
+  font-size: 1.55rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 700;
 }
 
 .oa-view-all {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: #00cc88;
+  color: #6b7280;
   text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
-/* Latest List */
-.oa-latest-list {
+.oa-view-all:hover {
+  color: #111827;
+}
+
+.oa-featured-lead {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 32px;
-}
-
-.latest-item {
-  display: flex;
-  gap: 24px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
+  gap: 20px;
+  margin-bottom: 22px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background: #ffffff;
   text-decoration: none;
   color: inherit;
-  padding: 16px;
-  border-radius: 12px;
-  transition: background 0.2s ease;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.latest-item:hover {
-  background: #f9fafb;
+.oa-featured-lead:hover {
+  transform: translateY(-2px);
+  border-color: #e5e7eb;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
 }
 
-.latest-item__icon {
-  width: 48px;
-  height: 48px;
-  background: #00cc88;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.latest-item__content h4 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 4px;
-}
-
-.latest-item__content p {
-  font-size: 0.9375rem;
-  color: #4b5563;
-  margin-bottom: 8px;
-}
-
-.latest-item__meta {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #9ca3af;
-  text-transform: uppercase;
-}
-
-/* Explore Blocks */
-.explore-block {
-  height: 200px;
+.oa-featured-lead__media,
+.oa-featured-card__media,
+.oa-latest-card__media,
+.oa-explore-card__media {
+  overflow: hidden;
   border-radius: 16px;
-  background: #f9fafb;
+  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+  border: 1px solid #eef2f7;
+}
+
+.oa-featured-lead__media {
+  min-height: 240px;
+}
+
+.oa-featured-lead__media img,
+.oa-featured-card__media img,
+.oa-latest-card__media img,
+.oa-explore-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.oa-featured-lead__body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 32px;
-  text-decoration: none;
+  padding: 6px 4px 6px 0;
+}
+
+.oa-featured-lead__body h3,
+.oa-featured-card__body h3,
+.oa-latest-card__body h3 {
+  margin: 0;
   color: #111827;
-  font-weight: 600;
-  font-size: 1.125rem;
-  position: relative;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
-.explore-block:hover {
-  border-color: #00cc88;
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 204, 136, 0.08);
-  transform: scale(1.02);
+.oa-featured-lead__body h3 {
+  font-size: 1.25rem;
 }
 
-.explore-block__icon {
-  position: absolute;
-  top: 32px;
-  left: 32px;
-  width: 48px;
-  height: 48px;
-  background: #ffffff;
-  border-radius: 10px;
+.oa-featured-lead__body p,
+.oa-featured-card__body p,
+.oa-latest-card__body p {
+  margin: 8px 0 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.oa-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.oa-featured-card,
+.oa-latest-card,
+.oa-explore-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.oa-featured-card {
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.oa-featured-card:hover,
+.oa-latest-card:hover,
+.oa-explore-card:hover {
+  transform: translateY(-2px);
+}
+
+.oa-featured-card:hover {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.oa-featured-card__media {
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.oa-featured-card__body {
+  padding: 16px 18px 18px;
+}
+
+.oa-featured-card__body h3 {
+  font-size: 1rem;
+}
+
+.oa-featured-card__body p {
+  margin-top: 6px;
+  font-size: 0.85rem;
+}
+
+.oa-latest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 44px;
+}
+
+.oa-latest-card {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.oa-latest-card:hover {
+  transform: translateY(-2px);
+}
+
+.oa-latest-card__media {
+  width: 112px;
+  height: 112px;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 16px;
+  box-shadow: none;
 }
 
-@media (max-width: 768px) {
-  .oa-hero__title { font-size: 2.5rem; }
-  .oa-container { padding: 0 24px; }
-  .oa-latest-list { grid-template-columns: 1fr; }
+.oa-latest-card__media--violet {
+  background: linear-gradient(135deg, #c4b5fd 0%, #93c5fd 100%);
+}
+
+.oa-latest-card__media--gold {
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+}
+
+.oa-latest-card__media--orange {
+  background: linear-gradient(135deg, #fdba74 0%, #fb7185 100%);
+}
+
+.oa-latest-card__media--sky {
+  background: linear-gradient(135deg, #bfdbfe 0%, #7dd3fc 100%);
+}
+
+.oa-latest-card__media--mint {
+  background: linear-gradient(135deg, #a7f3d0 0%, #86efac 100%);
+}
+
+.oa-latest-card__media--lavender {
+  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+}
+
+.oa-latest-card__body {
+  padding: 6px 0 0;
+}
+
+.oa-latest-card__body h3 {
+  font-size: 1rem;
+}
+
+.oa-latest-card__meta {
+  display: inline-flex;
+  margin-top: 12px;
+  color: #9ca3af;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.oa-section--explore {
+  margin-top: 68px;
+}
+
+.oa-explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.oa-explore-card {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.oa-explore-card:hover {
+  transform: translateY(-2px);
+}
+
+.oa-explore-card__media {
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.oa-explore-card__media--violet {
+  background: linear-gradient(135deg, #c4b5fd 0%, #93c5fd 100%);
+}
+
+.oa-explore-card__media--sky {
+  background: linear-gradient(135deg, #dbeafe 0%, #bae6fd 100%);
+}
+
+.oa-explore-card__media--mint {
+  background: linear-gradient(135deg, #a7f3d0 0%, #93c5fd 100%);
+}
+
+.oa-explore-card h3 {
+  margin: 0;
+  padding: 14px 0 0;
+  color: #111827;
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .oa-grid--3,
+  .oa-featured-grid,
+  .oa-explore-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .oa-latest-grid,
+  .oa-featured-lead {
+    grid-template-columns: 1fr;
+  }
+
+  .oa-latest-card {
+    grid-template-columns: 112px minmax(0, 1fr);
+  }
+
+  .oa-promo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .oa-promo__media {
+    width: 100%;
+    flex-basis: auto;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  .oa-promo__arrow {
+    margin-left: 0;
+  }
+
+  .oa-latest-card {
+    grid-template-columns: 1fr;
+  }
+
+  .oa-latest-card__media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1200px) {
+  .oa-latest-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .oa-container {
+    padding: 0 20px 80px;
+  }
+
+  .oa-hero {
+    padding-top: 40px;
+  }
+
+  .oa-section {
+    margin-top: 56px;
+  }
+
+  .oa-promo,
+  .oa-tile,
+  .oa-featured-lead,
+  .oa-featured-card,
+  .oa-latest-card,
+  .oa-explore-card {
+    border-radius: 16px;
+  }
+
+  .oa-section-title {
+    font-size: 1.3rem;
+  }
+
+  .oa-section-header {
+    margin-bottom: 22px;
+  }
+}
+
+:global(.dark) .oa-page {
+  background: #0a0a0a;
+  color: #ececf1;
+}
+
+:global(.dark) .oa-hero__title,
+:global(.dark) .oa-section-title,
+:global(.dark) .oa-featured-lead__body h3,
+:global(.dark) .oa-featured-card__body h3,
+:global(.dark) .oa-latest-card__body h3,
+:global(.dark) .oa-explore-card h3,
+:global(.dark) .oa-tile h3 {
+  color: #ececf1;
+}
+
+:global(.dark) .oa-hero__subtitle,
+:global(.dark) .oa-promo__description,
+:global(.dark) .oa-tile p,
+:global(.dark) .oa-featured-lead__body p,
+:global(.dark) .oa-featured-card__body p,
+:global(.dark) .oa-latest-card__body p {
+  color: #c5c5d2;
+}
+
+:global(.dark) .oa-promo,
+:global(.dark) .oa-tile,
+:global(.dark) .oa-featured-lead,
+:global(.dark) .oa-featured-card,
+:global(.dark) .oa-latest-card,
+:global(.dark) .oa-explore-card {
+  background: #111111;
+  border-color: #2a2a2a;
+  box-shadow: none;
+}
+
+:global(.dark) .oa-promo__eyebrow {
+  background: rgba(0, 204, 136, 0.12);
+  color: #a7f3d0;
+}
+
+:global(.dark) .oa-tile__icon {
+  background: rgba(0, 204, 136, 0.12);
+  color: #a7f3d0;
+}
+
+:global(.dark) .oa-view-all {
+  color: #c5c5d2;
+}
+
+:global(.dark) .oa-view-all:hover {
+  color: #ffffff;
+}
+
+:global(.dark) .oa-latest-card__media,
+:global(.dark) .oa-explore-card__media,
+:global(.dark) .oa-featured-lead__media,
+:global(.dark) .oa-featured-card__media {
+  border-color: #2a2a2a;
+  box-shadow: none;
 }
 </style>

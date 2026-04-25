@@ -3,6 +3,15 @@ title: Getting Started
 description: Learn how to get started with OpenSIN
 ---
 
+<script setup>
+const links = [
+  { title: 'Installation', href: '/guide/installation', description: 'Set up Bun, clone the repo, and verify the build.' },
+  { title: 'Quick Start', href: '/guide/quick-start', description: 'Build your first agent flow in minutes.' },
+  { title: 'Agent Basics', href: '/guide/agent-basics', description: 'Understand agents, config, and loops.' },
+  { title: 'OpenSIN Code', href: '/guide/opensin-code', description: 'Jump into the autonomous coding surface.' },
+]
+</script>
+
 # Getting Started
 
 Welcome to OpenSIN — the world's most comprehensive AI agent system.
@@ -10,6 +19,15 @@ Welcome to OpenSIN — the world's most comprehensive AI agent system.
 ## What is OpenSIN?
 
 OpenSIN is an open-source platform for building, deploying, and managing AI agents. It supports multi-agent teams, agent-to-agent communication, and integration with various messaging platforms.
+
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
 
 ## Key Features
 

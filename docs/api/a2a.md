@@ -3,6 +3,15 @@ title: A2A Protocol API
 description: Agent-to-Agent communication protocol specification.
 ---
 
+<script setup>
+const links = [
+  { title: 'API Overview', href: '/api/overview', description: 'Architecture and API surfaces.' },
+  { title: 'Agent Identity API', href: '/api/agent', description: 'Agent Cards and discovery.' },
+  { title: 'Team API', href: '/api/team', description: 'Team orchestration and execution.' },
+  { title: 'A2A Hub', href: '/api/a2a-protocol', description: 'Entry point for protocol reference.' },
+]
+</script>
+
 # A2A Protocol Specification
 
 The **Agent-to-Agent (A2A)** protocol is a JSON-RPC 2.0 compliant interface that enables autonomous agents to collaborate without a central bottleneck.
@@ -80,3 +89,12 @@ X-SIN-Agent-ID: researcher-agent-01
 - [Agent API](/api/agent)
 - [SDK Overview](/sdk/overview)
 - [Neural-Bus Architecture](/architecture/global-brain-neural-bus)
+
+## Quick Entry
+
+<div class="api-link-grid">
+  <a v-for="link in links" :key="link.href" class="api-link-card" :href="link.href">
+    <strong>{{ link.title }}</strong>
+    <span>{{ link.description }}</span>
+  </a>
+</div>
