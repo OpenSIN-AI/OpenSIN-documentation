@@ -3,9 +3,11 @@ import CardIcon from './components/CardIcon.vue'
 import OpenAIHome from './components/OpenAIHome.vue'
 import OpenAIDocs from './components/OpenAIDocs.vue'
 import OpenAILayout from './components/OpenAILayout.vue'
+import './style.css'
 import './custom.css'
 
-// Canonical docs baseline is defined in custom.css and the OpenAI-inspired layout components.
+// style.css carries the shared GitHub/Primer token baseline.
+// custom.css layers OpenSIN-specific component overrides on top of that contract.
 export default {
   ...DefaultTheme,
   Layout: OpenAILayout,

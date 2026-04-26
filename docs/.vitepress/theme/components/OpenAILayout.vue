@@ -159,8 +159,8 @@ const footerLinks = [
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid #d0d7de;
   backdrop-filter: blur(12px);
 }
 
@@ -202,7 +202,7 @@ const footerLinks = [
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: #374151;
+  color: #57606a;
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 500;
@@ -215,7 +215,7 @@ const footerLinks = [
 }
 
 .oa-nav__links a:hover {
-  color: #111827;
+  color: #1f2328;
 }
 
 .oa-nav__actions {
@@ -233,9 +233,9 @@ const footerLinks = [
   align-items: center;
   justify-content: space-between;
   border-radius: 999px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #d0d7de;
   background: #ffffff;
-  color: #6b7280;
+  color: #656d76;
   font-size: 0.92rem;
   font-weight: 500;
 }
@@ -253,7 +253,7 @@ const footerLinks = [
   min-height: 38px;
   padding: 0 16px;
   border-radius: 999px;
-  background: #111111;
+  background: #0969da;
   color: #ffffff;
   text-decoration: none;
   font-size: 0.92rem;
@@ -273,7 +273,7 @@ const footerLinks = [
   justify-content: center;
   width: 38px;
   height: 38px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #d0d7de;
   border-radius: 999px;
   background: #ffffff;
   color: #111827;
@@ -282,8 +282,8 @@ const footerLinks = [
 }
 
 .oa-nav__theme:hover {
-  border-color: #d1d5db;
-  background: #f9fafb;
+  border-color: #0969da;
+  background: #f6f8fa;
   transform: translateY(-1px);
 }
 
@@ -295,12 +295,12 @@ const footerLinks = [
 }
 
 .oa-nav__cta:hover {
-  background: #2a2a2a;
+  background: #0550ae;
 }
 
 .dark .oa-nav {
-  background: rgba(10, 10, 10, 0.9);
-  border-bottom-color: rgba(255, 255, 255, 0.08);
+  background: rgba(13, 17, 23, 0.82);
+  border-bottom-color: #30363d;
 }
 
 .dark .oa-nav__links a,
@@ -316,17 +316,17 @@ const footerLinks = [
 
 .dark .oa-nav__search,
 .dark .oa-nav__theme {
-  background: #111111;
-  border-color: #2a2a2a;
+  background: #161b22;
+  border-color: #30363d;
 }
 
 .dark .oa-nav__cta {
-  background: #ececf1;
-  color: #0a0a0a;
+  background: #4493f8;
+  color: #ffffff;
 }
 
 .dark .oa-nav__cta:hover {
-  background: #ffffff;
+  background: #58a6ff;
 }
 
 .dark .oa-footer {
@@ -345,7 +345,7 @@ const footerLinks = [
 .oa-footer {
   background: #ffffff;
   padding: 56px 0 32px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #d0d7de;
 }
 
 .oa-footer__container {

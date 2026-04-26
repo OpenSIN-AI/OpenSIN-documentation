@@ -1,0 +1,83 @@
+/**
+ * Canonical VitePress token baseline for the 2026 docs overhaul.
+ * This file owns the shared GitHub/Primer-style primitives.
+ * custom.css is allowed to extend, not contradict, these tokens.
+ */
+
+:root {
+  --vp-c-brand-1: #0969da;
+  --vp-c-brand-2: #218bff;
+  --vp-c-brand-3: #0550ae;
+  --vp-c-brand-soft: rgba(9, 105, 218, 0.1);
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #ffffff;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f6f8fa;
+  --vp-c-bg-mute: #eaeef2;
+  --vp-c-text-1: #1f2328;
+  --vp-c-text-2: #656d76;
+  --vp-c-text-3: #8c959f;
+  --vp-c-divider: #d0d7de;
+  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+  --vp-font-family-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  --vp-layout-max-width: 1440px;
+  --vp-border-radius: 10px;
+  --vp-shadow-soft: 0 1px 3px rgba(31, 35, 40, 0.04), 0 6px 16px rgba(31, 35, 40, 0.06);
+}
+
+.dark {
+  --vp-c-brand-1: #4493f8;
+  --vp-c-brand-2: #58a6ff;
+  --vp-c-brand-3: #388bfd;
+  --vp-c-brand-soft: rgba(68, 147, 248, 0.15);
+  --vp-c-bg: #0d1117;
+  --vp-c-bg-alt: #0d1117;
+  --vp-c-bg-elv: #161b22;
+  --vp-c-bg-soft: #161b22;
+  --vp-c-bg-mute: #21262d;
+  --vp-c-text-1: #e6edf3;
+  --vp-c-text-2: #8b949e;
+  --vp-c-text-3: #6e7681;
+  --vp-c-divider: #30363d;
+}
+
+body {
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.VPDoc,
+.VPHomeHero,
+.VPFeature {
+  border-radius: var(--vp-border-radius);
+  box-shadow: var(--vp-shadow-soft);
+}
+
+.VPButton {
+  border-radius: 8px !important;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.VPNav {
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid var(--vp-c-bg-mute);
+}
+
+.dark .VPNav {
+  background: rgba(13, 17, 23, 0.82);
+}
+
+.VPSidebar {
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --vp-layout-max-width: 100%;
+  }
+}

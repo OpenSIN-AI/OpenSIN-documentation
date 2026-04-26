@@ -1,54 +1,59 @@
-# DESIGN.md - Canonical OpenSIN Docs Design System
+# OpenSIN Design System v2.0
 
-## Visual Identity
-White-first, OpenAI-inspired content surfaces with disciplined dark-mode parity. OpenSIN Green is the primary accent and docs.opensin.ai is the visual baseline for all other surfaces.
+## Overview
 
-## Colors
-- **Background**: `#ffffff`
-- **Elevated Surface**: `#f9fafb`
-- **Primary Surface**: `#f3f4f6`
-- **Primary Accent**: `#00cc88`
-- **Secondary Accent**: `#00ffaa`
-- **Success**: `#00cc88`
-- **Text Primary**: `#111827`
-- **Text Secondary**: `#4b5563`
-- **Border**: `#e5e7eb`
+`OpenSIN-documentation` now follows the canonical `awesome-opensin-design` overhaul: OpenAI clarity, GitHub/Primer tokens, Apple spacing discipline, and Uber-style operational directness.
 
-## Typography
-- **Font Family**: `Inter`, `system-ui`, `sans-serif`
-- **Monospace**: `JetBrains Mono`, `Fira Code`, monospace
-- **Scale**:
-  - Display: 72px / 100
-  - Heading: 28px / 700
-  - Body: 16px / 400
-  - Code: 14px / 500
+## Visual baseline
 
-## UI Components
-- **Buttons**:
-   - Primary: green fill, white text, compact 8px radius baseline
-   - Secondary: transparent with subtle border
-- **Cards**:
-   - Background: `#ffffff` or `#f9fafb`
-   - Border: `1px solid #e5e7eb`
-   - Radius: `12px`–`18px`
-- **Navigation**:
-   - Sticky light bar with blur
-   - Compact spacing
-   - Green active state
+- White-first docs shell with dark-mode parity.
+- GitHub/Primer blue action system.
+- Neutral grays, thin borders, restrained shadows.
+- OpenSIN identity is preserved through content and branding, not a competing neon accent system.
 
-## Icon Contract
-- SVG icons must render with `display: block`
-- Use rounded stroke caps and joins
-- Icon wrappers should be centered, square, and visually quiet
-- Feature/icon surfaces should not feel broken, clipped, or oversized
+## Canonical tokens
 
-## Layout Principles
-- White stacked sections with breathable spacing
-- Large hero copy with simple supporting text
-- Content should feel premium, minimal, and calm
-- The `/api/` subpage defines the canonical docs subpage pattern
+- `--vp-c-brand-1`: `#0969da`
+- `--vp-c-brand-2`: `#218bff`
+- `--vp-c-brand-3`: `#0550ae`
+- `--vp-c-brand-soft`: `rgba(9, 105, 218, 0.1)`
+- `--vp-c-bg`: `#ffffff`
+- `--vp-c-bg-soft`: `#f6f8fa`
+- `--vp-c-bg-mute`: `#eaeef2`
+- `--vp-c-text-1`: `#1f2328`
+- `--vp-c-text-2`: `#656d76`
+- `--vp-c-text-3`: `#8c959f`
+- `--vp-c-divider`: `#d0d7de`
 
-## Effects
-- Soft green accent glow near heroes and CTAs
-- Subtle hover lift on cards
-- Fast, crisp transitions (150–200ms)
+Dark mode mirrors the same system with GitHub dark tokens:
+
+- `--vp-c-brand-1`: `#4493f8`
+- `--vp-c-brand-2`: `#58a6ff`
+- `--vp-c-brand-3`: `#388bfd`
+- `--vp-c-bg`: `#0d1117`
+- `--vp-c-bg-soft`: `#161b22`
+- `--vp-c-bg-mute`: `#21262d`
+- `--vp-c-text-1`: `#e6edf3`
+- `--vp-c-text-2`: `#8b949e`
+- `--vp-c-text-3`: `#6e7681`
+- `--vp-c-divider`: `#30363d`
+
+## Implementation touchpoints
+
+- `docs/.vitepress/theme/index.ts`
+- `docs/.vitepress/theme/style.css`
+- `docs/.vitepress/theme/custom.css`
+
+Custom Vue layouts must inherit the same token and interaction system.
+
+## Rules
+
+- Keep VitePress.
+- No inline styles for canonical docs surfaces.
+- Keep navigation, cards, buttons, icons, and code blocks visually consistent.
+- Validate with `bun ./scripts/build-docs.mjs` before PR creation.
+- Sync contract changes back to `awesome-OpenSIN-design` and the local skill copy.
+
+::: tip
+The full contract lives in `awesome-OpenSIN-design/DESIGN.md` and `awesome-OpenSIN-design/contract.json`.
+:::

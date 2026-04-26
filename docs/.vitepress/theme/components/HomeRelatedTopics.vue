@@ -71,7 +71,7 @@ const cards = [
 
 .home-related-topics__card:hover {
   transform: translateY(-2px);
-  border-color: rgba(0, 204, 136, 0.45);
+  border-color: rgba(9, 105, 218, 0.35);
   box-shadow: 0 16px 30px rgba(15, 23, 42, 0.08);
 }
 
@@ -89,7 +89,7 @@ const cards = [
 }
 
 .home-related-topics__card:hover .home-related-topics__heading {
-  color: #00cc88;
+  color: #0969da;
 }
 
 :global(.dark) .home-related-topics__card {
