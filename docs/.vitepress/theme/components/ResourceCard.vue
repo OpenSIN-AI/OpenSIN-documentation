@@ -42,8 +42,8 @@ defineProps({
 
 .resource-card:hover {
   transform: translateY(-4px);
-  border-color: #00cc88;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08), 0 8px 20px rgba(0, 204, 136, 0.08);
+  border-color: #0969da;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08), 0 8px 20px rgba(9, 105, 218, 0.08);
 }
 
 .card-thumb {
@@ -110,7 +110,7 @@ defineProps({
 
 .resource-card:hover .card-arrow {
   transform: translateX(4px);
-  color: #00cc88;
+  color: #0969da;
 }
 
 :global(html:not(.dark)) .resource-card {
@@ -140,8 +140,8 @@ defineProps({
   color: #a0a0a0;
 }
 
-/* OpenSIN-inspired gradients */
-.bg-sin-green { background: linear-gradient(135deg, #008060 0%, #00cc88 100%); color: white; }
-.bg-sin-blue { background: linear-gradient(135deg, #00cc88 0%, #8ec5fc 100%); }
-.bg-sin-orange { background: linear-gradient(135deg, #008060 0%, #00ffaa 100%); }
+/* Legacy class names retained; visuals now follow the GitHub/Primer accent ramps. */
+.bg-sin-green { background: linear-gradient(135deg, #0550ae 0%, #218bff 100%); color: white; }
+.bg-sin-blue { background: linear-gradient(135deg, #0969da 0%, #58a6ff 100%); color: white; }
+.bg-sin-orange { background: linear-gradient(135deg, #1f6feb 0%, #79c0ff 100%); color: white; }
 </style>

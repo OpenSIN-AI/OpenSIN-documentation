@@ -817,13 +817,13 @@ const exploreCards = [
 }
 
 :global(.dark) .oa-promo__eyebrow {
-  background: rgba(0, 204, 136, 0.12);
-  color: #a7f3d0;
+  background: rgba(68, 147, 248, 0.14);
+  color: #9ecbff;
 }
 
 :global(.dark) .oa-tile__icon {
-  background: rgba(0, 204, 136, 0.12);
-  color: #a7f3d0;
+  background: rgba(68, 147, 248, 0.14);
+  color: #9ecbff;
 }
 
 :global(.dark) .oa-view-all {

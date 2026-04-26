@@ -27,19 +27,19 @@
   text-decoration: none;
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.home-choose-path__card:hover { transform: translateY(-2px); border-color: rgba(0,204,136,.45); box-shadow: 0 16px 30px rgba(15,23,42,.08); }
+.home-choose-path__card:hover { transform: translateY(-2px); border-color: rgba(9,105,218,.35); box-shadow: 0 16px 30px rgba(15,23,42,.08); }
 .home-choose-path__heading { color:#111827; font-size:1.05rem; font-weight:700; margin-bottom:.35rem; }
 .home-choose-path__description { color:#4b5563; font-size:.95rem; line-height:1.45; }
-.home-choose-path__card.is-highlight { border-color: rgba(0,204,136,.45); }
-.home-choose-path__card.is-highlight .home-choose-path__heading { color:#00cc88; }
+.home-choose-path__card.is-highlight { border-color: rgba(9,105,218,.35); }
+.home-choose-path__card.is-highlight .home-choose-path__heading { color:#0969da; }
 .home-choose-path__arrow { margin-left:.35rem; }
 :global(html:not(.dark)) .home-choose-path__card { box-shadow:0 10px 24px rgba(15,23,42,.05); }
-:global(html:not(.dark)) .home-choose-path__card.is-highlight { background: linear-gradient(180deg,#ffffff 0%,#f5fbf8 100%); border-color: rgba(0,128,96,.3); }
-:global(html:not(.dark)) .home-choose-path__card.is-highlight .home-choose-path__heading { color:#008060; }
+:global(html:not(.dark)) .home-choose-path__card.is-highlight { background: linear-gradient(180deg,#ffffff 0%,#f6f8fa 100%); border-color: rgba(9,105,218,.24); }
+:global(html:not(.dark)) .home-choose-path__card.is-highlight .home-choose-path__heading { color:#0550ae; }
 :global(.dark) .home-choose-path__card { background:#141414; border-color:#2a2a2a; }
 :global(.dark) .home-choose-path__heading { color:#f5f5f5; }
 :global(.dark) .home-choose-path__description { color:#a0a0a0; }
-:global(.dark) .home-choose-path__card.is-highlight { border-color: rgba(0,204,136,.45); }
-:global(.dark) .home-choose-path__card.is-highlight .home-choose-path__heading { color:#00cc88; }
+:global(.dark) .home-choose-path__card.is-highlight { border-color: rgba(68,147,248,.35); }
+:global(.dark) .home-choose-path__card.is-highlight .home-choose-path__heading { color:#58a6ff; }
 @media (max-width: 720px) { .home-choose-path__grid { grid-template-columns: 1fr; } }
 </style>
