@@ -187,6 +187,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    environment:
+      name: production
+      url: https://docs.opensin.ai
     permissions:
       contents: read
       deployments: write
@@ -202,7 +205,48 @@ jobs:
           path: docs/.vitepress/dist
 
       # -----------------------------------------------------------------------
-      # STEP 2: Deploy to Cloudflare Pages
+      # STEP 2: Validate required Cloudflare secrets exist
+      # Fail fast with explicit diagnostics instead of surfacing a vague deploy error.
+      # -----------------------------------------------------------------------
+      - name: Validate Cloudflare secrets
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
+            echo "::error::CLOUDFLARE_API_TOKEN is missing or empty in repository secrets."
+            exit 1
+          fi
+          if [ -z "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "::error::CLOUDFLARE_ACCOUNT_ID is missing or empty in repository secrets."
+            exit 1
+          fi
+          echo "PASS: Cloudflare secrets are present"
+
+      # -----------------------------------------------------------------------
+      # STEP 3: Verify Cloudflare authentication and Pages access BEFORE deploy
+      # 403 here means invalid token, wrong account id, or insufficient Pages scope.
+      # -----------------------------------------------------------------------
+      - name: Test Cloudflare authentication and permissions
+        run: |
+          HTTP_CODE=$(curl -sS -o /tmp/cf_pages_projects.json -w "%{http_code}" \
+            -X GET "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}")
+
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "::error::Cloudflare API returned HTTP $HTTP_CODE while listing Pages projects."
+            echo "::error::403 indicates an invalid/expired token, wrong account id, or missing Pages permissions."
+            echo "::error::Required minimum scopes: Account Settings: Read and Pages: Edit on the target account."
+            cat /tmp/cf_pages_projects.json
+            exit 1
+          fi
+
+          if ! grep -q '"name":"opensin-docs"' /tmp/cf_pages_projects.json; then
+            echo "::warning::Cloudflare auth succeeded, but the 'opensin-docs' Pages project was not found in the account listing."
+            echo "::warning::Verify CLOUDFLARE_ACCOUNT_ID points to the account that owns the Pages project."
+          else
+            echo "PASS: Cloudflare authentication and Pages project access verified"
+          fi
+
+      # -----------------------------------------------------------------------
+      # STEP 4: Deploy to Cloudflare Pages
       # Uses Cloudflare Pages action for deployment (direct artifact upload, not npm)
       # -----------------------------------------------------------------------
       - name: Deploy to Cloudflare Pages
@@ -213,3 +257,4 @@ jobs:
           projectName: opensin-docs
           directory: docs/.vitepress/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
