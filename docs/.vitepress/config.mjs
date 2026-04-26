@@ -5,6 +5,13 @@ export default defineConfig({
   description: 'Guides and concepts for the OpenSIN API.',
   lang: 'en-US',
   ignoreDeadLinks: true,
+  vite: {
+    server: {
+      watch: {
+        ignored: ['**/.git/**', '**/.worktrees/**', '**/worktrees/**', '**/*.wt/**', '**/node_modules/**', '**/.opencode/**', '**/venv/**'],
+      },
+    },
+  },
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['link', { rel: 'canonical', href: 'https://docs.opensin.ai/' }],
