@@ -1,50 +1,32 @@
 /**
  * OpenSIN-AI Documentation Theme - CANONICAL DOCS BASELINE
- * docs.opensin.ai is the visual reference for the rest of the web surfaces.
+ * Shared primitives live in style.css.
+ * This file only layers component-level behavior on top of the contract.
  */
 
 :root {
-  /* [BRAND TOKENS] */
-  --vp-c-brand-1: #00cc88;
-  --vp-c-brand-2: #00ffaa;
-  --vp-c-brand-3: #00aa77;
-  --vp-c-brand-soft: rgba(0, 204, 136, 0.14);
+  /* [BUTTON + CODE TOKENS] */
+  --vp-code-bg: #f6f8fa;
 
-  /* [LIGHT MODE] */
-  --vp-c-bg: #ffffff;
-  --vp-c-bg-alt: #f6f6f7;
-  --vp-c-bg-elv: #ffffff;
-  --vp-c-bg-soft: #f6f6f7;
-  --vp-c-text-1: #0a0a0a;
-  --vp-c-text-2: #444444;
-  --vp-c-divider: rgba(0, 0, 0, 0.1);
-  --vp-code-bg: #f8f8f8;
-  
   /* [BUTTONS LIGHT] */
-  --vp-button-brand-bg: #00cc88;
-  --vp-button-brand-border: #00cc88;
+  --vp-button-brand-bg: var(--vp-c-brand-1);
+  --vp-button-brand-border: var(--vp-c-brand-1);
   --vp-button-brand-text: #ffffff;
-  --vp-button-alt-bg: #f6f6f7;
-  --vp-button-alt-border: #dcdde1;
-  --vp-button-alt-text: #0a0a0a;
+  --vp-button-alt-bg: #ffffff;
+  --vp-button-alt-border: var(--vp-c-divider);
+  --vp-button-alt-text: var(--vp-c-text-1);
 }
 
 .dark {
-  /* [DARK MODE] */
-  --vp-c-bg: #0a0a0a;
-  --vp-c-bg-alt: #0a0a0a;
-  --vp-c-bg-elv: #141414;
-  --vp-c-bg-soft: #1a1a1a;
-  --vp-c-text-1: #ececf1;
-  --vp-c-text-2: #c5c5d2;
-  --vp-c-divider: rgba(255, 255, 255, 0.1);
-  --vp-code-bg: #0f1115;
-  
+  --vp-code-bg: #0d1117;
+
   /* [BUTTONS DARK] */
-  --vp-button-brand-text: #0a0a0a;
-  --vp-button-alt-bg: #1a1a1a;
-  --vp-button-alt-border: #2a2a2a;
-  --vp-button-alt-text: #ececf1;
+  --vp-button-brand-bg: var(--vp-c-brand-1);
+  --vp-button-brand-border: var(--vp-c-brand-2);
+  --vp-button-brand-text: #ffffff;
+  --vp-button-alt-bg: #161b22;
+  --vp-button-alt-border: var(--vp-c-bg-mute);
+  --vp-button-alt-text: var(--vp-c-text-1);
 }
 
 /* Button shape baseline */
@@ -57,14 +39,14 @@
   background: var(--vp-button-brand-bg) !important;
   border: 1px solid var(--vp-button-brand-border) !important;
   color: var(--vp-button-brand-text) !important;
-  box-shadow: 0 10px 24px rgba(0, 204, 136, 0.18);
+  box-shadow: 0 10px 24px rgba(9, 105, 218, 0.18);
 }
 
 .VPButton.brand:hover {
   background: var(--vp-c-brand-2) !important;
   border-color: var(--vp-c-brand-2) !important;
   color: var(--vp-button-brand-text) !important;
-  box-shadow: 0 14px 30px rgba(0, 204, 136, 0.24) !important;
+  box-shadow: 0 14px 30px rgba(33, 139, 255, 0.24) !important;
   transform: translateY(-1px);
 }
 
@@ -78,7 +60,7 @@
   background: var(--vp-button-alt-bg) !important;
   border-color: var(--vp-c-brand-1) !important;
   color: var(--vp-button-alt-text) !important;
-  box-shadow: 0 10px 24px rgba(0, 204, 136, 0.08) !important;
+  box-shadow: 0 10px 24px rgba(9, 105, 218, 0.08) !important;
   transform: translateY(-1px);
 }
 
@@ -127,7 +109,7 @@ html:not(.dark) .VPFeature .icon {
 
 /* Shared sidebar styling for VitePress subpages */
 .VPSidebar {
-  background: rgba(255, 255, 255, 0.92);
+  background: color-mix(in srgb, var(--vp-c-bg) 84%, transparent);
   border-right: 1px solid var(--vp-c-divider);
   backdrop-filter: blur(12px);
 }
@@ -138,7 +120,7 @@ html:not(.dark) .VPFeature .icon {
 
 .VPSidebarItem.is-active > .item {
   color: var(--vp-c-brand-1);
-  background: rgba(0, 204, 136, 0.08);
+  background: var(--vp-c-brand-soft);
 }
 
 .VPSidebarItem .item {
@@ -147,7 +129,7 @@ html:not(.dark) .VPFeature .icon {
 }
 
 .VPSidebarItem .item:hover {
-  background: rgba(0, 204, 136, 0.06);
+  background: rgba(9, 105, 218, 0.06);
 }
 
 /* Table enhancements */
@@ -159,7 +141,7 @@ html:not(.dark) .VPFeature .icon {
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 28px rgba(31, 35, 40, 0.08);
 }
 
 .vp-doc th {
@@ -232,10 +214,10 @@ html:not(.dark) .VPFeature .icon {
 
 /* [TIP] - OpenSIN Green Glow */
 .vp-doc .custom-block.tip {
-  background-color: rgba(0, 204, 136, 0.05) !important;
-  border-color: #00cc88 !important;
+  background-color: rgba(9, 105, 218, 0.05) !important;
+  border-color: #0969da !important;
 }
-.vp-doc .custom-block.tip .custom-block-title { color: #00ffaa; }
+.vp-doc .custom-block.tip .custom-block-title { color: #0969da; }
 
 /* [WARNING] - Solar Yellow */
 .vp-doc .custom-block.warning {
@@ -254,11 +236,11 @@ html:not(.dark) .VPFeature .icon {
 
 /* [IMPORTANT / INFO] - Deep Sky */
 .vp-doc .custom-block.important, .vp-doc .custom-block.info {
-  background-color: rgba(0, 153, 255, 0.05) !important;
-  border-color: #0099ff !important;
+  background-color: rgba(9, 105, 218, 0.05) !important;
+  border-color: #218bff !important;
 }
 .vp-doc .custom-block.important .custom-block-title,
-.vp-doc .custom-block.info .custom-block-title { color: #70c5ff; }
+.vp-doc .custom-block.info .custom-block-title { color: #218bff; }
 
 /* Ensure text inside alerts is readable in both modes */
 .vp-doc .custom-block p {
@@ -273,13 +255,13 @@ html:not(.dark) .VPFeature .icon {
 /* OpenAI-inspired content surface, OpenSIN-branded */
 .opensin-theme {
   --oa-bg: #ffffff;
-  --oa-text-primary: #111827;
-  --oa-text-secondary: #4b5563;
-  --oa-text-muted: #9ca3af;
-  --oa-border: #e5e7eb;
-  --oa-hover: #f9fafb;
-  --oa-accent: #00cc88; /* OpenSIN Green */
-  --oa-accent-soft: rgba(0, 204, 136, 0.05);
+  --oa-text-primary: #1f2328;
+  --oa-text-secondary: #656d76;
+  --oa-text-muted: #8c959f;
+  --oa-border: #d0d7de;
+  --oa-hover: #f6f8fa;
+  --oa-accent: #0969da;
+  --oa-accent-soft: rgba(9, 105, 218, 0.06);
   
   background: var(--oa-bg);
   color: var(--oa-text-primary);
@@ -313,12 +295,14 @@ html:not(.dark) .VPFeature .icon {
 }
 
 .dark .opensin-theme {
-  --oa-bg: #0a0a0a;
-  --oa-text-primary: #ececf1;
-  --oa-text-secondary: #c5c5d2;
-  --oa-text-muted: #9ca3af;
-  --oa-border: #2a2a2a;
-  --oa-hover: #1a1a1a;
+  --oa-bg: #0d1117;
+  --oa-text-primary: #e6edf3;
+  --oa-text-secondary: #8b949e;
+  --oa-text-muted: #6e7681;
+  --oa-border: #30363d;
+  --oa-hover: #161b22;
+  --oa-accent: #4493f8;
+  --oa-accent-soft: rgba(68, 147, 248, 0.12);
 }
 
 
@@ -326,13 +310,13 @@ html:not(.dark) .VPFeature .icon {
 :root {
   --vp-code-lang-color: #485469;
   --vp-inline-code-bg: rgba(10, 10, 10, 0.06);
-  --vp-inline-code-text: #12333d;
+  --vp-inline-code-text: #0550ae;
 }
 
 .dark {
   --vp-code-lang-color: #b7c2d4;
   --vp-inline-code-bg: rgba(255, 255, 255, 0.08);
-  --vp-inline-code-text: #dbf7ea;
+  --vp-inline-code-text: #9ecbff;
 }
 
 .vp-doc div[class*='language-'] {
