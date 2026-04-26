@@ -1,1 +1,0 @@
-PROCEED. The Google home page is correctly loaded in a new window, showing the search interface with no errors or blockers.

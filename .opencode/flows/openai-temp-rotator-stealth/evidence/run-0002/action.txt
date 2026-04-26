@@ -1,8 +1,0 @@
-python3 -c "import nodriver as uc; import asyncio; 
-async def run(): 
-    b = await uc.start(host=\"127.0.0.1\", port=9334)
-    b._browser_process = b._process_pid = None
-    t = await b.get(\"https://www.google.com\")
-    await asyncio.sleep(2)
-    return True
-asyncio.run(run())"
