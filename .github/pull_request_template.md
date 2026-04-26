@@ -13,3 +13,4 @@
 - [ ] This PR keeps ownership scoped to docs canon
 - [ ] This PR does not overclaim implementation ownership
 - [ ] This PR does not replace org overview as registry layer
+- [ ] This PR does not add nested local repos or worktrees under `OpenSIN-documentation/`
