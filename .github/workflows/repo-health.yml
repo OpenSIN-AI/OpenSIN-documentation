@@ -3,8 +3,16 @@ name: Repo Health Check
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'worktrees/**'
+      - '.worktrees/**'
+      - '*.wt/**'
   pull_request:
     branches: [main]
+    paths-ignore:
+      - 'worktrees/**'
+      - '.worktrees/**'
+      - '*.wt/**'
 
 jobs:
   health-check:
@@ -40,10 +48,10 @@ jobs:
       
       - name: Check for banned package-lock.json
         run: |
-          LOCK_FILES=$(find . -name "package-lock.json" -not -path "*/node_modules/*" 2>/dev/null | wc -l)
+          LOCK_FILES=$(find . -name "package-lock.json" 2>/dev/null | grep -v '/node_modules/' | grep -v '/.git/' | grep -v '/worktrees/' | grep -v '/.worktrees/' | grep -v '\.wt/' | wc -l)
           if [ "$LOCK_FILES" -gt 0 ]; then
             echo "❌ Found $LOCK_FILES package-lock.json files (npm is banned, use bun)"
-            find . -name "package-lock.json" -not -path "*/node_modules/*"
+            find . -name "package-lock.json" 2>/dev/null | grep -v '/node_modules/' | grep -v '/.git/' | grep -v '/worktrees/' | grep -v '/.worktrees/' | grep -v '\.wt/'
             exit 1
           fi
           echo "✅ No package-lock.json files found (bun mandate compliance)"
@@ -80,7 +88,7 @@ jobs:
       
       - name: Check for package-lock.json after install
         run: |
-          if [ -f "package-lock.json" ]; then
+          if find . -name "package-lock.json" 2>/dev/null | grep -v '/node_modules/' | grep -v '/.git/' | grep -v '/worktrees/' | grep -v '/.worktrees/' | grep -v '\.wt/' | grep -q .; then
             echo "❌ package-lock.json was created! Remove it and use only bun.lockb"
             exit 1
           fi

@@ -17,8 +17,16 @@ name: Docs Build & Deploy
 on:
   push:
     branches: [main, fix/docs-modernize-standards]
+    paths-ignore:
+      - 'worktrees/**'
+      - '.worktrees/**'
+      - '*.wt/**'
   pull_request:
     branches: [main]
+    paths-ignore:
+      - 'worktrees/**'
+      - '.worktrees/**'
+      - '*.wt/**'
 
 # =============================================================================
 # Environment variables — Bun version pinned for reproducibility
@@ -98,6 +106,9 @@ jobs:
             --include="*.sh" \
             --exclude-dir=node_modules \
             --exclude-dir=.git \
+            --exclude-dir=worktrees \
+            --exclude-dir=.worktrees \
+            --exclude-dir='*.wt' \
             --exclude-dir=.vitepress \
             --exclude-dir=.github \
             --exclude=AGENTS.md \
