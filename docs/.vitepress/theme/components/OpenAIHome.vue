@@ -234,8 +234,8 @@ const exploreCards = [
 <style scoped>
 .oa-page {
   min-height: 100vh;
-  background: #ffffff;
-  color: #111827;
+  background: var(--oa-bg);
+  color: var(--oa-text-primary);
 }
 
 .oa-container {
@@ -251,7 +251,7 @@ const exploreCards = [
 
 .oa-hero__title {
   margin: 0;
-  color: #111827;
+  color: var(--oa-text-primary);
   font-size: clamp(3rem, 6vw, 4.6rem);
   line-height: 0.96;
   letter-spacing: -0.06em;
@@ -261,7 +261,7 @@ const exploreCards = [
 .oa-hero__subtitle {
   margin: 16px auto 0;
   max-width: 680px;
-  color: #4b5563;
+  color: var(--oa-text-secondary);
   font-size: 1.05rem;
   line-height: 1.65;
 }
@@ -272,9 +272,9 @@ const exploreCards = [
   gap: 24px;
   padding: 20px 22px;
   margin: 0 auto 28px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--oa-border);
   border-radius: 20px;
-  background: #ffffff;
+  background: var(--oa-bg);
   text-decoration: none;
   color: inherit;
   box-shadow: none;
@@ -283,7 +283,7 @@ const exploreCards = [
 
 .oa-promo:hover {
   transform: translateY(-1px);
-  border-color: #d1d5db;
+  border-color: var(--oa-accent);
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
 }
 
@@ -293,7 +293,7 @@ const exploreCards = [
   height: 72px;
   border-radius: 14px;
   overflow: hidden;
-  background: #f9fafb;
+  background: var(--oa-hover);
   border: none;
 }
 
@@ -311,7 +311,7 @@ const exploreCards = [
 
 .oa-promo__arrow {
   margin-left: auto;
-  color: #6b7280;
+  color: var(--oa-text-muted);
   font-size: 2rem;
   line-height: 1;
   font-weight: 300;
@@ -323,8 +323,8 @@ const exploreCards = [
   margin-bottom: 10px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #f3f4f6;
-  color: #111827;
+  background: var(--oa-accent-soft);
+  color: var(--oa-accent);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -332,7 +332,7 @@ const exploreCards = [
 
 .oa-promo__title {
   margin: 0;
-  color: #111827;
+  color: var(--oa-text-primary);
   font-size: 1.4rem;
   line-height: 1.2;
   letter-spacing: -0.03em;
@@ -341,7 +341,7 @@ const exploreCards = [
 
 .oa-promo__description {
   margin: 10px 0 0;
-  color: #4b5563;
+  color: var(--oa-text-secondary);
   font-size: 0.98rem;
   line-height: 1.55;
 }
@@ -362,7 +362,7 @@ const exploreCards = [
   padding: 24px;
   border: 0;
   border-radius: 18px;
-  background: #f9fafb;
+  background: var(--oa-hover);
   text-decoration: none;
   color: inherit;
   box-shadow: none;
@@ -371,7 +371,7 @@ const exploreCards = [
 
 .oa-tile:hover {
   transform: translateY(-2px);
-  background: #f3f4f6;
+  background: color-mix(in srgb, var(--oa-hover) 72%, var(--oa-bg));
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
 }
 
@@ -384,7 +384,7 @@ const exploreCards = [
   margin-bottom: 18px;
   border-radius: 12px;
   background: transparent;
-  color: #111827;
+  color: var(--oa-text-primary);
 }
 
 .oa-tile__icon svg {
@@ -397,7 +397,7 @@ const exploreCards = [
 
 .oa-tile h3 {
   margin: 0;
-  color: #111827;
+  color: var(--oa-text-primary);
   font-size: 1.12rem;
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -406,7 +406,7 @@ const exploreCards = [
 
 .oa-tile p {
   margin: 10px 0 0;
-  color: #4b5563;
+  color: var(--oa-text-secondary);
   font-size: 0.96rem;
   line-height: 1.55;
 }
@@ -425,7 +425,7 @@ const exploreCards = [
 
 .oa-section-title {
   margin: 0;
-  color: #111827;
+  color: var(--oa-text-primary);
   font-size: 1.55rem;
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -433,14 +433,14 @@ const exploreCards = [
 }
 
 .oa-view-all {
-  color: #6b7280;
+  color: var(--oa-text-secondary);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
 }
 
 .oa-view-all:hover {
-  color: #111827;
+  color: var(--oa-text-primary);
 }
 
 .oa-featured-lead {
@@ -449,9 +449,9 @@ const exploreCards = [
   gap: 20px;
   margin-bottom: 22px;
   padding: 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--oa-border);
   border-radius: 20px;
-  background: #ffffff;
+  background: var(--oa-bg);
   text-decoration: none;
   color: inherit;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
@@ -460,7 +460,7 @@ const exploreCards = [
 
 .oa-featured-lead:hover {
   transform: translateY(-2px);
-  border-color: #e5e7eb;
+  border-color: var(--oa-accent);
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
 }
 
@@ -470,8 +470,8 @@ const exploreCards = [
 .oa-explore-card__media {
   overflow: hidden;
   border-radius: 16px;
-  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
-  border: 1px solid #eef2f7;
+  background: linear-gradient(180deg, var(--oa-hover) 0%, var(--oa-bg) 100%);
+  border: 1px solid color-mix(in srgb, var(--oa-border) 72%, white);
 }
 
 .oa-featured-lead__media {
@@ -499,7 +499,7 @@ const exploreCards = [
 .oa-featured-card__body h3,
 .oa-latest-card__body h3 {
   margin: 0;
-  color: #111827;
+  color: var(--oa-text-primary);
   line-height: 1.25;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -513,7 +513,7 @@ const exploreCards = [
 .oa-featured-card__body p,
 .oa-latest-card__body p {
   margin: 8px 0 0;
-  color: #6b7280;
+  color: var(--oa-text-secondary);
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -641,7 +641,7 @@ const exploreCards = [
 .oa-latest-card__meta {
   display: inline-flex;
   margin-top: 12px;
-  color: #9ca3af;
+  color: var(--oa-text-muted);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0;
@@ -694,7 +694,7 @@ const exploreCards = [
 .oa-explore-card h3 {
   margin: 0;
   padding: 14px 0 0;
-  color: #111827;
+  color: var(--oa-text-primary);
   font-size: 1rem;
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -782,8 +782,8 @@ const exploreCards = [
 }
 
 :global(.dark) .oa-page {
-  background: #0a0a0a;
-  color: #ececf1;
+  background: var(--oa-bg);
+  color: var(--oa-text-primary);
 }
 
 :global(.dark) .oa-hero__title,
@@ -793,7 +793,7 @@ const exploreCards = [
 :global(.dark) .oa-latest-card__body h3,
 :global(.dark) .oa-explore-card h3,
 :global(.dark) .oa-tile h3 {
-  color: #ececf1;
+  color: var(--oa-text-primary);
 }
 
 :global(.dark) .oa-hero__subtitle,
@@ -802,7 +802,7 @@ const exploreCards = [
 :global(.dark) .oa-featured-lead__body p,
 :global(.dark) .oa-featured-card__body p,
 :global(.dark) .oa-latest-card__body p {
-  color: #c5c5d2;
+  color: var(--oa-text-secondary);
 }
 
 :global(.dark) .oa-promo,
@@ -811,8 +811,8 @@ const exploreCards = [
 :global(.dark) .oa-featured-card,
 :global(.dark) .oa-latest-card,
 :global(.dark) .oa-explore-card {
-  background: #111111;
-  border-color: #2a2a2a;
+  background: var(--oa-hover);
+  border-color: var(--oa-border);
   box-shadow: none;
 }
 
@@ -827,18 +827,18 @@ const exploreCards = [
 }
 
 :global(.dark) .oa-view-all {
-  color: #c5c5d2;
+  color: var(--oa-text-secondary);
 }
 
 :global(.dark) .oa-view-all:hover {
-  color: #ffffff;
+  color: var(--oa-text-primary);
 }
 
 :global(.dark) .oa-latest-card__media,
 :global(.dark) .oa-explore-card__media,
 :global(.dark) .oa-featured-lead__media,
 :global(.dark) .oa-featured-card__media {
-  border-color: #2a2a2a;
+  border-color: var(--oa-border);
   box-shadow: none;
 }
 </style>
