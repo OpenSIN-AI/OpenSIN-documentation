@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.0.10 (2026-04-26)
+
+### Fixed
+- Security surface claims corrected and aligned with private advisory flow.
+- Cloudflare Pages deployment pipeline stabilized; CI/CD green on `main`.
+- Resolved design/deploy inconsistencies merged from `docs/design/security/deploy`.
+
+### Pending
+- Issue #150 remains open pending external credential-rotation confirmation (blocked/external).
+
+---
+
 ## v1.2.0 (2026-04-21)
 
 ### Changed

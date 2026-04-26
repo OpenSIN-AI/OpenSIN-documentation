@@ -1,6 +1,6 @@
 {
   "name": "opensin-docs",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "OpenSIN documentation site \u2014 docs.opensin.ai",
   "type": "module",
   "devDependencies": {
@@ -9,10 +9,8 @@
   },
   "packageManager": "bun@latest",
   "scripts": {
-    "predev": "bun ./scripts/worktree-hygiene.mjs",
-    "prebuild": "bun ./scripts/worktree-hygiene.mjs",
-    "dev": "vitepress dev docs",
-    "build": "bun ./scripts/build-docs.mjs",
+    "dev": "node ./scripts/worktree-hygiene.mjs && vitepress dev docs",
+    "build": "node ./scripts/worktree-hygiene.mjs && vitepress build docs",
     "preview": "vitepress preview docs"
   }
 }
