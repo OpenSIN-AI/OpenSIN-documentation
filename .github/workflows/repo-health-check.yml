@@ -3,8 +3,16 @@ name: Repo Health Check
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'worktrees/**'
+      - '.worktrees/**'
+      - '*.wt/**'
   pull_request:
     branches: [main]
+    paths-ignore:
+      - 'worktrees/**'
+      - '.worktrees/**'
+      - '*.wt/**'
   workflow_dispatch:
     inputs:
       scan_all_repos:
@@ -96,9 +104,9 @@ jobs:
           echo "### Secret Detection" >> $GITHUB_STEP_SUMMARY
           SECRETS_FOUND=0
           
-          # Scan for common secret patterns
+          # Scan for common secret patterns (worktree & .git excluded to prevent recursive descent and false positives)
           for pattern in "api_key\s*=\s*['\"][^'\"]*['\"]" "password\s*=\s*['\"][^'\"]*['\"]" "secret\s*=\s*['\"][^'\"]*['\"]" "token\s*=\s*sk-"; do
-            RESULTS=$(grep -rl --include="*.js" --include="*.ts" --include="*.py" --include="*.json" --include="*.env" -E "$pattern" . 2>/dev/null | grep -v node_modules | grep -v .git || true)
+            RESULTS=$(grep -rl --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=venv --exclude-dir=.opencode --exclude-dir=worktrees --exclude-dir=.worktrees --exclude-dir='*.wt' --include="*.js" --include="*.ts" --include="*.py" --include="*.json" --include="*.env" -E "$pattern" . 2>/dev/null || true)
             if [ -n "$RESULTS" ]; then
               echo "- 🔴 Potential secret found matching pattern: \`$pattern\`" >> $GITHUB_STEP_SUMMARY
               echo "$RESULTS" | while read -r f; do echo "  - \`$f\`" >> $GITHUB_STEP_SUMMARY; done

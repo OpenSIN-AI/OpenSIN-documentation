@@ -30,3 +30,11 @@ pool-chrome-profiles/
 rotator-temp/
 source-of-truth/
 website-member.opensin.ai/
+
+# Worktree & nested git isolation (prevents recursive scans, secret false positives & watcher loops)
+/worktrees/
+/.worktrees/
+*.wt/
+.git/worktrees/
+**/.git/
+**/.git

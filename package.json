@@ -9,6 +9,8 @@
   },
   "packageManager": "bun@latest",
   "scripts": {
+    "predev": "bun ./scripts/worktree-hygiene.mjs",
+    "prebuild": "bun ./scripts/worktree-hygiene.mjs",
     "dev": "vitepress dev docs",
     "build": "bun ./scripts/build-docs.mjs",
     "preview": "vitepress preview docs"

@@ -29,12 +29,21 @@ bun ./scripts/dev-docs.mjs
 bun ./scripts/build-docs.mjs
 ```
 
+## Workspace hygiene
+
+Keep `OpenSIN-documentation/` scoped to this repo only.
+
+- Put companion repos, local clones, and worktrees in sibling directories such as `~/dev/<repo>`.
+- Do **not** place side repos inside the docs repo root, even if they are temporary.
+- Before opening a PR, verify the root stays clean with `git status --short`.
+
 ## PR checklist
 
 - [ ] Claim is backed by evidence or a source link
 - [ ] Surface registry updated when needed
 - [ ] Links resolve and anchors still work
 - [ ] Build passes locally
+- [ ] No nested local repos or worktrees were introduced into the repo root
 - [ ] llms files updated when docs map changes
 
 ## Review expectations
