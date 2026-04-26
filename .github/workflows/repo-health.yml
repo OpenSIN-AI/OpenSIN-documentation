@@ -1,4 +1,4 @@
-name: Repo Health Check
+name: Repo Health Build Gate
 
 on:
   push:
@@ -74,7 +74,6 @@ jobs:
 
   bun-build-check:
     runs-on: ubuntu-latest
-    if: ${{ hashFiles('package.json') != '' }}
     
     steps:
       - name: Checkout repo
