@@ -1,3 +1,0 @@
-RETRY
-
-The browser is currently stuck on a Google cookie consent overlay ("Bevor Sie zu Google weitergehen"). The Google search and subsequent navigation to the OpenAI home page have not yet occurred because the consent modal blocks interaction. The step must be retried with logic to handle the consent popup.

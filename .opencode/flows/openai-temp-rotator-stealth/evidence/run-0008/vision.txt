@@ -1,3 +1,0 @@
-RETRY
-
-The OpenAI Auth/Signup page has not been reached yet; the browser is still on the ChatGPT landing page. A cookie consent banner is blocking the view/interaction, and the "Anmelden" or "Kostenlos registrieren" buttons have not been clicked. Need to handle the cookie banner and then trigger the signup/login button navigation.

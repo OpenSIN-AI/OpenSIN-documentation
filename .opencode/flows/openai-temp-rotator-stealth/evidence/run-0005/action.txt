@@ -1,1 +1,0 @@
-python3 /Users/jeremy/dev/openai-temp-rotator/micro_steps/s2_open_incognito_google.py

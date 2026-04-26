@@ -12,6 +12,11 @@ package-lock.json
 plan_*.md
 website-developers.opensin.ai/
 
+# OpenCode flow secrets and runtime state must never be tracked.
+.opencode/flows/**/credentials.json
+.opencode/flows/**/state.json
+.opencode/flows/**/evidence/
+
 # Nested local worktrees / separate repos kept outside this repo's scope
 coder-SIN-Qwen/
 m2/
