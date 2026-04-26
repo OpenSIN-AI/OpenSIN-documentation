@@ -55,6 +55,10 @@ bun run dev
 bun ./scripts/build-docs.mjs
 ```
 
+> [!NOTE]
+> Keep companion repos and local worktrees outside this repository root.
+> Use sibling directories such as `~/dev/<repo>` so `OpenSIN-documentation/` stays clean during sync, checkout, and review.
+
 ## 📂 Structure
 
 ```text
