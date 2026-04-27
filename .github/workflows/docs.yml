@@ -171,10 +171,18 @@ jobs:
       # STEP 9: Upload build artifacts for deploy job
       # Artifacts are needed because build and deploy are separate jobs
       # -----------------------------------------------------------------------
+      - name: Verify guide routes exist in build output
+        if: github.ref == 'refs/heads/main'
+        run: |
+          test -f docs/.vitepress/dist/guide/getting-started.html
+          test -f docs/.vitepress/dist/guide/changelog.html
+          echo "PASS: Guide routes are present in the built output"
+
       - name: Upload build artifacts
         if: github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: docs-site-dist
           path: docs/.vitepress/dist
 
   # ---------------------------------------------------------------------------
@@ -201,7 +209,7 @@ jobs:
       - name: Download built artifacts
         uses: actions/download-artifact@v4
         with:
-          name: github-pages
+          name: docs-site-dist
           path: docs/.vitepress/dist
 
       # -----------------------------------------------------------------------
