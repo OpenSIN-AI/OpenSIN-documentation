@@ -55,7 +55,7 @@ graph TD;
 | Category | Count | Examples |
 |----------|-------|----------|
 | **Team Managers** | 5+ | Team Coding, Team Worker, Team Infra, Team Google Apps, Team Microsoft |
-| **Coding Agents** | 10+ | Simone-MCP, Frontend, Backend, DevOps, DataScience, GitLab-LogsCenter |
+| **Coding Agents** | 10+ | Simone-MCP, coder-SIN-Qwen, Frontend, Backend, DevOps, DataScience, GitLab-LogsCenter |
 | **Platform Agents** | 30+ | Prolific, HeyPiggy, Mindrift, Instagram, TikTok, YouTube, LinkedIn |
 | **Messaging Agents** | 15+ | WhatsApp, Telegram, Discord, Signal, Slack, Teams, WeChat, LINE |
 | **Apple Agents** | 10+ | Mail, Notes, Calendar, Safari, Shortcuts, Photos, FaceTime |
@@ -89,6 +89,7 @@ graph TD;
 | [Template-SIN-Agent](https://github.com/OpenSIN-AI/Template-SIN-Agent) | Blueprint for all agents |
 | [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team) | Blueprint for team managers |
 | [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Fleet docs (this repo) |
+| [coder-SIN-Qwen](https://github.com/OpenSIN-Browser-Use-Agents/coder-SIN-Qwen) | Free Qwen 3.6 Max CLI relay proxy — kein API-Key nötig |
 | [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | CLI core, plugins, engine |
 | [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus) | Event-sourcing mesh |
 | [Fleet Operations Project](https://github.com/orgs/OpenSIN-AI/projects/21) | Tracking board |
