@@ -19,9 +19,11 @@ The **Inbound Intake** system normalizes all incoming work (GitHub webhooks, Tel
 ## Workflow: `inbound-intake`
 
 ### Trigger
+
 Webhook POST to `http://92.5.60.87:5678/webhook/inbound-work`
 
 ### Body Schema
+
 ```json
 {
   "source": "prolific|hackerone|upwork|telegram|github|pr-review",
@@ -34,6 +36,7 @@ Webhook POST to `http://92.5.60.87:5678/webhook/inbound-work`
 ```
 
 ### Steps
+
 1. **Webhook** receives incoming payload
 2. **Normalize Work Item** → transforms to canonical schema
 3. **Create GitHub Issue** → opens issue in target repo with type label
@@ -48,32 +51,36 @@ Runs as a cron job every 5 minutes:
 ```
 
 Monitors:
+
 - New PRs in `OpenSIN-AI/*` org
 - PR reviews and comments
 - Issue updates
 
 ## File Locations
 
-| File | Path |
-|------|------|
-| n8n workflow | `n8n-workflows/inbound-intake.json` |
-| Governance config | `governance/repo-governance.json` |
-| PR watcher script | `scripts/watch-pr-feedback.sh` |
-| Operations doc | `docs/03_ops/inbound-intake.md` |
+| File              | Path                                |
+| ----------------- | ----------------------------------- |
+| n8n workflow      | `n8n-workflows/inbound-intake.json` |
+| Governance config | `governance/repo-governance.json`   |
+| PR watcher script | `scripts/watch-pr-feedback.sh`      |
+| Operations doc    | `docs/03_ops/inbound-intake.md`     |
 
 ## Troubleshooting
 
 ### n8n workflow not triggering
+
 - Check workflow is **activated** in n8n
 - Verify webhook URL is correct in platform config
 - Check n8n logs: `http://92.5.60.87:5678/execution`
 
 ### GitHub issue not created
+
 - Verify PAT has `repo` scope
 - Check workflow execution in n8n
 - Ensure `owner`/`repo` fields are set in workflow
 
 ### PR watcher not running
+
 ```bash
 # Check cron status
 crontab -l

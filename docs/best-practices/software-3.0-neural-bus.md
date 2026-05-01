@@ -12,6 +12,7 @@ description: The architectural doctrine for evented, agentic, issue-centric, bus
 ## 1. What “Software 3.0” Means Here
 
 Software 3.0 in OpenSIN means:
+
 - issue-centric work, not hidden local intention
 - agentic execution, not single-process heroics
 - event-driven coordination, not brittle manual chaining
@@ -26,6 +27,7 @@ The “Neural Bus” is the idea that meaningful state changes propagate through
 
 It is **conceptual** because it describes how all parts of the fleet should think about coordination.
 It is **concrete** because it appears in:
+
 - GitHub issues and PRs
 - n8n workflows
 - agent events and heartbeats
@@ -38,6 +40,7 @@ It is **concrete** because it appears in:
 ## 3. Event-Centric Thinking
 
 Design systems around meaningful events:
+
 - issue created
 - task dispatched
 - agent started
@@ -48,6 +51,7 @@ Design systems around meaningful events:
 - approval granted
 
 ### Why
+
 Polling disconnected state everywhere creates lag, duplication, and confusion. Events compress coordination.
 
 ---
@@ -55,6 +59,7 @@ Polling disconnected state everywhere creates lag, duplication, and confusion. E
 ## 4. State Must Be Recoverable
 
 Any important workflow should be resumable from durable state:
+
 - issue state
 - repo state
 - workflow execution history
@@ -62,6 +67,7 @@ Any important workflow should be resumable from durable state:
 - logs/evidence
 
 ### Why
+
 If a VM restarts or an agent dies, the system should resume from signal history, not human memory.
 
 ---
@@ -70,11 +76,13 @@ If a VM restarts or an agent dies, the system should resume from signal history,
 
 The operator is part of the bus, but should not be used as glue for routine work.
 Escalate only when:
+
 - permissions are truly required
 - destructive approval is needed
 - a real blocker survives automation
 
 ### Why
+
 The user is the final authority, not the default transport layer.
 
 ---
@@ -92,6 +100,7 @@ The user is the final authority, not the default transport layer.
 ## 7. Architecture Consequences
 
 A proper Neural-Bus system implies:
+
 - issue-first execution
 - branch/PR traceability
 - workflow/agent status visibility
@@ -108,15 +117,15 @@ If the system depends on one human remembering what happened, it is not Software
 
 ---
 
-*Last updated:* 2026-04-10  
-*Status:* **ACTIVE & MANDATORY**  
-*Maintainer:* sin-zeus
+_Last updated:_ 2026-04-10  
+_Status:_ **ACTIVE & MANDATORY**  
+_Maintainer:_ sin-zeus
 
 ---
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Self-Hosted** | 0.0 | OCI VM — KEINE Cloud-Dienste |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
+| Mandat              | Priority | Regel                        |
+| ------------------- | -------- | ---------------------------- |
+| **Self-Hosted**     | 0.0      | OCI VM — KEINE Cloud-Dienste |
+| **Annahmen-Verbot** | -5.0     | KEINE Diagnose ohne Beweis   |

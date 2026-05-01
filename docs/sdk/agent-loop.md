@@ -32,58 +32,58 @@ User Prompt
 ## Basic Usage
 
 ```typescript
-import { AgentLoop } from '@opensin/sdk'
+import { AgentLoop } from "@opensin/sdk";
 
 const agent = new AgentLoop({
-  model: 'claude-sonnet-4-6',
+  model: "claude-sonnet-4-6",
   tools: toolRegistry,
-  systemPrompt: 'You are a helpful coding assistant.',
+  systemPrompt: "You are a helpful coding assistant.",
   maxTurns: 20,
-})
+});
 
-const result = await agent.run('Fix the failing test in auth.test.ts')
-console.log(result.response)
-console.log(`Completed in ${result.turns} turns`)
+const result = await agent.run("Fix the failing test in auth.test.ts");
+console.log(result.response);
+console.log(`Completed in ${result.turns} turns`);
 ```
 
 ## Configuration
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `model` | `string \| ModelRouter` | required | LLM model or router instance |
-| `tools` | `ToolRegistry` | required | Available tools |
-| `systemPrompt` | `string` | `''` | System instructions |
-| `maxTurns` | `number` | `25` | Maximum ReAct iterations |
-| `earlyExit` | `boolean` | `true` | Stop when no tool calls are made |
-| `streaming` | `boolean` | `false` | Enable streaming responses |
-| `permissions` | `PermissionManager` | `null` | Permission gate for tools |
-| `context` | `ContextCompressor` | `null` | Context window manager |
-| `session` | `SessionManager` | `null` | Session persistence |
+| Option         | Type                    | Default  | Description                      |
+| -------------- | ----------------------- | -------- | -------------------------------- |
+| `model`        | `string \| ModelRouter` | required | LLM model or router instance     |
+| `tools`        | `ToolRegistry`          | required | Available tools                  |
+| `systemPrompt` | `string`                | `''`     | System instructions              |
+| `maxTurns`     | `number`                | `25`     | Maximum ReAct iterations         |
+| `earlyExit`    | `boolean`               | `true`   | Stop when no tool calls are made |
+| `streaming`    | `boolean`               | `false`  | Enable streaming responses       |
+| `permissions`  | `PermissionManager`     | `null`   | Permission gate for tools        |
+| `context`      | `ContextCompressor`     | `null`   | Context window manager           |
+| `session`      | `SessionManager`        | `null`   | Session persistence              |
 
 ## Events
 
 The agent loop emits events at each stage:
 
 ```typescript
-agent.on('turn:start', ({ turn, messages }) => {
-  console.log(`Turn ${turn} starting with ${messages.length} messages`)
-})
+agent.on("turn:start", ({ turn, messages }) => {
+  console.log(`Turn ${turn} starting with ${messages.length} messages`);
+});
 
-agent.on('tool:call', ({ name, args }) => {
-  console.log(`Calling tool: ${name}`)
-})
+agent.on("tool:call", ({ name, args }) => {
+  console.log(`Calling tool: ${name}`);
+});
 
-agent.on('tool:result', ({ name, result, duration }) => {
-  console.log(`Tool ${name} completed in ${duration}ms`)
-})
+agent.on("tool:result", ({ name, result, duration }) => {
+  console.log(`Tool ${name} completed in ${duration}ms`);
+});
 
-agent.on('turn:end', ({ turn, response }) => {
-  console.log(`Turn ${turn} complete`)
-})
+agent.on("turn:end", ({ turn, response }) => {
+  console.log(`Turn ${turn} complete`);
+});
 
-agent.on('complete', ({ turns, totalTokens }) => {
-  console.log(`Agent finished in ${turns} turns, ${totalTokens} tokens`)
-})
+agent.on("complete", ({ turns, totalTokens }) => {
+  console.log(`Agent finished in ${turns} turns, ${totalTokens} tokens`);
+});
 ```
 
 ## Streaming
@@ -92,16 +92,16 @@ Enable real-time output streaming:
 
 ```typescript
 const agent = new AgentLoop({
-  model: 'claude-sonnet-4-6',
+  model: "claude-sonnet-4-6",
   tools: toolRegistry,
   streaming: true,
-})
+});
 
-for await (const chunk of agent.stream('Explain this codebase')) {
-  if (chunk.type === 'text') {
-    process.stdout.write(chunk.text)
-  } else if (chunk.type === 'tool_call') {
-    console.log(`\nUsing tool: ${chunk.name}`)
+for await (const chunk of agent.stream("Explain this codebase")) {
+  if (chunk.type === "text") {
+    process.stdout.write(chunk.text);
+  } else if (chunk.type === "tool_call") {
+    console.log(`\nUsing tool: ${chunk.name}`);
   }
 }
 ```
@@ -114,8 +114,8 @@ Control how the agent progresses through turns:
 const agent = new AgentLoop({
   maxTurns: 10,
   earlyExit: true,
-  onMaxTurns: 'summarize', // or 'error', 'continue'
-})
+  onMaxTurns: "summarize", // or 'error', 'continue'
+});
 ```
 
 - **`earlyExit: true`**: Stops when the LLM returns a response without tool calls
@@ -126,10 +126,10 @@ const agent = new AgentLoop({
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

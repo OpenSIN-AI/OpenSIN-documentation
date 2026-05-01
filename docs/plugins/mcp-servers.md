@@ -8,15 +8,15 @@ OpenSIN nutzt Model Context Protocol (MCP) Server für Browser-Automation, Deskt
 
 ## 🔌 VERFÜGBARE MCP SERVER
 
-| Server | Zweck | Team |
-|--------|-------|------|
-| [MCP-SIN-chrome-extension](https://github.com/OpenSIN-AI/MCP-SIN-chrome-extension) | Chrome Extension MCP - Browser Automation via Extension | Infrastructure |
-| [MCP-SIN-computer-use](https://github.com/OpenSIN-AI/MCP-SIN-computer-use) | Computer Use MCP - Desktop Control (macOS/Windows/Linux) | Infrastructure |
-| [MCP-SIN-in-chrome](https://github.com/OpenSIN-AI/MCP-SIN-in-chrome) | In-Chrome MCP - Tab/Content Access, DOM Manipulation | Infrastructure |
-| [MCP-SIN-mcp-gateway](https://github.com/OpenSIN-AI/MCP-SIN-mcp-gateway) | MCP Gateway - Central Routing & Load Balancing | Infrastructure |
-| [MCP-SIN-memory](https://github.com/OpenSIN-AI/MCP-SIN-memory) | Memory MCP - Persistent Storage & Retrieval | Infrastructure |
-| [MCP-SIN-platform-auth](https://github.com/OpenSIN-AI/MCP-SIN-platform-auth) | Platform Auth - OAuth/SSO für externe Plattformen | Infrastructure |
-| [MCP-SIN-usebrowser](https://github.com/OpenSIN-AI/MCP-SIN-usebrowser) | UseBrowser - Web Automation via nodriver/CDP | Infrastructure |
+| Server                                                                             | Zweck                                                    | Team           |
+| ---------------------------------------------------------------------------------- | -------------------------------------------------------- | -------------- |
+| [MCP-SIN-chrome-extension](https://github.com/OpenSIN-AI/MCP-SIN-chrome-extension) | Chrome Extension MCP - Browser Automation via Extension  | Infrastructure |
+| [MCP-SIN-computer-use](https://github.com/OpenSIN-AI/MCP-SIN-computer-use)         | Computer Use MCP - Desktop Control (macOS/Windows/Linux) | Infrastructure |
+| [MCP-SIN-in-chrome](https://github.com/OpenSIN-AI/MCP-SIN-in-chrome)               | In-Chrome MCP - Tab/Content Access, DOM Manipulation     | Infrastructure |
+| [MCP-SIN-mcp-gateway](https://github.com/OpenSIN-AI/MCP-SIN-mcp-gateway)           | MCP Gateway - Central Routing & Load Balancing           | Infrastructure |
+| [MCP-SIN-memory](https://github.com/OpenSIN-AI/MCP-SIN-memory)                     | Memory MCP - Persistent Storage & Retrieval              | Infrastructure |
+| [MCP-SIN-platform-auth](https://github.com/OpenSIN-AI/MCP-SIN-platform-auth)       | Platform Auth - OAuth/SSO für externe Plattformen        | Infrastructure |
+| [MCP-SIN-usebrowser](https://github.com/OpenSIN-AI/MCP-SIN-usebrowser)             | UseBrowser - Web Automation via nodriver/CDP             | Infrastructure |
 
 ## 🛠️ KONFIGURATION
 
@@ -45,10 +45,10 @@ Alle MCP Server sind dem **Team-SIN-Infrastructure** unterstellt und werden von 
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)
