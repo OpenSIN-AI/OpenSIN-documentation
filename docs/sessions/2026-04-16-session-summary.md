@@ -1,6 +1,7 @@
 # Session Summary — 2026-04-16
 
 ## Ziel
+
 Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Password Manager Integration finden und alles im Global Brain speichern.
 
 ---
@@ -47,24 +48,26 @@ Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Pas
 ### ❌ FALSCH: website-opensin.ai "korrigiert"
 
 **Was passiert ist:**
+
 - Ich habe ohne ZÄHLEN behauptet "100+ providers" wäre falsch
 - Die Zahlen waren KORREKT!
 - Ich habe die README verschlechtert statt verbessert
 - musste revertet werden
 
 **Lektion:**
+
 > **ANNAHMEN-VERBOT: NIEMALS annehmen dass Zahlen falsch sind ohne FAKTISCH zu zählen!**
 
 ---
 
 ## Verifizierte Zahlen (OpenSIN-AI Org)
 
-| Kategorie | Anzahl |
-|-----------|--------|
-| Total Repos | ~100 |
-| A2A-SIN Agents | 99 |
-| Team-SIN Repos | 17 |
-| Teams in oh-my-sin.json | 17 |
+| Kategorie               | Anzahl |
+| ----------------------- | ------ |
+| Total Repos             | ~100   |
+| A2A-SIN Agents          | 99     |
+| Team-SIN Repos          | 17     |
+| Teams in oh-my-sin.json | 17     |
 
 ---
 
@@ -72,13 +75,13 @@ Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Pas
 
 ### Die 5 Konfigurationsdateien
 
-| Datei | Zweck |
-|:---|:---|
-| `oh-my-sin.json` | **17 Teams Register** — Manager, Members, Default-Modelle |
-| `my-sin-team-*.json` | **Team-spezifisch** — Agenten + Modelle pro Team |
+| Datei                  | Zweck                                                     |
+| :--------------------- | :-------------------------------------------------------- |
+| `oh-my-sin.json`       | **17 Teams Register** — Manager, Members, Default-Modelle |
+| `my-sin-team-*.json`   | **Team-spezifisch** — Agenten + Modelle pro Team          |
 | `oh-my-openagent.json` | **Subagenten-Modelle** — explore, librarian, oracle, etc. |
-| `opencode.json` | **Haupt-Config** — Provider, MCPs, Commands |
-| `agents/*/agent.json` | **Individuelle Agent-Definition** |
+| `opencode.json`        | **Haupt-Config** — Provider, MCPs, Commands               |
+| `agents/*/agent.json`  | **Individuelle Agent-Definition**                         |
 
 ### Subagent Typen (aus oh-my-openagent.json)
 
@@ -94,13 +97,16 @@ Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Pas
 ## Chrome Password Manager Integration
 
 ### Location
+
 `/Users/jeremy/dev/A2A-SIN-Google-Apps/src/chrome/`
 
 ### Dateien
+
 - `password-manager.ts` — Extrahiert Passwörter aus Chrome SQLite DB
 - `cookie-extractor.ts` — Extrahiert Cookies
 
 ### Sicherheit
+
 - Nutzt macOS Keychain "Chrome Safe Storage" für Entschlüsselung
 - **Chrome Password Manager ist PRIMARY source für Credentials**
 - **NIEMALS Menschen nach Passwörtern fragen**
@@ -131,14 +137,14 @@ Dokumentation verbessern, falsche Zahlen in README-Files korrigieren, Chrome Pas
 
 ## Erstellte/geänderte Dateien
 
-| Datei | Aktion | Commit |
-|-------|--------|--------|
-| `box-storage.md` | Erstellt | b9ecb72 |
-| `README.md` (Infra-SIN-Dev-Setup) | Korrigiert | 14ccbb6, 0761612 |
-| `README.md` (upgraded-opencode-stack) | Korrigiert | c231479 |
-| `README.md` (Infra-SIN-Docker-Empire) | Korrigiert | beb6601 |
-| `README.md` (website-opensin.ai) | REVERTIERT | 4b9c62f |
-| `docs/guide/agent-configuration.md` | "fuer" → "für" | 2df6b407cf |
+| Datei                                 | Aktion         | Commit           |
+| ------------------------------------- | -------------- | ---------------- |
+| `box-storage.md`                      | Erstellt       | b9ecb72          |
+| `README.md` (Infra-SIN-Dev-Setup)     | Korrigiert     | 14ccbb6, 0761612 |
+| `README.md` (upgraded-opencode-stack) | Korrigiert     | c231479          |
+| `README.md` (Infra-SIN-Docker-Empire) | Korrigiert     | beb6601          |
+| `README.md` (website-opensin.ai)      | REVERTIERT     | 4b9c62f          |
+| `docs/guide/agent-configuration.md`   | "fuer" → "für" | 2df6b407cf       |
 
 ---
 

@@ -15,15 +15,15 @@
 
 ## Audit Table
 
-| # | MCP Server | README | AGENTS.md | Purpose | Priority |
-|---|-----------|--------|-----------|---------|----------|
-| 1 | MCP-SIN-chrome-extension | ❌ | ❌ | Chrome Extension bridge for browser automation | CRITICAL |
-| 2 | MCP-SIN-computer-use | ❌ | ❌ | Desktop screen control and automation | CRITICAL |
-| 3 | MCP-SIN-mcp-gateway | ❌ | ❌ | Multi-MCP server routing gateway | CRITICAL |
-| 4 | MCP-SIN-in-chrome | ❌ | ❌ | MCP running inside Chrome browser context | CRITICAL |
-| 5 | MCP-SIN-memory | ❌ | ❌ | Persistent memory/context storage | CRITICAL |
-| 6 | MCP-SIN-platform-auth | ❌ | ❌ | Platform authentication bridge | CRITICAL |
-| 7 | MCP-SIN-usebrowser | ❌ | ❌ | Browser automation wrapper (nodriver/CDP) | CRITICAL |
+| #   | MCP Server               | README | AGENTS.md | Purpose                                        | Priority |
+| --- | ------------------------ | ------ | --------- | ---------------------------------------------- | -------- |
+| 1   | MCP-SIN-chrome-extension | ❌     | ❌        | Chrome Extension bridge for browser automation | CRITICAL |
+| 2   | MCP-SIN-computer-use     | ❌     | ❌        | Desktop screen control and automation          | CRITICAL |
+| 3   | MCP-SIN-mcp-gateway      | ❌     | ❌        | Multi-MCP server routing gateway               | CRITICAL |
+| 4   | MCP-SIN-in-chrome        | ❌     | ❌        | MCP running inside Chrome browser context      | CRITICAL |
+| 5   | MCP-SIN-memory           | ❌     | ❌        | Persistent memory/context storage              | CRITICAL |
+| 6   | MCP-SIN-platform-auth    | ❌     | ❌        | Platform authentication bridge                 | CRITICAL |
+| 7   | MCP-SIN-usebrowser       | ❌     | ❌        | Browser automation wrapper (nodriver/CDP)      | CRITICAL |
 
 ---
 
@@ -31,15 +31,17 @@
 
 Each MCP server README must follow this canonical structure:
 
-```markdown
+````markdown
 # MCP-SIN-[name]
 
 > [One-line description]
 
 ## Overview
+
 [What it does, why it matters, where it fits in the OpenSIN ecosystem]
 
 ## Installation
+
 ```bash
 # Clone and install
 git clone https://github.com/OpenSIN-AI/MCP-SIN-[name].git
@@ -49,32 +51,39 @@ bun install
 # Build
 bun run build
 ```
+````
 
 ## Available Tools
 
-| Tool | Parameters | Description |
-|------|-----------|-------------|
+| Tool        | Parameters    | Description  |
+| ----------- | ------------- | ------------ |
 | `tool_name` | `param: type` | What it does |
 
 ## Connection Guide
 
 ### stdio Mode (Default)
+
 [How to connect via stdio]
 
 ### streamable-http Mode
+
 [How to connect via HTTP]
 
 ## Health Check
+
 ```bash
 curl http://localhost:PORT/health
 ```
 
 ## Example Usage
+
 [Working code example]
 
 ## Troubleshooting
+
 [Common issues and solutions]
-```
+
+````
 
 ---
 
@@ -89,9 +98,10 @@ See [agents-mandate-audit.md](./agents-mandate-audit.md) for complete AGENTS.md 
 ### Step 3: Add GitHub Topics
 ```bash
 gh repo edit OpenSIN-AI/MCP-SIN-[name] --add-topic "opnsin-mcp"
-```
+````
 
 ### Step 4: Verify
+
 - [ ] README.md renders correctly on GitHub
 - [ ] MCP server can be started with documented commands
 - [ ] Health check returns 200
@@ -110,7 +120,7 @@ graph TB
     Gateway -->|route| Memory[MCP-SIN-memory]
     Gateway -->|route| Auth[MCP-SIN-platform-auth]
     Gateway -->|route| Computer[MCP-SIN-computer-use]
-    
+
     Chrome --> CDP[Chrome DevTools Protocol]
     Browser --> CDP
     InChrome --> DOM[Page DOM]
@@ -125,10 +135,10 @@ All 7 MCP servers form the **OpenSIN Infrastructure Layer** — the bridge betwe
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

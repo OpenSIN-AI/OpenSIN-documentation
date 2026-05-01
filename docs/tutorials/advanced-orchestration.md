@@ -11,27 +11,27 @@ Learn how to build complex multi-agent workflows with task delegation, parallel 
 The orchestrator pattern uses a central agent to decompose complex tasks and delegate subtasks to specialized agents:
 
 ```typescript
-import { AgentBuilder, Orchestrator } from '@opensin/agent-sdk'
+import { AgentBuilder, Orchestrator } from "@opensin/agent-sdk";
 
 const orchestrator = new Orchestrator({
   agents: {
-    'frontend': AgentBuilder.create('sin-frontend')
-      .withSkills(['react', 'tailwind', 'accessibility'])
+    frontend: AgentBuilder.create("sin-frontend")
+      .withSkills(["react", "tailwind", "accessibility"])
       .build(),
-    'backend': AgentBuilder.create('sin-herakles')
-      .withSkills(['api-design', 'database', 'auth'])
+    backend: AgentBuilder.create("sin-herakles")
+      .withSkills(["api-design", "database", "auth"])
       .build(),
-    'tester': AgentBuilder.create('sin-tester')
-      .withSkills(['unit-tests', 'integration', 'e2e'])
+    tester: AgentBuilder.create("sin-tester")
+      .withSkills(["unit-tests", "integration", "e2e"])
       .build(),
   },
-  strategy: 'parallel-when-possible',
-})
+  strategy: "parallel-when-possible",
+});
 
 // The orchestrator breaks down the task and delegates
 const result = await orchestrator.execute(
-  'Build a user registration feature with email verification'
-)
+  "Build a user registration feature with email verification",
+);
 ```
 
 ## Task Decomposition
@@ -40,35 +40,35 @@ Break complex tasks into a dependency graph:
 
 ```typescript
 const taskGraph = {
-  'design-api': {
-    agent: 'backend',
-    prompt: 'Design REST API for user registration',
+  "design-api": {
+    agent: "backend",
+    prompt: "Design REST API for user registration",
     depends: [],
   },
-  'design-ui': {
-    agent: 'frontend',
-    prompt: 'Design registration form UI',
+  "design-ui": {
+    agent: "frontend",
+    prompt: "Design registration form UI",
     depends: [],
   },
-  'implement-api': {
-    agent: 'backend',
-    prompt: 'Implement the registration API endpoints',
-    depends: ['design-api'],
+  "implement-api": {
+    agent: "backend",
+    prompt: "Implement the registration API endpoints",
+    depends: ["design-api"],
   },
-  'implement-ui': {
-    agent: 'frontend',
-    prompt: 'Build the registration form component',
-    depends: ['design-ui', 'design-api'],
+  "implement-ui": {
+    agent: "frontend",
+    prompt: "Build the registration form component",
+    depends: ["design-ui", "design-api"],
   },
-  'write-tests': {
-    agent: 'tester',
-    prompt: 'Write tests for registration flow',
-    depends: ['implement-api', 'implement-ui'],
+  "write-tests": {
+    agent: "tester",
+    prompt: "Write tests for registration flow",
+    depends: ["implement-api", "implement-ui"],
   },
-}
+};
 
 // Execute with automatic dependency resolution
-const results = await orchestrator.executeGraph(taskGraph)
+const results = await orchestrator.executeGraph(taskGraph);
 ```
 
 Independent tasks (`design-api` and `design-ui`) run in parallel. Dependent tasks wait for their prerequisites.
@@ -81,10 +81,10 @@ Independent tasks (`design-api` and `design-ui`) run in parallel. Dependent task
 const orchestrator = new Orchestrator({
   retry: {
     maxAttempts: 3,
-    backoff: 'exponential',  // 1s, 2s, 4s
-    retryableErrors: ['timeout', 'rate_limit', 'connection_error'],
+    backoff: "exponential", // 1s, 2s, 4s
+    retryableErrors: ["timeout", "rate_limit", "connection_error"],
   },
-})
+});
 ```
 
 ### Fallback Agents
@@ -94,12 +94,12 @@ If the primary agent fails, route to a fallback:
 ```typescript
 const orchestrator = new Orchestrator({
   agents: {
-    'primary-coder': {
-      agent: 'sin-herakles',
-      fallback: 'sin-solver',  // use if primary fails
+    "primary-coder": {
+      agent: "sin-herakles",
+      fallback: "sin-solver", // use if primary fails
     },
   },
-})
+});
 ```
 
 ### Circuit Breaker
@@ -108,10 +108,10 @@ Prevent cascading failures by stopping delegation to unhealthy agents:
 
 ```typescript
 const circuitBreaker = {
-  failureThreshold: 3,     // open circuit after 3 failures
-  resetTimeout: 60_000,    // try again after 60 seconds
-  halfOpenMax: 1,           // allow 1 test request
-}
+  failureThreshold: 3, // open circuit after 3 failures
+  resetTimeout: 60_000, // try again after 60 seconds
+  halfOpenMax: 1, // allow 1 test request
+};
 ```
 
 ## Event-Driven Orchestration
@@ -145,18 +145,18 @@ GitHub PR Created
 Track task execution across the fleet:
 
 ```typescript
-orchestrator.on('task:start', (event) => {
-  console.log(`[${event.agent}] Starting: ${event.task.id}`)
-})
+orchestrator.on("task:start", (event) => {
+  console.log(`[${event.agent}] Starting: ${event.task.id}`);
+});
 
-orchestrator.on('task:complete', (event) => {
-  console.log(`[${event.agent}] Completed in ${event.duration}ms`)
-})
+orchestrator.on("task:complete", (event) => {
+  console.log(`[${event.agent}] Completed in ${event.duration}ms`);
+});
 
-orchestrator.on('task:error', (event) => {
-  console.error(`[${event.agent}] Failed: ${event.error.message}`)
+orchestrator.on("task:error", (event) => {
+  console.error(`[${event.agent}] Failed: ${event.error.message}`);
   // Auto-creates GitHub issue via SIN-GitHub-Issues
-})
+});
 ```
 
 ## Best Practices
@@ -171,11 +171,11 @@ orchestrator.on('task:error', (event) => {
 
 ## Relevante Mandate
 
-| Mandat | Priority | Doku |
-|--------|----------|------|
-| **Vision-Gate** | -7.0 | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
-| **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
-| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm ist verboten |
-| **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. verboten |
+| Mandat                       | Priority | Doku                                                |
+| ---------------------------- | -------- | --------------------------------------------------- |
+| **Vision-Gate**              | -7.0     | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
+| **DevTools-First**           | -1.0     | JEDER CSS-Selektor via DevTools verifizieren        |
+| **Bun-Only**                 | -1.5     | `bun install` / `bun run` — npm ist verboten        |
+| **Technologie-Souveränität** | -2.0     | nodriver + Chrome Profil — Playwright/etc. verboten |
 
 → [Alle Mandate](/best-practices/browser-automation)
