@@ -20,11 +20,11 @@ Autonomous Prolific survey worker. Connects via CDP to local Chrome, scans for s
 
 ## Components
 
-| Class | Lines | Purpose |
-|-------|-------|---------|
-| `CDPClient` | ~300 | Direct Chrome DevTools Protocol |
-| `GroqVision` | ~80 | Free vision AI with dual-key rotation and 3-model fallback |
-| `HumanEmulator` | ~150 | Anti-detection: human-like typing, clicking, scrolling |
+| Class            | Lines | Purpose                                                    |
+| ---------------- | ----- | ---------------------------------------------------------- |
+| `CDPClient`      | ~300  | Direct Chrome DevTools Protocol                            |
+| `GroqVision`     | ~80   | Free vision AI with dual-key rotation and 3-model fallback |
+| `HumanEmulator`  | ~150  | Anti-detection: human-like typing, clicking, scrolling     |
 | `ProlificWorker` | ~1100 | Full lifecycle: login, scan, reserve, fill, submit, repeat |
 
 ## Study Submission Pipeline
@@ -53,6 +53,7 @@ The complete Prolific study lifecycle discovered and verified via live CDP testi
 Two API keys from gcloud Secret Manager with automatic rotation on 429 rate limits.
 
 3-model fallback chain:
+
 1. `meta-llama/llama-4-scout-17b-16e-instruct`
 2. `meta-llama/llama-3.2-90b-vision-preview`
 3. `meta-llama/llama-3.2-11b-vision-preview`
@@ -73,6 +74,7 @@ python3 src/worker_v7.py
 ## Credentials
 
 All secrets loaded from gcloud Secret Manager (`artificial-biometrics` project):
+
 - `spm-prolific_email`
 - `spm-prolific_password`
 - `spm-groq_api_key_1`
@@ -84,22 +86,22 @@ All secrets loaded from gcloud Secret Manager (`artificial-biometrics` project):
 
 ## Version History
 
-| Version | Changes |
-|---------|---------|
-| v7.0 | Direct CDP + Groq Vision + Human Emulation + gcloud secrets |
-| v7.1 | Auth0 login fix, real Prolific DOM selectors |
-| v7.2 | 3-state in-progress study FSM |
-| v7.3 | Full submission pipeline, dual-key rotation, popup bypass, auto-complete detection |
+| Version | Changes                                                                            |
+| ------- | ---------------------------------------------------------------------------------- |
+| v7.0    | Direct CDP + Groq Vision + Human Emulation + gcloud secrets                        |
+| v7.1    | Auth0 login fix, real Prolific DOM selectors                                       |
+| v7.2    | 3-state in-progress study FSM                                                      |
+| v7.3    | Full submission pipeline, dual-key rotation, popup bypass, auto-complete detection |
 
 ---
 
 ## Relevante Mandate
 
-| Mandat | Priority | Doku |
-|--------|----------|------|
-| **Vision-Gate** | -7.0 | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
-| **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
-| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm ist verboten |
-| **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. verboten |
+| Mandat                       | Priority | Doku                                                |
+| ---------------------------- | -------- | --------------------------------------------------- |
+| **Vision-Gate**              | -7.0     | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
+| **DevTools-First**           | -1.0     | JEDER CSS-Selektor via DevTools verifizieren        |
+| **Bun-Only**                 | -1.5     | `bun install` / `bun run` — npm ist verboten        |
+| **Technologie-Souveränität** | -2.0     | nodriver + Chrome Profil — Playwright/etc. verboten |
 
 → [Alle Mandate](/best-practices/browser-automation)

@@ -12,6 +12,7 @@
 **Objective:** Resolve all 14+ open issues, publish governance baseline, stabilize auth pool, ensure fleet-wide consistency.
 
 **Key Results:**
+
 - KR1: Antigravity pool stable (0 "no accounts" errors) — from broken to 100% working
 - KR2: All 3 SSOT repos have complete governance artifacts — from 0/3 to 3/3
 - KR3: Qwen auth handles non-JSON OAuth responses — from broken to working
@@ -24,6 +25,7 @@
 ## Current State
 
 ### Strengths
+
 - OCI VM hardening complete (BUG-OCI-001 — 5-layer protection stack deployed)
 - 21 teams registered in `oh-my-sin.json` (including new `team-coding-agents`)
 - `my-sin-coding-agents.json` created and pushed
@@ -32,6 +34,7 @@
 - BUN is the only package manager in active use
 
 ### Weaknesses
+
 - No governance artifacts (`governance/`, `platforms/`, `n8n-workflows/`, `docs/03_ops/`) in ANY of the 3 SSOT repos
 - Antigravity refresh-token pool unstable — subagents fail mid-flight
 - Qwen OAuth callback handler crashes on non-JSON responses
@@ -39,6 +42,7 @@
 - Stale OpenCode model metadata on existing installs
 
 ### Critical Gaps
+
 - All 3 repos (`upgraded-opencode-stack`, `Infra-SIN-Dev-Setup`, `global-brain`) missing mandatory governance files
 - `sovereign-repo-governance` skill mandates `governance/repo-governance.json`, `pr-watcher.json`, `coder-dispatch-matrix.json`, `platforms/registry.json`, `n8n-workflows/inbound-intake.json`, `docs/03_ops/inbound-intake.md`, `scripts/watch-pr-feedback.sh`
 - Antigravity pool has no preflight check before delegating to background subagents
@@ -47,24 +51,24 @@
 
 ## Decisions
 
-| Decision | Rationale | Alternatives | Owner |
-|----------|-----------|-------------|-------|
-| Publish governance baseline BEFORE stack updates | PR-Watcher rules must be in place before code changes land | Do stack update first (REJECTED — breaks governance) | developer-boss |
-| Antigravity preflight as first auth task | Pool exhaustion blocks ALL downstream delegation | Fix pool first then preflight (REJECTED — will re-break) | developer-boss |
-| Use `oh-my-sin.json` as source of truth for team registry | Already the canonical roster, my-sin-coding-agents.json references it | Separate registry (REJECTED — duplication) | developer-boss |
-| Deploy governance to upgraded-opencode-stack first | Most critical — all agents pull from here | Parallel deploy to all 3 (REJECTED — need template from one) | developer-boss |
+| Decision                                                  | Rationale                                                             | Alternatives                                                 | Owner          |
+| --------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------ | -------------- |
+| Publish governance baseline BEFORE stack updates          | PR-Watcher rules must be in place before code changes land            | Do stack update first (REJECTED — breaks governance)         | developer-boss |
+| Antigravity preflight as first auth task                  | Pool exhaustion blocks ALL downstream delegation                      | Fix pool first then preflight (REJECTED — will re-break)     | developer-boss |
+| Use `oh-my-sin.json` as source of truth for team registry | Already the canonical roster, my-sin-coding-agents.json references it | Separate registry (REJECTED — duplication)                   | developer-boss |
+| Deploy governance to upgraded-opencode-stack first        | Most critical — all agents pull from here                             | Parallel deploy to all 3 (REJECTED — need template from one) | developer-boss |
 
 ---
 
 ## Assumptions
 
-| Assumption | Confidence | Validation Method |
-|------------|-----------|-------------------|
-| sin-sync will succeed after governance changes | 0.85 | Test on OCI VM after changes |
-| sovereign-repo-governance templates are complete | 0.90 | Review template files before deployment |
-| Antigravity pool API (Port 8090) is reachable | 0.95 | curl to `http://92.5.60.87:8090/health` |
-| Qwen OAuth endpoint still returns form-urlencoded | 0.70 | Test with live OAuth flow |
-| All 6 new coder repos are реально deployed | 0.80 | Check each repo for `agent.json` and running service |
+| Assumption                                        | Confidence | Validation Method                                    |
+| ------------------------------------------------- | ---------- | ---------------------------------------------------- |
+| sin-sync will succeed after governance changes    | 0.85       | Test on OCI VM after changes                         |
+| sovereign-repo-governance templates are complete  | 0.90       | Review template files before deployment              |
+| Antigravity pool API (Port 8090) is reachable     | 0.95       | curl to `http://92.5.60.87:8090/health`              |
+| Qwen OAuth endpoint still returns form-urlencoded | 0.70       | Test with live OAuth flow                            |
+| All 6 new coder repos are реально deployed        | 0.80       | Check each repo for `agent.json` and running service |
 
 ---
 
@@ -202,13 +206,13 @@ P4-T3 (3d-web skill) ──► (standalone)
 
 ## Risk Register
 
-| ID | Risk | Likelihood | Impact | Score | Mitigation | Owner | Status |
-|----|------|-----------|--------|-------|------------|-------|--------|
-| R1 | Antigravity pool exhaustion during Phase 1 execution | 0.4 | 9 | 36 | Run P1-T1 first; if exhausted, trigger Token Factory before proceeding | A2A-SIN-Code-Plugin | identified |
-| R2 | sin-sync breaks fleet alignment across Mac/OCI/HF | 0.3 | 8 | 24 | Test on OCI VM first; if broken, revert opencode.json from git | developer-boss | identified |
-| R3 | Governance templates are incomplete/wrong | 0.3 | 6 | 18 | Use sovereign-repo-governance skill canonical templates | developer-boss | identified |
-| R4 | Qwen OAuth endpoint changes response format | 0.5 | 5 | 25 | Robust content-type detection with multiple fallbacks | A2A-SIN-Code-Plugin | identified |
-| R5 | New coder repos not actually deployed | 0.4 | 7 | 28 | Check each repo's `/.well-known/agent-card.json` before claiming done | developer-boss | identified |
+| ID  | Risk                                                 | Likelihood | Impact | Score | Mitigation                                                             | Owner               | Status     |
+| --- | ---------------------------------------------------- | ---------- | ------ | ----- | ---------------------------------------------------------------------- | ------------------- | ---------- |
+| R1  | Antigravity pool exhaustion during Phase 1 execution | 0.4        | 9      | 36    | Run P1-T1 first; if exhausted, trigger Token Factory before proceeding | A2A-SIN-Code-Plugin | identified |
+| R2  | sin-sync breaks fleet alignment across Mac/OCI/HF    | 0.3        | 8      | 24    | Test on OCI VM first; if broken, revert opencode.json from git         | developer-boss      | identified |
+| R3  | Governance templates are incomplete/wrong            | 0.3        | 6      | 18    | Use sovereign-repo-governance skill canonical templates                | developer-boss      | identified |
+| R4  | Qwen OAuth endpoint changes response format          | 0.5        | 5      | 25    | Robust content-type detection with multiple fallbacks                  | A2A-SIN-Code-Plugin | identified |
+| R5  | New coder repos not actually deployed                | 0.4        | 7      | 28    | Check each repo's `/.well-known/agent-card.json` before claiming done  | developer-boss      | identified |
 
 **Overall Risk Score: 24 (LOW-MEDIUM)**
 
@@ -247,19 +251,19 @@ P4-T3 (3d-web skill) ──► (standalone)
 
 ## Metrics
 
-| Metric | Value |
-|--------|-------|
-| Planned Duration | 40h |
-| Confidence 50% | 35h |
-| Confidence 85% | 52h |
-| Confidence 95% | 68h |
+| Metric            | Value                |
+| ----------------- | -------------------- |
+| Planned Duration  | 40h                  |
+| Confidence 50%    | 35h                  |
+| Confidence 85%    | 52h                  |
+| Confidence 95%    | 68h                  |
 | Scope Creep Count | 0 (Phase 5 deferred) |
-| Replan Count | 0 |
+| Replan Count      | 0                    |
 
 ---
 
 ## Version History
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 1 | 2026-04-17 | Initial plan — 14 issues across 5 phases |
+| Version | Date       | Changes                                  |
+| ------- | ---------- | ---------------------------------------- |
+| 1       | 2026-04-17 | Initial plan — 14 issues across 5 phases |

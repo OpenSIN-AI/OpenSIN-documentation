@@ -1,9 +1,11 @@
 # DESIGN.md - Spotify Inspired Design System for OpenSIN-AI
 
 ## Visual Identity
+
 Dark, immersive, music-platform energy. Bold type, green accents, rounded panels, and album-art-like blocks.
 
 ## Colors
+
 - **Background**: `#121212`
 - **Elevated Surface**: `#181818`
 - **Primary Surface**: `#191414`
@@ -15,6 +17,7 @@ Dark, immersive, music-platform energy. Bold type, green accents, rounded panels
 - **Border**: `rgba(255, 255, 255, 0.08)`
 
 ## Typography
+
 - **Font Family**: `Inter`, `Helvetica Neue`, `Arial`, sans-serif
 - **Monospace**: `IBM Plex Mono`, `SFMono-Regular`, monospace
 - **Scale**:
@@ -24,6 +27,7 @@ Dark, immersive, music-platform energy. Bold type, green accents, rounded panels
   - Code: 14px / 500
 
 ## UI Components
+
 - **Buttons**:
   - Primary: pill-shaped, green fill, black text, strong hover glow
   - Secondary: transparent dark fill, subtle border, rounded full
@@ -37,12 +41,14 @@ Dark, immersive, music-platform energy. Bold type, green accents, rounded panels
   - Green active state
 
 ## Layout Principles
+
 - Dark stacked sections with breathable spacing
 - Album-art-style feature blocks
 - Large hero copy with simple supporting text
 - Content should feel premium, minimal, and energetic
 
 ## Effects
+
 - Soft green radial glow near heroes and CTAs
 - Subtle hover lift on cards
 - Fast, crisp transitions (150–200ms)

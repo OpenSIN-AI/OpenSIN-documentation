@@ -63,13 +63,13 @@ opencode mcp list
 
 ## Essential Commands
 
-| Command | Description |
-|---------|-------------|
-| `/help` | Show available commands |
-| `/agents` | List and switch agents |
-| `/models` | List and switch models |
-| `/tools` | Show available tools |
-| `/export` | Export session data |
+| Command    | Description                  |
+| ---------- | ---------------------------- |
+| `/help`    | Show available commands      |
+| `/agents`  | List and switch agents       |
+| `/models`  | List and switch models       |
+| `/tools`   | Show available tools         |
+| `/export`  | Export session data          |
 | `/compact` | Compact conversation context |
 
 ## Next Steps
@@ -83,10 +83,10 @@ opencode mcp list
 
 ## Relevante Mandate
 
-| Mandat | Priority | Doku |
-|--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` — npm/bun sind verboten |
-| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider — nur `google/antigravity-*` |
-| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien |
+| Mandat                | Priority | Doku                                                  |
+| --------------------- | -------- | ----------------------------------------------------- |
+| **Bun-Only**          | -1.5     | `bun install` / `bun run` — npm/bun sind verboten     |
+| **Antigravity-Only**  | -10.0    | KEIN gemini-api Provider — nur `google/antigravity-*` |
+| **Kommentar-Pflicht** | -6.0     | EXTREM umfangreiche Kommentare in ALLEN Code-Dateien  |
 
 → [Alle Mandate](/best-practices/code-quality)

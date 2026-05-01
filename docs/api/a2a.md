@@ -20,6 +20,7 @@ GET /v1/a2a/{agent_url}/card
 ```
 
 **Response:**
+
 ```json
 {
   "name": "researcher",
@@ -39,6 +40,7 @@ POST /v1/a2a/message
 ```
 
 **Request:**
+
 ```json
 {
   "version": "1.0.0",
@@ -52,12 +54,12 @@ POST /v1/a2a/message
 
 ## Message Types
 
-| Type | Description |
-|------|-------------|
-| request | Request information or action |
-| response | Response to a request |
-| notification | One-way notification |
-| error | Error message |
+| Type         | Description                   |
+| ------------ | ----------------------------- |
+| request      | Request information or action |
+| response     | Response to a request         |
+| notification | One-way notification          |
+| error        | Error message                 |
 
 ## Next Steps
 
@@ -68,10 +70,10 @@ POST /v1/a2a/message
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)
