@@ -26,7 +26,11 @@ bun add @opensin/plugin-context-pruning
 ## Usage
 
 ```typescript
-import { ContextPruningPlugin, pruneContext, countTokens } from '@opensin/plugin-context-pruning';
+import {
+  ContextPruningPlugin,
+  pruneContext,
+  countTokens,
+} from "@opensin/plugin-context-pruning";
 
 const plugin = new ContextPruningPlugin({ maxTokens: 8000 });
 const result = plugin.prune(messages);
@@ -36,15 +40,19 @@ console.log(`Pruned ${result.prunedCount} messages`);
 ## API
 
 ### `countTokens(text: string): number`
+
 Estimate token count for a string.
 
 ### `countContextTokens(messages: ContextMessage[]): TokenCount`
+
 Count tokens across all messages, broken down by role.
 
 ### `pruneContext(messages, config): PruningResult`
+
 Prune messages that exceed token limit.
 
 ### `ContextPruningPlugin`
+
 Class with `shouldPrune()`, `prune()`, `getConfig()`, `setConfig()` methods.
 
 ## Testing
@@ -58,10 +66,10 @@ bun test
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

@@ -10,15 +10,15 @@ OpenSIN implements defense-in-depth security across every layer of the stack, fr
 
 OpenSIN agents execute arbitrary code, access filesystems, make network requests, and communicate with external services. The security architecture addresses:
 
-| Threat | Mitigation |
-|--------|------------|
-| Shell injection | `execFile` instead of `exec`, argument array passing |
-| Destructive commands | Pattern-based command blocking (rm -rf /, mkfs, dd, fork bombs) |
-| Path traversal | Workspace-scoped file operations with path validation |
-| Credential leakage | No secrets in logs, environment variable isolation |
-| Malicious MCP servers | Permission gates, user confirmation for dangerous operations |
-| Agent impersonation | JWT-based A2A authentication, mutual TLS |
-| Data exfiltration | Network egress monitoring, allowlisted domains |
+| Threat                | Mitigation                                                      |
+| --------------------- | --------------------------------------------------------------- |
+| Shell injection       | `execFile` instead of `exec`, argument array passing            |
+| Destructive commands  | Pattern-based command blocking (rm -rf /, mkfs, dd, fork bombs) |
+| Path traversal        | Workspace-scoped file operations with path validation           |
+| Credential leakage    | No secrets in logs, environment variable isolation              |
+| Malicious MCP servers | Permission gates, user confirmation for dangerous operations    |
+| Agent impersonation   | JWT-based A2A authentication, mutual TLS                        |
+| Data exfiltration     | Network egress monitoring, allowlisted domains                  |
 
 ## CLI Security Layer
 
@@ -27,20 +27,20 @@ OpenSIN agents execute arbitrary code, access filesystems, make network requests
 Every tool operation goes through a permission check before execution:
 
 ```typescript
-import { PermissionManager } from '@opensin/sdk'
+import { PermissionManager } from "@opensin/sdk";
 
 const permissions = new PermissionManager({
-  mode: 'interactive', // ask user for dangerous ops
-  allowlist: ['/workspace/**'],
-  denylist: ['/etc/**', '/usr/**', '~/.ssh/**'],
-})
+  mode: "interactive", // ask user for dangerous ops
+  allowlist: ["/workspace/**"],
+  denylist: ["/etc/**", "/usr/**", "~/.ssh/**"],
+});
 
 // Check before file write
 const allowed = await permissions.check({
-  tool: 'write',
-  path: '/workspace/src/app.ts',
-  action: 'create',
-})
+  tool: "write",
+  path: "/workspace/src/app.ts",
+  action: "create",
+});
 ```
 
 ### Bash Tool Hardening
@@ -50,15 +50,15 @@ The bash tool uses `execFile` (not `exec`) to prevent shell injection and blocks
 ```typescript
 // Blocked patterns (13 categories):
 const DANGEROUS_PATTERNS = [
-  /rm\s+(-[a-z]*f[a-z]*\s+)?\/\s*$/,     // rm -rf /
-  /mkfs/,                                   // filesystem format
-  /dd\s+.*of=\/dev/,                        // disk overwrite
-  /:\(\)\s*\{\s*:\|:\s*&\s*\}/,            // fork bomb
-  /chmod\s+777\s+\//,                       // world-writable root
-  /git\s+reset\s+--hard/,                   // destructive git reset
-  /sudo\s+rm/,                              // sudo removal
+  /rm\s+(-[a-z]*f[a-z]*\s+)?\/\s*$/, // rm -rf /
+  /mkfs/, // filesystem format
+  /dd\s+.*of=\/dev/, // disk overwrite
+  /:\(\)\s*\{\s*:\|:\s*&\s*\}/, // fork bomb
+  /chmod\s+777\s+\//, // world-writable root
+  /git\s+reset\s+--hard/, // destructive git reset
+  /sudo\s+rm/, // sudo removal
   // ... 6 more patterns
-]
+];
 ```
 
 ### Grep Safety
@@ -67,10 +67,10 @@ The grep tool defaults to **literal string search** (not regex) to prevent ReDoS
 
 ```typescript
 // Safe by default - literal matching
-grep({ pattern: "user.password", path: "./src" })
+grep({ pattern: "user.password", path: "./src" });
 
 // Opt-in regex with try/catch protection
-grep({ pattern: "user\\.pass.*", path: "./src", useRegex: true })
+grep({ pattern: "user\\.pass.*", path: "./src", useRegex: true });
 ```
 
 ## A2A Security
@@ -163,10 +163,10 @@ See [SECURITY.md](https://github.com/OpenSIN-AI/OpenSIN-Code/blob/main/SECURITY.
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Antigravity-Only** | -10.0 | KEIN gemini-api Provider |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Box.com Storage** | 0.0 | Alle Logs zu Box.com |
+| Mandat               | Priority | Regel                      |
+| -------------------- | -------- | -------------------------- |
+| **Antigravity-Only** | -10.0    | KEIN gemini-api Provider   |
+| **Annahmen-Verbot**  | -5.0     | KEINE Diagnose ohne Beweis |
+| **Box.com Storage**  | 0.0      | Alle Logs zu Box.com       |
 
 → [Alle Mandate](/best-practices/code-quality)

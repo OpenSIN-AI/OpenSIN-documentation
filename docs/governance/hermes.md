@@ -16,24 +16,28 @@ SIN-Hermes is the global dispatcher and router for the OpenSIN-AI fleet. It rece
 ## Responsibilities
 
 ### 1. Task Routing
+
 - Receives payloads from Zeus, webhooks, or external platforms
 - Maps tasks to Team Managers based on capability registry
 - Ensures idempotent delivery (no duplicate task execution)
 - Tracks task lifecycle from submission to completion
 
 ### 2. Fleet Health Monitoring
+
 - Monitors agent heartbeat across all fleet nodes
 - Detects crashed or unresponsive agents
 - Triggers self-healing via GitHub Issues
 - Escalates critical failures to Telegram
 
 ### 3. Platform Intake
+
 - Receives work from external platforms (Prolific, HackerOne, Upwork, etc.)
 - Normalizes payloads into `work_item` schema
 - Creates or updates GitHub Issues for tracking
 - Dispatches to appropriate team via PR-Watcher
 
 ### 4. Self-Healing Loop
+
 ```
 Error detected
   → Create GitHub Issue (SIN-GitHub-Issues)
@@ -77,22 +81,22 @@ Error detected
 
 ## Platform Integration
 
-| Platform | Intake Method | Normalization |
-|----------|--------------|---------------|
-| GitHub Webhooks | Push/PR events | → `work_item` schema |
-| n8n Workflows | HTTP webhook | → `work_item` schema |
-| Telegram Bot | Command/message | → `work_item` schema |
-| External APIs | Poller/webhook | → `work_item` schema |
+| Platform        | Intake Method   | Normalization        |
+| --------------- | --------------- | -------------------- |
+| GitHub Webhooks | Push/PR events  | → `work_item` schema |
+| n8n Workflows   | HTTP webhook    | → `work_item` schema |
+| Telegram Bot    | Command/message | → `work_item` schema |
+| External APIs   | Poller/webhook  | → `work_item` schema |
 
 ---
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `hermes.dispatch` | Route task to appropriate team/agent |
-| `hermes.health` | Fleet health status check |
-| `hermes.intake` | Process incoming platform payload |
+| Command            | Description                                   |
+| ------------------ | --------------------------------------------- |
+| `hermes.dispatch`  | Route task to appropriate team/agent          |
+| `hermes.health`    | Fleet health status check                     |
+| `hermes.intake`    | Process incoming platform payload             |
 | `hermes.self-heal` | Trigger self-healing loop for detected errors |
 
 ---
@@ -108,10 +112,10 @@ Error detected
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Immediate Bug Registry** | -4.0 | JEDER Bug SOFORT als GitHub Issue |
-| **PR-Watcher** | 0.0 | Alle Repos brauchen PR-Watcher |
-| **Zeus/Hermes** | 0.0 | Fleet-Kommando via SIN-Zeus |
+| Mandat                     | Priority | Regel                             |
+| -------------------------- | -------- | --------------------------------- |
+| **Immediate Bug Registry** | -4.0     | JEDER Bug SOFORT als GitHub Issue |
+| **PR-Watcher**             | 0.0      | Alle Repos brauchen PR-Watcher    |
+| **Zeus/Hermes**            | 0.0      | Fleet-Kommando via SIN-Zeus       |
 
 → [Alle Mandate](/best-practices/error-handling)

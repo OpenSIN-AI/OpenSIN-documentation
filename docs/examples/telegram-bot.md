@@ -9,6 +9,7 @@ Build an A2A agent that operates a Telegram bot for automated notifications, com
 ## Overview
 
 Every OpenSIN agent should have its own Telegram bot for:
+
 - Receiving commands from operators
 - Sending alerts and status updates
 - Delivering task results
@@ -51,70 +52,73 @@ sin-telegrambot set-commands \
 ### 3. Implement Command Handlers
 
 ```typescript
-import { SINTelegramBot } from '@opensin/agent-sdk'
+import { SINTelegramBot } from "@opensin/agent-sdk";
 
 const bot = new SINTelegramBot({
-  name: 'sin-code-analyzer',
+  name: "sin-code-analyzer",
   commands: {
-    '/status': async (msg) => {
-      const health = await checkHealth()
-      return `Agent Status: ${health.status}\n` +
-             `Uptime: ${health.uptime}\n` +
-             `Tasks completed: ${health.tasksCompleted}`
+    "/status": async (msg) => {
+      const health = await checkHealth();
+      return (
+        `Agent Status: ${health.status}\n` +
+        `Uptime: ${health.uptime}\n` +
+        `Tasks completed: ${health.tasksCompleted}`
+      );
     },
 
-    '/analyze': async (msg) => {
-      const repo = msg.text.split(' ')[1]
-      if (!repo) return 'Usage: /analyze owner/repo'
+    "/analyze": async (msg) => {
+      const repo = msg.text.split(" ")[1];
+      if (!repo) return "Usage: /analyze owner/repo";
 
-      await bot.reply(msg, 'Starting analysis...')
-      const results = await analyzeRepo(repo)
+      await bot.reply(msg, "Starting analysis...");
+      const results = await analyzeRepo(repo);
 
-      return `Analysis complete for ${repo}:\n\n` +
-             `Files: ${results.files}\n` +
-             `Issues found: ${results.issues}\n` +
-             `Score: ${results.score}/100`
+      return (
+        `Analysis complete for ${repo}:\n\n` +
+        `Files: ${results.files}\n` +
+        `Issues found: ${results.issues}\n` +
+        `Score: ${results.score}/100`
+      );
     },
 
-    '/report': async (msg) => {
-      const report = await generateDailyReport()
-      return report
+    "/report": async (msg) => {
+      const report = await generateDailyReport();
+      return report;
     },
   },
-})
+});
 ```
 
 ### 4. Send Proactive Notifications
 
 ```typescript
 // Alert on task completion
-agent.on('task:complete', async (task) => {
+agent.on("task:complete", async (task) => {
   await bot.send(
     `Task completed: ${task.title}\n` +
-    `Duration: ${task.duration}ms\n` +
-    `Result: ${task.status}`
-  )
-})
+      `Duration: ${task.duration}ms\n` +
+      `Result: ${task.status}`,
+  );
+});
 
 // Alert on errors
-agent.on('task:error', async (task, error) => {
+agent.on("task:error", async (task, error) => {
   await bot.send(
     `Task FAILED: ${task.title}\n` +
-    `Error: ${error.message}\n` +
-    `Auto-creating GitHub issue...`
-  )
-})
+      `Error: ${error.message}\n` +
+      `Auto-creating GitHub issue...`,
+  );
+});
 
 // Send with inline keyboard buttons
-await bot.send(
-  'New PR requires review',
-  {
-    buttons: [[
-      { text: 'Approve', callback_data: 'pr_approve_123' },
-      { text: 'Reject', callback_data: 'pr_reject_123' },
-    ]]
-  }
-)
+await bot.send("New PR requires review", {
+  buttons: [
+    [
+      { text: "Approve", callback_data: "pr_approve_123" },
+      { text: "Reject", callback_data: "pr_reject_123" },
+    ],
+  ],
+});
 ```
 
 ### 5. Integrate with n8n
@@ -133,20 +137,20 @@ sin-n8n create telegram-notify \
 
 The `sin-telegrambot` MCP provides these tools:
 
-| Tool | Description |
-|------|-------------|
-| `sin_telegrambot_send` | Send a message (HTML formatting supported) |
-| `sin_telegrambot_send_document` | Send a file/document |
-| `sin_telegrambot_status` | Check bot identity and webhook info |
-| `sin_telegrambot_updates` | Fetch recent messages (polling) |
-| `sin_telegrambot_set_webhook` | Set webhook URL |
-| `sin_telegrambot_set_commands` | Set the command menu |
+| Tool                            | Description                                |
+| ------------------------------- | ------------------------------------------ |
+| `sin_telegrambot_send`          | Send a message (HTML formatting supported) |
+| `sin_telegrambot_send_document` | Send a file/document                       |
+| `sin_telegrambot_status`        | Check bot identity and webhook info        |
+| `sin_telegrambot_updates`       | Fetch recent messages (polling)            |
+| `sin_telegrambot_set_webhook`   | Set webhook URL                            |
+| `sin_telegrambot_set_commands`  | Set the command menu                       |
 
 ### Example: Send a Formatted Report
 
 ```typescript
 await sinTelegramBot.send({
-  bot: 'sin-code-analyzer',
+  bot: "sin-code-analyzer",
   message: `
 <b>Daily Code Analysis Report</b>
 
@@ -160,18 +164,18 @@ agent-sdk     1       95/100
 
 <i>Generated at ${new Date().toISOString()}</i>
   `,
-  parse_mode: 'HTML',
-})
+  parse_mode: "HTML",
+});
 ```
 
 ### Example: Send a File
 
 ```typescript
 await sinTelegramBot.sendDocument({
-  bot: 'sin-code-analyzer',
-  file: '/tmp/analysis-report.pdf',
-  caption: 'Full analysis report for Q2 2026',
-})
+  bot: "sin-code-analyzer",
+  file: "/tmp/analysis-report.pdf",
+  caption: "Full analysis report for Q2 2026",
+});
 ```
 
 ## Fleet Monitoring Pattern
@@ -193,10 +197,10 @@ This creates a fully autonomous self-healing loop with human visibility through 
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)
