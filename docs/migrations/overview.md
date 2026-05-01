@@ -14,7 +14,9 @@ Migration guides document the process of transitioning between versions, archite
 ## Migration Categories
 
 ### 1. OpenCode Config Migrations
+
 Changes to `~/.config/opencode/opencode.json` that require fleet-wide sync:
+
 - Model updates or additions
 - Provider configuration changes
 - Plugin additions/removals
@@ -23,21 +25,27 @@ Changes to `~/.config/opencode/opencode.json` that require fleet-wide sync:
 **Sync command:** `sin-sync` (pushes Mac → OCI VM → HF VMs)
 
 ### 2. Agent Migrations
+
 Updating agent configurations across teams:
+
 - Team member additions/removals
 - Model reassignments
 - Capability registry updates
 - Telegram bot re-registration
 
 ### 3. Database Migrations
+
 Supabase schema changes:
+
 - New tables for agent pools
 - Column additions/modifications
 - Index optimizations
 - Data migrations
 
 ### 4. Infrastructure Migrations
+
 OCI VM, Cloudflare Workers, HF Space changes:
+
 - Container image updates
 - Proxy configuration changes
 - SSL/TLS certificate rotations
@@ -59,6 +67,7 @@ OCI VM, Cloudflare Workers, HF Space changes:
 ## Rollback Procedure
 
 Every migration MUST have a rollback plan:
+
 1. Revert config changes from backup
 2. Restore database from snapshot
 3. Run `sin-sync` with previous config
@@ -68,19 +77,19 @@ Every migration MUST have a rollback plan:
 
 ## Active Migrations
 
-| Migration | Status | Date | Impact |
-|-----------|--------|------|--------|
-| *(none currently active)* | — | — | — |
+| Migration                 | Status | Date | Impact |
+| ------------------------- | ------ | ---- | ------ |
+| _(none currently active)_ | —      | —    | —      |
 
 ---
 
 ## Past Migrations
 
-| Migration | Completed | Notes |
-|-----------|-----------|-------|
-| Antigravity Plugin Migration | 2026-04 | All fleet nodes updated to use Antigravity OAuth |
-| Bun Package Manager Mandate | 2026-03 | npm permanently banned, bun enforced |
-| Technology Sovereignty Mandate | 2026-03 | Camoufox/Playwright/Puppeteer/Selenium banned |
+| Migration                      | Completed | Notes                                            |
+| ------------------------------ | --------- | ------------------------------------------------ |
+| Antigravity Plugin Migration   | 2026-04   | All fleet nodes updated to use Antigravity OAuth |
+| Bun Package Manager Mandate    | 2026-03   | npm permanently banned, bun enforced             |
+| Technology Sovereignty Mandate | 2026-03   | Camoufox/Playwright/Puppeteer/Selenium banned    |
 
 ---
 
@@ -94,10 +103,10 @@ Every migration MUST have a rollback plan:
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

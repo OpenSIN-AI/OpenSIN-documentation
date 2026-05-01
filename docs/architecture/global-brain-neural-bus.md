@@ -6,10 +6,10 @@
 
 The OpenSIN ecosystem uses two complementary systems for fleet-wide intelligence:
 
-| System | Purpose | Repository |
-|--------|---------|-----------|
-| **Global Brain (PCPM)** | Persistent Code Plan Memory — cross-project knowledge, rules, plans | [global-brain](https://github.com/Delqhi/global-brain) |
-| **Neural-Bus (JetStream)** | Real-time agent-to-agent messaging via NATS JetStream | [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus) |
+| System                     | Purpose                                                             | Repository                                                             |
+| -------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **Global Brain (PCPM)**    | Persistent Code Plan Memory — cross-project knowledge, rules, plans | [global-brain](https://github.com/Delqhi/global-brain)                 |
+| **Neural-Bus (JetStream)** | Real-time agent-to-agent messaging via NATS JetStream               | [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus) |
 
 ## Global Brain (PCPM)
 
@@ -41,13 +41,13 @@ node src/cli.js setup-hooks --project my-project --project-root /path/to/repo
 
 ### MCP Tools
 
-| Tool | Server | Description |
-|------|--------|-------------|
-| `add_rule` | sin-brain MCP | Add rules to global AGENTS.md and/or local .pcpm |
-| `sync_brain` | sin-brain MCP | Run bidirectional sync between local and global brain |
-| `open_image_in_preview` | sin-brain MCP | Open an image file in macOS Preview.app |
-| `list_global_rules` | sin-brain MCP | List all rules currently in the global brain |
-| `open_in_preview` | Preview MCP | Opens an image file in Preview.app with validation |
+| Tool                    | Server        | Description                                           |
+| ----------------------- | ------------- | ----------------------------------------------------- |
+| `add_rule`              | sin-brain MCP | Add rules to global AGENTS.md and/or local .pcpm      |
+| `sync_brain`            | sin-brain MCP | Run bidirectional sync between local and global brain |
+| `open_image_in_preview` | sin-brain MCP | Open an image file in macOS Preview.app               |
+| `list_global_rules`     | sin-brain MCP | List all rules currently in the global brain          |
+| `open_in_preview`       | Preview MCP   | Opens an image file in Preview.app with validation    |
 
 ### Project Brain Structure
 
@@ -93,37 +93,40 @@ Global Brain (.pcpm/ → AGENTS.md → knowledge graph)
 
 ### Core Exports
 
-| Export | Language | Purpose |
-|--------|----------|---------|
-| `OpenCodeJetStreamClient` | TypeScript | NATS/JetStream client for OpenCode |
-| `OpenSinAgentRuntime` | TypeScript | Agent runtime wrapper with publish/consume |
-| `SUBJECTS` | TypeScript | Canonical subject taxonomy |
-| `createEventEnvelope` | TypeScript | Validated event envelopes |
-| `OuroborosMemory` | Python | SQLite-backed memory store |
-| `OuroborosCLI` | Python | Python CLI for Ouroboros memory |
+| Export                    | Language   | Purpose                                    |
+| ------------------------- | ---------- | ------------------------------------------ |
+| `OpenCodeJetStreamClient` | TypeScript | NATS/JetStream client for OpenCode         |
+| `OpenSinAgentRuntime`     | TypeScript | Agent runtime wrapper with publish/consume |
+| `SUBJECTS`                | TypeScript | Canonical subject taxonomy                 |
+| `createEventEnvelope`     | TypeScript | Validated event envelopes                  |
+| `OuroborosMemory`         | Python     | SQLite-backed memory store                 |
+| `OuroborosCLI`            | Python     | Python CLI for Ouroboros memory            |
 
 ### Subject Taxonomy
 
-| Subject | Direction | Purpose |
-|---------|-----------|---------|
-| `workflow.request` | Client → Server | Work request to agent |
-| `workflow.reply` | Server → Client | Answer/result |
-| `agent.observation` | Agent → Brain | State report (boot, error, done) |
-| `agent.lesson` | Agent → Brain | Learned lesson (written to brain memory) |
-| `agent.capability` | Agent → Brain | New capability registered |
+| Subject             | Direction       | Purpose                                  |
+| ------------------- | --------------- | ---------------------------------------- |
+| `workflow.request`  | Client → Server | Work request to agent                    |
+| `workflow.reply`    | Server → Client | Answer/result                            |
+| `agent.observation` | Agent → Brain   | State report (boot, error, done)         |
+| `agent.lesson`      | Agent → Brain   | Learned lesson (written to brain memory) |
+| `agent.capability`  | Agent → Brain   | New capability registered                |
 
 ### Durable Consumer Pattern
 
 ```typescript
-const worker = await runtime.consumeAssignedWork({
-  subject: SUBJECTS.workflowRequest,
-  stream: "OPENSIN_WORKFLOW_EVENTS",
-  durableName: "issue-8-worker",  // Same name = resume after restart
-  deliverPolicy: "all",
-  ackWaitMs: 500,
-}, async (event) => {
-  // Process work
-});
+const worker = await runtime.consumeAssignedWork(
+  {
+    subject: SUBJECTS.workflowRequest,
+    stream: "OPENSIN_WORKFLOW_EVENTS",
+    durableName: "issue-8-worker", // Same name = resume after restart
+    deliverPolicy: "all",
+    ackWaitMs: 500,
+  },
+  async (event) => {
+    // Process work
+  },
+);
 ```
 
 ### Lesson Publishing
@@ -131,7 +134,8 @@ const worker = await runtime.consumeAssignedWork({
 ```typescript
 await runtime.publishLessonLearned({
   context: "JetStream reconnect handling",
-  lesson: "Reuse the same durable consumer name so restart recovery is automatic.",
+  lesson:
+    "Reuse the same durable consumer name so restart recovery is automatic.",
   successRate: 1.0,
 });
 // → Automatically written to Global Brain via Ouroboros Bridge
@@ -154,12 +158,18 @@ Both systems are integrated into the global OpenCode configuration:
   "mcp": {
     "sin-brain": {
       "type": "local",
-      "command": ["node", "/Users/jeremy/dev/global-brain/src/mcp/sin-brain-server.mjs"],
+      "command": [
+        "node",
+        "/Users/jeremy/dev/global-brain/src/mcp/sin-brain-server.mjs"
+      ],
       "enabled": true
     },
     "sin-preview": {
       "type": "local",
-      "command": ["node", "/Users/jeremy/dev/global-brain/src/mcp/preview-server.mjs"],
+      "command": [
+        "node",
+        "/Users/jeremy/dev/global-brain/src/mcp/preview-server.mjs"
+      ],
       "enabled": true
     }
   }
@@ -176,10 +186,10 @@ Both systems are integrated into the global OpenCode configuration:
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **A2A-First** | -200.0 | SELBST MACHEN via A2A-Agenten |
-| **n8n OSS Only** | 0.0 | KEINE n8n Premium Features |
-| **Self-Hosted Supabase** | 0.0 | OCI VM — KEINE Supabase Cloud |
+| Mandat                   | Priority | Regel                         |
+| ------------------------ | -------- | ----------------------------- |
+| **A2A-First**            | -200.0   | SELBST MACHEN via A2A-Agenten |
+| **n8n OSS Only**         | 0.0      | KEINE n8n Premium Features    |
+| **Self-Hosted Supabase** | 0.0      | OCI VM — KEINE Supabase Cloud |
 
 → [Alle Mandate](/best-practices/a2a-communication)

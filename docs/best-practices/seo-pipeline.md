@@ -7,8 +7,10 @@
 --->
 
 ---
+
 title: Automated SEO Content Pipeline
 description: Proof-of-work blog publishing from merged PRs using n8n and Cloudflare Pages.
+
 ---
 
 # Automated SEO Content Pipeline
@@ -50,12 +52,12 @@ E‑E‑A‑T guidelines.
 
 Initially we tried the built‑in HTTP Request node. Problems encountered:
 
-| Problem | Symptom | Fix |
-|---------|---------|-----|
-| JSON body encoding | GitHub received malformed JSON | Switch to raw body expression: `&#123;&#123; JSON.stringify({...}) &#125;&#125;` |
-| Content‑Type conflicts | Node sent form‑urlencoded | Set `contentType: raw` and `sendBody: true`. |
-| Base64 handling | Needed to embed `$json.content_base64` | Expression `&#123;&#123; $json.content_base64 &#125;&#125;` works. |
-| Reliability | Various edge cases | Final solution: replace HTTP node with Function node using `https` – full control. |
+| Problem                | Symptom                                | Fix                                                                                |
+| ---------------------- | -------------------------------------- | ---------------------------------------------------------------------------------- |
+| JSON body encoding     | GitHub received malformed JSON         | Switch to raw body expression: `&#123;&#123; JSON.stringify({...}) &#125;&#125;`   |
+| Content‑Type conflicts | Node sent form‑urlencoded              | Set `contentType: raw` and `sendBody: true`.                                       |
+| Base64 handling        | Needed to embed `$json.content_base64` | Expression `&#123;&#123; $json.content_base64 &#125;&#125;` works.                 |
+| Reliability            | Various edge cases                     | Final solution: replace HTTP node with Function node using `https` – full control. |
 
 ### Determinism Guarantee
 
@@ -66,15 +68,15 @@ Initially we tried the built‑in HTTP Request node. Problems encountered:
 
 ## Configuration Reference
 
-| Setting | Value (Placeholder) |
-|---------|---------------------|
-| **n8n API Key** | `<YOUR_N8N_API_KEY>` |
-| **n8n Host** | `http://92.5.60.87:5678` |
-| **Workflow ID** | `sq7YR8vkdPf3usnz` |
-| **GitHub Token** | `<YOUR_GITHUB_TOKEN>` (repo scope) – store in n8n Credentials |
-| **Blog Repo** | `Delqhi/opensin-blog-content` |
-| **Cloudflare Pages** | Project `opensin-blog` → Domain `blog.opensin.ai` |
-| **Trigger Path** | `/webhook/blog-publish` (POST) |
+| Setting              | Value (Placeholder)                                           |
+| -------------------- | ------------------------------------------------------------- |
+| **n8n API Key**      | `<YOUR_N8N_API_KEY>`                                          |
+| **n8n Host**         | `http://92.5.60.87:5678`                                      |
+| **Workflow ID**      | `sq7YR8vkdPf3usnz`                                            |
+| **GitHub Token**     | `<YOUR_GITHUB_TOKEN>` (repo scope) – store in n8n Credentials |
+| **Blog Repo**        | `Delqhi/opensin-blog-content`                                 |
+| **Cloudflare Pages** | Project `opensin-blog` → Domain `blog.opensin.ai`             |
+| **Trigger Path**     | `/webhook/blog-publish` (POST)                                |
 
 ## Monitoring & Alerts
 
@@ -102,15 +104,15 @@ Initially we tried the built‑in HTTP Request node. Problems encountered:
 
 ---
 
-*Document version:* 2026‑04‑10  
-*Maintainer:* sin‑zeus  
-*Review cycle:* Monthly or after any workflow change.
+_Document version:_ 2026‑04‑10  
+_Maintainer:_ sin‑zeus  
+_Review cycle:_ Monthly or after any workflow change.
 
 ---
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **n8n CI/CD** | 0.0 | Self-hosted auf OCI VM |
-| **Box.com Storage** | 0.0 | Artefakte zu Box.com |
+| Mandat              | Priority | Regel                  |
+| ------------------- | -------- | ---------------------- |
+| **n8n CI/CD**       | 0.0      | Self-hosted auf OCI VM |
+| **Box.com Storage** | 0.0      | Artefakte zu Box.com   |

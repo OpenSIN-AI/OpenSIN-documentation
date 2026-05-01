@@ -1,6 +1,7 @@
 # OpenSIN-documentation Boundaries
 
 ## Role
+
 `OpenSIN-documentation` is the official documentation body for the OpenSIN ecosystem.
 
 ## Hard rules

@@ -15,10 +15,14 @@ bun add @opensin/plugin-safety-net
 ## Usage
 
 ```typescript
-import { SafetyNetPlugin, checkCommandSafety, DANGEROUS_PATTERNS } from '@opensin/plugin-safety-net';
+import {
+  SafetyNetPlugin,
+  checkCommandSafety,
+  DANGEROUS_PATTERNS,
+} from "@opensin/plugin-safety-net";
 
 const plugin = new SafetyNetPlugin();
-const result = plugin.check('git push --force');
+const result = plugin.check("git push --force");
 if (!result.safe) console.log(result.reasons);
 ```
 
@@ -35,9 +39,11 @@ if (!result.safe) console.log(result.reasons);
 ## API
 
 ### `checkCommandSafety(command, config): SafetyCheckResult`
+
 Check if a command is safe to execute.
 
 ### `SafetyNetPlugin`
+
 Class with `check()`, `isSafe()`, `getConfig()`, `setConfig()` methods.
 
 ## Testing
@@ -51,10 +57,10 @@ bun test
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

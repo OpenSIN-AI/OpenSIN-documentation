@@ -12,6 +12,7 @@ description: Mandatory visibility standards for agents, workflows, infrastructur
 ## 1. Core Principle
 
 Every significant system must answer these questions at all times:
+
 - Is it alive?
 - Is it healthy?
 - Is it producing value?
@@ -26,7 +27,9 @@ If a subsystem cannot answer these, it is not production-ready.
 ## 2. Observability Layers
 
 ### 2.1 Agent layer
+
 Track:
+
 - active sessions
 - error rate
 - response latency
@@ -35,7 +38,9 @@ Track:
 - completion vs timeout vs cancellation
 
 ### 2.2 Workflow layer
+
 Track:
+
 - trigger frequency
 - execution success/failure
 - queue backlogs
@@ -43,7 +48,9 @@ Track:
 - side effect confirmation
 
 ### 2.3 Infrastructure layer
+
 Track:
+
 - CPU / memory / disk
 - network health
 - storage exhaustion risk
@@ -51,7 +58,9 @@ Track:
 - HF Space sleep/restart behavior
 
 ### 2.4 Economic layer
+
 Track:
+
 - token usage
 - hourly cost
 - cost spikes per workflow / agent / model
@@ -62,6 +71,7 @@ Track:
 ## 3. Mandatory Health Checks
 
 Every production-capable component needs a health signal:
+
 - websites → reachable URL / status check
 - APIs → health endpoint or equivalent request
 - workflows → last successful execution timestamp
@@ -69,6 +79,7 @@ Every production-capable component needs a health signal:
 - MCP tools → list-tools / smoke-call success
 
 ### Why
+
 A component that is “probably fine” is already a liability.
 
 ---
@@ -76,7 +87,9 @@ A component that is “probably fine” is already a liability.
 ## 4. Logging Rules
 
 ### 4.1 Structured logs only where possible
+
 Prefer machine-readable logs with fields for:
+
 - timestamp
 - component
 - severity
@@ -86,17 +99,20 @@ Prefer machine-readable logs with fields for:
 - error class
 
 ### 4.2 Redaction is mandatory
+
 Never log raw secrets, tokens, passwords, or credentials. Log references, not secrets.
 
 ### 4.3 Log what matters
+
 Log:
+
 - starts
 - finishes
 - retries
 - failures
 - unusual paths
 - external side effects
-Do **not** drown the system in meaningless noise.
+  Do **not** drown the system in meaningless noise.
 
 ---
 
@@ -105,6 +121,7 @@ Do **not** drown the system in meaningless noise.
 Alert only on things that require action.
 
 ### Critical alerts
+
 - system down
 - auth broken
 - workflow repeatedly failing
@@ -113,12 +130,14 @@ Alert only on things that require action.
 - stuck queue / stuck retry loop
 
 ### Warning alerts
+
 - degraded latency
 - elevated error rate
 - stale worker
 - missed execution window
 
 ### Anti-pattern
+
 Do not send alerts for every minor fluctuation. Alert fatigue blinds operators.
 
 ---
@@ -126,6 +145,7 @@ Do not send alerts for every minor fluctuation. Alert fatigue blinds operators.
 ## 6. Evidence Preservation
 
 Important incidents must preserve evidence:
+
 - screenshots
 - logs
 - failing payloads
@@ -143,6 +163,7 @@ A good dashboard tells the operator what to do next.
 A bad dashboard is just colorful guilt.
 
 Minimum useful dashboard sections:
+
 - overall fleet health
 - current incidents
 - recent failed executions
@@ -155,6 +176,7 @@ Minimum useful dashboard sections:
 ## 8. Cost Observability
 
 The fleet must watch for:
+
 - runaway retries
 - bad model routing
 - needlessly expensive model selection
@@ -162,6 +184,7 @@ The fleet must watch for:
 - duplicate agents doing the same work
 
 ### Why
+
 An autonomous system that does not watch cost becomes a denial-of-wallet attack against itself.
 
 ---
@@ -170,6 +193,7 @@ An autonomous system that does not watch cost becomes a denial-of-wallet attack 
 
 Every important side effect must be checked downstream.
 Examples:
+
 - issue supposedly created → confirm issue URL exists
 - blog supposedly published → confirm file exists and page resolves
 - deploy supposedly finished → confirm URL and assets load
@@ -181,16 +205,16 @@ Do not trust intermediate success messages over final reality.
 
 ## 10. Suggested Standard Metrics
 
-| Area | Metric | Why it matters |
-|---|---|---|
-| Agents | active sessions | detects stalls and overload |
-| Agents | error rate | reveals instability |
-| Agents | avg / p95 latency | reveals slowdowns |
-| Workflows | success rate | proves automation health |
-| Workflows | execution age | detects dead pipelines |
-| Infra | memory / disk | prevents crashes |
-| Costs | hourly spend | prevents runaway economics |
-| Product | live URL health | proves end-user reality |
+| Area      | Metric            | Why it matters              |
+| --------- | ----------------- | --------------------------- |
+| Agents    | active sessions   | detects stalls and overload |
+| Agents    | error rate        | reveals instability         |
+| Agents    | avg / p95 latency | reveals slowdowns           |
+| Workflows | success rate      | proves automation health    |
+| Workflows | execution age     | detects dead pipelines      |
+| Infra     | memory / disk     | prevents crashes            |
+| Costs     | hourly spend      | prevents runaway economics  |
+| Product   | live URL health   | proves end-user reality     |
 
 ---
 
@@ -201,15 +225,15 @@ If a metric cannot drive a decision, rethink why you are collecting it.
 
 ---
 
-*Last updated:* 2026-04-10  
-*Status:* **ACTIVE & MANDATORY**  
-*Maintainer:* sin-zeus
+_Last updated:_ 2026-04-10  
+_Status:_ **ACTIVE & MANDATORY**  
+_Maintainer:_ sin-zeus
 
 ---
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Box.com Storage** | 0.0 | Logs zu Box.com hochladen |
-| **Test-Beweis-Pflicht** | 0.0 | Monitoring MUSS echte Daten zeigen |
+| Mandat                  | Priority | Regel                              |
+| ----------------------- | -------- | ---------------------------------- |
+| **Box.com Storage**     | 0.0      | Logs zu Box.com hochladen          |
+| **Test-Beweis-Pflicht** | 0.0      | Monitoring MUSS echte Daten zeigen |

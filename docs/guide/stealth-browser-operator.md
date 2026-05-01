@@ -64,6 +64,7 @@ python3 ~/.config/opencode/tools/master-operator.py \
 ### Einzelne Phasen
 
 **Phase 1: Browser-Recording**
+
 ```bash
 python3 ~/.config/opencode/tools/browser-recorder.py \
   --url "https://example.com" \
@@ -73,6 +74,7 @@ python3 ~/.config/opencode/tools/browser-recorder.py \
 ```
 
 **Phase 2: TTS-Vertonung**
+
 ```bash
 python3 ~/.config/opencode/tools/tts-generator.py \
   --text "Willkommen bei OpenSIN AI" \
@@ -81,6 +83,7 @@ python3 ~/.config/opencode/tools/tts-generator.py \
 ```
 
 **Phase 3: FFmpeg Post-Production**
+
 ```bash
 python3 ~/.config/opencode/tools/video-processor.py \
   --input-video "./recordings/recording.mp4" \
@@ -92,16 +95,16 @@ python3 ~/.config/opencode/tools/video-processor.py \
 
 ## Verfügbare deutsche Stimmen
 
-| Stimme | Geschlecht | Stil |
-|--------|-----------|------|
-| `de-DE-KatjaNeural` | Weiblich | Natürlich (EMPFOHLEN) |
-| `de-DE-ConradNeural` | Männlich | Professionell |
-| `de-DE-BerndNeural` | Männlich | Tief |
-| `de-DE-ChristophNeural` | Männlich | Professionell |
-| `de-DE-AmalaNeural` | Weiblich | Warm |
-| `de-DE-ElkeNeural` | Weiblich | Freundlich |
-| `de-DE-KlausNeural` | Männlich | Seriös |
-| `de-DE-MajaNeural` | Weiblich | Sanft |
+| Stimme                  | Geschlecht | Stil                  |
+| ----------------------- | ---------- | --------------------- |
+| `de-DE-KatjaNeural`     | Weiblich   | Natürlich (EMPFOHLEN) |
+| `de-DE-ConradNeural`    | Männlich   | Professionell         |
+| `de-DE-BerndNeural`     | Männlich   | Tief                  |
+| `de-DE-ChristophNeural` | Männlich   | Professionell         |
+| `de-DE-AmalaNeural`     | Weiblich   | Warm                  |
+| `de-DE-ElkeNeural`      | Weiblich   | Freundlich            |
+| `de-DE-KlausNeural`     | Männlich   | Seriös                |
+| `de-DE-MajaNeural`      | Weiblich   | Sanft                 |
 
 Alle 15 Stimmen: `python3 ~/.config/opencode/tools/tts-generator.py --list-voices`
 
@@ -119,12 +122,12 @@ recordings/<DATUM_UHRZEIT>/
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Vision-Gate** | -7.0 | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
-| **DevTools-First** | -1.0 | JEDER CSS-Selektor via DevTools verifizieren |
-| **Technologie-Souveränität** | -2.0 | nodriver + Chrome Profil — Playwright/etc. verboten |
-| **Bun-Only** | -1.5 | `bun install` — npm/bun verboten |
-| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |
+| Mandat                       | Priority | Regel                                               |
+| ---------------------------- | -------- | --------------------------------------------------- |
+| **Vision-Gate**              | -7.0     | KEINE Browser-Aktion ohne Screenshot + Vision-Check |
+| **DevTools-First**           | -1.0     | JEDER CSS-Selektor via DevTools verifizieren        |
+| **Technologie-Souveränität** | -2.0     | nodriver + Chrome Profil — Playwright/etc. verboten |
+| **Bun-Only**                 | -1.5     | `bun install` — npm/bun verboten                    |
+| **Kommentar-Pflicht**        | -6.0     | EXTREM umfangreiche Kommentare                      |
 
 → [Alle Mandate](/best-practices/browser-automation)

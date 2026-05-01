@@ -47,6 +47,7 @@ GitHub Webhook → A2A-SIN-GitHub-Action → n8n Workflow → OCI VM Runner
 ### Ausnahmen
 
 Die einzigen erlaubten `.github/workflows/` Dateien sind:
+
 - `webhook-trigger.yml` — Sendet Payload an n8n Webhook
 - KEINE Build-Test-Deploy Workflows direkt in GitHub!
 
