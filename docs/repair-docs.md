@@ -12,25 +12,28 @@ This document tracks known issues, bugs, and repair procedures for the OpenSIN-d
 **Status:** ✅ COMPLETE — All items verified and closed
 
 ### Phase 1 Critical — ALL COMPLETE
-| Item | Status | Evidence |
-|------|--------|----------|
-| AGENTS.md populated with mandates | ✅ | A2A-First (PRIORITY -200), Global Brain (PRIORITY -100), Bun-only (PRIORITY -1.5), KOMMENTAR-PFLICHT (PRIORITY -6) |
-| OpenCode config (.opencode/opencode.json) | ✅ | Created with Global Brain hooks + 6 MCP servers |
-| Dependencies use bun (not npm) | ✅ | package.json has `bun run` scripts only, no npm patterns found |
-| No outdated patterns in docs | ✅ | grep check passed — no npm patterns in source files |
+
+| Item                                      | Status | Evidence                                                                                                           |
+| ----------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------ |
+| AGENTS.md populated with mandates         | ✅     | A2A-First (PRIORITY -200), Global Brain (PRIORITY -100), Bun-only (PRIORITY -1.5), KOMMENTAR-PFLICHT (PRIORITY -6) |
+| OpenCode config (.opencode/opencode.json) | ✅     | Created with Global Brain hooks + 6 MCP servers                                                                    |
+| Dependencies use bun (not npm)            | ✅     | package.json has `bun run` scripts only, no npm patterns found                                                     |
+| No outdated patterns in docs              | ✅     | grep check passed — no npm patterns in source files                                                                |
 
 ### Phase 2 Standardization — ALL COMPLETE
-| Item | Status | Evidence |
-|------|--------|----------|
-| README.md current | ✅ | Verified — links, ecosystem table, development commands all up-to-date |
-| MCP config in .opencode/opencode.json | ✅ | webauto-nodriver, sin-brain, sin-github-issues, simone-mcp, sin-document-forge, sin-telegrambot |
-| CI/CD uses bun in GitHub Actions | ✅ | `.github/workflows/docs.yml` created with bun + Global Brain hooks + BUN-ONLY verification |
+
+| Item                                  | Status | Evidence                                                                                    |
+| ------------------------------------- | ------ | ------------------------------------------------------------------------------------------- |
+| README.md current                     | ✅     | Verified — links, ecosystem table, development commands all up-to-date                      |
+| MCP config in .opencode/opencode.json | ✅     | skylight-cli, sin-brain, sin-github-issues, simone-mcp, sin-document-forge, sin-telegrambot |
+| CI/CD uses bun in GitHub Actions      | ✅     | `.github/workflows/docs.yml` created with bun + Global Brain hooks + BUN-ONLY verification  |
 
 ### Phase 3 Verification
-| Command | Status |
-|---------|--------|
-| `bun run docs:build` | ✅ Verified |
-| `cat .opencode/opencode.json \| python3 -c "import json,sys; json.load(sys.stdin)"` | ✅ VALID JSON |
+
+| Command                                                                                        | Status                     |
+| ---------------------------------------------------------------------------------------------- | -------------------------- |
+| `bun run docs:build`                                                                           | ✅ Verified                |
+| `cat .opencode/opencode.json \| python3 -c "import json,sys; json.load(sys.stdin)"`            | ✅ VALID JSON              |
 | `grep -r "bun install\|bun run" . --include="*.md" --include="*.json" \| grep -v node_modules` | ✅ CLEAN (no npm patterns) |
 
 ---
@@ -38,6 +41,7 @@ This document tracks known issues, bugs, and repair procedures for the OpenSIN-d
 ## 🐛 BUG-001: Orphaned Submodule References (FIXED 2026-04-16)
 
 **Symptom:** `git submodule status` failed with:
+
 ```
 fatal: no submodule mapping found in .gitmodules for path 'Infra-SIN-Dev-Setup'
 fatal: no submodule mapping found in .gitmodules for path 'a2a-sin-code-plugin'
@@ -47,6 +51,7 @@ fatal: no submodule mapping found in .gitmodules for path 'global-brain'
 **Root Cause:** Three submodules tracked in HEAD but no `.gitmodules` entries existed.
 
 **Fix Applied:**
+
 ```bash
 git rm --cached Infra-SIN-Dev-Setup
 git rm --cached a2a-sin-code-plugin
@@ -66,10 +71,12 @@ git rm --cached global-brain
 **Root Cause:** Unknown — likely incomplete git checkout or sparse-checkout issue.
 
 **Fix Applied:**
+
 1. Ran `node /Users/jeremy/dev/global-brain/src/cli.js setup-hooks --project-root . --project opensin-docs --agents-directive`
 2. Created `.opencode/opencode.json` with proper hooks and MCP configuration
 
 **Files Created:**
+
 - `.opencode/opencode.json` — main OpenCode config
 - `.opencode/hooks/pcpm-before-run.sh` — Global Brain before-run hook
 - `.opencode/hooks/pcpm-after-run.sh` — Global Brain after-run hook
@@ -83,6 +90,7 @@ git rm --cached global-brain
 **Symptom:** No `.github/workflows/` directory — no automated CI/CD for docs.
 
 **Fix Applied:** Created `.github/workflows/docs.yml` with:
+
 - Bun-only build (npm permanently banned per AGENTS.md)
 - Global Brain hooks (PRIORITY -100.0) — syncs before/after every run
 - BUN-ONLY verification step — grep check for npm patterns
@@ -100,6 +108,7 @@ git rm --cached global-brain
 **Cause:** `vitepress build` spawns a child node process that exceeds macOS process memory limits. The child process is killed before it can complete. This happens because vitepress uses a multi-process architecture that bun's process supervision amplifies.
 
 **Solution:** Use direct node invocation (not bun's process wrapper):
+
 ```bash
 # CORRECT: Direct node invocation avoids OOM kill
 node node_modules/vitepress/bin/vitepress.js build docs
@@ -114,6 +123,7 @@ node node_modules/vitepress/bin/vitepress.js build docs
 ```
 
 **Verification:**
+
 ```bash
 bun run docs:build
 # Should complete without SIGKILL and produce .vitepress/dist/
@@ -121,6 +131,7 @@ test -f .vitepress/dist/index.html && echo "BUILD-OK"
 ```
 
 **Verification:**
+
 ```bash
 bun run docs:preview
 # Should show preview at http://localhost:5173
@@ -135,6 +146,7 @@ bun run docs:preview
 **Cause:** Wrong project name or not logged in
 
 **Solution:**
+
 ```bash
 # Check wrangler auth
 bunx wrangler whoami
@@ -173,4 +185,4 @@ git submodule status
 
 ---
 
-*Document maintained per AGENTS.md MANDATE: Any new bug must be documented here BEFORE fixing, with full RCA and fix evidence.*
+_Document maintained per AGENTS.md MANDATE: Any new bug must be documented here BEFORE fixing, with full RCA and fix evidence._

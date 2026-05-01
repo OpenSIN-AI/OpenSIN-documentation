@@ -60,6 +60,7 @@ curl -s https://openjerro-simone-mcp.hf.space/health | python3 -m json.tool
 ```
 
 Expected response:
+
 ```json
 {
   "status": "ok",
@@ -67,19 +68,24 @@ Expected response:
   "version": "1.0.0",
   "transports": ["stdio", "streamable-http"],
   "tools": 10,
-  "capabilities": ["symbol_navigation", "references", "structural_edit", "memory"]
+  "capabilities": [
+    "symbol_navigation",
+    "references",
+    "structural_edit",
+    "memory"
+  ]
 }
 ```
 
 ### Step 3 — Use Simone MCP for ALL code operations
 
-| Task | Correct approach | Forbidden approach |
-|------|------------------|--------------------|
-| Find where `UserService` is defined | `find_symbol("UserService")` via Simone MCP | Grepping blindly through files |
-| Rename `getUser` everywhere | `replace_symbol_body` + LSP rename via Simone MCP | sed/awk across the repo |
-| Understand the codebase before editing | `get_project_overview()` via Simone MCP | Reading random files and guessing |
-| Find all callers of `processPayment` | `find_references("processPayment")` via Simone MCP | Manual grep |
-| Insert a new method into a class | `insert_after_symbol` via Simone MCP | Raw file append |
+| Task                                   | Correct approach                                   | Forbidden approach                |
+| -------------------------------------- | -------------------------------------------------- | --------------------------------- |
+| Find where `UserService` is defined    | `find_symbol("UserService")` via Simone MCP        | Grepping blindly through files    |
+| Rename `getUser` everywhere            | `replace_symbol_body` + LSP rename via Simone MCP  | sed/awk across the repo           |
+| Understand the codebase before editing | `get_project_overview()` via Simone MCP            | Reading random files and guessing |
+| Find all callers of `processPayment`   | `find_references("processPayment")` via Simone MCP | Manual grep                       |
+| Insert a new method into a class       | `insert_after_symbol` via Simone MCP               | Raw file append                   |
 
 ---
 
@@ -105,18 +111,18 @@ For local development, replace the URL with `http://localhost:8765/mcp`.
 
 ## Simone MCP Tool Reference
 
-| Tool | Description |
-|------|-------------|
-| `find_symbol` | Find all definitions of a symbol by name path pattern |
-| `find_references` | Find all usages/call sites of a symbol |
-| `replace_symbol_body` | Replace a symbol's full body (LSP-grade) |
-| `insert_after_symbol` | Insert code immediately after a symbol definition |
-| `get_project_overview` | Get a language-aware overview of the codebase structure |
+| Tool                    | Description                                               |
+| ----------------------- | --------------------------------------------------------- |
+| `find_symbol`           | Find all definitions of a symbol by name path pattern     |
+| `find_references`       | Find all usages/call sites of a symbol                    |
+| `replace_symbol_body`   | Replace a symbol's full body (LSP-grade)                  |
+| `insert_after_symbol`   | Insert code immediately after a symbol definition         |
+| `get_project_overview`  | Get a language-aware overview of the codebase structure   |
 | `execute_simone_action` | Run a named high-level action (refactor, validate, audit) |
-| `process_lsp_task` | Submit an LSP task for async processing |
-| `memory_store` | Persist a knowledge item to hybrid vector/graph memory |
-| `memory_query` | Retrieve relevant knowledge from hybrid memory |
-| `health_check` | Verify Simone MCP is alive and responsive |
+| `process_lsp_task`      | Submit an LSP task for async processing                   |
+| `memory_store`          | Persist a knowledge item to hybrid vector/graph memory    |
+| `memory_query`          | Retrieve relevant knowledge from hybrid memory            |
+| `health_check`          | Verify Simone MCP is alive and responsive                 |
 
 ---
 
@@ -155,16 +161,16 @@ Before starting any coding task:
 
 ---
 
-*Last updated:* 2026-04-12
-*Status:* **ACTIVE & MANDATORY**
-*Maintainer:* sin-zeus
-*Mandate reference:* MANDATE-0.34.md
+_Last updated:_ 2026-04-12
+_Status:_ **ACTIVE & MANDATORY**
+_Maintainer:_ sin-zeus
+_Mandate reference:_ MANDATE-0.34.md
 
 ---
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Simone MCP + PCPM** | -9.5 | VOR jedem Code-Task aktivieren |
-| **Global Brain Init** | -100.0 | setup-hooks VOR jeder Arbeit |
+| Mandat                | Priority | Regel                          |
+| --------------------- | -------- | ------------------------------ |
+| **Simone MCP + PCPM** | -9.5     | VOR jedem Code-Task aktivieren |
+| **Global Brain Init** | -100.0   | setup-hooks VOR jeder Arbeit   |

@@ -16,6 +16,7 @@ POST /v1/teams
 ```
 
 **Request:**
+
 ```json
 {
   "name": "research-team",
@@ -38,10 +39,11 @@ POST /v1/teams/{team_id}/execute
 ```
 
 **Request:**
+
 ```json
 {
   "task": "Research AI trends and write a report",
-  "context": {"focus": "enterprise applications"}
+  "context": { "focus": "enterprise applications" }
 }
 ```
 
@@ -54,10 +56,10 @@ POST /v1/teams/{team_id}/execute
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

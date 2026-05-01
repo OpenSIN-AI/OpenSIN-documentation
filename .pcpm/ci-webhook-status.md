@@ -6,17 +6,17 @@
 
 ### Repos die den Webhook brauchen:
 
-| Repo | Status | PR |
-|------|--------|-----|
-| A2A-SIN-Teams | ⏳ Pending | - |
-| A2A-SIN-WhatsApp | ⏳ Pending | - |
-| A2A-SIN-Email | ⏳ Pending | - |
-| A2A-SIN-Google-Chat | ⏳ Pending | - |
-| A2A-SIN-LinkedIn | ⏳ Pending | - |
-| A2A-SIN-DevTo | ⏳ Pending | - |
-| A2A-SIN-StackOverflow | ⏳ Pending | - |
-| A2A-SIN-Quora | ⏳ Pending | - |
-| A2A-SIN-Community | ⏳ Pending | - |
+| Repo                  | Status     | PR  |
+| --------------------- | ---------- | --- |
+| A2A-SIN-Teams         | ⏳ Pending | -   |
+| A2A-SIN-WhatsApp      | ⏳ Pending | -   |
+| A2A-SIN-Email         | ⏳ Pending | -   |
+| A2A-SIN-Google-Chat   | ⏳ Pending | -   |
+| A2A-SIN-LinkedIn      | ⏳ Pending | -   |
+| A2A-SIN-DevTo         | ⏳ Pending | -   |
+| A2A-SIN-StackOverflow | ⏳ Pending | -   |
+| A2A-SIN-Quora         | ⏳ Pending | -   |
+| A2A-SIN-Community     | ⏳ Pending | -   |
 
 ### Template Datei:
 

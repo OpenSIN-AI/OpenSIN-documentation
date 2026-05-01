@@ -12,17 +12,17 @@
 
 ## Storage Providers
 
-| Provider | Free Storage | Purpose | URL |
-|----------|-------------|---------|-----|
-| **Box.com** | 10 GB | Primär — Public Files + Cache | [Box.com](https://app.box.com) |
-| **Google Drive** | 15 GB | Sekundär — Backup + User Data | [Drive](https://drive.google.com) |
+| Provider         | Free Storage | Purpose                       | URL                               |
+| ---------------- | ------------ | ----------------------------- | --------------------------------- |
+| **Box.com**      | 10 GB        | Primär — Public Files + Cache | [Box.com](https://app.box.com)    |
+| **Google Drive** | 15 GB        | Sekundär — Backup + User Data | [Drive](https://drive.google.com) |
 
 ### OpenSIN Box.com Ordner
 
-| Folder | Shared Link | Content |
-|--------|------------|---------|
+| Folder    | Shared Link                                            | Content                                     |
+| --------- | ------------------------------------------------------ | ------------------------------------------- |
 | `/Public` | https://app.box.com/s/1st624o9eb5xdistusew5w0erb8offc7 | Logos, Bilder, Docs — öffentlich erreichbar |
-| `/Cache` | https://app.box.com/s/9s5htoefw1ux9ajaqj656v9a02h7z7x1 | Logs, Cache, Debug-Artefekte |
+| `/Cache`  | https://app.box.com/s/9s5htoefw1ux9ajaqj656v9a02h7z7x1 | Logs, Cache, Debug-Artefekte                |
 
 ---
 
@@ -75,7 +75,7 @@ def upload_to_box(file_path, filename, folder_id=None):
     headers = {"Authorization": f"Bearer {BOX_TOKEN}"}
     target_folder = folder_id or BOX_FOLDER_ID
     attributes = {"name": filename, "parent": {"id": target_folder}}
-    
+
     with open(file_path, "rb") as f:
         response = requests.post(
             url,
@@ -100,16 +100,24 @@ def get_public_url(file_id):
 The **A2A-SIN-Box-Storage** agent is the canonical interface for Box.com storage within the OpenSIN fleet. All agents should use this service instead of direct Box.com API calls.
 
 ### Agent Card
+
 ```json
 {
   "name": "A2A-SIN-Box-Storage",
   "slug": "a2a-sin-box-storage",
   "endpoint": "https://a2a.delqhi.com/a2a/v1/a2a-sin-box-storage",
-  "capabilities": ["storage_upload", "storage_public_url", "file_validation", "cdn_distribution", "cache_management"]
+  "capabilities": [
+    "storage_upload",
+    "storage_public_url",
+    "file_validation",
+    "cdn_distribution",
+    "cache_management"
+  ]
 }
 ```
 
 ### A2A Protocol Access
+
 ```bash
 # Agent-to-Agent call via A2A protocol
 curl -X POST "https://a2a.delqhi.com/a2a/v1/a2a-sin-box-storage" \
@@ -119,6 +127,7 @@ curl -X POST "https://a2a.delqhi.com/a2a/v1/a2a-sin-box-storage" \
 ```
 
 ### MCP Interface
+
 For agents with MCP access, configure `sin-box-storage` in opencode.json:
 
 ```json
@@ -137,6 +146,7 @@ For agents with MCP access, configure `sin-box-storage` in opencode.json:
 ```
 
 ### Python SDK (for direct Box.com usage without agent)
+
 ```python
 import os
 import requests
@@ -170,12 +180,13 @@ class BoxStorageClient:
 ```
 
 ### Error Handling
-| Error Code | Meaning | Solution |
-|------------|---------|----------|
-| `401` | Invalid API key | Check `BOX_STORAGE_API_KEY` in environment |
-| `413` | File too large | Ensure file < 2GB or adjust `MAX_FILE_SIZE` |
-| `415` | Unsupported file type | Check `ALLOWED_EXTENSIONS` whitelist |
-| `500` | Box.com API error | Check `BOX_DEVELOPER_TOKEN` validity |
+
+| Error Code | Meaning               | Solution                                    |
+| ---------- | --------------------- | ------------------------------------------- |
+| `401`      | Invalid API key       | Check `BOX_STORAGE_API_KEY` in environment  |
+| `413`      | File too large        | Ensure file < 2GB or adjust `MAX_FILE_SIZE` |
+| `415`      | Unsupported file type | Check `ALLOWED_EXTENSIONS` whitelist        |
+| `500`      | Box.com API error     | Check `BOX_DEVELOPER_TOKEN` validity        |
 
 ---
 
@@ -183,11 +194,11 @@ class BoxStorageClient:
 
 ### Was sich ändert:
 
-| Alt (GitLab) | Neu (Box.com) |
-|-------------|--------------|
-| GitLab LogCenter Repos | Box.com `/Cache` Ordner |
-| `room-07-gitlab-storage` | `room-09-box-storage` (A2A-SIN-Box-Storage) |
-| `gitlab_logcenter.py` uploads | Box Storage API (`/api/v1/upload`) |
+| Alt (GitLab)                  | Neu (Box.com)                               |
+| ----------------------------- | ------------------------------------------- |
+| GitLab LogCenter Repos        | Box.com `/Cache` Ordner                     |
+| `room-07-gitlab-storage`      | `room-09-box-storage` (A2A-SIN-Box-Storage) |
+| `gitlab_logcenter.py` uploads | Box Storage API (`/api/v1/upload`)          |
 
 ### Migration Script (Upload to Box Cache)
 
@@ -266,6 +277,7 @@ volumes:
 > **Note:** The service source code lives in the standalone repository:  
 > https://github.com/OpenSIN-AI/A2A-SIN-Box-Storage  
 > Either:
+>
 > - Clone as submodule: `git submodule add https://github.com/OpenSIN-AI/A2A-SIN-Box-Storage.git services/box-storage`
 > - Or copy the contents into `./services/box-storage` before `docker compose up`
 
@@ -291,12 +303,14 @@ GOOGLE_DRIVE_FOLDER_ID=
 Beim OpenSIN Onboarding MUSS der User einen Storage Provider wählen:
 
 ### Box.com (Empfohlen)
+
 - ✅ 10 GB free
 - ✅ Einfache öffentliche Links
 - ✅ Gute API für Automation
 - ❌ Developer Token nur 60 Min gültig (JWT App needed für production)
 
 ### Google Drive (Alternative)
+
 - ✅ 15 GB free (mehr als Box)
 - ✅ Bessere Zugriffskontrolle
 - ✅ Service Account für production
@@ -308,16 +322,17 @@ Beim OpenSIN Onboarding MUSS der User einen Storage Provider wählen:
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| 404 bei Box Shared Link | Sharing prüfen → "People with the link" → "Can view" |
+| Issue                   | Solution                                                   |
+| ----------------------- | ---------------------------------------------------------- |
+| 404 bei Box Shared Link | Sharing prüfen → "People with the link" → "Can view"       |
 | Developer Token expired | Neuen Token generieren (max 60 Min) oder JWT App erstellen |
-| Rate Limit | Box Free = 10 GB + 10k API calls/day |
-| Upload failed | Folder ID prüfen: `box folders:children 0` |
+| Rate Limit              | Box Free = 10 GB + 10k API calls/day                       |
+| Upload failed           | Folder ID prüfen: `box folders:children 0`                 |
 
 ---
 
 ## Related
+
 - [Infra-SIN-Dev-Setup](https://github.com/OpenSIN-AI/Infra-SIN-Dev-Setup/blob/main/box-storage.md) — Detailed Box Storage Guide
 - [Infra-SIN-Docker-Empire](https://github.com/OpenSIN-AI/Infra-SIN-Docker-Empire) — Docker Infrastructure
 - [OpenSIN-onboarding](https://github.com/OpenSIN-AI/OpenSIN-onboarding) — User Onboarding
@@ -326,10 +341,10 @@ Beim OpenSIN Onboarding MUSS der User einen Storage Provider wählen:
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

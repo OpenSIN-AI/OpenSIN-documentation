@@ -12,6 +12,7 @@ description: Mandatory zero-billing delivery doctrine using OCI, n8n, and contro
 ## 1. Why This Exists
 
 The fleet must keep delivery:
+
 - cheap
 - observable
 - reproducible
@@ -27,6 +28,7 @@ n8n on OCI gives us exactly that.
 GitHub event → n8n workflow on OCI → controlled runner / scripts → artifacts / deploy / notifications
 
 ### Why
+
 This keeps delivery inside our own automation backbone instead of outsourcing critical orchestration to an opaque hosted runner model.
 
 ---
@@ -53,6 +55,7 @@ This keeps delivery inside our own automation backbone instead of outsourcing cr
 ## 5. Required Properties
 
 Every CI/CD flow should be:
+
 - idempotent where possible
 - visible in logs
 - linked to issue/PR state
@@ -68,16 +71,16 @@ It is controlled, observable delivery with minimal cost and maximal evidence.
 
 ---
 
-*Last updated:* 2026-04-10  
-*Status:* **ACTIVE & MANDATORY**  
-*Maintainer:* sin-zeus
+_Last updated:_ 2026-04-10  
+_Status:_ **ACTIVE & MANDATORY**  
+_Maintainer:_ sin-zeus
 
 ---
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **n8n OSS Only** | 0.0 | KEINE n8n Premium Features |
-| **Self-Hosted CI/CD** | 0.0 | OCI VM — KEINE GitHub Actions Runner |
-| **Bun-Only** | -1.5 | `bun install` / `bun run` |
+| Mandat                | Priority | Regel                                |
+| --------------------- | -------- | ------------------------------------ |
+| **n8n OSS Only**      | 0.0      | KEINE n8n Premium Features           |
+| **Self-Hosted CI/CD** | 0.0      | OCI VM — KEINE GitHub Actions Runner |
+| **Bun-Only**          | -1.5     | `bun install` / `bun run`            |

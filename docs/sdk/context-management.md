@@ -13,15 +13,15 @@ LLMs have finite context windows (8K-200K tokens). Long agent sessions accumulat
 ## Context Compressor
 
 ```typescript
-import { ContextCompressor } from '@opensin/sdk'
+import { ContextCompressor } from "@opensin/sdk";
 
 const compressor = new ContextCompressor({
   maxTokens: 8000,
-  strategy: 'sliding-window',
-})
+  strategy: "sliding-window",
+});
 
 // Before sending to LLM, compress the history
-const compressed = compressor.compress(messages)
+const compressed = compressor.compress(messages);
 // compressed.length <= maxTokens (approximately)
 ```
 
@@ -33,11 +33,11 @@ Keeps the most recent N messages and the system prompt. Simple and predictable.
 
 ```typescript
 const compressor = new ContextCompressor({
-  strategy: 'sliding-window',
+  strategy: "sliding-window",
   maxTokens: 8000,
-  keepSystemPrompt: true,  // always keep system prompt
-  keepFirstN: 2,           // keep first 2 user messages for context
-})
+  keepSystemPrompt: true, // always keep system prompt
+  keepFirstN: 2, // keep first 2 user messages for context
+});
 ```
 
 **Best for**: Long interactive sessions, code editing
@@ -48,11 +48,11 @@ Replaces older messages with a summary, preserving key decisions and context.
 
 ```typescript
 const compressor = new ContextCompressor({
-  strategy: 'summarize',
+  strategy: "summarize",
   maxTokens: 8000,
-  summaryModel: 'openai/gpt-5.4-mini',  // cheap model for summaries
+  summaryModel: "openai/gpt-5.4-mini", // cheap model for summaries
   summaryMaxTokens: 500,
-})
+});
 ```
 
 **Best for**: Research tasks, multi-step investigations
@@ -63,10 +63,10 @@ Scores each message by relevance to the current task and keeps only the most rel
 
 ```typescript
 const compressor = new ContextCompressor({
-  strategy: 'relevance',
+  strategy: "relevance",
   maxTokens: 8000,
   relevanceThreshold: 0.3,
-})
+});
 ```
 
 **Best for**: Focused code editing, single-file tasks
@@ -76,10 +76,12 @@ const compressor = new ContextCompressor({
 The compressor uses tiktoken-compatible counting:
 
 ```typescript
-const tokenCount = compressor.countTokens(messages)
-console.log(`Current context: ${tokenCount} tokens`)
-console.log(`Limit: ${compressor.maxTokens} tokens`)
-console.log(`Utilization: ${(tokenCount / compressor.maxTokens * 100).toFixed(1)}%`)
+const tokenCount = compressor.countTokens(messages);
+console.log(`Current context: ${tokenCount} tokens`);
+console.log(`Limit: ${compressor.maxTokens} tokens`);
+console.log(
+  `Utilization: ${((tokenCount / compressor.maxTokens) * 100).toFixed(1)}%`,
+);
 ```
 
 ## Tool Result Truncation
@@ -89,9 +91,9 @@ Large tool results (file contents, grep output) are automatically truncated:
 ```typescript
 const compressor = new ContextCompressor({
   maxTokens: 8000,
-  toolResultMaxTokens: 2000,  // cap individual tool results
-  toolResultStrategy: 'head-tail',  // keep start and end
-})
+  toolResultMaxTokens: 2000, // cap individual tool results
+  toolResultStrategy: "head-tail", // keep start and end
+});
 ```
 
 ## Integration
@@ -100,13 +102,13 @@ The compressor integrates seamlessly with the agent loop:
 
 ```typescript
 const agent = new AgentLoop({
-  model: 'claude-sonnet-4-6',
+  model: "claude-sonnet-4-6",
   tools: toolRegistry,
   context: new ContextCompressor({
     maxTokens: 8000,
-    strategy: 'sliding-window',
+    strategy: "sliding-window",
   }),
-})
+});
 ```
 
 The agent loop calls `compressor.compress(messages)` before each LLM call, ensuring the context always fits within the model's window.
@@ -115,10 +117,10 @@ The agent loop calls `compressor.compress(messages)` before each LLM call, ensur
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

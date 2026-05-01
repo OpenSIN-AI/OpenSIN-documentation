@@ -10,6 +10,7 @@
 When you need something (credentials, API access, deployment, etc.), the answer is **not "I can't"** — it's **"Which A2A agent solves this?"** Then you use that agent.
 
 Available A2A Fleet (see `~/.config/opencode/oh-my-sin.json`):
+
 - `sin-supabase` — Self-hosted Supabase on OCI VM
 - `sin-google-apps` — Google Docs/Sheets automation
 - `sin-telegrambot` — Telegram bot management
@@ -38,21 +39,22 @@ After any credential discovery: immediately push to global-brain.
 
 ## 🛠️ TECH STACK RULES
 
-| Rule | Requirement |
-|------|-------------|
+| Rule                | Requirement                                                |
+| ------------------- | ---------------------------------------------------------- |
 | **Package Manager** | `bun install`/`bun run` ONLY — npm/bunx permanently banned |
-| **Node.js** | >= 20 required |
-| **Build** | `bun run build` (not bun run build) |
-| **LLM Calls** | `opencode run --format json` ONLY — no direct API calls |
+| **Node.js**         | >= 20 required                                             |
+| **Build**           | `bun run build` (not bun run build)                        |
+| **LLM Calls**       | `opencode run --format json` ONLY — no direct API calls    |
 
 **BANNED Technologies (immediate permanent ban):**
+
 - npm, bunx, package-lock.json
 - Camoufox, Playwright, Puppeteer, Selenium (use nodriver + Chrome Profile)
 - Direct Gemini API / `generativelanguage.googleapis.com`
 
 ## 🌐 BROWSER AUTOMATION RULES
 
-1. **webauto-nodriver-mcp** is the ONLY authorized browser automation tool
+1. **skylight-cli-mcp** is the ONLY authorized browser automation tool
 2. **Always use Chrome Profile** — never `user_data_dir=None`
 3. **VISION-GATE MANDATE**: After EVERY browser action, take screenshot and verify with vision model
 4. **NO blind clicks** — every selector must be verified via DevTools first
@@ -62,6 +64,7 @@ After any credential discovery: immediately push to global-brain.
 This repo is flagged for update to OpenSIN 2026 standards. Key areas:
 
 ### Phase 1 Critical (in progress)
+
 - [x] AGENTS.md — populated with mandates (THIS FILE) ✅
 - [x] OpenCode config — verify minimal config is correct ✅
 - [x] Dependencies — check all use bun, not npm ✅ (uses bun, no npm)
@@ -69,24 +72,25 @@ This repo is flagged for update to OpenSIN 2026 standards. Key areas:
 - [x] **NEW: Dynamic Input Commands ($ARGUMENTS/$1/$2)** — INTEGRATED
 
 ### Phase 2 Standardization
+
 - [x] Docs: verify README.md current ✅ (updated with new structure)
-- [x] MCP config in .opencode/opencode.json ✅ (webauto-nodriver, sin-brain, sin-github-issues, simone-mcp, sin-document-forge, sin-telegrambot)
+- [x] MCP config in .opencode/opencode.json ✅ (skylight-cli, sin-brain, sin-github-issues, simone-mcp, sin-document-forge, sin-telegrambot)
 - [x] CI/CD uses bun in GitHub Actions ✅ (wrangler deploy, no npm)
 
 ### ✅ COMPLETED: Dynamic Input Commands (2026-04-16)
 
 25 new browser-automation commands with `$ARGUMENTS`/`$1`/`$2` substitution:
 
-| Command | Purpose |
-|---------|---------|
-| `/browser-goto $ARGUMENTS` | URL navigation + Vision-Gate |
-| `/click-at $1 $2` | Coordinate click + Vision-Gate |
-| `/click-element-safe $ARGUMENTS` | Safe element click + Vision-Gate |
-| `/vision-gate-check $ARGUMENTS` | MANDATORY Vision verification |
-| `/whatsapp-send $1 $ARGUMENTS` | WhatsApp messaging |
-| `/mac-calendar-create $ARGUMENTS` | Calendar events |
-| `/run-shell-cmd $ARGUMENTS` | Shell commands |
-| `/execute-javascript $ARGUMENTS` | Browser JS execution |
+| Command                           | Purpose                          |
+| --------------------------------- | -------------------------------- |
+| `/browser-goto $ARGUMENTS`        | URL navigation + Vision-Gate     |
+| `/click-at $1 $2`                 | Coordinate click + Vision-Gate   |
+| `/click-element-safe $ARGUMENTS`  | Safe element click + Vision-Gate |
+| `/vision-gate-check $ARGUMENTS`   | MANDATORY Vision verification    |
+| `/whatsapp-send $1 $ARGUMENTS`    | WhatsApp messaging               |
+| `/mac-calendar-create $ARGUMENTS` | Calendar events                  |
+| `/run-shell-cmd $ARGUMENTS`       | Shell commands                   |
+| `/execute-javascript $ARGUMENTS`  | Browser JS execution             |
 
 **Reference:** `docs/guides/dynamic-input-commands.md`
 
@@ -160,7 +164,7 @@ node node_modules/vitepress/bin/vitepress.js build docs
 
 ---
 
-*This AGENTS.md is the project-specific overlay. The global brain (`global-brain/AGENTS.md`) contains the full mandate stack.*
+_This AGENTS.md is the project-specific overlay. The global brain (`global-brain/AGENTS.md`) contains the full mandate stack._
 
 ## Boundary Guidance for Agents
 

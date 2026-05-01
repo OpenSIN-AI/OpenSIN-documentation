@@ -4,6 +4,7 @@
 > **Version:** 5.0.0 (April 2026)
 
 ## 1. Define the Agent
+
 Determine the agent's name, team, and role.
 
 ```
@@ -13,6 +14,7 @@ Type: Coder Agent
 ```
 
 ## 2. Register in oh-my-sin.json
+
 Open `oh-my-sin.json` and add the agent to its team's `members` array.
 
 ```json
@@ -25,6 +27,7 @@ Open `oh-my-sin.json` and add the agent to its team's `members` array.
 ```
 
 ## 3. Run the Ultimate Skill
+
 Use the `/create-a2a-sin-agent` skill in OpenCode.
 
 ```bash
@@ -33,6 +36,7 @@ Use the `/create-a2a-sin-agent` skill in OpenCode.
 ```
 
 This will automatically generate:
+
 - `agent.json` (with marketplace metadata)
 - `A2A-CARD.md` (for discovery)
 - `config/telegram-bot.yaml`
@@ -41,6 +45,7 @@ This will automatically generate:
 - `Dockerfile` (production ready)
 
 ## 4. Update n8n Workflows
+
 If this is a new Team, run the n8n workflow generator script:
 
 ```bash
@@ -49,6 +54,7 @@ python3 scripts/generate-n8n-workflows.py
 ```
 
 ## 5. Deploy to HF Space
+
 The skill generates a space in `/tmp/hf-space-packages/<slug>`.
 
 ```bash
@@ -58,16 +64,17 @@ git push origin main
 ```
 
 ## 6. Verify Live Status
+
 Check `http://92.5.60.87:8006` (Supabase) to ensure the agent is listed in the `agents` table.
 
 ---
 
 ## Relevante Mandate
 
-| Mandat | Priority | Doku |
-|--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Doku                                |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)
