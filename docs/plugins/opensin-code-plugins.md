@@ -4,22 +4,22 @@ OpenSIN-Code kommt mit einem umfassenden Plugin-System. Alle Plugins sind im Ver
 
 ## Installierte Plugins
 
-| Plugin | Beschreibung | Dateien |
-|--------|-------------|---------|
-| [sin-code-review](#sin-code-review) | Automatisierte Code-Reviews mit Multi-Agent-System | 6 |
-| [sin-commit-commands](#sin-commit-commands) | Git-Workflow-Befehle für Commits, Push und PRs | 10 |
-| [sin-feature-dev](#sin-feature-dev) | Feature-Entwicklung mit spezialisierten Agenten | 12 |
-| [sin-frontend-design](#sin-frontend-design) | UI/UX-Implementierung und Design-Skill | 6 |
-| [sin-security-guidance](#sin-security-guidance) | Security-Reminder-Hook für sichere Code-Praktiken | 6 |
-| [sin-hookify](#sin-hookify) | Regelbasierte Hook-Erstellung zur Verhaltenskontrolle | 48 |
-| [sin-explanatory-mode](#sin-explanatory-mode) | Erklärt Implementierungsentscheidungen und Muster | 8 |
-| [sin-learning-mode](#sin-learning-mode) | Interaktiver Lernmodus für Code-Entscheidungen | 8 |
-| [sin-model-migration](#sin-model-migration) | Migration zwischen verschiedenen Sin-Modellen | 10 |
-| [sin-agent-sdk-dev](#sin-agent-sdk-dev) | SDK-Entwicklung für Sin-Agenten | 10 |
-| [sin-plugin-dev](#sin-plugin-dev) | Plugin-Entwicklungs-Toolkit mit 7 Skills | 116 |
-| [sin-pr-review](#sin-pr-review) | PR-Review-Toolkit mit 6 spezialisierten Agenten | 18 |
-| [sin-loop](#sin-loop) | Selbst-referenzielle Entwicklungsloops | 16 |
-| [sin-ralph](#sin-ralph) | Ralph-Loop-Technik für iterative Entwicklung | 7 |
+| Plugin                                          | Beschreibung                                          | Dateien |
+| ----------------------------------------------- | ----------------------------------------------------- | ------- |
+| [sin-code-review](#sin-code-review)             | Automatisierte Code-Reviews mit Multi-Agent-System    | 6       |
+| [sin-commit-commands](#sin-commit-commands)     | Git-Workflow-Befehle für Commits, Push und PRs        | 10      |
+| [sin-feature-dev](#sin-feature-dev)             | Feature-Entwicklung mit spezialisierten Agenten       | 12      |
+| [sin-frontend-design](#sin-frontend-design)     | UI/UX-Implementierung und Design-Skill                | 6       |
+| [sin-security-guidance](#sin-security-guidance) | Security-Reminder-Hook für sichere Code-Praktiken     | 6       |
+| [sin-hookify](#sin-hookify)                     | Regelbasierte Hook-Erstellung zur Verhaltenskontrolle | 48      |
+| [sin-explanatory-mode](#sin-explanatory-mode)   | Erklärt Implementierungsentscheidungen und Muster     | 8       |
+| [sin-learning-mode](#sin-learning-mode)         | Interaktiver Lernmodus für Code-Entscheidungen        | 8       |
+| [sin-model-migration](#sin-model-migration)     | Migration zwischen verschiedenen Sin-Modellen         | 10      |
+| [sin-agent-sdk-dev](#sin-agent-sdk-dev)         | SDK-Entwicklung für Sin-Agenten                       | 10      |
+| [sin-plugin-dev](#sin-plugin-dev)               | Plugin-Entwicklungs-Toolkit mit 7 Skills              | 116     |
+| [sin-pr-review](#sin-pr-review)                 | PR-Review-Toolkit mit 6 spezialisierten Agenten       | 18      |
+| [sin-loop](#sin-loop)                           | Selbst-referenzielle Entwicklungsloops                | 16      |
+| [sin-ralph](#sin-ralph)                         | Ralph-Loop-Technik für iterative Entwicklung          | 7       |
 
 ---
 
@@ -168,15 +168,15 @@ Das umfassendste Plugin-Entwicklungs-Toolkit mit 7 Skills und über 100 Referenz
 
 ### Skills
 
-| Skill | Beschreibung |
-|-------|-------------|
-| **Plugin Structure** | Verzeichnisstruktur, Manifest, Komponenten-Organisation |
-| **Hook Development** | Hook-Typen, Konfiguration, Events, Best Practices |
-| **Command Development** | Befehlsformat, Frontmatter, dynamische Argumente |
-| **MCP Integration** | Server-Typen, Auth, Lifecycle, Debugging |
-| **Plugin Settings** | `.sin/plugin-name.local.md` Pattern für Projektkonfiguration |
-| **Agent Development** | Agent-Dateistruktur, System-Prompt-Design, Validierung |
-| **Skill Development** | Skill-Anatomie, Progressive Disclosure, Validierung |
+| Skill                   | Beschreibung                                                 |
+| ----------------------- | ------------------------------------------------------------ |
+| **Plugin Structure**    | Verzeichnisstruktur, Manifest, Komponenten-Organisation      |
+| **Hook Development**    | Hook-Typen, Konfiguration, Events, Best Practices            |
+| **Command Development** | Befehlsformat, Frontmatter, dynamische Argumente             |
+| **MCP Integration**     | Server-Typen, Auth, Lifecycle, Debugging                     |
+| **Plugin Settings**     | `.sin/plugin-name.local.md` Pattern für Projektkonfiguration |
+| **Agent Development**   | Agent-Dateistruktur, System-Prompt-Design, Validierung       |
+| **Skill Development**   | Skill-Anatomie, Progressive Disclosure, Validierung          |
 
 ### Befehle
 
@@ -196,14 +196,14 @@ Umfassendes PR-Review-Toolkit mit 6 spezialisierten Review-Agenten.
 
 ### Agenten
 
-| Agent | Spezialisierung |
-|-------|----------------|
-| **Comment Analyzer** | Prüft Code-Kommentare auf Genauigkeit und Vollständigkeit |
-| **PR Test Analyzer** | Testabdeckungsanalyse für PRs |
+| Agent                     | Spezialisierung                                            |
+| ------------------------- | ---------------------------------------------------------- |
+| **Comment Analyzer**      | Prüft Code-Kommentare auf Genauigkeit und Vollständigkeit  |
+| **PR Test Analyzer**      | Testabdeckungsanalyse für PRs                              |
 | **Silent Failure Hunter** | Error-Handling-Auditor mit Null-Toleranz für stille Fehler |
-| **Type Design Analyzer** | Type-Design-Experte (Encapsulation, Invarianten) |
-| **Code Reviewer** | Projekt-Richtlinien, Bug-Detection, Code-Qualität |
-| **Code Simplifier** | Vereinfacht Code bei Erhalt der Funktionalität |
+| **Type Design Analyzer**  | Type-Design-Experte (Encapsulation, Invarianten)           |
+| **Code Reviewer**         | Projekt-Richtlinien, Bug-Detection, Code-Qualität          |
+| **Code Simplifier**       | Vereinfacht Code bei Erhalt der Funktionalität             |
 
 ### Befehle
 

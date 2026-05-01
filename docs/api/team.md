@@ -16,6 +16,7 @@ POST /v1/teams
 ```
 
 **Request:**
+
 ```json
 {
   "name": "research-team",
@@ -38,10 +39,11 @@ POST /v1/teams/{team_id}/execute
 ```
 
 **Request:**
+
 ```json
 {
   "task": "Research AI trends and write a report",
-  "context": {"focus": "enterprise applications"}
+  "context": { "focus": "enterprise applications" }
 }
 ```
 

@@ -33,12 +33,12 @@ npm init -y
 export class MyPlugin {
   getManifest() {
     return {
-      id: 'my-plugin',
-      name: 'My Plugin',
-      version: '0.1.0',
-      description: 'My custom plugin',
-      author: 'You',
-      license: 'MIT',
+      id: "my-plugin",
+      name: "My Plugin",
+      version: "0.1.0",
+      description: "My custom plugin",
+      author: "You",
+      license: "MIT",
     };
   }
 }

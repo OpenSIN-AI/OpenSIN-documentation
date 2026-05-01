@@ -19,6 +19,7 @@ Do not create plugins for trivial wrapper vanity.
 ## 2. Plugin Contracts
 
 Every plugin must define clearly:
+
 - what it exposes
 - what it depends on
 - what permissions it needs
@@ -30,6 +31,7 @@ Every plugin must define clearly:
 ## 3. Safety Rules
 
 Plugins must:
+
 - avoid hidden credential usage
 - avoid destructive defaults
 - surface useful errors
@@ -50,6 +52,6 @@ Document lifecycle, failure modes, expected env, and integration points.
 
 ---
 
-*Last updated:* 2026-04-10  
-*Status:* **ACTIVE & MANDATORY**  
-*Maintainer:* sin-zeus
+_Last updated:_ 2026-04-10  
+_Status:_ **ACTIVE & MANDATORY**  
+_Maintainer:_ sin-zeus

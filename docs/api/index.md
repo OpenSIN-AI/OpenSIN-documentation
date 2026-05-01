@@ -143,10 +143,10 @@ Start the ACP server for programmatic agent interaction.
 
 ## Environment Variables
 
-| Variable | Description |
-|----------|-------------|
-| `OPENCODE_MODEL` | Default model |
-| `OPENCODE_AGENT` | Default agent |
-| `OPENCODE_HOME` | Custom home directory |
+| Variable              | Description             |
+| --------------------- | ----------------------- |
+| `OPENCODE_MODEL`      | Default model           |
+| `OPENCODE_AGENT`      | Default agent           |
+| `OPENCODE_HOME`       | Custom home directory   |
 | `OPENCODE_CONFIG_DIR` | Custom config directory |
-| `OPENCODE_CACHE_DIR` | Custom cache directory |
+| `OPENCODE_CACHE_DIR`  | Custom cache directory  |

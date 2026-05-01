@@ -110,9 +110,7 @@ Agents exchange structured artifacts (files, data, reports) as part of task resu
   "type": "artifact",
   "artifact": {
     "name": "security-report.md",
-    "parts": [
-      { "type": "text", "text": "## Security Analysis\n..." }
-    ]
+    "parts": [{ "type": "text", "text": "## Security Analysis\n..." }]
   }
 }
 ```

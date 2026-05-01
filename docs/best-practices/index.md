@@ -9,34 +9,34 @@ It is not a loose suggestion shelf. It is the operational memory of the system.
 
 ## Core Mandates
 
-| Document | Focus |
-|----------|-------|
-| [Agent Design](/best-practices/agent-design) | Ultimate fleet mandates, no-silo rules, self-healing, test-proof culture |
-| [Code Quality](/best-practices/code-quality) | Extreme commenting mandate, anti-AI-slop, review discipline |
-| [Error Handling](/best-practices/error-handling) | Immediate bug registry, no-assumptions, self-healing escalation |
-| [Browser Automation](/best-practices/browser-automation) | DevTools-first, anti-bot bypass, Chrome profile law |
-| [A2A Communication](/best-practices/a2a-communication) | Pure agentic paradigm, inbound governance, opencode-only LLM usage |
+| Document                                                 | Focus                                                                    |
+| -------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [Agent Design](/best-practices/agent-design)             | Ultimate fleet mandates, no-silo rules, self-healing, test-proof culture |
+| [Code Quality](/best-practices/code-quality)             | Extreme commenting mandate, anti-AI-slop, review discipline              |
+| [Error Handling](/best-practices/error-handling)         | Immediate bug registry, no-assumptions, self-healing escalation          |
+| [Browser Automation](/best-practices/browser-automation) | DevTools-first, anti-bot bypass, Chrome profile law                      |
+| [A2A Communication](/best-practices/a2a-communication)   | Pure agentic paradigm, inbound governance, opencode-only LLM usage       |
 
 ## System Reliability & Execution
 
-| Document | Focus |
-|----------|-------|
-| [Testing](/best-practices/testing) | Runtime proof, workflow validation, UI/browser verification |
-| [Monitoring & Observability](/best-practices/monitoring-observability) | Health, metrics, evidence retention, alert usefulness |
-| [Team Orchestration](/best-practices/team-orchestration) | Parallel vs sequential work, retries, specialist routing |
-| [HF Fleet Keep-Alive](/best-practices/hf-fleet-keepalive) | Hugging Face wake strategy, persistence, recovery |
-| [CI/CD mit n8n + sin-github-action](/best-practices/ci-cd-n8n) | Zero-billing CI via OCI + n8n |
+| Document                                                               | Focus                                                       |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [Testing](/best-practices/testing)                                     | Runtime proof, workflow validation, UI/browser verification |
+| [Monitoring & Observability](/best-practices/monitoring-observability) | Health, metrics, evidence retention, alert usefulness       |
+| [Team Orchestration](/best-practices/team-orchestration)               | Parallel vs sequential work, retries, specialist routing    |
+| [HF Fleet Keep-Alive](/best-practices/hf-fleet-keepalive)              | Hugging Face wake strategy, persistence, recovery           |
+| [CI/CD mit n8n + sin-github-action](/best-practices/ci-cd-n8n)         | Zero-billing CI via OCI + n8n                               |
 
 ## Advanced / Specialized
 
-| Document | Focus |
-|----------|-------|
-| [MCP Integration](/best-practices/mcp-integration) | MCP transport, safety, integration patterns |
-| [Plugin Development](/best-practices/plugin-development) | Plugin architecture and extension rules |
-| [Performance](/best-practices/performance) | Cost, model routing, latency, efficiency |
-| [Security](/best-practices/security) | Secrets, auth boundaries, operator trust |
-| [Software 3.0: Neural-Bus](/docs/best-practices/software-3.0-neural-bus) | Higher-level architecture doctrine |
-| [SEO Pipeline](/best-practices/seo-pipeline) | Proof-of-work blog publishing pipeline |
+| Document                                                                 | Focus                                       |
+| ------------------------------------------------------------------------ | ------------------------------------------- |
+| [MCP Integration](/best-practices/mcp-integration)                       | MCP transport, safety, integration patterns |
+| [Plugin Development](/best-practices/plugin-development)                 | Plugin architecture and extension rules     |
+| [Performance](/best-practices/performance)                               | Cost, model routing, latency, efficiency    |
+| [Security](/best-practices/security)                                     | Secrets, auth boundaries, operator trust    |
+| [Software 3.0: Neural-Bus](/docs/best-practices/software-3.0-neural-bus) | Higher-level architecture doctrine          |
+| [SEO Pipeline](/best-practices/seo-pipeline)                             | Proof-of-work blog publishing pipeline      |
 
 ## Before You Call Something “Done”
 

@@ -118,7 +118,7 @@ let mut conversation = Conversation::new(config);
 loop {
     let response = client.stream(conversation.messages()).await?;
     conversation.add_assistant(response);
-    
+
     for tool_call in response.tool_calls {
         let result = tools.execute(&tool_call).await?;
         conversation.add_tool_result(tool_call.id, result);
@@ -138,27 +138,27 @@ Der Compaction-Algorithmus reduziert den Kontext wenn das Token-Limit erreicht w
 
 ## Built-in Tools (19)
 
-| Tool | Beschreibung |
-|------|-------------|
-| BashTool | Shell Command Execution |
-| ReadFileTool | Datei lesen |
-| WriteFileTool | Datei schreiben |
-| EditFileTool | Datei bearbeiten (Suchen/Ersetzen) |
-| GlobSearchTool | Datei-Globbing |
-| GrepSearchTool | Text-Suche |
-| WebFetchTool | URL-Inhalte abrufen |
-| WebSearchTool | Websuche |
-| TodoWriteTool | Todo-Liste verwalten |
-| SkillTool | Skill-Ausführung |
-| AgentTool | Sub-Agent spawnen |
-| ToolSearchTool | Deferred Tool Discovery |
-| NotebookEditTool | Jupyter Notebook bearbeiten |
-| SleepTool | Verzögerung |
-| BriefTool | Session-Zusammenfassung |
-| ConfigTool | Konfiguration (internal) |
-| StructuredOutputTool | Strukturierte Ausgabe |
-| REPLTool | REPL VM (internal) |
-| PowerShellTool | PowerShell Execution |
+| Tool                 | Beschreibung                       |
+| -------------------- | ---------------------------------- |
+| BashTool             | Shell Command Execution            |
+| ReadFileTool         | Datei lesen                        |
+| WriteFileTool        | Datei schreiben                    |
+| EditFileTool         | Datei bearbeiten (Suchen/Ersetzen) |
+| GlobSearchTool       | Datei-Globbing                     |
+| GrepSearchTool       | Text-Suche                         |
+| WebFetchTool         | URL-Inhalte abrufen                |
+| WebSearchTool        | Websuche                           |
+| TodoWriteTool        | Todo-Liste verwalten               |
+| SkillTool            | Skill-Ausführung                   |
+| AgentTool            | Sub-Agent spawnen                  |
+| ToolSearchTool       | Deferred Tool Discovery            |
+| NotebookEditTool     | Jupyter Notebook bearbeiten        |
+| SleepTool            | Verzögerung                        |
+| BriefTool            | Session-Zusammenfassung            |
+| ConfigTool           | Konfiguration (internal)           |
+| StructuredOutputTool | Strukturierte Ausgabe              |
+| REPLTool             | REPL VM (internal)                 |
+| PowerShellTool       | PowerShell Execution               |
 
 ---
 
@@ -221,4 +221,4 @@ cargo test
 
 ---
 
-*Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI*
+_Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI_

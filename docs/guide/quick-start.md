@@ -63,13 +63,13 @@ opencode mcp list
 
 ## Essential Commands
 
-| Command | Description |
-|---------|-------------|
-| `/help` | Show available commands |
-| `/agents` | List and switch agents |
-| `/models` | List and switch models |
-| `/tools` | Show available tools |
-| `/export` | Export session data |
+| Command    | Description                  |
+| ---------- | ---------------------------- |
+| `/help`    | Show available commands      |
+| `/agents`  | List and switch agents       |
+| `/models`  | List and switch models       |
+| `/tools`   | Show available tools         |
+| `/export`  | Export session data          |
 | `/compact` | Compact conversation context |
 
 ## Next Steps

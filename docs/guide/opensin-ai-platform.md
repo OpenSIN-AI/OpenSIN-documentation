@@ -16,21 +16,21 @@ OpenSIN-AI Platform ist das Plugin- und Automatisierungs-Ökosystem der OpenSIN-
 
 ## Plugin Ecosystem
 
-| Plugin | Beschreibung | Dateien |
-|--------|-------------|---------|
-| [opensin-feature-dev](#feature-dev) | 7-Phase Feature Development Workflow | 6 |
-| [opensin-model-migration](#model-migration) | Modell-Migration (Sonnet → Opus) | 5 |
-| [opensin-agent-sdk-dev](#agent-sdk-dev) | Agent SDK Development Toolkit | 5 |
-| [opensin-code-review](#code-review) | Multi-Agent Code Review | 3 |
-| [opensin-commit-commands](#commit-commands) | Git Workflow Commands | 5 |
-| [opensin-explanatory-mode](#explanatory-mode) | Erklär-Modus via Hooks | 4 |
-| [opensin-frontend-design](#frontend-design) | Production-Grade Frontend Generation | 3 |
-| [opensin-hookify](#hookify) | Hook Creation from Conversations | 20 |
-| [opensin-learning-mode](#learning-mode) | Interactive Learning Mode | 3 |
-| [opensin-plugin-dev](#plugin-dev) | Plugin Development Toolkit | 30+ |
-| [opensin-pr-review](#pr-review) | PR Review Toolkit | 9 |
-| [opensin-loop](#loop) | Self-Referential Development Loops | 7 |
-| [opensin-security](#security) | Security Guidance Hooks | 3 |
+| Plugin                                        | Beschreibung                         | Dateien |
+| --------------------------------------------- | ------------------------------------ | ------- |
+| [opensin-feature-dev](#feature-dev)           | 7-Phase Feature Development Workflow | 6       |
+| [opensin-model-migration](#model-migration)   | Modell-Migration (Sonnet → Opus)     | 5       |
+| [opensin-agent-sdk-dev](#agent-sdk-dev)       | Agent SDK Development Toolkit        | 5       |
+| [opensin-code-review](#code-review)           | Multi-Agent Code Review              | 3       |
+| [opensin-commit-commands](#commit-commands)   | Git Workflow Commands                | 5       |
+| [opensin-explanatory-mode](#explanatory-mode) | Erklär-Modus via Hooks               | 4       |
+| [opensin-frontend-design](#frontend-design)   | Production-Grade Frontend Generation | 3       |
+| [opensin-hookify](#hookify)                   | Hook Creation from Conversations     | 20      |
+| [opensin-learning-mode](#learning-mode)       | Interactive Learning Mode            | 3       |
+| [opensin-plugin-dev](#plugin-dev)             | Plugin Development Toolkit           | 30+     |
+| [opensin-pr-review](#pr-review)               | PR Review Toolkit                    | 9       |
+| [opensin-loop](#loop)                         | Self-Referential Development Loops   | 7       |
+| [opensin-security](#security)                 | Security Guidance Hooks              | 3       |
 
 ---
 
@@ -95,20 +95,20 @@ Umfassende Toolkit für Plugin-Entwicklung:
 
 ## GitHub Automation
 
-| Workflow | Zweck |
-|----------|-------|
-| `opensin.yml` | Haupt CI/CD Pipeline |
-| `opensin-issue-triage.yml` | Auto-Triage neuer Issues |
-| `opensin-dedupe-issues.yml` | Duplicate-Erkennung |
-| `sweep.yml` | Täglicher Stale-Issue Cleanup |
-| `auto-close-duplicates.yml` | Auto-Close von Duplicates |
-| `issue-lifecycle-comment.yml` | Lifecycle Labels & Comments |
-| `lock-closed-issues.yml` | Lock alter Issues |
-| `log-issue-events.yml` | Analytics |
-| `non-write-users-check.yml` | Security Check |
-| `remove-autoclose-label.yml` | Label Management |
-| `backfill-duplicate-comments.yml` | Backfill alter Issues |
-| `issue-opened-dispatch.yml` | Dispatch zu externem Repo |
+| Workflow                          | Zweck                         |
+| --------------------------------- | ----------------------------- |
+| `opensin.yml`                     | Haupt CI/CD Pipeline          |
+| `opensin-issue-triage.yml`        | Auto-Triage neuer Issues      |
+| `opensin-dedupe-issues.yml`       | Duplicate-Erkennung           |
+| `sweep.yml`                       | Täglicher Stale-Issue Cleanup |
+| `auto-close-duplicates.yml`       | Auto-Close von Duplicates     |
+| `issue-lifecycle-comment.yml`     | Lifecycle Labels & Comments   |
+| `lock-closed-issues.yml`          | Lock alter Issues             |
+| `log-issue-events.yml`            | Analytics                     |
+| `non-write-users-check.yml`       | Security Check                |
+| `remove-autoclose-label.yml`      | Label Management              |
+| `backfill-duplicate-comments.yml` | Backfill alter Issues         |
+| `issue-opened-dispatch.yml`       | Dispatch zu externem Repo     |
 
 ---
 
@@ -140,4 +140,4 @@ docker run -it opensin-ai-platform
 
 ---
 
-*Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI*
+_Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI_

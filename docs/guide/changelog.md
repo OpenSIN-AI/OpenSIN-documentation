@@ -3,6 +3,7 @@
 ## v0.1.0 (2026-04-04)
 
 ### Added
+
 - Initial OpenSIN release
 - QueryEngine with async generator pattern
 - Hook System with 20+ events

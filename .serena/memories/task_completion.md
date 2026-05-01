@@ -1,0 +1,1 @@
+Before declaring work complete, run the relevant validation for the changed surface. For documentation changes, at minimum run npm run docs:build and npm test when applicable. For the HeyPiggy worker task, also run targeted Python unit tests (python3 -m unittest tests/test_heypiggy_vision_worker.py) and capture concrete evidence before preparing PR notes.

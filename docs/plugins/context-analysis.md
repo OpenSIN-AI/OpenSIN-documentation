@@ -15,9 +15,12 @@ npm install @opensin/plugin-context-analysis
 ## Usage
 
 ```typescript
-import { ContextAnalysisPlugin, estimateCost } from '@opensin/plugin-context-analysis';
+import {
+  ContextAnalysisPlugin,
+  estimateCost,
+} from "@opensin/plugin-context-analysis";
 
-const plugin = new ContextAnalysisPlugin('session-1');
+const plugin = new ContextAnalysisPlugin("session-1");
 plugin.recordTurn(1000, 500);
 plugin.recordTurn(2000, 1000);
 
@@ -31,9 +34,11 @@ console.log(`Cost: ${cost.totalCost} ${cost.currency}`);
 ## API
 
 ### `estimateCost(inputTokens, outputTokens, config): CostEstimate`
+
 Estimate cost for token usage.
 
 ### `ContextAnalysisPlugin`
+
 Class with `recordTurn()`, `getTokenUsage()`, `getCostEstimate()`, `getTurnCost()`, `reset()`, `getConfig()`, `setConfig()` methods.
 
 ## Testing

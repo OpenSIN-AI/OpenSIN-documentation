@@ -70,6 +70,7 @@ opensin-ai-code/
 ### CLI Entry Point (`main.py`)
 
 Argparse-basierter Router mit 25+ Subcommands:
+
 - `summary` — Porting-Zusammenfassung
 - `manifest` — Workspace Manifest
 - `parity-audit` — Coverage-Vergleich
@@ -79,6 +80,7 @@ Argparse-basierter Router mit 25+ Subcommands:
 ### QueryEngine (`query_engine.py`)
 
 `QueryEnginePort` Klasse:
+
 - Message Submission
 - Turn Loop Execution
 - Streaming Support
@@ -89,6 +91,7 @@ Argparse-basierter Router mit 25+ Subcommands:
 ### PortRuntime (`runtime.py`)
 
 `PortRuntime` Klasse:
+
 - Prompt Routing zu Commands/Tools
 - Session Bootstrap
 - Multi-Turn Loop Execution
@@ -97,6 +100,7 @@ Argparse-basierter Router mit 25+ Subcommands:
 ### Reference Data
 
 JSON Snapshots in `reference_data/`:
+
 - `archive_surface_snapshot.json` — 1902 TS-Dateien, 207 Commands, 184 Tools
 - `commands_snapshot.json` — 207 Command Entries
 - `tools_snapshot.json` — 184 Tool Entries
@@ -106,37 +110,37 @@ JSON Snapshots in `reference_data/`:
 
 ## Subsystem Packages
 
-| Subsystem | Beschreibung |
-|-----------|-------------|
-| `assistant/` | Assistant Module |
-| `bootstrap/` | Bootstrap Module |
-| `bridge/` | Bridge Module |
-| `buddy/` | Buddy Companion |
-| `cli/` | CLI Module |
-| `components/` | UI Components |
-| `constants/` | Constants |
-| `coordinator/` | Task Coordinator |
-| `entrypoints/` | Entry Points |
-| `hooks/` | Hook System |
-| `keybindings/` | Keybindings |
-| `memdir/` | Memory Directory |
-| `migrations/` | Migrations |
-| `moreright/` | MoreRight Module |
-| `native_ts/` | Native TypeScript Bridge |
-| `outputStyles/` | Output Styles |
-| `plugins/` | Plugin System |
-| `remote/` | Remote Module |
-| `schemas/` | Data Schemas |
-| `screens/` | Screen Definitions |
-| `server/` | Server Module |
-| `services/` | Services |
-| `skills/` | Skills System |
-| `state/` | State Management |
-| `types/` | Type Definitions |
-| `upstreamproxy/` | Upstream Proxy |
-| `utils/` | Utilities |
-| `vim/` | Vim Integration |
-| `voice/` | Voice Module |
+| Subsystem        | Beschreibung             |
+| ---------------- | ------------------------ |
+| `assistant/`     | Assistant Module         |
+| `bootstrap/`     | Bootstrap Module         |
+| `bridge/`        | Bridge Module            |
+| `buddy/`         | Buddy Companion          |
+| `cli/`           | CLI Module               |
+| `components/`    | UI Components            |
+| `constants/`     | Constants                |
+| `coordinator/`   | Task Coordinator         |
+| `entrypoints/`   | Entry Points             |
+| `hooks/`         | Hook System              |
+| `keybindings/`   | Keybindings              |
+| `memdir/`        | Memory Directory         |
+| `migrations/`    | Migrations               |
+| `moreright/`     | MoreRight Module         |
+| `native_ts/`     | Native TypeScript Bridge |
+| `outputStyles/`  | Output Styles            |
+| `plugins/`       | Plugin System            |
+| `remote/`        | Remote Module            |
+| `schemas/`       | Data Schemas             |
+| `screens/`       | Screen Definitions       |
+| `server/`        | Server Module            |
+| `services/`      | Services                 |
+| `skills/`        | Skills System            |
+| `state/`         | State Management         |
+| `types/`         | Type Definitions         |
+| `upstreamproxy/` | Upstream Proxy           |
+| `utils/`         | Utilities                |
+| `vim/`           | Vim Integration          |
+| `voice/`         | Voice Module             |
 
 ---
 
@@ -162,4 +166,4 @@ python3 -m unittest discover -s tests -v
 
 ---
 
-*Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI*
+_Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI_

@@ -12,6 +12,7 @@ description: Mandatory rules for speed, cost control, parallelism, model routing
 ## 1. What Performance Means in OpenSIN
 
 Performance includes:
+
 - runtime speed
 - UI responsiveness
 - workflow throughput
@@ -27,6 +28,7 @@ A fast system that burns 10x the cost is not performant. A cheap system that tim
 ## 2. Optimize the Right Bottleneck
 
 Before optimizing, identify whether the problem is:
+
 - compute-bound
 - network-bound
 - queue-bound
@@ -35,6 +37,7 @@ Before optimizing, identify whether the problem is:
 - coordination-bound
 
 ### Why
+
 Optimizing the wrong layer is fake progress.
 
 ---
@@ -45,6 +48,7 @@ Use the cheapest model that can reliably solve the class of task.
 Escalate only when the task complexity proves it necessary.
 
 ### Why
+
 Bad model routing is one of the fastest ways for an autonomous fleet to bankrupt itself.
 
 ---
@@ -60,6 +64,7 @@ Bad parallelism creates contention, merge debt, and duplicate effort.
 ## 5. Frontend Performance
 
 For web surfaces, performance means:
+
 - fast first render
 - stable layout
 - minimal unnecessary JS
@@ -67,6 +72,7 @@ For web surfaces, performance means:
 - avoiding bloated utility output
 
 ### Why
+
 The user experiences the interface, not your theoretical component elegance.
 
 ---
@@ -74,6 +80,7 @@ The user experiences the interface, not your theoretical component elegance.
 ## 6. Workflow Performance
 
 For n8n / automation:
+
 - avoid redundant executions
 - keep payloads minimal
 - validate only what matters
@@ -85,6 +92,7 @@ For n8n / automation:
 ## 7. Cost Is a Performance Metric
 
 Track:
+
 - token burn
 - retries
 - duplicate jobs
@@ -98,6 +106,7 @@ If cost spikes without proportional value, performance is degrading.
 ## 8. Anti-Patterns
 
 Reject:
+
 - premature micro-optimization without identifying bottleneck
 - giant contexts for trivial tasks
 - spawning many agents where one would do
@@ -113,6 +122,6 @@ Speed without discipline is just expensive noise.
 
 ---
 
-*Last updated:* 2026-04-10  
-*Status:* **ACTIVE & MANDATORY**  
-*Maintainer:* sin-zeus
+_Last updated:_ 2026-04-10  
+_Status:_ **ACTIVE & MANDATORY**  
+_Maintainer:_ sin-zeus

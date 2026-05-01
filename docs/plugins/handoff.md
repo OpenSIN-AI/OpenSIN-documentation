@@ -15,14 +15,18 @@ npm install @opensin/plugin-handoff
 ## Usage
 
 ```typescript
-import { HandoffPlugin, generateHandoffPrompt, captureSessionState } from '@opensin/plugin-handoff';
+import {
+  HandoffPlugin,
+  generateHandoffPrompt,
+  captureSessionState,
+} from "@opensin/plugin-handoff";
 
 const plugin = new HandoffPlugin();
 const state = plugin.capture({
-  currentTask: 'Build feature X',
-  openFiles: ['src/main.ts'],
-  recentActions: ['Read file', 'Edit file'],
-  pendingItems: ['Write tests'],
+  currentTask: "Build feature X",
+  openFiles: ["src/main.ts"],
+  recentActions: ["Read file", "Edit file"],
+  pendingItems: ["Write tests"],
 });
 const result = plugin.generate();
 console.log(result.prompt);
@@ -31,12 +35,15 @@ console.log(result.prompt);
 ## API
 
 ### `captureSessionState(options): SessionState`
+
 Capture current session state.
 
 ### `generateHandoffPrompt(state, config): HandoffPrompt`
+
 Generate handoff prompt from session state.
 
 ### `HandoffPlugin`
+
 Class with `capture()`, `generate()`, `getState()`, `getConfig()`, `setConfig()` methods.
 
 ## Testing

@@ -16,6 +16,7 @@ POST /v1/agents
 ```
 
 **Request:**
+
 ```json
 {
   "name": "researcher",
@@ -28,6 +29,7 @@ POST /v1/agents
 ```
 
 **Response:**
+
 ```json
 {
   "id": "agent_123",
@@ -57,6 +59,7 @@ POST /v1/agents/{agent_id}/send
 ```
 
 **Request:**
+
 ```json
 {
   "message": "Research AI trends for 2026",

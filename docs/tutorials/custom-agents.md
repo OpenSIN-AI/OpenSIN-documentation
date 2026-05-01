@@ -43,44 +43,45 @@ npx tsc --init
 Create `src/agent.ts`:
 
 ```typescript
-import { AgentBuilder, ToolRegistry } from '@opensin/agent-sdk'
+import { AgentBuilder, ToolRegistry } from "@opensin/agent-sdk";
 
 // Register custom tools
-const tools = new ToolRegistry()
+const tools = new ToolRegistry();
 
 tools.register({
-  name: 'analyze_code',
-  description: 'Analyze code quality and suggest improvements',
+  name: "analyze_code",
+  description: "Analyze code quality and suggest improvements",
   parameters: {
-    type: 'object',
+    type: "object",
     properties: {
-      filePath: { type: 'string', description: 'Path to the file to analyze' },
+      filePath: { type: "string", description: "Path to the file to analyze" },
       checks: {
-        type: 'array',
-        items: { type: 'string' },
-        description: 'Checks to run: complexity, style, security, performance',
+        type: "array",
+        items: { type: "string" },
+        description: "Checks to run: complexity, style, security, performance",
       },
     },
-    required: ['filePath'],
+    required: ["filePath"],
   },
   execute: async ({ filePath, checks }) => {
     // Your analysis logic here
-    const results = await runAnalysis(filePath, checks)
-    return { content: JSON.stringify(results, null, 2) }
+    const results = await runAnalysis(filePath, checks);
+    return { content: JSON.stringify(results, null, 2) };
   },
-})
+});
 
 // Build the agent
-const agent = AgentBuilder
-  .create('sin-code-analyzer')
-  .withDescription('Analyzes code quality across multiple dimensions')
+const agent = AgentBuilder.create("sin-code-analyzer")
+  .withDescription("Analyzes code quality across multiple dimensions")
   .withTools(tools)
-  .withModel('openai/gpt-5.4')
-  .withSystemPrompt(`You are a code quality analyzer. 
-    Use the analyze_code tool to inspect files and provide actionable feedback.`)
-  .build()
+  .withModel("openai/gpt-5.4")
+  .withSystemPrompt(
+    `You are a code quality analyzer. 
+    Use the analyze_code tool to inspect files and provide actionable feedback.`,
+  )
+  .build();
 
-export default agent
+export default agent;
 ```
 
 ### 3. Create the Agent Card
@@ -119,20 +120,20 @@ Create `.well-known/agent-card.json`:
 Create `src/cli.ts`:
 
 ```typescript
-import { createCLI } from '@opensin/agent-sdk'
-import agent from './agent'
+import { createCLI } from "@opensin/agent-sdk";
+import agent from "./agent";
 
 const cli = createCLI(agent, {
-  name: 'sin-code-analyzer',
-  version: '1.0.0',
+  name: "sin-code-analyzer",
+  version: "1.0.0",
   commands: {
-    'print-card': () => agent.printCard(),
-    'serve-mcp': () => agent.serveMCP(),
-    'run-action': (action) => agent.runAction(JSON.parse(action)),
+    "print-card": () => agent.printCard(),
+    "serve-mcp": () => agent.serveMCP(),
+    "run-action": (action) => agent.runAction(JSON.parse(action)),
   },
-})
+});
 
-cli.parse(process.argv)
+cli.parse(process.argv);
 ```
 
 ### 5. Add MCP Server Support
@@ -140,14 +141,14 @@ cli.parse(process.argv)
 Create `src/mcp.ts`:
 
 ```typescript
-import { MCPServer } from '@opensin/agent-sdk'
-import agent from './agent'
+import { MCPServer } from "@opensin/agent-sdk";
+import agent from "./agent";
 
 const server = new MCPServer(agent, {
-  transport: 'stdio',  // or 'http'
-})
+  transport: "stdio", // or 'http'
+});
 
-server.start()
+server.start();
 ```
 
 ### 6. Build and Test
@@ -170,14 +171,14 @@ node dist/src/cli.js serve-mcp
 
 Every agent needs these files:
 
-| File | Purpose |
-|------|---------|
-| `agent.json` | Agent metadata and configuration |
-| `A2A-CARD.md` | Human-readable agent description |
-| `AGENTS.md` | Agent behavior instructions |
-| `.well-known/agent-card.json` | Machine-readable discovery card |
-| `.well-known/agent.json` | Agent manifest |
-| `mcp-config.json` | MCP server configuration |
+| File                          | Purpose                          |
+| ----------------------------- | -------------------------------- |
+| `agent.json`                  | Agent metadata and configuration |
+| `A2A-CARD.md`                 | Human-readable agent description |
+| `AGENTS.md`                   | Agent behavior instructions      |
+| `.well-known/agent-card.json` | Machine-readable discovery card  |
+| `.well-known/agent.json`      | Agent manifest                   |
+| `mcp-config.json`             | MCP server configuration         |
 
 ## Registering with the Fleet
 

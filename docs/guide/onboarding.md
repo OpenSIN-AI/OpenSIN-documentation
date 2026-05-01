@@ -4,12 +4,12 @@ When a new user runs OpenSIN for the first time, the autonomous onboarding syste
 
 ## What Gets Configured
 
-| Component | Description |
-|-----------|-------------|
+| Component                   | Description                                                     |
+| --------------------------- | --------------------------------------------------------------- |
 | **A2A-SIN-Passwordmanager** | Central secrets authority backed by Google Cloud Secret Manager |
-| **Google Cloud Project** | GCP project with Secret Manager API and service account |
-| **OpenSIN Bridge** | Chrome extension with CDP vision + multi-provider AI analysis |
-| **Platform API Keys** | Groq, NVIDIA NIM, Hugging Face — free-tier accounts registered |
+| **Google Cloud Project**    | GCP project with Secret Manager API and service account         |
+| **OpenSIN Bridge**          | Chrome extension with CDP vision + multi-provider AI analysis   |
+| **Platform API Keys**       | Groq, NVIDIA NIM, Hugging Face — free-tier accounts registered  |
 
 ## Quick Start
 
@@ -50,12 +50,12 @@ Verifies all prerequisites: Node.js 18+, Python 3.11+, Chrome, gcloud CLI, GitHu
 
 Autonomously registers on free-tier AI platforms:
 
-| Platform | Free Tier | Key Name |
-|----------|-----------|----------|
-| Groq | 14,400 req/day (vision) | `GROQ_API_KEY` |
-| NVIDIA NIM | 1,000 calls/month | `NVIDIA_API_KEY` |
-| Hugging Face | Unlimited CPU Spaces | `HUGGINGFACE_TOKEN` |
-| GitHub | Auto-detected from `gh` CLI | `GITHUB_TOKEN` |
+| Platform     | Free Tier                   | Key Name            |
+| ------------ | --------------------------- | ------------------- |
+| Groq         | 14,400 req/day (vision)     | `GROQ_API_KEY`      |
+| NVIDIA NIM   | 1,000 calls/month           | `NVIDIA_API_KEY`    |
+| Hugging Face | Unlimited CPU Spaces        | `HUGGINGFACE_TOKEN` |
+| GitHub       | Auto-detected from `gh` CLI | `GITHUB_TOKEN`      |
 
 ### Phase 6: Verification
 
@@ -65,11 +65,11 @@ Runs end-to-end checks: gcloud auth, Secret Manager access, PM health, spm CLI, 
 
 The Passwordmanager supports 3 backends:
 
-| Backend | Storage | Best For |
-|---------|---------|----------|
-| **gcloud** (default) | Google Cloud Secret Manager | Production, multi-machine |
-| **keychain** | macOS Keychain | Local-only, single machine |
-| **file** | AES-256-GCM encrypted file | Offline, portable |
+| Backend              | Storage                     | Best For                   |
+| -------------------- | --------------------------- | -------------------------- |
+| **gcloud** (default) | Google Cloud Secret Manager | Production, multi-machine  |
+| **keychain**         | macOS Keychain              | Local-only, single machine |
+| **file**             | AES-256-GCM encrypted file  | Offline, portable          |
 
 ### CLI Usage
 

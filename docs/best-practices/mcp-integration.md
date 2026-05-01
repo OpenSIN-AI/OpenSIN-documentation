@@ -12,6 +12,7 @@ description: Mandatory patterns for connecting, validating, routing, and safegua
 ## 1. What MCP Integration Must Achieve
 
 An MCP integration must make these clear:
+
 - what tools it exposes
 - how it authenticates
 - how it is started / reached
@@ -25,6 +26,7 @@ An MCP integration must make these clear:
 Always verify live tool availability rather than trusting stale documentation.
 
 ### Why
+
 MCP servers drift. Installed tools change. Old docs lie.
 
 ---
@@ -32,6 +34,7 @@ MCP servers drift. Installed tools change. Old docs lie.
 ## 3. Startup & Reachability
 
 For each MCP, document:
+
 - startup mode (stdio / streamable HTTP / daemon)
 - host/port if relevant
 - health-check method
@@ -60,6 +63,7 @@ Do not avoid an MCP when it is clearly the canonical path.
 ## 6. Failure Handling
 
 When MCP calls fail, capture:
+
 - tool name
 - target MCP
 - parameters shape
@@ -77,6 +81,6 @@ If it adds magical hidden behavior, document and constrain it before trusting it
 
 ---
 
-*Last updated:* 2026-04-10  
-*Status:* **ACTIVE & MANDATORY**  
-*Maintainer:* sin-zeus
+_Last updated:_ 2026-04-10  
+_Status:_ **ACTIVE & MANDATORY**  
+_Maintainer:_ sin-zeus

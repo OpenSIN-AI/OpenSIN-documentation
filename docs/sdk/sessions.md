@@ -9,36 +9,36 @@ The Session Manager saves and restores agent conversation state across restarts,
 ## Basic Usage
 
 ```typescript
-import { SessionManager } from '@opensin/sdk'
+import { SessionManager } from "@opensin/sdk";
 
 const session = new SessionManager({
-  persistence: 'file',
-  directory: '.opensin/sessions',
-})
+  persistence: "file",
+  directory: ".opensin/sessions",
+});
 
 // Save session state
 await session.save({
-  id: 'ses_abc123',
+  id: "ses_abc123",
   messages: conversationHistory,
   metadata: {
-    task: 'Refactoring auth module',
+    task: "Refactoring auth module",
     startedAt: new Date(),
-    model: 'claude-sonnet-4-6',
+    model: "claude-sonnet-4-6",
   },
-})
+});
 
 // Restore session
-const restored = await session.load('ses_abc123')
-console.log(restored.messages.length) // conversation continues
+const restored = await session.load("ses_abc123");
+console.log(restored.messages.length); // conversation continues
 ```
 
 ## Storage Backends
 
-| Backend | Use Case | Configuration |
-|---------|----------|---------------|
-| `file` | Local development | `{ persistence: 'file', directory: '.opensin/sessions' }` |
-| `memory` | Testing, ephemeral | `{ persistence: 'memory' }` |
-| `supabase` | Production, multi-agent | `{ persistence: 'supabase', url: '...', key: '...' }` |
+| Backend    | Use Case                | Configuration                                             |
+| ---------- | ----------------------- | --------------------------------------------------------- |
+| `file`     | Local development       | `{ persistence: 'file', directory: '.opensin/sessions' }` |
+| `memory`   | Testing, ephemeral      | `{ persistence: 'memory' }`                               |
+| `supabase` | Production, multi-agent | `{ persistence: 'supabase', url: '...', key: '...' }`     |
 
 ## Session Lifecycle
 
@@ -51,36 +51,36 @@ create → active → [paused] → completed
 ```typescript
 // Create a new session
 const session = await sessionManager.create({
-  task: 'Build login page',
-  model: 'claude-sonnet-4-6',
-})
+  task: "Build login page",
+  model: "claude-sonnet-4-6",
+});
 
 // Pause (save state to disk)
-await sessionManager.pause(session.id)
+await sessionManager.pause(session.id);
 
 // Resume later
-const resumed = await sessionManager.resume(session.id)
+const resumed = await sessionManager.resume(session.id);
 
 // Mark complete
 await sessionManager.complete(session.id, {
-  result: 'Login page implemented successfully',
+  result: "Login page implemented successfully",
   turns: 15,
   tokensUsed: 42000,
-})
+});
 ```
 
 ## Listing Sessions
 
 ```typescript
 // List all sessions
-const sessions = await sessionManager.list()
+const sessions = await sessionManager.list();
 
 // Filter by status
-const active = await sessionManager.list({ status: 'active' })
-const completed = await sessionManager.list({ status: 'completed' })
+const active = await sessionManager.list({ status: "active" });
+const completed = await sessionManager.list({ status: "completed" });
 
 // Search sessions
-const results = await sessionManager.search('auth refactor')
+const results = await sessionManager.search("auth refactor");
 ```
 
 ## File Format
@@ -120,14 +120,14 @@ Each file contains:
 
 ```typescript
 const agent = new AgentLoop({
-  model: 'claude-sonnet-4-6',
+  model: "claude-sonnet-4-6",
   tools: toolRegistry,
-  session: new SessionManager({ persistence: 'file' }),
-})
+  session: new SessionManager({ persistence: "file" }),
+});
 
 // Agent automatically saves state after each turn
-const result = await agent.run('Refactor the auth module')
+const result = await agent.run("Refactor the auth module");
 
 // Later, resume from where we left off
-const result2 = await agent.resume(result.sessionId, 'Also add tests')
+const result2 = await agent.resume(result.sessionId, "Also add tests");
 ```

@@ -24,36 +24,36 @@ The **A2A-SIN-Passwordmanager** is the central secrets authority for the OpenSIN
 
 ## Backend: Google Cloud Secrets (Default)
 
-| Property | Value |
-|----------|-------|
+| Property          | Value                                              |
+| ----------------- | -------------------------------------------------- |
 | **Secret naming** | `spm-{lowercase_name}` (dots replaced with dashes) |
-| **Encryption** | AES-256 at rest (Google-managed) |
-| **Replication** | Automatic multi-region |
-| **Free tier** | 6 active secret versions, 10,000 access ops/month |
-| **Auth** | Service account with `roles/secretmanager.admin` |
+| **Encryption**    | AES-256 at rest (Google-managed)                   |
+| **Replication**   | Automatic multi-region                             |
+| **Free tier**     | 6 active secret versions, 10,000 access ops/month  |
+| **Auth**          | Service account with `roles/secretmanager.admin`   |
 
 ## Actions Reference
 
-| Action | Parameters | Description |
-|--------|-----------|-------------|
-| `sin.passwordmanager.health` | — | Health check (backend, state, sample surface) |
-| `sin.passwordmanager.secret.put` | `name`, `value`, `description?`, `tags?` | Store or update a secret |
-| `sin.passwordmanager.secret.get` | `name`, `reveal?` | Retrieve a secret (masked or revealed) |
-| `sin.passwordmanager.secret.delete` | `name` | Delete a secret |
-| `sin.passwordmanager.secret.list` | — | List all secrets (metadata only) |
-| `sin.passwordmanager.target.bind` | `name`, `target` | Bind a sync target to a secret |
-| `sin.passwordmanager.target.list` | `name?` | List sync targets |
-| `sin.passwordmanager.secret.sync` | `name`, `targetIds?` | Sync secret to bound targets |
-| `sin.passwordmanager.secret.sync_all` | — | Sync all secrets to all targets |
+| Action                                | Parameters                               | Description                                   |
+| ------------------------------------- | ---------------------------------------- | --------------------------------------------- |
+| `sin.passwordmanager.health`          | —                                        | Health check (backend, state, sample surface) |
+| `sin.passwordmanager.secret.put`      | `name`, `value`, `description?`, `tags?` | Store or update a secret                      |
+| `sin.passwordmanager.secret.get`      | `name`, `reveal?`                        | Retrieve a secret (masked or revealed)        |
+| `sin.passwordmanager.secret.delete`   | `name`                                   | Delete a secret                               |
+| `sin.passwordmanager.secret.list`     | —                                        | List all secrets (metadata only)              |
+| `sin.passwordmanager.target.bind`     | `name`, `target`                         | Bind a sync target to a secret                |
+| `sin.passwordmanager.target.list`     | `name?`                                  | List sync targets                             |
+| `sin.passwordmanager.secret.sync`     | `name`, `targetIds?`                     | Sync secret to bound targets                  |
+| `sin.passwordmanager.secret.sync_all` | —                                        | Sync all secrets to all targets               |
 
 ## Sync Targets
 
 The Passwordmanager can fan out secrets to external systems:
 
-| Target Kind | Description |
-|------------|-------------|
-| `huggingface_space_secret` | Sets a secret on a Hugging Face Space |
-| `github_actions_repo` | Sets a GitHub Actions secret on a repo |
+| Target Kind                | Description                            |
+| -------------------------- | -------------------------------------- |
+| `huggingface_space_secret` | Sets a secret on a Hugging Face Space  |
+| `github_actions_repo`      | Sets a GitHub Actions secret on a repo |
 
 ## CLI
 

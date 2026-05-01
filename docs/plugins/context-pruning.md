@@ -26,7 +26,11 @@ npm install @opensin/plugin-context-pruning
 ## Usage
 
 ```typescript
-import { ContextPruningPlugin, pruneContext, countTokens } from '@opensin/plugin-context-pruning';
+import {
+  ContextPruningPlugin,
+  pruneContext,
+  countTokens,
+} from "@opensin/plugin-context-pruning";
 
 const plugin = new ContextPruningPlugin({ maxTokens: 8000 });
 const result = plugin.prune(messages);
@@ -36,15 +40,19 @@ console.log(`Pruned ${result.prunedCount} messages`);
 ## API
 
 ### `countTokens(text: string): number`
+
 Estimate token count for a string.
 
 ### `countContextTokens(messages: ContextMessage[]): TokenCount`
+
 Count tokens across all messages, broken down by role.
 
 ### `pruneContext(messages, config): PruningResult`
+
 Prune messages that exceed token limit.
 
 ### `ContextPruningPlugin`
+
 Class with `shouldPrune()`, `prune()`, `getConfig()`, `setConfig()` methods.
 
 ## Testing

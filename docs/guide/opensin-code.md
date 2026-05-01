@@ -135,20 +135,20 @@ Die `opensin-code-vscode` Extension integriert OpenSIN-Code direkt in VS Code:
 
 ### Workflows
 
-| Workflow | Zweck |
-|----------|-------|
-| `opensin.yml` | Haupt CI/CD Pipeline |
-| `opensin-issue-triage.yml` | Auto-Triage neuer Issues |
-| `opensin-dedupe-issues.yml` | Duplicate-Erkennung |
-| `sweep.yml` | Täglicher Stale-Issue Cleanup |
-| `auto-close-duplicates.yml` | Auto-Close von Duplicates |
-| `issue-lifecycle-comment.yml` | Lifecycle Labels & Comments |
-| `lock-closed-issues.yml` | Lock alter Issues |
-| `log-issue-events.yml` | Analytics |
-| `non-write-users-check.yml` | Security Check |
-| `remove-autoclose-label.yml` | Label Management |
-| `backfill-duplicate-comments.yml` | Backfill alter Issues |
-| `issue-opened-dispatch.yml` | Dispatch zu externem Repo |
+| Workflow                          | Zweck                         |
+| --------------------------------- | ----------------------------- |
+| `opensin.yml`                     | Haupt CI/CD Pipeline          |
+| `opensin-issue-triage.yml`        | Auto-Triage neuer Issues      |
+| `opensin-dedupe-issues.yml`       | Duplicate-Erkennung           |
+| `sweep.yml`                       | Täglicher Stale-Issue Cleanup |
+| `auto-close-duplicates.yml`       | Auto-Close von Duplicates     |
+| `issue-lifecycle-comment.yml`     | Lifecycle Labels & Comments   |
+| `lock-closed-issues.yml`          | Lock alter Issues             |
+| `log-issue-events.yml`            | Analytics                     |
+| `non-write-users-check.yml`       | Security Check                |
+| `remove-autoclose-label.yml`      | Label Management              |
+| `backfill-duplicate-comments.yml` | Backfill alter Issues         |
+| `issue-opened-dispatch.yml`       | Dispatch zu externem Repo     |
 
 ---
 
@@ -188,12 +188,12 @@ Die gesamte Codebasis wurde von sin-claude nach OpenSIN-AI migriert:
 
 ### Neue Projekte (April 2026)
 
-| Projekt | Repo | Dateien | Zeilen | Status |
-|---------|------|---------|--------|--------|
-| **OpenSIN-AI CLI** | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli) | 70 | 34.601 | ✅ Rust |
-| **OpenSIN-AI Code** | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code) | 100 | 2.386 | ✅ Python |
-| **OpenSIN-AI Platform** | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 182 | 87.247 | ✅ Plugins |
+| Projekt                 | Repo                                                                     | Dateien | Zeilen | Status     |
+| ----------------------- | ------------------------------------------------------------------------ | ------- | ------ | ---------- |
+| **OpenSIN-AI CLI**      | [opensin-ai-cli](https://github.com/OpenSIN-AI/opensin-ai-cli)           | 70      | 34.601 | ✅ Rust    |
+| **OpenSIN-AI Code**     | [opensin-ai-code](https://github.com/OpenSIN-AI/opensin-ai-code)         | 100     | 2.386  | ✅ Python  |
+| **OpenSIN-AI Platform** | [opensin-ai-platform](https://github.com/OpenSIN-AI/opensin-ai-platform) | 182     | 87.247 | ✅ Plugins |
 
 ---
 
-*Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI*
+_Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI_

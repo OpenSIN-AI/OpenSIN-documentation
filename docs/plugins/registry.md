@@ -13,32 +13,34 @@ npm install @sin/plugin-sdk
 ### Create a Plugin
 
 ```typescript
-import { definePlugin, createTool, createHook } from '@sin/plugin-sdk';
+import { definePlugin, createTool, createHook } from "@sin/plugin-sdk";
 
 export default definePlugin({
-  name: '@sin/my-plugin',
-  version: '1.0.0',
-  type: 'tool',
-  description: 'My awesome plugin',
+  name: "@sin/my-plugin",
+  version: "1.0.0",
+  type: "tool",
+  description: "My awesome plugin",
 
   async activate(ctx) {
     // Register a tool
-    ctx.tools.register(createTool({
-      name: 'hello',
-      description: 'Say hello',
-      parameters: {
-        name: { type: 'string', required: true }
-      },
-      execute: async ({ name }) => ({
-        content: `Hello, ${name}!`
-      })
-    }));
+    ctx.tools.register(
+      createTool({
+        name: "hello",
+        description: "Say hello",
+        parameters: {
+          name: { type: "string", required: true },
+        },
+        execute: async ({ name }) => ({
+          content: `Hello, ${name}!`,
+        }),
+      }),
+    );
 
     // Register a hook
-    ctx.events.on('session:start', async (data) => {
-      ctx.logger.info('Session started!');
+    ctx.events.on("session:start", async (data) => {
+      ctx.logger.info("Session started!");
     });
-  }
+  },
 });
 ```
 
@@ -69,12 +71,12 @@ Create `sin-plugin.json`:
 ## Testing
 
 ```typescript
-import { testPlugin, mockContext } from '@sin/plugin-sdk/test';
+import { testPlugin, mockContext } from "@sin/plugin-sdk/test";
 
-describe('My Plugin', () => {
-  it('should activate successfully', async () => {
+describe("My Plugin", () => {
+  it("should activate successfully", async () => {
     const result = await testPlugin(myPlugin, {
-      config: { apiKey: 'test-key' }
+      config: { apiKey: "test-key" },
     });
 
     expect(result.success).toBe(true);
@@ -85,6 +87,7 @@ describe('My Plugin', () => {
 ## API Reference
 
 ### Plugin Types
+
 - `tool` — New tools for the agent
 - `hook` — Event-based automation
 - `agent` — Specialized agent configurations
@@ -95,6 +98,7 @@ describe('My Plugin', () => {
 - `mcp` — Model Context Protocol servers
 
 ### Core APIs
+
 - `definePlugin()` — Create a plugin
 - `createTool()` — Create a tool
 - `createHook()` — Create a hook
@@ -102,6 +106,7 @@ describe('My Plugin', () => {
 - `defineAuthProvider()` — Create an auth provider
 
 ### Context APIs
+
 - `ctx.config` — Plugin configuration
 - `ctx.session` — Current session info
 - `ctx.tools` — Tool registry

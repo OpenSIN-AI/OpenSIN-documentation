@@ -50,17 +50,17 @@ opensin agent test researcher --prompt "What is AI?"
 
 ## Why OpenSIN?
 
-| Feature | OpenSIN | Hermes-Agent | OpenClaw | ChatGPT | Claude |
-|---------|---------|-------------|----------|---------|--------|
-| Multi-Agent System | ✅ Native | ⚠️ Dispatcher | ⚠️ Limited | ❌ Single | ❌ Single |
-| A2A Communication | ✅ Built-in | ⚠️ Basic | ❌ None | ❌ None | ❌ None |
-| Self-Hostable | ✅ Yes | ✅ Yes | ✅ Yes | ❌ Cloud | ❌ Cloud |
-| Open Source | ✅ Apache 2.0 | ✅ Partial | ✅ Partial | ❌ Proprietary | ❌ Proprietary |
-| Model-Agnostic | ✅ 1000+ | ⚠️ Limited | ✅ Multiple | ❌ GPT only | ❌ Claude only |
-| Web Automation | ✅ Stealth | ❌ None | ✅ Basic | ❌ None | ❌ None |
-| Omni-Channel | ✅ 6+ | ⚠️ Telegram | ⚠️ Telegram | ❌ Web only | ❌ Web only |
-| Enterprise Security | ✅ Full | ⚠️ Basic | ❌ None | ✅ Basic | ✅ Basic |
-| Cost | ✅ Free | ✅ Free | ✅ Free | 💰 $20/mo | 💰 $20/mo |
+| Feature             | OpenSIN       | Hermes-Agent  | OpenClaw    | ChatGPT        | Claude         |
+| ------------------- | ------------- | ------------- | ----------- | -------------- | -------------- |
+| Multi-Agent System  | ✅ Native     | ⚠️ Dispatcher | ⚠️ Limited  | ❌ Single      | ❌ Single      |
+| A2A Communication   | ✅ Built-in   | ⚠️ Basic      | ❌ None     | ❌ None        | ❌ None        |
+| Self-Hostable       | ✅ Yes        | ✅ Yes        | ✅ Yes      | ❌ Cloud       | ❌ Cloud       |
+| Open Source         | ✅ Apache 2.0 | ✅ Partial    | ✅ Partial  | ❌ Proprietary | ❌ Proprietary |
+| Model-Agnostic      | ✅ 1000+      | ⚠️ Limited    | ✅ Multiple | ❌ GPT only    | ❌ Claude only |
+| Web Automation      | ✅ Stealth    | ❌ None       | ✅ Basic    | ❌ None        | ❌ None        |
+| Omni-Channel        | ✅ 6+         | ⚠️ Telegram   | ⚠️ Telegram | ❌ Web only    | ❌ Web only    |
+| Enterprise Security | ✅ Full       | ⚠️ Basic      | ❌ None     | ✅ Basic       | ✅ Basic       |
+| Cost                | ✅ Free       | ✅ Free       | ✅ Free     | 💰 $20/mo      | 💰 $20/mo      |
 
 ## Ecosystem
 

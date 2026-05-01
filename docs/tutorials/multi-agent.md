@@ -32,13 +32,13 @@ opensin team exec research-team \
 
 ## Team Strategies
 
-| Strategy | Description | Use Case |
-|----------|-------------|----------|
-| sequential | Agents work one after another | Pipeline workflows |
-| parallel | Agents work simultaneously | Independent tasks |
-| consensus | Agents vote on outcomes | Decision making |
-| leader | One agent coordinates others | Complex coordination |
-| pipeline | Output of one feeds input of next | Data processing |
+| Strategy   | Description                       | Use Case             |
+| ---------- | --------------------------------- | -------------------- |
+| sequential | Agents work one after another     | Pipeline workflows   |
+| parallel   | Agents work simultaneously        | Independent tasks    |
+| consensus  | Agents vote on outcomes           | Decision making      |
+| leader     | One agent coordinates others      | Complex coordination |
+| pipeline   | Output of one feeds input of next | Data processing      |
 
 ## Next Steps
 
