@@ -59,50 +59,50 @@ Or add to `opencode.json`:
 
 ## Available Hooks
 
-| Hook | Trigger |
-|------|---------|
-| `PreToolUse` | Before a tool is executed |
-| `PostToolUse` | After a tool is executed |
+| Hook               | Trigger                             |
+| ------------------ | ----------------------------------- |
+| `PreToolUse`       | Before a tool is executed           |
+| `PostToolUse`      | After a tool is executed            |
 | `UserPromptSubmit` | Before user prompt is sent to model |
-| `Stop` | When session ends |
+| `Stop`             | When session ends                   |
 
 ## Example: Custom Command
 
 ```typescript
-import { defineCommand } from 'opencode/plugin';
+import { defineCommand } from "opencode/plugin";
 
 export const myCommand = defineCommand({
-  name: 'my-command',
-  description: 'My custom command',
+  name: "my-command",
+  description: "My custom command",
   handler: async (context, args) => {
     // Command logic
-    return { output: 'Result' };
-  }
+    return { output: "Result" };
+  },
 });
 ```
 
 ## Example: Custom Agent
 
 ```typescript
-import { defineAgent } from 'opencode/plugin';
+import { defineAgent } from "opencode/plugin";
 
 export const myAgent = defineAgent({
-  name: 'my-agent',
-  description: 'My custom agent',
-  model: 'openai/gpt-5.4',
-  systemPrompt: 'You are a helpful assistant.',
-  tools: ['read', 'write', 'bash']
+  name: "my-agent",
+  description: "My custom agent",
+  model: "openai/gpt-5.4",
+  systemPrompt: "You are a helpful assistant.",
+  tools: ["read", "write", "bash"],
 });
 ```
 
 ## Plugin Registry
 
-| Plugin | Description | Install |
-|--------|-------------|---------|
-| `oh-my-opencode` | Multi-agent orchestration framework | `bun install -g oh-my-opencode` |
-| `opencode-antigravity-auth` | OAuth token rotation for Claude/Gemini | `bun install -g opencode-antigravity-auth` |
-| `opencode-qwen-proxy` | OpenCode-Qwen-Proxy (Qwen OAuth with throttling) | `bun install -g github:RunMintOn/OpenCode-Qwen-Proxy` |
-| `opencode-openrouter-auth` | OpenRouter auth with local proxy | Local source in upgraded-opencode-stack |
+| Plugin                      | Description                                      | Install                                               |
+| --------------------------- | ------------------------------------------------ | ----------------------------------------------------- |
+| `oh-my-opencode`            | Multi-agent orchestration framework              | `bun install -g oh-my-opencode`                       |
+| `opencode-antigravity-auth` | OAuth token rotation for Claude/Gemini           | `bun install -g opencode-antigravity-auth`            |
+| `opencode-qwen-proxy`       | OpenCode-Qwen-Proxy (Qwen OAuth with throttling) | `bun install -g github:RunMintOn/OpenCode-Qwen-Proxy` |
+| `opencode-openrouter-auth`  | OpenRouter auth with local proxy                 | Local source in upgraded-opencode-stack               |
 
 ## Flow-Building Skill
 
@@ -127,10 +127,10 @@ Für interaktive Flow-Arbeit ist `create-flow` das Canonical Skill-Pattern:
 
 ## Relevante Mandate
 
-| Mandat | Priority | Doku |
-|--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Doku                                |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

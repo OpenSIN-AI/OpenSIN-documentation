@@ -33,14 +33,14 @@ The OpenSIN-AI Fleet is a network of autonomous A2A (Agent-to-Agent) agents that
 
 ## Agent Categories
 
-| Category | Count | Examples |
-|----------|-------|----------|
-| **Team Managers** | 5+ | Team Coding, Team Worker, Team Infra, Team Google Apps, Team Microsoft |
-| **Coding Agents** | 10+ | Simone-MCP, Frontend, Backend, DevOps, DataScience, GitLab-LogsCenter |
-| **Platform Agents** | 30+ | Prolific, HeyPiggy, Mindrift, Instagram, TikTok, YouTube, LinkedIn |
-| **Messaging Agents** | 15+ | WhatsApp, Telegram, Discord, Signal, Slack, Teams, WeChat, LINE |
-| **Apple Agents** | 10+ | Mail, Notes, Calendar, Safari, Shortcuts, Photos, FaceTime |
-| **Infrastructure** | 6+ | A2A-SIN-Box-Storage (Room 09), Stripe, Chrome Extension, Computer Use, Memory, N8N |
+| Category             | Count | Examples                                                                           |
+| -------------------- | ----- | ---------------------------------------------------------------------------------- |
+| **Team Managers**    | 5+    | Team Coding, Team Worker, Team Infra, Team Google Apps, Team Microsoft             |
+| **Coding Agents**    | 10+   | Simone-MCP, Frontend, Backend, DevOps, DataScience, GitLab-LogsCenter              |
+| **Platform Agents**  | 30+   | Prolific, HeyPiggy, Mindrift, Instagram, TikTok, YouTube, LinkedIn                 |
+| **Messaging Agents** | 15+   | WhatsApp, Telegram, Discord, Signal, Slack, Teams, WeChat, LINE                    |
+| **Apple Agents**     | 10+   | Mail, Notes, Calendar, Safari, Shortcuts, Photos, FaceTime                         |
+| **Infrastructure**   | 6+    | A2A-SIN-Box-Storage (Room 09), Stripe, Chrome Extension, Computer Use, Memory, N8N |
 
 ---
 
@@ -65,14 +65,14 @@ The OpenSIN-AI Fleet is a network of autonomous A2A (Agent-to-Agent) agents that
 
 ## Key Repositories
 
-| Repo | Purpose |
-|------|---------|
-| [Template-SIN-Agent](https://github.com/OpenSIN-AI/Template-SIN-Agent) | Blueprint for all agents |
-| [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team) | Blueprint for team managers |
-| [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Fleet docs (this repo) |
-| [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code) | CLI core, plugins, engine |
-| [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus) | Event-sourcing mesh |
-| [Fleet Operations Project](https://github.com/orgs/OpenSIN-AI/projects/21) | Tracking board |
+| Repo                                                                         | Purpose                     |
+| ---------------------------------------------------------------------------- | --------------------------- |
+| [Template-SIN-Agent](https://github.com/OpenSIN-AI/Template-SIN-Agent)       | Blueprint for all agents    |
+| [Template-SIN-Team](https://github.com/OpenSIN-AI/Template-SIN-Team)         | Blueprint for team managers |
+| [OpenSIN-documentation](https://github.com/OpenSIN-AI/OpenSIN-documentation) | Fleet docs (this repo)      |
+| [OpenSIN-Code](https://github.com/OpenSIN-AI/OpenSIN-Code)                   | CLI core, plugins, engine   |
+| [OpenSIN-Neural-Bus](https://github.com/OpenSIN-AI/OpenSIN-Neural-Bus)       | Event-sourcing mesh         |
+| [Fleet Operations Project](https://github.com/orgs/OpenSIN-AI/projects/21)   | Tracking board              |
 
 ---
 
@@ -82,33 +82,36 @@ The OpenSIN-AI Fleet is a network of autonomous A2A (Agent-to-Agent) agents that
 
 **Box.com Storage API Agent** — Central file upload service for the entire OpenSIN fleet. Replaces deprecated GitLab Storage.
 
-| Property | Value |
-|:---|:---|
-| **Room** | 09 |
-| **Static IP** | `172.20.0.109:3000` |
-| **Internal Endpoint** | `http://room-09-box-storage:3000` |
-| **Public A2A** | `https://a2a.delqhi.com/agents/a2a-sin-box-storage` |
-| **Health** | `GET /health` |
-| **Upload** | `POST /api/v1/upload` |
-| **Validate** | `POST /api/v1/validate` |
-| **Auth** | `X-Box-Storage-Key` header |
-| **Team** | Team Infrastructure |
-| **Agent Repo** | [A2A-SIN-Box-Storage](https://github.com/OpenSIN-AI/A2A-SIN-Box-Storage) |
+| Property              | Value                                                                    |
+| :-------------------- | :----------------------------------------------------------------------- |
+| **Room**              | 09                                                                       |
+| **Static IP**         | `172.20.0.109:3000`                                                      |
+| **Internal Endpoint** | `http://room-09-box-storage:3000`                                        |
+| **Public A2A**        | `https://a2a.delqhi.com/agents/a2a-sin-box-storage`                      |
+| **Health**            | `GET /health`                                                            |
+| **Upload**            | `POST /api/v1/upload`                                                    |
+| **Validate**          | `POST /api/v1/validate`                                                  |
+| **Auth**              | `X-Box-Storage-Key` header                                               |
+| **Team**              | Team Infrastructure                                                      |
+| **Agent Repo**        | [A2A-SIN-Box-Storage](https://github.com/OpenSIN-AI/A2A-SIN-Box-Storage) |
 
 #### Capabilities
+
 - `storage_upload` — Upload files to Box.com public folder
-- `storage_public_url` — Return shareable CDN URLs  
+- `storage_public_url` — Return shareable CDN URLs
 - `file_validation` — Enforce size, type, extension whitelist
 - `cdn_distribution` — Box edge cache integration
 - `cache_management` — ETag, cache-control headers
 
 #### Box.com Folders
-| Folder | Shared Link | Folder ID |
-|--------|-------------|-----------|
+
+| Folder    | Shared Link                                            | Folder ID                          |
+| --------- | ------------------------------------------------------ | ---------------------------------- |
 | `/Public` | https://app.box.com/s/1st624o9eb5xdistusew5w0erb8offc7 | `1st624o9eb5xdistusew5w0erb8offc7` |
-| `/Cache` | https://app.box.com/s/9s5htoefw1ux9ajaqj656v9a02h7z7x1 | `9s5htoefw1ux9ajaqj656v9a02h7z7x1` |
+| `/Cache`  | https://app.box.com/s/9s5htoefw1ux9ajaqj656v9a02h7z7x1 | `9s5htoefw1ux9ajaqj656v9a02h7z7x1` |
 
 #### Usage Example
+
 ```bash
 # Upload file via agent
 curl -X POST "http://room-09-box-storage:3000/api/v1/upload" \
@@ -125,6 +128,7 @@ curl "http://room-09-box-storage:3000/health"
 ```
 
 #### MCP Integration
+
 Agents can access Box Storage via MCP using the `sin-box-storage` interface:
 
 ```json
@@ -140,6 +144,7 @@ Agents can access Box Storage via MCP using the `sin-box-storage` interface:
 ```
 
 #### Docker Deployment (Infra-SIN-Docker-Empire)
+
 ```yaml
 room-09-box-storage:
   build: ./services/box-storage
@@ -179,10 +184,10 @@ room-09-box-storage:
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **A2A-First** | -200.0 | SELBST MACHEN via A2A-Agenten |
-| **LLM via opencode CLI** | -2.5 | `opencode run --format json` |
-| **Fleet Architecture V2** | 0.0 | marketplace metadata in agent.json |
+| Mandat                    | Priority | Regel                              |
+| ------------------------- | -------- | ---------------------------------- |
+| **A2A-First**             | -200.0   | SELBST MACHEN via A2A-Agenten      |
+| **LLM via opencode CLI**  | -2.5     | `opencode run --format json`       |
+| **Fleet Architecture V2** | 0.0      | marketplace metadata in agent.json |
 
 → [Alle Mandate](/best-practices/a2a-communication)

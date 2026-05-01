@@ -143,22 +143,22 @@ Start the ACP server for programmatic agent interaction.
 
 ## Environment Variables
 
-| Variable | Description |
-|----------|-------------|
-| `OPENCODE_MODEL` | Default model |
-| `OPENCODE_AGENT` | Default agent |
-| `OPENCODE_HOME` | Custom home directory |
+| Variable              | Description             |
+| --------------------- | ----------------------- |
+| `OPENCODE_MODEL`      | Default model           |
+| `OPENCODE_AGENT`      | Default agent           |
+| `OPENCODE_HOME`       | Custom home directory   |
 | `OPENCODE_CONFIG_DIR` | Custom config directory |
-| `OPENCODE_CACHE_DIR` | Custom cache directory |
+| `OPENCODE_CACHE_DIR`  | Custom cache directory  |
 
 ---
 
 ## Relevante Mandate
 
-| Mandat | Priority | Regel |
-|--------|----------|-------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **Annahmen-Verbot** | -5.0 | KEINE Diagnose ohne Beweis |
-| **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
+| Mandat                  | Priority | Regel                               |
+| ----------------------- | -------- | ----------------------------------- |
+| **Bun-Only**            | -1.5     | `bun install` / `bun run` statt npm |
+| **Annahmen-Verbot**     | -5.0     | KEINE Diagnose ohne Beweis          |
+| **Test-Beweis-Pflicht** | 0.0      | KEIN "Done" ohne echten Test-Lauf   |
 
 → [Alle Mandate](/best-practices/code-quality)

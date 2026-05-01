@@ -17,29 +17,29 @@ Without `AGENTS.md`, agents are **dead endpoints**: other agents cannot discover
 
 ## Full Audit Table
 
-| # | Repo | README | AGENTS.md | Priority | Action Required |
-|---|------|--------|-----------|----------|-----------------|
-| 1 | MCP-SIN-chrome-extension | ❌ | ❌ | **CRITICAL** | Create README + AGENTS.md |
-| 2 | MCP-SIN-computer-use | ❌ | ❌ | **CRITICAL** | Create README + AGENTS.md |
-| 3 | MCP-SIN-mcp-gateway | ❌ | ❌ | **CRITICAL** | Create README + AGENTS.md |
-| 4 | MCP-SIN-in-chrome | ❌ | ❌ | **CRITICAL** | Create README + AGENTS.md |
-| 5 | MCP-SIN-memory | ❌ | ❌ | **CRITICAL** | Create README + AGENTS.md |
-| 6 | MCP-SIN-platform-auth | ❌ | ❌ | **CRITICAL** | Create README + AGENTS.md |
-| 7 | MCP-SIN-usebrowser | ❌ | ❌ | **CRITICAL** | Create README + AGENTS.md |
-| 8 | OpenSIN-Neural-Bus | ✅ | ❌ | **HIGH** | Create AGENTS.md |
-| 9 | opensin-ai-code | ✅ | ❌ | **HIGH** | Create AGENTS.md |
-| 10 | opensin-ai-platform | ✅ | ❌ | **HIGH** | Create AGENTS.md |
-| 11 | sin-github-action | ✅ | ❌ | **MEDIUM** | Create AGENTS.md |
-| 12 | A2A-SIN-Worker-heypiggy | ✅ | ❌ | **MEDIUM** | Create AGENTS.md |
-| 13 | A2A-SIN-Medusa | ✅ | ❌ | **MEDIUM** | Create AGENTS.md |
-| 14 | Template-SIN-Team | ✅ | ❌ | **MEDIUM** | Create AGENTS.md |
-| 15 | OpenSIN-overview | ✅ | ❌ | **MEDIUM** | Create AGENTS.md |
-| 16 | SIN-InkogniFlow | ✅ | ❌ | **MEDIUM** | Create AGENTS.md |
-| 17 | Biz-SIN-Marketing | ✅ | ❌ | **MEDIUM** | Create AGENTS.md |
-| 18 | A2A-SIN-Storage | ✅ | ❌ | **LOW** | Create AGENTS.md |
-| 19 | A2A-SIN-Medium | ✅ | ❌ | **LOW** | Create AGENTS.md |
-| 20 | A2A-SIN-YouTube | ✅ | ❌ | **LOW** | Create AGENTS.md |
-| 21 | A2A-SIN-TikTok | ✅ | ❌ | **LOW** | Create AGENTS.md |
+| #   | Repo                     | README | AGENTS.md | Priority     | Action Required           |
+| --- | ------------------------ | ------ | --------- | ------------ | ------------------------- |
+| 1   | MCP-SIN-chrome-extension | ❌     | ❌        | **CRITICAL** | Create README + AGENTS.md |
+| 2   | MCP-SIN-computer-use     | ❌     | ❌        | **CRITICAL** | Create README + AGENTS.md |
+| 3   | MCP-SIN-mcp-gateway      | ❌     | ❌        | **CRITICAL** | Create README + AGENTS.md |
+| 4   | MCP-SIN-in-chrome        | ❌     | ❌        | **CRITICAL** | Create README + AGENTS.md |
+| 5   | MCP-SIN-memory           | ❌     | ❌        | **CRITICAL** | Create README + AGENTS.md |
+| 6   | MCP-SIN-platform-auth    | ❌     | ❌        | **CRITICAL** | Create README + AGENTS.md |
+| 7   | MCP-SIN-usebrowser       | ❌     | ❌        | **CRITICAL** | Create README + AGENTS.md |
+| 8   | OpenSIN-Neural-Bus       | ✅     | ❌        | **HIGH**     | Create AGENTS.md          |
+| 9   | opensin-ai-code          | ✅     | ❌        | **HIGH**     | Create AGENTS.md          |
+| 10  | opensin-ai-platform      | ✅     | ❌        | **HIGH**     | Create AGENTS.md          |
+| 11  | sin-github-action        | ✅     | ❌        | **MEDIUM**   | Create AGENTS.md          |
+| 12  | A2A-SIN-Worker-heypiggy  | ✅     | ❌        | **MEDIUM**   | Create AGENTS.md          |
+| 13  | A2A-SIN-Medusa           | ✅     | ❌        | **MEDIUM**   | Create AGENTS.md          |
+| 14  | Template-SIN-Team        | ✅     | ❌        | **MEDIUM**   | Create AGENTS.md          |
+| 15  | OpenSIN-overview         | ✅     | ❌        | **MEDIUM**   | Create AGENTS.md          |
+| 16  | SIN-InkogniFlow          | ✅     | ❌        | **MEDIUM**   | Create AGENTS.md          |
+| 17  | Biz-SIN-Marketing        | ✅     | ❌        | **MEDIUM**   | Create AGENTS.md          |
+| 18  | A2A-SIN-Storage          | ✅     | ❌        | **LOW**      | Create AGENTS.md          |
+| 19  | A2A-SIN-Medium           | ✅     | ❌        | **LOW**      | Create AGENTS.md          |
+| 20  | A2A-SIN-YouTube          | ✅     | ❌        | **LOW**      | Create AGENTS.md          |
+| 21  | A2A-SIN-TikTok           | ✅     | ❌        | **LOW**      | Create AGENTS.md          |
 
 ---
 
@@ -47,35 +47,40 @@ Without `AGENTS.md`, agents are **dead endpoints**: other agents cannot discover
 
 ### 1. MCP-SIN-chrome-extension
 
-```markdown
+````markdown
 # MCP-SIN-chrome-extension
 
 ## Identity
+
 - **Name:** MCP-SIN-chrome-extension
 - **Type:** MCP Server
 - **Organization:** OpenSIN-AI
 - **Namespace:** sin-chrome-extension
 
 ## Purpose
+
 Chrome Extension bridge for browser automation. Provides tools to interact with Chrome extensions, manage extension state, and bridge between MCP clients and Chrome DevTools Protocol (CDP). This server acts as the gateway between AI agents and Chrome extension APIs.
 
 ## Auth Model
+
 - **Local:** localhost CDP connection (port 9335 default)
 - **Remote:** streamable-http with optional API key
 - **Chrome Profile:** Uses user's default Chrome profile with existing sessions
 - **Security:** Extension permission model enforced by Chrome
 
 ## Available Tools
-| Tool | Parameters | Description |
-|------|-----------|-------------|
-| `get_extension_state` | `extension_id: string` | Get current state of a Chrome extension |
-| `list_extensions` | `enabled_only?: boolean` | List all installed Chrome extensions |
-| `execute_extension_action` | `extension_id: string, action: string, args?: object` | Execute an action on a Chrome extension |
-| `inject_content_script` | `extension_id: string, script: string, matches: string[]` | Inject content script via extension |
-| `get_extension_permissions` | `extension_id: string` | Get permissions granted to an extension |
-| `bridge_cdp_command` | `command: string, params?: object` | Send CDP command through extension bridge |
+
+| Tool                        | Parameters                                                | Description                               |
+| --------------------------- | --------------------------------------------------------- | ----------------------------------------- |
+| `get_extension_state`       | `extension_id: string`                                    | Get current state of a Chrome extension   |
+| `list_extensions`           | `enabled_only?: boolean`                                  | List all installed Chrome extensions      |
+| `execute_extension_action`  | `extension_id: string, action: string, args?: object`     | Execute an action on a Chrome extension   |
+| `inject_content_script`     | `extension_id: string, script: string, matches: string[]` | Inject content script via extension       |
+| `get_extension_permissions` | `extension_id: string`                                    | Get permissions granted to an extension   |
+| `bridge_cdp_command`        | `command: string, params?: object`                        | Send CDP command through extension bridge |
 
 ## Commands
+
 ```bash
 # Start MCP server (stdio mode)
 node dist/index.js
@@ -86,27 +91,33 @@ node dist/index.js --port 8765
 # Health check
 curl http://localhost:8765/health
 ```
+````
 
 ## Endpoints
+
 - **stdio:** Standard input/output (default)
 - **streamable-http:** `http://localhost:8765/mcp`
 
 ## Dependencies
+
 - Chrome browser with remote debugging enabled
 - OpenSIN Chrome extension installed
 - Node.js >= 18
 
 ## Lifecycle
+
 - **Start:** Connects to Chrome via CDP on configured port
 - **Running:** Listens for MCP tool calls, forwards to Chrome extension API
 - **Error:** Chrome disconnected → auto-reconnect with exponential backoff
 - **Shutdown:** Graceful CDP disconnect, cleanup
 
 ## Observability
+
 - Health endpoint: `GET /health`
 - Logs: stdout with JSON structured logging
 - Metrics: CDP connection status, tool call counts, error rates
-```
+
+````
 
 ### 2. MCP-SIN-computer-use
 
@@ -151,29 +162,34 @@ node dist/index.js
 
 # Health check
 curl http://localhost:PORT/health
-```
+````
 
 ## Endpoints
+
 - **stdio:** Standard input/output (default)
 - **streamable-http:** `http://localhost:PORT/mcp`
 
 ## Dependencies
+
 - macOS Accessibility permission granted
 - macOS Screen Recording permission granted
 - Node.js >= 18
 - puppeteer/screen-capture-capture (platform-specific)
 
 ## Lifecycle
+
 - **Start:** Verifies OS permissions, initializes input controllers
 - **Running:** Processes tool calls for screen/keyboard/mouse operations
 - **Error:** Permission denied → halt and report to operator
 - **Shutdown:** Release input controllers, cleanup
 
 ## Observability
+
 - Health endpoint: `GET /health`
 - Logs: All screen/mouse/keyboard actions logged with timestamps
 - Security: All file operations logged for audit trail
-```
+
+````
 
 ### 3. MCP-SIN-mcp-gateway
 
@@ -216,29 +232,34 @@ node dist/index.js --config gateway-config.json
 
 # Health check
 curl http://localhost:8765/health
-```
+````
 
 ## Endpoints
+
 - **Main:** `http://localhost:8765/mcp`
 - **Health:** `http://localhost:8765/health`
 - **Admin:** `http://localhost:8765/admin`
 
 ## Dependencies
+
 - Node.js >= 18
 - MCP servers to route to (registered at startup or runtime)
 - Optional: etcd/Redis for service discovery
 
 ## Lifecycle
+
 - **Start:** Load registered servers from config, health check all upstreams
 - **Running:** Route tool calls, monitor upstream health, auto-discover new servers
 - **Error:** Upstream down → mark unhealthy, reroute if possible, alert operator
 - **Shutdown:** Graceful drain, close all upstream connections
 
 ## Observability
+
 - Health endpoint: `GET /health`
 - Admin panel: `GET /admin` (server list, health status, tool catalog)
 - Metrics: Request routing stats, upstream latency, error rates per server
-```
+
+````
 
 ### 4. MCP-SIN-in-chrome
 
@@ -282,28 +303,33 @@ MCP server running inside Chrome browser context via content script / extension.
 # 1. chrome://extensions → Developer mode
 # 2. Load unpacked → point to extension directory
 # 3. Extension connects to local MCP bridge automatically
-```
+````
 
 ## Endpoints
+
 - **Internal:** Chrome extension messaging (no external endpoint)
 - **Bridge:** Connects to local MCP bridge via native messaging host
 
 ## Dependencies
+
 - Chrome browser
 - OpenSIN Chrome Extension loaded
 - Native messaging host configured
 
 ## Lifecycle
+
 - **Start:** Extension loads, injects content script, connects to bridge
 - **Running:** Receives tool calls via messaging, executes in page context, returns results
 - **Error:** Page navigated → re-inject content script, reconnect
 - **Shutdown:** Extension unloaded, cleanup listeners
 
 ## Observability
+
 - Console logging via extension background page
 - Network interception logs
 - DOM mutation tracking
-```
+
+````
 
 ### 5. MCP-SIN-memory
 
@@ -349,29 +375,34 @@ node dist/index.js --storage supabase --url SUPABASE_URL --key SUPABASE_KEY
 
 # Health check
 curl http://localhost:PORT/health
-```
+````
 
 ## Endpoints
+
 - **stdio:** Standard input/output (default)
 - **streamable-http:** `http://localhost:PORT/mcp`
 
 ## Dependencies
+
 - Node.js >= 18
 - Local: filesystem access
 - Supabase (optional): Supabase project with memory tables
 - Embedding model (for semantic search): OpenAI or local model
 
 ## Lifecycle
+
 - **Start:** Initialize storage backend, load indexes, warm cache
 - **Running:** Process store/retrieve/search operations, maintain indexes
 - **Error:** Storage unavailable → fallback to local cache, alert operator
 - **Shutdown:** Flush pending writes, close connections
 
 ## Observability
+
 - Health endpoint: `GET /health`
 - Metrics: Storage operations/sec, search latency, cache hit rate
 - Memory usage: Track total stored entries per namespace
-```
+
+````
 
 ### 6. MCP-SIN-platform-auth
 
@@ -417,31 +448,36 @@ node dist/index.js --init-store
 
 # Health check
 curl http://localhost:8765/health
-```
+````
 
 ## Endpoints
+
 - **Main:** `http://localhost:8765/mcp`
 - **OAuth Callback:** `http://localhost:8765/oauth/callback`
 - **Health:** `http://localhost:8765/health`
 
 ## Dependencies
+
 - Node.js >= 18
 - Encrypted credential store (keychain or encrypted file)
 - Platform-specific OAuth client IDs/secrets
 - Browser automation (for OAuth flows without headless)
 
 ## Lifecycle
+
 - **Start:** Load credential store, check token freshness, schedule refresh jobs
 - **Running:** Handle auth requests, auto-refresh tokens before expiry
 - **Error:** Token expired + refresh failed → mark platform as auth_required, alert operator
 - **Shutdown:** Cancel refresh timers, save state
 
 ## Observability
+
 - Health endpoint: `GET /health`
 - Auth status: `GET /health` includes per-platform auth status
 - Audit log: All token operations logged (without exposing token values)
 - Alerts: Refresh failures, auth expirations
-```
+
+````
 
 ### 7. MCP-SIN-usebrowser
 
@@ -491,28 +527,33 @@ node dist/index.js --profile "Default" --cdp-port 9335
 
 # Health check
 curl http://localhost:PORT/health
-```
+````
 
 ## Endpoints
+
 - **stdio:** Standard input/output (default)
 - **streamable-http:** `http://localhost:PORT/mcp`
 
 ## Dependencies
+
 - Chrome browser with remote debugging (`--remote-debugging-port=9335`)
 - nodriver Python package (for browser control)
 - Node.js >= 18
 
 ## Lifecycle
+
 - **Start:** Launch Chrome with CDP, initialize browser context
 - **Running:** Process automation tool calls, maintain browser state
 - **Error:** Browser crashed → restart Chrome, restore session if possible
 - **Shutdown:** Close browser, cleanup temp files
 
 ## Observability
+
 - Health endpoint: `GET /health` (includes browser status)
 - Logs: All automation actions logged with before/after state
 - Screenshots: Auto-captured on errors for debugging
 - Performance: Action timing, page load times
+
 ```
 
 ---
@@ -563,3 +604,4 @@ curl http://localhost:PORT/health
 | **Test-Beweis-Pflicht** | 0.0 | KEIN "Done" ohne echten Test-Lauf |
 
 → [Alle Mandate](/best-practices/code-quality)
+```

@@ -118,7 +118,7 @@ let mut conversation = Conversation::new(config);
 loop {
     let response = client.stream(conversation.messages()).await?;
     conversation.add_assistant(response);
-    
+
     for tool_call in response.tool_calls {
         let result = tools.execute(&tool_call).await?;
         conversation.add_tool_result(tool_call.id, result);
@@ -138,27 +138,27 @@ Der Compaction-Algorithmus reduziert den Kontext wenn das Token-Limit erreicht w
 
 ## Built-in Tools (19)
 
-| Tool | Beschreibung |
-|------|-------------|
-| BashTool | Shell Command Execution |
-| ReadFileTool | Datei lesen |
-| WriteFileTool | Datei schreiben |
-| EditFileTool | Datei bearbeiten (Suchen/Ersetzen) |
-| GlobSearchTool | Datei-Globbing |
-| GrepSearchTool | Text-Suche |
-| WebFetchTool | URL-Inhalte abrufen |
-| WebSearchTool | Websuche |
-| TodoWriteTool | Todo-Liste verwalten |
-| SkillTool | Skill-Ausführung |
-| AgentTool | Sub-Agent spawnen |
-| ToolSearchTool | Deferred Tool Discovery |
-| NotebookEditTool | Jupyter Notebook bearbeiten |
-| SleepTool | Verzögerung |
-| BriefTool | Session-Zusammenfassung |
-| ConfigTool | Konfiguration (internal) |
-| StructuredOutputTool | Strukturierte Ausgabe |
-| REPLTool | REPL VM (internal) |
-| PowerShellTool | PowerShell Execution |
+| Tool                 | Beschreibung                       |
+| -------------------- | ---------------------------------- |
+| BashTool             | Shell Command Execution            |
+| ReadFileTool         | Datei lesen                        |
+| WriteFileTool        | Datei schreiben                    |
+| EditFileTool         | Datei bearbeiten (Suchen/Ersetzen) |
+| GlobSearchTool       | Datei-Globbing                     |
+| GrepSearchTool       | Text-Suche                         |
+| WebFetchTool         | URL-Inhalte abrufen                |
+| WebSearchTool        | Websuche                           |
+| TodoWriteTool        | Todo-Liste verwalten               |
+| SkillTool            | Skill-Ausführung                   |
+| AgentTool            | Sub-Agent spawnen                  |
+| ToolSearchTool       | Deferred Tool Discovery            |
+| NotebookEditTool     | Jupyter Notebook bearbeiten        |
+| SleepTool            | Verzögerung                        |
+| BriefTool            | Session-Zusammenfassung            |
+| ConfigTool           | Konfiguration (internal)           |
+| StructuredOutputTool | Strukturierte Ausgabe              |
+| REPLTool             | REPL VM (internal)                 |
+| PowerShellTool       | PowerShell Execution               |
 
 ---
 
@@ -221,17 +221,17 @@ cargo test
 
 ---
 
-*Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI*
+_Zuletzt aktualisiert: 2026-04-07 | OpenSIN-AI_
 
 ---
 
 ## Relevante Mandate
 
-| Mandat | Priority | Doku |
-|--------|----------|------|
-| **Bun-Only** | -1.5 | `bun install` / `bun run` statt npm |
-| **LLM via opencode CLI** | -2.5 | `opencode run --format json` — KEINE direkten API-Calls |
-| **A2A-Agenten-Pflicht** | -200.0 | SELBST MACHEN via `create-a2a-sin-agent` |
-| **Kommentar-Pflicht** | -6.0 | EXTREM umfangreiche Kommentare |
+| Mandat                   | Priority | Doku                                                    |
+| ------------------------ | -------- | ------------------------------------------------------- |
+| **Bun-Only**             | -1.5     | `bun install` / `bun run` statt npm                     |
+| **LLM via opencode CLI** | -2.5     | `opencode run --format json` — KEINE direkten API-Calls |
+| **A2A-Agenten-Pflicht**  | -200.0   | SELBST MACHEN via `create-a2a-sin-agent`                |
+| **Kommentar-Pflicht**    | -6.0     | EXTREM umfangreiche Kommentare                          |
 
 → [Alle Mandate](/best-practices/a2a-communication)

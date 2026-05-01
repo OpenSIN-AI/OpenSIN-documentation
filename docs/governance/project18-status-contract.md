@@ -11,15 +11,15 @@ This document defines the **fail-closed status semantics** — what each status 
 
 ## Status Definitions
 
-| Status | Meaning | Entry Criteria | Exit Criteria |
-|--------|---------|----------------|---------------|
-| **Backlog** | Identified but not yet planned | Issue exists with clear scope | Assigned to a wave/sprint |
-| **Todo** | Planned for current wave, not started | Assigned, dependencies satisfied | Work begins (branch created) |
-| **In Progress** | Active work underway | Branch exists, at least 1 commit pushed | PR opened OR blocked |
-| **Blocked** | Cannot proceed due to external dependency | Blocker identified and documented in issue comment | Blocker resolved with evidence |
-| **In Review** | PR open, awaiting merge | PR passes all required checks | PR merged to main |
-| **Done** | Merged and verified | PR merged, post-merge verification passed | N/A (terminal state) |
-| **Cancelled** | No longer needed | Justification posted in issue | N/A (terminal state) |
+| Status          | Meaning                                   | Entry Criteria                                     | Exit Criteria                  |
+| --------------- | ----------------------------------------- | -------------------------------------------------- | ------------------------------ |
+| **Backlog**     | Identified but not yet planned            | Issue exists with clear scope                      | Assigned to a wave/sprint      |
+| **Todo**        | Planned for current wave, not started     | Assigned, dependencies satisfied                   | Work begins (branch created)   |
+| **In Progress** | Active work underway                      | Branch exists, at least 1 commit pushed            | PR opened OR blocked           |
+| **Blocked**     | Cannot proceed due to external dependency | Blocker identified and documented in issue comment | Blocker resolved with evidence |
+| **In Review**   | PR open, awaiting merge                   | PR passes all required checks                      | PR merged to main              |
+| **Done**        | Merged and verified                       | PR merged, post-merge verification passed          | N/A (terminal state)           |
+| **Cancelled**   | No longer needed                          | Justification posted in issue                      | N/A (terminal state)           |
 
 ## Transition Rules (Fail-Closed)
 
@@ -27,19 +27,20 @@ This document defines the **fail-closed status semantics** — what each status 
 
 Every status transition MUST have a corresponding evidence artifact:
 
-| Transition | Required Evidence |
-|------------|-------------------|
-| Backlog → Todo | Issue comment stating "Dependencies satisfied: [list]" |
-| Todo → In Progress | Branch name posted in issue, first commit pushed |
-| In Progress → In Review | PR URL posted in issue comment |
-| In Progress → Blocked | Blocker issue URL + explanation posted |
-| Blocked → In Progress | Blocker resolution evidence (commit, PR, or external proof) |
-| In Review → Done | Merge commit SHA + post-merge verification result |
-| Any → Cancelled | Justification comment explaining why |
+| Transition              | Required Evidence                                           |
+| ----------------------- | ----------------------------------------------------------- |
+| Backlog → Todo          | Issue comment stating "Dependencies satisfied: [list]"      |
+| Todo → In Progress      | Branch name posted in issue, first commit pushed            |
+| In Progress → In Review | PR URL posted in issue comment                              |
+| In Progress → Blocked   | Blocker issue URL + explanation posted                      |
+| Blocked → In Progress   | Blocker resolution evidence (commit, PR, or external proof) |
+| In Review → Done        | Merge commit SHA + post-merge verification result           |
+| Any → Cancelled         | Justification comment explaining why                        |
 
 ### Rule 2: No Backward Transitions Without Incident
 
 Moving an item backward (e.g., In Review → In Progress, Done → In Progress) requires:
+
 1. An incident comment explaining what failed
 2. A linked GitHub issue for the regression if applicable
 3. Update to the master tracker (`global-brain#30`)
@@ -63,6 +64,7 @@ An item is NOT Done just because the PR merged. Post-merge verification checklis
 ### Rule 5: Fail-Closed Default
 
 If the status of an item cannot be determined (CI down, verification script missing, evidence unclear):
+
 - The item is treated as **Blocked**
 - A diagnostic comment is posted automatically
 - The item does NOT move forward until the ambiguity is resolved
@@ -72,27 +74,32 @@ If the status of an item cannot be determined (CI down, verification script miss
 Project 18 items are organized into execution waves with explicit dependency ordering:
 
 ### Wave 0: Foundation (CURRENT)
+
 - Template-SIN-Agent canonical manifest (#149, #147, #148)
 - Governance contract templates (upgraded-opencode-stack#26)
 - Project 18 status contract (this document, #117)
 
 ### Wave 1: Factory & Routes
+
 - Factory template parity fix (OpenSIN-backend#1162, #1163)
 - Dashboard route pages (OpenSIN-WebApp#8, #9)
 - Governance adoption in docs (OpenSIN-documentation#116)
 
 ### Wave 2: Normalization & Recovery
-- Per-repo normalization for 6 A2A-SIN-Code-* repos (Infra-SIN-Dev-Setup#24-#29)
+
+- Per-repo normalization for 6 A2A-SIN-Code-\* repos (Infra-SIN-Dev-Setup#24-#29)
 - Backfill sync automation (Infra-SIN-Dev-Setup#30)
 - HF fleet canary verification (OpenSIN-overview#18, #21)
 
 ### Wave 3: Rollout & Verification
+
 - HF fleet fan-out (OpenSIN-overview#20, #22)
 - Homepage URL rollout (OpenSIN-overview#19, Infra-SIN-Dev-Setup#31)
 - Live route verification (OpenSIN-WebApp#10)
 - E2E factory validation (OpenSIN-backend#1164)
 
 ### Wave 4: Compliance Close
+
 - Fleet readiness summary (OpenSIN-overview#23)
 - Master tracker close (global-brain#30)
 
@@ -100,16 +107,17 @@ Project 18 items are organized into execution waves with explicit dependency ord
 
 ### Telegram Alerts
 
-| Event | Channel | Bot |
-|-------|---------|-----|
-| Item blocked > 48h | fleet-alerts | sin-telegrambot |
-| Item blocked > 7d | ceo-escalation | sin-telegrambot |
-| Wave completed | fleet-status | sin-telegrambot |
-| Regression detected | fleet-alerts | sin-telegrambot |
+| Event               | Channel        | Bot             |
+| ------------------- | -------------- | --------------- |
+| Item blocked > 48h  | fleet-alerts   | sin-telegrambot |
+| Item blocked > 7d   | ceo-escalation | sin-telegrambot |
+| Wave completed      | fleet-status   | sin-telegrambot |
+| Regression detected | fleet-alerts   | sin-telegrambot |
 
 ### GitHub Actions (Future)
 
 When CI is available on Project 18 repos:
+
 - Auto-move items from "In Review" → "Done" when PR merges
 - Auto-move items to "Blocked" when required checks fail
 - Auto-post verification results as issue comments
